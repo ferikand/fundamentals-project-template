@@ -1,0 +1,11 @@
+@use "../abstracts/mixins";
+@use "../abstracts/variables";
+
+.catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: variables.$spacing-l;
+  @include mixins.tablet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

@@ -1,3 +1,10 @@
+header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+}
+
 .btn {
   width: 174px;
   height: 60px;
@@ -11,4 +18,15 @@
 }
 .btn:hover {
   background-color: #000;
+}
+
+.catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 2rem;
+}
+@media (max-width: 768px) {
+  .catalog-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }/*# sourceMappingURL=main.css.map */
