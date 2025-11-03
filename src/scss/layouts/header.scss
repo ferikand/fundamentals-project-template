@@ -1,6 +1,33 @@
+@use "../abstracts/mixins";
+@use "../abstracts/variables";
+
 header {
   position: sticky;
   top: 0;
   width: 100%;
   z-index: 100;
+
+  .heading {
+    width: 80%;
+    margin: 0 auto;
+
+    @include mixins.to-flex-and-center;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .title-container {
+    @include mixins.to-flex-and-center;
+    gap: 1rem;
+    color: variables.$color-primary;
+  }
+  .user-section {
+    @include mixins.to-flex-and-center;
+    gap: 0.5rem;
+  }
+  .devider {
+    border-bottom: 0.1px solid rgba(114, 113, 116, 0.2);
+    width: 78%;
+    justify-self: center;
+    height: 0.05px;
+  }
 }

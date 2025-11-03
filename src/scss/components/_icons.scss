@@ -1,0 +1,39 @@
+@use "../abstracts/mixins";
+@use "../abstracts/variables";
+
+.icon {
+  color: variables.$color-primary;
+
+  @include mixins.to-flex-and-center;
+
+  svg {
+    @include mixins.icon-size(20px);
+    @include mixins.transition;
+  }
+}
+
+.socials {
+  @include mixins.to-flex-and-center;
+
+  gap: 1.25rem;
+
+  a {
+    @include mixins.icon-size(20px);
+    @include mixins.to-flex-and-center;
+    transition: all 0.3s ease;
+
+    &:hover {
+      @include mixins.transform;
+    }
+  }
+}
+
+.suitcase {
+  @include mixins.icon-size(32px);
+  @include mixins.to-flex-and-center;
+  background-color: variables.$color-primary;
+  border-radius: variables.$spacing-s;
+  a {
+    @include mixins.icon-size(32px);
+  }
+}

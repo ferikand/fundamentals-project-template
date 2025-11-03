@@ -5,11 +5,12 @@ header {
   z-index: 100;
 }
 header .heading {
+  width: 80%;
+  margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: row;
-  border: 1px dotted #b92770;
   justify-content: space-between;
 }
 header .title-container {
@@ -17,6 +18,19 @@ header .title-container {
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  color: #b92770;
+}
+header .user-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+header .devider {
+  border-bottom: 0.1px solid rgba(114, 113, 116, 0.2);
+  width: 78%;
+  justify-self: center;
+  height: 0.05px;
 }
 
 .btn {
@@ -88,4 +102,6 @@ header .title-container {
   .catalog-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-}/*# sourceMappingURL=main.css.map */
+}
+
+/*# sourceMappingURL=main.css.map */

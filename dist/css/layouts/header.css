@@ -4,6 +4,7 @@ header {
   width: 100%;
   z-index: 100;
 }
+
 header .heading {
   width: 80%;
   margin: 0 auto;
@@ -13,6 +14,7 @@ header .heading {
   flex-direction: row;
   justify-content: space-between;
 }
+
 header .title-container {
   display: flex;
   justify-content: center;
@@ -20,15 +22,19 @@ header .title-container {
   gap: 1rem;
   color: #b92770;
 }
+
 header .user-section {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
 }
+
 header .devider {
   border-bottom: 0.1px solid rgba(114, 113, 116, 0.2);
   width: 78%;
   justify-self: center;
   height: 0.05px;
-}/*# sourceMappingURL=header.css.map */
+} 
+
+/*# sourceMappingURL=header.css.map */
