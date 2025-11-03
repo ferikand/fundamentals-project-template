@@ -13,7 +13,7 @@ header .heading {
   flex-direction: row;
   justify-content: space-between;
 }
-header .title-container {
+header .logo {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -31,4 +31,26 @@ header .devider {
   width: 78%;
   justify-self: center;
   height: 0.05px;
+}
+header nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+header nav ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  list-style: none;
+  gap: 2rem;
+}
+header nav ul li a {
+  text-decoration: none;
+  color: #000;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+header nav ul li a.active {
+  color: #b92770;
 }/*# sourceMappingURL=header.css.map */

@@ -15,7 +15,7 @@ header {
     flex-direction: row;
     justify-content: space-between;
   }
-  .title-container {
+  .logo {
     @include mixins.to-flex-and-center;
     gap: 1rem;
     color: variables.$color-primary;
@@ -29,5 +29,23 @@ header {
     width: 78%;
     justify-self: center;
     height: 0.05px;
+  }
+  nav {
+    @include mixins.to-flex-and-center;
+    ul {
+      @include mixins.to-flex-and-center;
+      flex-direction: row;
+      list-style: none;
+      gap: 2rem;
+      li a {
+        text-decoration: none;
+        color: variables.$color-text;
+        font-size: 1.1rem;
+        font-weight: bold;
+        &.active {
+          color: variables.$color-primary;
+        }
+      }
+    }
   }
 }

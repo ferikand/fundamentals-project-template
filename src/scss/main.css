@@ -5,11 +5,12 @@ header {
   z-index: 100;
 }
 header .heading {
+  width: 80%;
+  margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: row;
-  border: 1px dotted #b92770;
   justify-content: space-between;
 }
 header .title-container {
@@ -17,6 +18,38 @@ header .title-container {
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  color: #b92770;
+}
+header .user-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+header .devider {
+  border-bottom: 0.1px solid rgba(114, 113, 116, 0.2);
+  width: 78%;
+  justify-self: center;
+  height: 0.05px;
+}
+header nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+header nav ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  list-style: none;
+  gap: 2rem;
+}
+header nav ul li a {
+  text-decoration: none;
+  color: #000;
+  font-size: 1.1rem;
+  font-weight: bold;
 }
 
 .btn {
