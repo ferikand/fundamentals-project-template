@@ -8,13 +8,14 @@ header {
 .btn {
   width: 174px;
   height: 60px;
+  text-decoration: none;
+  color: #fff;
   transition: background-color 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 2rem;
   background-color: #b92770;
-  color: #fff;
 }
 .btn:hover {
   background-color: #000;
