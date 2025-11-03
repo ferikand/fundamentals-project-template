@@ -15,10 +15,15 @@
 }
 
 @mixin transform {
-  transform: scale(1.1);
+  transform: scale(1.015);
 }
 
 @mixin icon-size($size) {
   width: $size;
   height: $size;
+}
+
+@mixin link-inline-block {
+  display: inline-block;
+  text-decoration: none;
 }

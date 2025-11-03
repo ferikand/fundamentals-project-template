@@ -16,13 +16,27 @@ header {
     justify-content: space-between;
   }
   .logo {
-    @include mixins.to-flex-and-center;
-    gap: 1rem;
-    color: variables.$color-primary;
+    a {
+      @include mixins.link-inline-block;
+      @include mixins.to-flex-and-center;
+      flex-direction: row;
+      gap: 1rem;
+      color: variables.$color-primary;
+      &:hover {
+        @include mixins.transform;
+      }
+    }
   }
   .user-section {
     @include mixins.to-flex-and-center;
     gap: 0.5rem;
+    .user-icon,
+    .cart-icon {
+      @include mixins.transition;
+      &:hover {
+        @include mixins.transform;
+      }
+    }
   }
   .devider {
     border-bottom: 0.1px solid rgba(114, 113, 116, 0.2);
@@ -42,7 +56,14 @@ header {
         color: variables.$color-text;
         font-size: 1.1rem;
         font-weight: bold;
+        @include mixins.link-inline-block;
+
+        @include mixins.transition;
         &.active {
+          color: variables.$color-primary;
+        }
+        &:hover {
+          @include mixins.transform;
           color: variables.$color-primary;
         }
       }

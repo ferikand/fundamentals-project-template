@@ -1,0 +1,22 @@
+main .hero {
+  background-color: #e7e8e9;
+}
+main .hero .hero-upper_container {
+  margin: 0 auto;
+  max-width: 80%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+@media (max-width: 768px) {
+  main .hero .hero-upper_container {
+    grid-template-columns: 1fr;
+  }
+}
+main .hero .hero-upper_container .hero-upper-left_container,
+main .hero .hero-upper_container .hero-upper-right_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex: 1;
+}/*# sourceMappingURL=main-section-homepage.css.map */

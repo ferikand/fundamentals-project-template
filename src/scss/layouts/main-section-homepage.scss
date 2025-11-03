@@ -1,0 +1,23 @@
+@use "../abstracts/mixins";
+@use "../abstracts/variables";
+
+main {
+  .hero {
+    background-color: variables.$color-hero-section;
+    .hero-upper_container {
+      margin: 0 auto;
+      max-width: 80%;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      @include mixins.tablet {
+        grid-template-columns: 1fr;
+      }
+      .hero-upper-left_container,
+      .hero-upper-right_container {
+        @include mixins.to-flex-and-center;
+        flex-direction: column;
+        flex: 1;
+      }
+    }
+  }
+}

@@ -6,13 +6,15 @@
   height: 60px;
   text-decoration: none;
   color: variables.$color-button-text;
+  display: inline-block;
 
-  transition: background-color 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+  @include mixins.transition;
   @include mixins.to-flex-and-center;
   padding: variables.$spacing-l;
   background-color: variables.$color-primary;
 
   &:hover {
     background-color: variables.$color-dark;
+    @include mixins.transform;
   }
 }
