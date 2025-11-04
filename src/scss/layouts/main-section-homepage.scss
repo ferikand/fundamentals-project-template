@@ -1,6 +1,5 @@
 @use "../abstracts/mixins";
 @use "../abstracts/variables";
-
 main {
   .hero {
     background-color: variables.$color-hero-section;
@@ -34,16 +33,18 @@ main {
     .hero-lower_container {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      @include mixins.tablet {
-        grid-template-columns: 1fr;
-      }
       position: relative;
       z-index: 5;
       max-width: 80%;
-      margin: 0 auto;
-      transform: translateY(-12rem);
-      background-color: variables.$color-light;
-      box-shadow: 0 1.25rem 2rem rgba(0, 0, 0, 0.08);
+      & {
+        margin: 0 auto;
+        transform: translateY(-12rem);
+        box-shadow: 0 1.25rem 2rem rgba(0, 0, 0, 0.08);
+        background-color: variables.$color-light;
+      }
+      @include mixins.tablet {
+        grid-template-columns: 1fr;
+      }
       .hero-lower-left_container {
         padding: 3rem;
         width: 100%;
@@ -51,7 +52,6 @@ main {
           display: flex;
           align-self: self-start;
           flex-direction: row;
-
           h6 {
             margin: 0.75rem;
           }
@@ -78,11 +78,58 @@ main {
         flex-direction: column;
         justify-content: center;
         padding: 3rem;
-        max-width: 100%;
+        width: 100%;
         h4,
         p {
           color: variables.$color-light;
         }
+      }
+    }
+  }
+  .carousel {
+    max-width: 80%;
+    margin: 0 auto;
+    .carousel-header {
+      @include mixins.section-header;
+    }
+    .products-carousel {
+      .carousel-track {
+        @include mixins.generate-bg-images(variables.$images-quantity);
+        display: grid;
+        column-gap: 1rem;
+        grid-template-columns: repeat(4, 1fr);
+        @include mixins.tablet {
+          grid-template-columns: 1 fr 1 fr;
+        }
+        .product-card {
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+          padding: 2rem;
+          height: 600px;
+          width: 296px;
+          h4,
+          p {
+            color: variables.$color-light;
+            font-size: 1rem;
+            margin: 0.5rem;
+          }
+        }
+      }
+    }
+  }
+  .selected-products {
+    max-width: 80%;
+    margin: 0 auto;
+    .selected-header {
+      @include mixins.section-header;
+      margin-top: 3rem;
+    }
+    .selected-products_container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      @include mixins.tablet {
+        grid-template-columns: 1 fr 1 fr;
       }
     }
   }

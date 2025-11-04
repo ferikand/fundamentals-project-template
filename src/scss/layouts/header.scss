@@ -1,17 +1,14 @@
 @use "../abstracts/mixins";
 @use "../abstracts/variables";
-
 header {
   position: sticky;
   top: 0;
   width: 100%;
   background-color: variables.$color-light;
   z-index: 100;
-
   .heading {
     width: 80%;
     margin: 0 auto;
-
     @include mixins.to-flex-and-center;
     flex-direction: row;
     justify-content: space-between;
@@ -58,7 +55,6 @@ header {
         font-size: 1.1rem;
         font-weight: bold;
         @include mixins.link-inline-block;
-
         @include mixins.transition;
         &.active {
           color: variables.$color-primary;

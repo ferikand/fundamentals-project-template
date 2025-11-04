@@ -116,24 +116,21 @@ header nav ul li a:hover {
 
 main .hero {
   background-color: #e7e8e9;
+  padding-bottom: 12rem;
 }
-main .hero .hero-upper_container,
-main .hero .hero-lower_container {
+main .hero .hero-upper_container {
   margin: 0 auto;
   max-width: 80%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 }
 @media (max-width: 768px) {
-  main .hero .hero-upper_container,
-  main .hero .hero-lower_container {
+  main .hero .hero-upper_container {
     grid-template-columns: 1fr;
   }
 }
 main .hero .hero-upper_container .hero-upper-left_container,
-main .hero .hero-upper_container .hero-upper-right_container,
-main .hero .hero-lower_container .hero-upper-left_container,
-main .hero .hero-lower_container .hero-upper-right_container {
+main .hero .hero-upper_container .hero-upper-right_container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -142,37 +139,56 @@ main .hero .hero-lower_container .hero-upper-right_container {
   color: #504e4a;
 }
 main .hero .hero-upper_container .hero-upper-left_container .btn,
-main .hero .hero-upper_container .hero-upper-right_container .btn,
-main .hero .hero-lower_container .hero-upper-left_container .btn,
-main .hero .hero-lower_container .hero-upper-right_container .btn {
+main .hero .hero-upper_container .hero-upper-right_container .btn {
   align-self: start;
   margin-top: 2rem;
 }
-main .hero .hero-lower_container {
-  transform: translateY(1rem);
+main .hero-lower-wrapper {
+  background-color: #fff;
+  position: relative;
+  z-index: 1;
+  padding-top: 3.5rem;
+}
+main .hero-lower-wrapper .hero-lower_container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  position: relative;
+  z-index: 5;
+  max-width: 80%;
+}
+main .hero-lower-wrapper .hero-lower_container {
+  margin: 0 auto;
+  transform: translateY(-12rem);
+  box-shadow: 0 1.25rem 2rem rgba(0, 0, 0, 0.08);
   background-color: #fff;
 }
-main .hero .hero-lower_container .hero-lower-left_container {
-  padding: 3rem;
+@media (max-width: 768px) {
+  main .hero-lower-wrapper .hero-lower_container {
+    grid-template-columns: 1fr;
+  }
 }
-main .hero .hero-lower_container .hero-lower-left_container .person {
+main .hero-lower-wrapper .hero-lower_container .hero-lower-left_container {
+  padding: 3rem;
+  width: 100%;
+}
+main .hero-lower-wrapper .hero-lower_container .hero-lower-left_container .person {
   display: flex;
   align-self: self-start;
   flex-direction: row;
 }
-main .hero .hero-lower_container .hero-lower-left_container .person h6 {
+main .hero-lower-wrapper .hero-lower_container .hero-lower-left_container .person h6 {
   margin: 0.75rem;
 }
-main .hero .hero-lower_container .hero-lower-left_container .person p {
+main .hero-lower-wrapper .hero-lower_container .hero-lower-left_container .person p {
   margin: 0 1rem;
 }
-main .hero .hero-lower_container .hero-lower-left_container .person .person-img {
+main .hero-lower-wrapper .hero-lower_container .hero-lower-left_container .person .person-img {
   max-width: 5.82rem;
 }
-main .hero .hero-lower_container .hero-lower-left_container .person-text p {
+main .hero-lower-wrapper .hero-lower_container .hero-lower-left_container .person-text p {
   color: #504e4a;
 }
-main .hero .hero-lower_container .hero-lower-right_container {
+main .hero-lower-wrapper .hero-lower_container .hero-lower-right_container {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../src/assets/icons/photo.png");
   background-size: cover;
   background-repeat: no-repeat;
@@ -181,10 +197,82 @@ main .hero .hero-lower_container .hero-lower-right_container {
   flex-direction: column;
   justify-content: center;
   padding: 3rem;
+  width: 100%;
 }
-main .hero .hero-lower_container .hero-lower-right_container h4,
-main .hero .hero-lower_container .hero-lower-right_container p {
+main .hero-lower-wrapper .hero-lower_container .hero-lower-right_container h4,
+main .hero-lower-wrapper .hero-lower_container .hero-lower-right_container p {
   color: #fff;
+}
+main .carousel {
+  max-width: 80%;
+  margin: 0 auto;
+}
+main .carousel .carousel-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+main .carousel .carousel-header h4 {
+  margin: 0;
+}
+main .carousel .products-carousel .carousel-track {
+  display: grid;
+  -moz-column-gap: 1rem;
+       column-gap: 1rem;
+  grid-template-columns: repeat(4, 1fr);
+}
+main .carousel .products-carousel .carousel-track .image-1 {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../src/assets/products/image-1.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+main .carousel .products-carousel .carousel-track .image-2 {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../src/assets/products/image-2.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+main .carousel .products-carousel .carousel-track .image-3 {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../src/assets/products/image-3.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+main .carousel .products-carousel .carousel-track .image-4 {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../src/assets/products/image-4.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+@media (max-width: 768px) {
+  main .carousel .products-carousel .carousel-track {
+    grid-template-columns: 1 fr 1 fr;
+  }
+}
+main .carousel .products-carousel .carousel-track .product-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 2rem;
+  height: 600px;
+  width: 296px;
+}
+main .carousel .products-carousel .carousel-track .product-card h4,
+main .carousel .products-carousel .carousel-track .product-card p {
+  color: #fff;
+  font-size: 1rem;
+  margin: 0.5rem;
+}
+main .selected-products {
+  max-width: 80%;
+  margin: 0 auto;
+}
+main .selected-products .selected-header.section-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+main .selected-products .selected-header.section-header h4 {
+  margin: 0;
 }
 
 .btn {

@@ -1,6 +1,5 @@
 @use "../abstracts/mixins";
 @use "../abstracts/variables";
-
 .btn {
   width: 174px;
   height: 60px;
@@ -10,11 +9,9 @@
   font-size: 1.1rem;
   font-weight: bold;
   margin-top: 2rem;
-
   @include mixins.transition;
   @include mixins.to-flex-and-center;
   background-color: variables.$color-primary;
-
   &:hover {
     background-color: variables.$color-dark;
     @include mixins.transform;

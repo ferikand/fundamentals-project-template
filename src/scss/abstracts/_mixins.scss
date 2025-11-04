@@ -3,27 +3,40 @@
   justify-content: center;
   align-items: center;
 }
-
 @mixin tablet {
   @media (max-width: 768px) {
     @content;
   }
 }
-
 @mixin transition {
   transition: all 0.3s ease;
 }
-
 @mixin transform {
   transform: scale(1.015);
 }
-
 @mixin icon-size($size) {
   width: $size;
   height: $size;
 }
-
 @mixin link-inline-block {
   display: inline-block;
   text-decoration: none;
+}
+@mixin generate-bg-images($count) {
+  @for $i from 1 through $count {
+    .image-#{$i} {
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url("../../src/assets/products/image-#{$i}.png");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+  }
+}
+@mixin section-header {
+  text-align: center;
+  h4 {
+    margin: 0;
+  }
+  margin-bottom: 1.5rem;
 }
