@@ -1,6 +1,7 @@
 @use "../abstracts/mixins";
 @use "../abstracts/variables";
-.btn {
+.btn,
+.btn-sm {
   width: 174px;
   height: 60px;
   text-decoration: none;
@@ -16,4 +17,8 @@
     background-color: variables.$color-dark;
     @include mixins.transform;
   }
+}
+.btn-sm {
+  width: 156px;
+  height: 40px;
 }
