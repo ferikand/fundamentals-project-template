@@ -6,14 +6,40 @@ img {
   max-width: 100%;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #000;
+}
+
 body {
   font-family: "Montserrat", sans-serif;
+}
+
+h2 {
+  font-size: 3.5rem;
+}
+
+h4 {
+  font-size: 2.5rem;
+}
+
+h6 {
+  font-size: 1.25rem;
+}
+
+p {
+  font-size: 1rem;
 }
 
 header {
   position: sticky;
   top: 0;
   width: 100%;
+  background-color: #fff;
   z-index: 100;
 }
 header .heading {
@@ -91,25 +117,74 @@ header nav ul li a:hover {
 main .hero {
   background-color: #e7e8e9;
 }
-main .hero .hero-upper_container {
+main .hero .hero-upper_container,
+main .hero .hero-lower_container {
   margin: 0 auto;
   max-width: 80%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  padding: 5rem 0;
 }
 @media (max-width: 768px) {
-  main .hero .hero-upper_container {
+  main .hero .hero-upper_container,
+  main .hero .hero-lower_container {
     grid-template-columns: 1fr;
   }
 }
 main .hero .hero-upper_container .hero-upper-left_container,
-main .hero .hero-upper_container .hero-upper-right_container {
+main .hero .hero-upper_container .hero-upper-right_container,
+main .hero .hero-lower_container .hero-upper-left_container,
+main .hero .hero-lower_container .hero-upper-right_container {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   flex: 1;
+  color: #504e4a;
+}
+main .hero .hero-upper_container .hero-upper-left_container .btn,
+main .hero .hero-upper_container .hero-upper-right_container .btn,
+main .hero .hero-lower_container .hero-upper-left_container .btn,
+main .hero .hero-lower_container .hero-upper-right_container .btn {
+  align-self: start;
+  margin-top: 2rem;
+}
+main .hero .hero-lower_container {
+  transform: translateY(1rem);
+  background-color: #fff;
+}
+main .hero .hero-lower_container .hero-lower-left_container {
+  padding: 3rem;
+}
+main .hero .hero-lower_container .hero-lower-left_container .person {
+  display: flex;
+  align-self: self-start;
+  flex-direction: row;
+}
+main .hero .hero-lower_container .hero-lower-left_container .person h6 {
+  margin: 0.75rem;
+}
+main .hero .hero-lower_container .hero-lower-left_container .person p {
+  margin: 0 1rem;
+}
+main .hero .hero-lower_container .hero-lower-left_container .person .person-img {
+  max-width: 5.82rem;
+}
+main .hero .hero-lower_container .hero-lower-left_container .person-text p {
+  color: #504e4a;
+}
+main .hero .hero-lower_container .hero-lower-right_container {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../src/assets/icons/photo.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3rem;
+}
+main .hero .hero-lower_container .hero-lower-right_container h4,
+main .hero .hero-lower_container .hero-lower-right_container p {
+  color: #fff;
 }
 
 .btn {
@@ -118,11 +193,13 @@ main .hero .hero-upper_container .hero-upper-right_container {
   text-decoration: none;
   color: #fff;
   display: inline-block;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-top: 2rem;
   transition: all 0.3s ease;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 2rem;
   background-color: #b92770;
 }
 .btn:hover {

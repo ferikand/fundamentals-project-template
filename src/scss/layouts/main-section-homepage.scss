@@ -4,12 +4,12 @@
 main {
   .hero {
     background-color: variables.$color-hero-section;
+    padding-bottom: 12rem;
     .hero-upper_container {
       margin: 0 auto;
       max-width: 80%;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      padding: 5rem 0;
       @include mixins.tablet {
         grid-template-columns: 1fr;
       }
@@ -18,6 +18,71 @@ main {
         @include mixins.to-flex-and-center;
         flex-direction: column;
         flex: 1;
+        color: variables.$color-text-content;
+        .btn {
+          align-self: start;
+          margin-top: variables.$spacing-l;
+        }
+      }
+    }
+  }
+  .hero-lower-wrapper {
+    background-color: variables.$color-light;
+    position: relative;
+    z-index: 1;
+    padding-top: 3.5rem;
+    .hero-lower_container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      @include mixins.tablet {
+        grid-template-columns: 1fr;
+      }
+      position: relative;
+      z-index: 5;
+      max-width: 80%;
+      margin: 0 auto;
+      transform: translateY(-12rem);
+      background-color: variables.$color-light;
+      box-shadow: 0 1.25rem 2rem rgba(0, 0, 0, 0.08);
+      .hero-lower-left_container {
+        padding: 3rem;
+        width: 100%;
+        .person {
+          display: flex;
+          align-self: self-start;
+          flex-direction: row;
+
+          h6 {
+            margin: 0.75rem;
+          }
+          p {
+            margin: 0 1rem;
+          }
+          .person-img {
+            max-width: 5.82rem;
+          }
+        }
+        .person-text {
+          p {
+            color: variables.$color-text-content;
+          }
+        }
+      }
+      .hero-lower-right_container {
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+          url("../../src/assets/icons/photo.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 3rem;
+        max-width: 100%;
+        h4,
+        p {
+          color: variables.$color-light;
+        }
       }
     }
   }

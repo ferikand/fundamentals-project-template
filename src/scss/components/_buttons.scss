@@ -7,10 +7,12 @@
   text-decoration: none;
   color: variables.$color-button-text;
   display: inline-block;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-top: 2rem;
 
   @include mixins.transition;
   @include mixins.to-flex-and-center;
-  padding: variables.$spacing-l;
   background-color: variables.$color-primary;
 
   &:hover {

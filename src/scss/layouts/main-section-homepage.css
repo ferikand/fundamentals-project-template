@@ -1,12 +1,12 @@
 main .hero {
   background-color: #e7e8e9;
+  padding-bottom: 12rem;
 }
 main .hero .hero-upper_container {
   margin: 0 auto;
   max-width: 80%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  padding: 5rem 0;
 }
 @media (max-width: 768px) {
   main .hero .hero-upper_container {
@@ -20,4 +20,68 @@ main .hero .hero-upper_container .hero-upper-right_container {
   align-items: center;
   flex-direction: column;
   flex: 1;
+  color: #504e4a;
+}
+main .hero .hero-upper_container .hero-upper-left_container .btn,
+main .hero .hero-upper_container .hero-upper-right_container .btn {
+  align-self: start;
+  margin-top: 2rem;
+}
+main .hero-lower-wrapper {
+  background-color: #fff;
+  position: relative;
+  z-index: 1;
+  padding-top: 3.5rem;
+}
+main .hero-lower-wrapper .hero-lower_container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  position: relative;
+  z-index: 5;
+  max-width: 80%;
+  margin: 0 auto;
+  transform: translateY(-12rem);
+  background-color: #fff;
+  box-shadow: 0 1.25rem 2rem rgba(0, 0, 0, 0.08);
+}
+@media (max-width: 768px) {
+  main .hero-lower-wrapper .hero-lower_container {
+    grid-template-columns: 1fr;
+  }
+}
+main .hero-lower-wrapper .hero-lower_container .hero-lower-left_container {
+  padding: 3rem;
+  width: 100%;
+}
+main .hero-lower-wrapper .hero-lower_container .hero-lower-left_container .person {
+  display: flex;
+  align-self: self-start;
+  flex-direction: row;
+}
+main .hero-lower-wrapper .hero-lower_container .hero-lower-left_container .person h6 {
+  margin: 0.75rem;
+}
+main .hero-lower-wrapper .hero-lower_container .hero-lower-left_container .person p {
+  margin: 0 1rem;
+}
+main .hero-lower-wrapper .hero-lower_container .hero-lower-left_container .person .person-img {
+  max-width: 5.82rem;
+}
+main .hero-lower-wrapper .hero-lower_container .hero-lower-left_container .person-text p {
+  color: #504e4a;
+}
+main .hero-lower-wrapper .hero-lower_container .hero-lower-right_container {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../src/assets/icons/photo.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3rem;
+  max-width: 100%;
+}
+main .hero-lower-wrapper .hero-lower_container .hero-lower-right_container h4,
+main .hero-lower-wrapper .hero-lower_container .hero-lower-right_container p {
+  color: #fff;
 }/*# sourceMappingURL=main-section-homepage.css.map */

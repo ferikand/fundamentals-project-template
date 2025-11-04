@@ -5,6 +5,7 @@ header {
   position: sticky;
   top: 0;
   width: 100%;
+  background-color: variables.$color-light;
   z-index: 100;
 
   .heading {
@@ -39,7 +40,7 @@ header {
     }
   }
   .devider {
-    border-bottom: 0.1px solid rgba(114, 113, 116, 0.2);
+    border-bottom: 0.1px solid variables.$color-devider;
     width: 78%;
     justify-self: center;
     height: 0.05px;
