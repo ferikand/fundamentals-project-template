@@ -6,6 +6,10 @@ img {
   max-width: 100%;
 }
 
+body {
+  font-family: "Montserrat", sans-serif;
+}
+
 header {
   position: sticky;
   top: 0;
@@ -84,9 +88,15 @@ header nav ul li a:hover {
   color: #b92770;
 }
 
+main .hero {
+  background-color: #e7e8e9;
+}
 main .hero .hero-upper_container {
+  margin: 0 auto;
+  max-width: 80%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  padding: 5rem 0;
 }
 @media (max-width: 768px) {
   main .hero .hero-upper_container {

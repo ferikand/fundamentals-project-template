@@ -6,12 +6,17 @@ img {
   max-width: 100%;
 }
 
+body {
+  font-family: "Montserrat", sans-serif;
+}
+
 header {
   position: sticky;
   top: 0;
   width: 100%;
   z-index: 100;
 }
+
 header .heading {
   width: 80%;
   margin: 0 auto;
@@ -21,6 +26,7 @@ header .heading {
   flex-direction: row;
   justify-content: space-between;
 }
+
 header .logo a {
   display: inline-block;
   text-decoration: none;
@@ -31,34 +37,41 @@ header .logo a {
   gap: 1rem;
   color: #b92770;
 }
+
 header .logo a:hover {
   transform: scale(1.015);
 }
+
 header .user-section {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
 }
+
 header .user-section .user-icon,
 header .user-section .cart-icon {
   transition: all 0.3s ease;
 }
+
 header .user-section .user-icon:hover,
 header .user-section .cart-icon:hover {
   transform: scale(1.015);
 }
+
 header .devider {
   border-bottom: 0.1px solid rgba(114, 113, 116, 0.2);
   width: 78%;
   justify-self: center;
   height: 0.05px;
 }
+
 header nav {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 header nav ul {
   display: flex;
   justify-content: center;
@@ -67,6 +80,7 @@ header nav ul {
   list-style: none;
   gap: 2rem;
 }
+
 header nav ul li a {
   text-decoration: none;
   color: #000;
@@ -76,9 +90,11 @@ header nav ul li a {
   text-decoration: none;
   transition: all 0.3s ease;
 }
+
 header nav ul li a.active {
   color: #b92770;
 }
+
 header nav ul li a:hover {
   transform: scale(1.015);
   color: #b92770;
@@ -87,12 +103,15 @@ header nav ul li a:hover {
 main .hero {
   background-color: #e7e8e9;
 }
+
 main .hero .hero-upper_container {
   margin: 0 auto;
   max-width: 80%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  padding: 5rem 0;
 }
+
 @media (max-width: 768px) {
   main .hero .hero-upper_container {
     grid-template-columns: 1fr;
@@ -120,6 +139,7 @@ main .hero .hero-upper_container .hero-upper-right_container {
   padding: 2rem;
   background-color: #b92770;
 }
+
 .btn:hover {
   background-color: #000;
   transform: scale(1.015);
@@ -131,6 +151,7 @@ main .hero .hero-upper_container .hero-upper-right_container {
   justify-content: center;
   align-items: center;
 }
+
 .icon svg {
   width: 20px;
   height: 20px;
@@ -143,6 +164,7 @@ main .hero .hero-upper_container .hero-upper-right_container {
   align-items: center;
   gap: 1.25rem;
 }
+
 .socials a {
   width: 20px;
   height: 20px;
@@ -151,6 +173,7 @@ main .hero .hero-upper_container .hero-upper-right_container {
   align-items: center;
   transition: all 0.3s ease;
 }
+
 .socials a:hover {
   transform: scale(1.015);
 }
@@ -164,6 +187,7 @@ main .hero .hero-upper_container .hero-upper-right_container {
   background-color: #b92770;
   border-radius: 0.5rem;
 }
+
 .suitcase a {
   width: 32px;
   height: 32px;
@@ -174,10 +198,11 @@ main .hero .hero-upper_container .hero-upper-right_container {
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 2rem;
 }
+
 @media (max-width: 768px) {
   .catalog-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-}
+} 
 
 /*# sourceMappingURL=main.css.map */
