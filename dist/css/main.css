@@ -203,6 +203,9 @@ main .hero-lower-wrapper .hero-lower_container .hero-lower-right_container h4,
 main .hero-lower-wrapper .hero-lower_container .hero-lower-right_container p {
   color: #fff;
 }
+main .hero-lower-wrapper .hero-lower_container .hero-lower-right_container p {
+  font-weight: 200;
+}
 main .carousel {
   max-width: 80%;
   margin: 0 auto;
@@ -290,27 +293,36 @@ main .carousel .products-carousel .carousel-track .image-12 {
 }
 main .carousel .products-carousel .carousel-track {
   display: grid;
-  column-gap: 1rem;
+  gap: 1rem;
   grid-template-columns: repeat(4, 1fr);
 }
 @media (max-width: 768px) {
   main .carousel .products-carousel .carousel-track {
-    grid-template-columns: 1 fr 1 fr;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 480px) {
+  main .carousel .products-carousel .carousel-track {
+    grid-template-columns: 1fr;
   }
 }
 main .carousel .products-carousel .carousel-track .product-card {
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
   justify-content: flex-end;
   padding: 2rem;
-  height: 600px;
-  width: 296px;
+  min-height: 37.5rem;
 }
 main .carousel .products-carousel .carousel-track .product-card h4,
 main .carousel .products-carousel .carousel-track .product-card p {
   color: #fff;
   font-size: 1rem;
   margin: 0.5rem;
+}
+main .carousel .products-carousel .carousel-track .product-card p {
+  font-weight: 200;
 }
 main .selected-products {
   max-width: 80%;
@@ -328,12 +340,17 @@ main .selected-products .selected-header {
 }
 main .selected-products .selected-products_container {
   display: grid;
-  column-gap: 1rem;
+  gap: 1rem;
   grid-template-columns: repeat(4, 1fr);
 }
 @media (max-width: 768px) {
   main .selected-products .selected-products_container {
-    grid-template-columns: 1 fr 1 fr;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 480px) {
+  main .selected-products .selected-products_container {
+    grid-template-columns: 1fr;
   }
 }
 main .selected-products .selected-products_container .selected-product-card {
@@ -360,14 +377,29 @@ main .selected-products .selected-products_container .selected-product-card .btn
 main .offer {
   display: grid;
   grid-template-columns: 1fr 1fr;
+}
+@media (max-width: 480px) {
+  main .offer {
+    grid-template-columns: 1fr;
+  }
+}
+main .offer {
   max-width: 80%;
+  min-height: 18.75rem;
   margin: 3rem auto;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../src/assets/icons/offer.png") center/cover no-repeat;
-  overflow: hidden;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../src/assets/icons/offer_of_the_month.png");
+  background-position: center;
+  background-attachment: local;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 main .offer .offer-left,
 main .offer .offer-right {
-  padding: 3.5rem;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 main .offer .offer-left h2,
 main .offer .offer-left h4,
@@ -378,13 +410,19 @@ main .offer .offer-right p {
   color: #fff;
   font-size: 6.5rem;
 }
+main .offer .offer-left h2,
+main .offer .offer-right h2 {
+  margin: 0;
+}
 main .offer .offer-left h4,
 main .offer .offer-right h4 {
   font-size: 2.25rem;
+  margin: 0;
 }
 main .offer .offer-left p,
 main .offer .offer-right p {
-  font-size: 1.25rem;
+  font-size: 1rem;
+  font-weight: 200;
 }
 
 .btn,

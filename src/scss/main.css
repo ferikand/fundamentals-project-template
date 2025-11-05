@@ -294,7 +294,7 @@ main .carousel .products-carousel .carousel-track .image-12 {
 }
 @media (max-width: 768px) {
   main .carousel .products-carousel .carousel-track {
-    grid-template-columns: 1 fr 1 fr;
+    grid-template-columns: 1fr 1fr;
   }
 }
 main .carousel .products-carousel .carousel-track .product-card {
@@ -331,7 +331,7 @@ main .selected-products .selected-products_container {
 }
 @media (max-width: 768px) {
   main .selected-products .selected-products_container {
-    grid-template-columns: 1 fr 1 fr;
+    grid-template-columns: 1fr 1fr;
   }
 }
 main .selected-products .selected-products_container .selected-product-card {
@@ -339,9 +339,50 @@ main .selected-products .selected-products_container .selected-product-card {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  justify-content: space-between;
 }
-main .selected-products .selected-products_container .selected-product-card .btn {
-  margin-top: 0;
+main .selected-products .selected-products_container .selected-product-card .selected-product-card_info__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  width: 70%;
+}
+main .selected-products .selected-products_container .selected-product-card .selected-product-card_info__container p {
+  font-weight: bold;
+  margin-bottom: 0;
+}
+main .selected-products .selected-products_container .selected-product-card .btn-sm {
+  margin-top: 1rem;
+}
+main .offer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 80%;
+  margin: 3rem auto;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../src/assets/icons/offer.png") center/cover no-repeat;
+  overflow: hidden;
+}
+main .offer .offer-left,
+main .offer .offer-right {
+  padding: 3.5rem;
+}
+main .offer .offer-left h2,
+main .offer .offer-left h4,
+main .offer .offer-left p,
+main .offer .offer-right h2,
+main .offer .offer-right h4,
+main .offer .offer-right p {
+  color: #fff;
+  font-size: 6.5rem;
+}
+main .offer .offer-left h4,
+main .offer .offer-right h4 {
+  font-size: 2.25rem;
+}
+main .offer .offer-left p,
+main .offer .offer-right p {
+  font-size: 1.25rem;
 }
 
 .btn,

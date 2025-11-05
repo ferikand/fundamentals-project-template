@@ -8,6 +8,11 @@
     @content;
   }
 }
+@mixin mobile {
+  @media (max-width: 480px) {
+    @content;
+  }
+}
 @mixin transition {
   transition: all 0.3s ease;
 }
