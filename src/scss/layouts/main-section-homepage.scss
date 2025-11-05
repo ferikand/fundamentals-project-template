@@ -147,10 +147,35 @@ main {
             margin-bottom: 0;
           }
         }
-
         .btn-sm {
           margin-top: 1rem;
         }
+      }
+    }
+  }
+  .offer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-width: 80%;
+    // min-height: 25.4rem;
+    margin: 3rem auto;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+      url("../../src/assets/icons/offer.png") center / cover no-repeat;
+    overflow: hidden;
+    .offer-left,
+    .offer-right {
+      padding: 3.5rem;
+      h2,
+      h4,
+      p {
+        color: variables.$color-light;
+        font-size: 6.5rem;
+      }
+      h4 {
+        font-size: 2.25rem;
+      }
+      p {
+        font-size: 1.25rem;
       }
     }
   }

@@ -357,6 +357,35 @@ main .selected-products .selected-products_container .selected-product-card .sel
 main .selected-products .selected-products_container .selected-product-card .btn-sm {
   margin-top: 1rem;
 }
+main .offer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 80%;
+  margin: 3rem auto;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../src/assets/icons/offer.png") center/cover no-repeat;
+  overflow: hidden;
+}
+main .offer .offer-left,
+main .offer .offer-right {
+  padding: 3.5rem;
+}
+main .offer .offer-left h2,
+main .offer .offer-left h4,
+main .offer .offer-left p,
+main .offer .offer-right h2,
+main .offer .offer-right h4,
+main .offer .offer-right p {
+  color: #fff;
+  font-size: 6.5rem;
+}
+main .offer .offer-left h4,
+main .offer .offer-right h4 {
+  font-size: 2.25rem;
+}
+main .offer .offer-left p,
+main .offer .offer-right p {
+  font-size: 1.25rem;
+}
 
 .btn,
 .btn-sm {
