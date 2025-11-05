@@ -46,7 +46,8 @@ main {
         grid-template-columns: 1fr;
       }
       .hero-lower-left_container {
-        padding: 3rem;
+        padding: 2rem;
+        justify-content: center;
         width: 100%;
         .person {
           display: flex;
@@ -77,7 +78,7 @@ main {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        padding: 3rem;
+        padding: 2rem;
         width: 100%;
         h4,
         p {
@@ -200,6 +201,29 @@ main {
       p {
         font-size: 1rem;
         font-weight: 200;
+      }
+    }
+  }
+  .grateful-customers {
+    max-width: 80%;
+    margin: 0 auto;
+    margin-bottom: 5rem;
+    .grateful-header {
+      @include mixins.section-header;
+      margin-top: 3rem;
+    }
+    .grateful-customers_container {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(3, 1fr);
+      @include mixins.mobile {
+        grid-template-columns: 1fr;
+      }
+      .grateful-customers-card {
+        @include mixins.to-flex-and-center;
+        flex-direction: column;
+        padding: 2rem;
+        box-shadow: 0 1.25rem 2rem rgba(193, 199, 212, 0.72);
       }
     }
   }

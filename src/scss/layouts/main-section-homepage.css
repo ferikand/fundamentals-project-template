@@ -52,7 +52,8 @@ main .hero-lower-wrapper .hero-lower_container {
   }
 }
 main .hero-lower-wrapper .hero-lower_container .hero-lower-left_container {
-  padding: 3rem;
+  padding: 2rem;
+  justify-content: center;
   width: 100%;
 }
 main .hero-lower-wrapper .hero-lower_container .hero-lower-left_container .person {
@@ -80,7 +81,7 @@ main .hero-lower-wrapper .hero-lower_container .hero-lower-right_container {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 3rem;
+  padding: 2rem;
   width: 100%;
 }
 main .hero-lower-wrapper .hero-lower_container .hero-lower-right_container h4,
@@ -301,4 +302,35 @@ main .offer .offer-left p,
 main .offer .offer-right p {
   font-size: 1rem;
   font-weight: 200;
+}
+main .grateful-customers {
+  max-width: 80%;
+  margin: 0 auto;
+  margin-bottom: 5rem;
+}
+main .grateful-customers .grateful-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  margin-top: 3rem;
+}
+main .grateful-customers .grateful-header h4 {
+  margin: 0;
+}
+main .grateful-customers .grateful-customers_container {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, 1fr);
+}
+@media (max-width: 480px) {
+  main .grateful-customers .grateful-customers_container {
+    grid-template-columns: 1fr;
+  }
+}
+main .grateful-customers .grateful-customers_container .grateful-customers-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 2rem;
+  box-shadow: 0 1.25rem 2rem rgba(193, 199, 212, 0.72);
 }/*# sourceMappingURL=main-section-homepage.css.map */
