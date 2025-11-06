@@ -58,5 +58,67 @@ footer .footer-upper .footer-upper-elements_container .footer-upper-content-elem
   }
 }
 footer .footer-lower_container {
-  border: 1px solid red;
+  width: 80%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 1rem;
+}
+@media (max-width: 480px) {
+  footer .footer-lower_container {
+    grid-template-columns: 1fr;
+  }
+}
+footer .footer-lower_container h6,
+footer .footer-lower_container p {
+  font-size: 0.75rem;
+}
+footer .footer-lower_container .footer-lower-left_container .footer-lower-left-upper_container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+@media (max-width: 480px) {
+  footer .footer-lower_container .footer-lower-left_container .footer-lower-left-upper_container {
+    grid-template-columns: 1fr;
+  }
+}
+footer .footer-lower_container .footer-lower-left_container .footer-lower-left-upper_container .footer-lower-left-upper_element a {
+  text-decoration: none;
+  color: #000;
+}
+footer .footer-lower_container .footer-lower-right_container .footer-lower-right-lower {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.25rem;
+}
+@media (max-width: 768px) {
+  footer .footer-lower_container .footer-lower-right_container .footer-lower-right-lower {
+    grid-template-columns: 1fr;
+  }
+}
+footer .footer-lower_container .footer-lower-right_container .footer-lower-right-lower .footer-contact-element {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+@media (max-width: 768px) {
+  footer .footer-lower_container .footer-lower-right_container .footer-lower-right-lower .footer-contact-element {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 480px) {
+  footer .footer-lower_container .footer-lower-right_container .footer-lower-right-lower .footer-contact-element {
+    grid-template-columns: 1fr 3fr;
+  }
+}
+footer .footer-lower_container .footer-lower-right_container .footer-lower-right-lower .footer-contact-element p {
+  margin-top: 0;
+}
+footer .copyright {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+footer .copyright p {
+  font-size: 0.75rem;
+  padding: 3rem;
 }/*# sourceMappingURL=footer.css.map */

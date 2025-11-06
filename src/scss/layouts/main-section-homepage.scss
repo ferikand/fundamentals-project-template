@@ -168,7 +168,7 @@ main {
   .offer {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    @include mixins.mobile {
+    @include mixins.tablet {
       grid-template-columns: 1fr;
     }
     max-width: 80%;

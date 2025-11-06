@@ -6,12 +6,34 @@ header {
   width: 100%;
   background-color: variables.$color-light;
   z-index: 100;
+  .burger {
+    font-size: 1.5rem;
+    border: 2px solid black;
+    border-radius: 0.25rem;
+    padding: 0 0.25rem;
+    @media (min-width: 769px) {
+      display: none;
+    }
+  }
+  .socials {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    @include mixins.tablet {
+      display: none;
+    }
+  }
   .heading {
     width: 80%;
     margin: 0 auto;
     @include mixins.to-flex-and-center;
     flex-direction: row;
     justify-content: space-between;
+    padding-bottom: 0.25rem;
+    @include mixins.tablet {
+      width: 100%;
+      padding: 0.25rem;
+      justify-content: space-around;
+    }
   }
   .logo {
     a {
@@ -26,7 +48,11 @@ header {
     }
   }
   .user-section {
-    @include mixins.to-flex-and-center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    @include mixins.mobile {
+      grid-template-columns: 1fr;
+    }
     gap: 0.5rem;
     .user-icon,
     .cart-icon {
@@ -44,6 +70,9 @@ header {
   }
   nav {
     @include mixins.to-flex-and-center;
+    @include mixins.tablet {
+      display: none;
+    }
     ul {
       @include mixins.to-flex-and-center;
       flex-direction: row;

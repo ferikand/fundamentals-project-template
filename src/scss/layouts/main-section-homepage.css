@@ -267,7 +267,7 @@ main .offer {
   background-size: cover;
   background-repeat: no-repeat;
 }
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   main .offer {
     grid-template-columns: 1fr;
   }
