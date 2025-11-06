@@ -173,6 +173,9 @@ footer .footer-upper .footer-upper-elements_container .footer-upper-content-elem
     grid-template-columns: 1fr;
   }
 }
+footer .footer-lower_container {
+  border: 1px solid red;
+}
 
 main .hero {
   background-color: #e7e8e9;

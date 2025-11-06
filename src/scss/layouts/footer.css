@@ -56,4 +56,7 @@ footer .footer-upper .footer-upper-elements_container .footer-upper-content-elem
   footer .footer-upper .footer-upper-elements_container .footer-upper-content-element {
     grid-template-columns: 1fr;
   }
+}
+footer .footer-lower_container {
+  border: 1px solid red;
 }/*# sourceMappingURL=footer.css.map */
