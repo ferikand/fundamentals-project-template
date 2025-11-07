@@ -1,4 +1,3 @@
-// mobile menu
 const burger = () => {
   const burger = document.querySelector(".burger")
   const nav = document.querySelector("nav")
@@ -20,63 +19,53 @@ const burger = () => {
     })
   })
 }
-// products from json
-
 const products = []
-
 const fetchProducts = async () => {
   const response = await fetch("../assets/data.json")
   const result = await response.json()
   return result
 }
-
 const getProductsArr = async () => {
   const res = await fetchProducts()
   console.log(res.data)
   products.push(...res.data)
 }
-
-const renderCarouselContent = (containerClass) => {
+const renderProductsByRange = (
+  containerClass,
+  cardClass,
+  from = -1,
+  until = -1
+) => {
   const container = document.querySelector(containerClass)
   products.forEach((product, i) => {
+    if (from !== -1 && !(i > from && i <= until)) {
+      return
+    }
     const newCard = document.createElement("div")
-    newCard.classList.add(`product-card`, `image-${i + 1}`)
-    newCard.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${product.imageUrl})`
-    newCard.innerHTML = `<h4>${product.id}</h4>
-                          <p>${product.name}</p>`
+    newCard.classList.add(cardClass, `image-${i + 1}`)
+    if (cardClass === "product-card") {
+      newCard.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${product.imageUrl})`
+      newCard.innerHTML = `<h4>${product.id}</h4><p>${product.name}</p>`
+    } else {
+      newCard.innerHTML = `
+                <img src=${product.imageUrl} alt=${product.name}/>
+                <div class="selected-product-card_info__container">
+                    <p>${product.name}</p>
+                    <p>${product.price}</p>
+                </div>
+                <a href="#" class="btn-sm">View Product</a>
+            `
+    }
     container.appendChild(newCard)
   })
 }
-
-const renderSectionOfProductsWithRange = (containerClass, from, until) => {
-  const container = document.querySelector(containerClass)
-  products.forEach((product, i) => {
-    if (i > from && i <= until) {
-      const newCard = document.createElement("div")
-      newCard.classList.add(`selected-product-card`, `image-${i + 1}`)
-      newCard.innerHTML = `
-                              <img
-                              src=${product.imageUrl}
-                              alt=${product.name}/>
-                              <div class="selected-product-card_info__container">
-                                <p>${product.name}</p>
-                                <p>${product.price}</p>
-                              </div>
-                              <a href="#" class="btn-sm">View Product</a>
-                            `
-      container.appendChild(newCard)
-    }
-  })
-}
-
 const slides = () => {
   const carouselTrack = document.querySelector(".carousel-track")
   const productsCarousel = document.querySelector(".products-carousel")
   const prevBtn = document.querySelector(".carousel-btn.prev")
   const nextBtn = document.querySelector(".carousel-btn.next")
-
   const cards = Array.from(carouselTrack.children)
-  const totalCards = 12
+  const totalCards = 8
   if (cards.length === 0) return
   let currentIndex = 0
   let visibleCards = 0
@@ -122,18 +111,11 @@ const slides = () => {
     updateCarouselPosition()
   })
 }
-
-// carousel
-window.onload = async () => {
-  burger()
-  try {
-    await getProductsArr()
-    renderCarouselContent(".carousel-track")
-    renderSectionOfProductsWithRange(".products-selected", 3, 7)
-    renderSectionOfProductsWithRange(".new-products", 7, 11)
-
-    slides()
-  } catch (error) {
-    console.log(error)
-  }
+export {
+  burger,
+  products,
+  fetchProducts,
+  getProductsArr,
+  renderProductsByRange,
+  slides,
 }
