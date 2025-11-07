@@ -21,10 +21,7 @@ const burger = () => {
   })
 }
 // products from json
-const prevBtn = document.querySelector(".carousel-btn.prev")
-const nextBtn = document.querySelector(".carousel-btn.next")
-const carouselTrack = document.querySelector(".carousel-track")
-const productsCarousel = document.querySelector(".products-carousel")
+
 const products = []
 
 const fetchProducts = async () => {
@@ -39,18 +36,20 @@ const getProductsArr = async () => {
   products.push(...res.data)
 }
 
-const renderCarouselContent = () => {
+const renderCarouselContent = (containerClass) => {
+  const container = document.querySelector(containerClass)
   products.forEach((product, i) => {
     const newCard = document.createElement("div")
     newCard.classList.add(`product-card`, `image-${i + 1}`)
     newCard.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${product.imageUrl})`
     newCard.innerHTML = `<h4>${product.id}</h4>
                           <p>${product.name}</p>`
-    carouselTrack.appendChild(newCard)
+    container.appendChild(newCard)
   })
 }
 
-const renderSectionOfProductsWithRange = (from, until, containerClass) => {
+const renderSectionOfProductsWithRange = (containerClass, from, until) => {
+  const container = document.querySelector(containerClass)
   products.forEach((product, i) => {
     if (i > from && i <= until) {
       const newCard = document.createElement("div")
@@ -65,12 +64,17 @@ const renderSectionOfProductsWithRange = (from, until, containerClass) => {
                               </div>
                               <a href="#" class="btn-sm">View Product</a>
                             `
-      document.querySelector(containerClass).appendChild(newCard)
+      container.appendChild(newCard)
     }
   })
 }
 
 const slides = () => {
+  const carouselTrack = document.querySelector(".carousel-track")
+  const productsCarousel = document.querySelector(".products-carousel")
+  const prevBtn = document.querySelector(".carousel-btn.prev")
+  const nextBtn = document.querySelector(".carousel-btn.next")
+
   const cards = Array.from(carouselTrack.children)
   const totalCards = 12
   if (cards.length === 0) return
@@ -124,9 +128,10 @@ window.onload = async () => {
   burger()
   try {
     await getProductsArr()
-    renderSectionOfProductsWithRange(3, 7, ".products-selected")
-    renderSectionOfProductsWithRange(7, 11, ".new-products")
-    renderCarouselContent()
+    renderCarouselContent(".carousel-track")
+    renderSectionOfProductsWithRange(".products-selected", 3, 7)
+    renderSectionOfProductsWithRange(".new-products", 7, 11)
+
     slides()
   } catch (error) {
     console.log(error)
