@@ -155,6 +155,7 @@ main .carousel .products-carousel .carousel-btn {
   border: none;
   font-size: 3rem;
   transform: translateY(-50%);
+  cursor: pointer;
 }
 main .carousel .products-carousel .prev {
   left: 1rem;
