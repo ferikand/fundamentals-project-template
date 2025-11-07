@@ -1,127 +1,133 @@
 // mobile menu
-const burger = document.querySelector(".burger")
-const nav = document.querySelector("nav")
-const navLinks = document.querySelectorAll(".navLink")
-const navLink = document.querySelector(".navLink")
-burger.addEventListener("click", openMenu)
-function openMenu() {
-  nav.classList.toggle("mobile")
-  console.log(nav.classList)
-}
-document.addEventListener("click", (e) => {
-  if (!e.target.closest(".burger") && !e.target.closest("nav.mobile")) {
-    nav.classList.remove("mobile")
+const burger = () => {
+  const burger = document.querySelector(".burger")
+  const nav = document.querySelector("nav")
+  const navLinks = document.querySelectorAll(".navLink")
+  burger.addEventListener("click", openMenu)
+  function openMenu() {
+    nav.classList.toggle("mobile")
+    console.log(nav.classList)
   }
-})
-navLinks.forEach((link) => {
-  link.addEventListener("click", (e) => {
-    navLinks.forEach((l) => l.classList.remove("active"))
-    e.target.classList.add("active")
+  document.addEventListener("click", (e) => {
+    if (!e.target.closest(".burger") && !e.target.closest("nav.mobile")) {
+      nav.classList.remove("mobile")
+    }
   })
-})
-// carousel
+  navLinks.forEach((link) => {
+    link.addEventListener("click", (e) => {
+      navLinks.forEach((l) => l.classList.remove("active"))
+      e.target.classList.add("active")
+    })
+  })
+}
+// products from json
 const prevBtn = document.querySelector(".carousel-btn.prev")
 const nextBtn = document.querySelector(".carousel-btn.next")
 const carouselTrack = document.querySelector(".carousel-track")
 const productsCarousel = document.querySelector(".products-carousel")
 const products = []
-const getProducts = async () => {
-  try {
-    const response = await fetch("../assets/data.json")
-    const result = await response.json()
-    // console.log(...result.data)
-    products.push(...result.data)
-    products.forEach((product, i) => {
-      const newCard = document.createElement("div")
-      newCard.classList.add(`product-card`, `image-${i + 1}`)
-      newCard.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${product.imageUrl})`
-      newCard.innerHTML = `<h4>${product.id}</h4>
-                          <p>${product.name}</p>`
-      carouselTrack.appendChild(newCard)
-      if (i > 3 && i <= 7) {
-        const newCard = document.createElement("div")
-        newCard.classList.add(`selected-product-card`, `image-${i + 1}`)
-        newCard.innerHTML = `
-                              <img
-                              src=${product.imageUrl}
-                              alt=${product.name}/>
-                              <div class="selected-product-card_info__container">
-                                <p>${product.name}</p>
-                                <p>${product.price}</p>
-                              </div>
-                              <a href="#" class="btn-sm">View Product</a>
-                            `
-        document.querySelector(".products-selected").appendChild(newCard)
-      }
-      if (i > 7 && i <= 11) {
-        const newCard = document.createElement("div")
-        newCard.classList.add(`selected-product-card`, `image-${i + 1}`)
-        newCard.innerHTML = `
-                              <img
-                              src=${product.imageUrl}
-                              alt=${product.name}/>
-                              <div class="selected-product-card_info__container">
-                                <p>${product.name}</p>
-                                <p>${product.price}</p>
-                              </div>
-                              <a href="#" class="btn-sm">View Product</a>
-                            `
-        document.querySelector(".new-products").appendChild(newCard)
-      }
-    })
-  } catch (error) {
-    console.log(error)
-  }
+
+const fetchProducts = async () => {
+  const response = await fetch("../assets/data.json")
+  const result = await response.json()
+  return result
 }
-window.onload = async () => {
-  try {
-    await getProducts()
-    const cards = Array.from(carouselTrack.children)
-    const totalCards = products.length
-    if (cards.length === 0) return
-    let currentIndex = 0
-    let visibleCards = 0
-    let shiftDistance = 0
-    const determineVisibleCards = () => {
-      const width = productsCarousel.clientWidth
-      if (width >= 768) return 4
-      if (width >= 425) return 2
-      return 1
+
+const getProductsArr = async () => {
+  const res = await fetchProducts()
+  console.log(res.data)
+  products.push(...res.data)
+}
+
+const renderCarouselContent = () => {
+  products.forEach((product, i) => {
+    const newCard = document.createElement("div")
+    newCard.classList.add(`product-card`, `image-${i + 1}`)
+    newCard.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${product.imageUrl})`
+    newCard.innerHTML = `<h4>${product.id}</h4>
+                          <p>${product.name}</p>`
+    carouselTrack.appendChild(newCard)
+  })
+}
+
+const renderSectionOfProductsWithRange = (from, until, containerClass) => {
+  products.forEach((product, i) => {
+    if (i > from && i <= until) {
+      const newCard = document.createElement("div")
+      newCard.classList.add(`selected-product-card`, `image-${i + 1}`)
+      newCard.innerHTML = `
+                              <img
+                              src=${product.imageUrl}
+                              alt=${product.name}/>
+                              <div class="selected-product-card_info__container">
+                                <p>${product.name}</p>
+                                <p>${product.price}</p>
+                              </div>
+                              <a href="#" class="btn-sm">View Product</a>
+                            `
+      document.querySelector(containerClass).appendChild(newCard)
     }
-    const calculateShiftDistance = () => {
-      visibleCards = determineVisibleCards()
-      const cardWidth = cards[0].offsetWidth
-      const trackStyles = window.getComputedStyle(carouselTrack)
-      const gapWidth = parseFloat(trackStyles.gap) || 0
-      shiftDistance = cardWidth + gapWidth
-    }
-    const updateCarouselPosition = () => {
-      const offsetX = -currentIndex * shiftDistance
-      carouselTrack.style.transform = `translateX(${offsetX}px)`
-      // console.log(currentIndex, visibleCards, offsetX)
-    }
+  })
+}
+
+const slides = () => {
+  const cards = Array.from(carouselTrack.children)
+  const totalCards = 12
+  if (cards.length === 0) return
+  let currentIndex = 0
+  let visibleCards = 0
+  let shiftDistance = 0
+  const determineVisibleCards = () => {
+    const width = productsCarousel.clientWidth
+    if (width >= 768) return 4
+    if (width >= 425) return 2
+    return 1
+  }
+  const calculateShiftDistance = () => {
+    visibleCards = determineVisibleCards()
+    const cardWidth = cards[0].offsetWidth
+    const trackStyles = window.getComputedStyle(carouselTrack)
+    const gapWidth = parseFloat(trackStyles.gap) || 0
+    shiftDistance = cardWidth + gapWidth
+  }
+  const updateCarouselPosition = () => {
+    const offsetX = -currentIndex * shiftDistance
+    carouselTrack.style.transform = `translateX(${offsetX}px)`
+    // console.log(currentIndex, visibleCards, offsetX)
+  }
+  calculateShiftDistance()
+  updateCarouselPosition()
+  window.onresize = () => {
     calculateShiftDistance()
     updateCarouselPosition()
-    window.onresize = () => {
-      calculateShiftDistance()
-      updateCarouselPosition()
+  }
+  prevBtn.addEventListener("click", () => {
+    if (currentIndex > 0) {
+      currentIndex--
+    } else {
+      currentIndex = totalCards - visibleCards
     }
-    prevBtn.addEventListener("click", () => {
-      if (currentIndex > 0) {
-        currentIndex--
-      } else {
-        currentIndex = totalCards - visibleCards
-      }
-      updateCarouselPosition()
-    })
-    nextBtn.addEventListener("click", () => {
-      if (currentIndex < totalCards - visibleCards) {
-        currentIndex++
-      } else {
-        currentIndex = 0
-      }
-      updateCarouselPosition()
-    })
+    updateCarouselPosition()
+  })
+  nextBtn.addEventListener("click", () => {
+    if (currentIndex < totalCards - visibleCards) {
+      currentIndex++
+    } else {
+      currentIndex = 0
+    }
+    updateCarouselPosition()
+  })
+}
+
+// carousel
+window.onload = async () => {
+  burger()
+  try {
+    await getProductsArr()
+    renderSectionOfProductsWithRange(3, 7, ".products-selected")
+    renderSectionOfProductsWithRange(7, 11, ".new-products")
+    renderCarouselContent()
+    slides()
   } catch (error) {
     console.log(error)
   }
