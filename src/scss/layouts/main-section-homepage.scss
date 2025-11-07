@@ -161,7 +161,8 @@ main {
       @include mixins.section-header;
       margin-top: 3rem;
     }
-    .selected-products_container {
+    .selected-products_container,
+    .new-products {
       display: grid;
       gap: 1rem;
       grid-template-columns: repeat(4, 1fr);

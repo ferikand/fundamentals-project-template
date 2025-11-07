@@ -38,6 +38,36 @@ const getProducts = async () => {
       newCard.innerHTML = `<h4>${product.id}</h4>
                           <p>${product.name}</p>`
       carouselTrack.appendChild(newCard)
+      if (i > 3 && i <= 7) {
+        const newCard = document.createElement("div")
+        newCard.classList.add(`selected-product-card`, `image-${i + 1}`)
+        newCard.innerHTML = `
+                              <img
+                              src=${product.imageUrl}
+                              alt=${product.name}/>
+                              <div class="selected-product-card_info__container">
+                                <p>${product.name}</p>
+                                <p>${product.price}</p>
+                              </div>
+                              <a href="#" class="btn-sm">View Product</a>
+                            `
+        document.querySelector(".products-selected").appendChild(newCard)
+      }
+      if (i > 7 && i <= 11) {
+        const newCard = document.createElement("div")
+        newCard.classList.add(`selected-product-card`, `image-${i + 1}`)
+        newCard.innerHTML = `
+                              <img
+                              src=${product.imageUrl}
+                              alt=${product.name}/>
+                              <div class="selected-product-card_info__container">
+                                <p>${product.name}</p>
+                                <p>${product.price}</p>
+                              </div>
+                              <a href="#" class="btn-sm">View Product</a>
+                            `
+        document.querySelector(".new-products").appendChild(newCard)
+      }
     })
   } catch (error) {
     console.log(error)

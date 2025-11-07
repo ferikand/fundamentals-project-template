@@ -476,40 +476,47 @@ main .selected-products .selected-header {
   margin-bottom: 1.5rem;
   margin-top: 3rem;
 }
-main .selected-products .selected-products_container {
+main .selected-products .selected-products_container,
+main .selected-products .new-products {
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(4, 1fr);
 }
 @media (max-width: 768px) {
-  main .selected-products .selected-products_container {
+  main .selected-products .selected-products_container,
+  main .selected-products .new-products {
     grid-template-columns: 1fr 1fr;
   }
 }
 @media (max-width: 480px) {
-  main .selected-products .selected-products_container {
+  main .selected-products .selected-products_container,
+  main .selected-products .new-products {
     grid-template-columns: 1fr;
   }
 }
-main .selected-products .selected-products_container .selected-product-card {
+main .selected-products .selected-products_container .selected-product-card,
+main .selected-products .new-products .selected-product-card {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   justify-content: space-between;
 }
-main .selected-products .selected-products_container .selected-product-card .selected-product-card_info__container {
+main .selected-products .selected-products_container .selected-product-card .selected-product-card_info__container,
+main .selected-products .new-products .selected-product-card .selected-product-card_info__container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
   width: 70%;
 }
-main .selected-products .selected-products_container .selected-product-card .selected-product-card_info__container p {
+main .selected-products .selected-products_container .selected-product-card .selected-product-card_info__container p,
+main .selected-products .new-products .selected-product-card .selected-product-card_info__container p {
   font-weight: bold;
   margin-bottom: 0;
 }
-main .selected-products .selected-products_container .selected-product-card .btn-sm {
+main .selected-products .selected-products_container .selected-product-card .btn-sm,
+main .selected-products .new-products .selected-product-card .btn-sm {
   margin-top: 1rem;
 }
 main .offer {
