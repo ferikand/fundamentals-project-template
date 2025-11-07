@@ -186,14 +186,14 @@ const header = () => {
           <ul>
             <li>
               <a
-                href="#"
+                href="../html/home.html"
                 class="navLink active"
                 >Home</a
               >
             </li>
             <li>
               <a
-                href="#"
+                href="../html/catalog.html"
                 class="navLink"
                 >Catalog<span>
                   <img
@@ -204,14 +204,14 @@ const header = () => {
             </li>
             <li>
               <a
-                href="#"
+                href="../html/about.html"
                 class="navLink"
                 >About Us</a
               >
             </li>
             <li>
               <a
-                href="#"
+                href="../html/contact.html"
                 class="navLink"
                 >Contact Us</a
               >
