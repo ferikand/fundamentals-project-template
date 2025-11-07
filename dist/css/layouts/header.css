@@ -29,7 +29,6 @@ header .heading .burger {
   display: none;
   width: auto;
   height: auto;
-  pointer-events: none;
   font-size: 1.5rem;
   border: 2px solid black;
   border-radius: 0.25rem;
@@ -38,12 +37,15 @@ header .heading .burger {
 
 @media (max-width: 768px) {
   header .heading .burger {
-    pointer-events: auto;
     display: flex;
     justify-content: center;
     align-items: center;
   }
 }
+header .heading .burger:hover {
+  cursor: pointer;
+}
+
 header .heading .socials {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
