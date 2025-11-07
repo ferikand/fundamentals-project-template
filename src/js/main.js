@@ -1,4 +1,6 @@
 import {
+  header,
+  footer,
   burger,
   products,
   fetchProducts,
@@ -8,6 +10,8 @@ import {
 } from "./home.js"
 window.onload = async () => {
   try {
+    header()
+    footer()
     burger()
     await getProductsArr()
     renderProductsByRange(".products-selected", "selected-product-card", 3, 7)

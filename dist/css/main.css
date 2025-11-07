@@ -42,30 +42,8 @@ header {
   background-color: #fff;
   z-index: 100;
 }
-header .burger {
-  font-size: 1.5rem;
-  border: 2px solid black;
-  border-radius: 0.25rem;
-  padding: 0 0.5rem 0.2rem 0.5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-@media (min-width: 769px) {
-  header .burger {
-    display: none;
-  }
-}
-header .socials {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-}
-@media (max-width: 768px) {
-  header .socials {
-    display: none;
-  }
-}
 header .heading {
+  position: relative;
   width: 80%;
   margin: 0 auto;
   display: flex;
@@ -82,7 +60,34 @@ header .heading {
     justify-content: space-around;
   }
 }
-header .logo a {
+header .heading .burger {
+  display: none;
+  width: auto;
+  height: auto;
+  pointer-events: none;
+  font-size: 1.5rem;
+  border: 2px solid black;
+  border-radius: 0.25rem;
+  padding: 0 0.5rem 0.2rem 0.5rem;
+}
+@media (max-width: 768px) {
+  header .heading .burger {
+    pointer-events: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+header .heading .socials {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+@media (max-width: 768px) {
+  header .heading .socials {
+    display: none;
+  }
+}
+header .heading .logo a {
   display: inline-block;
   text-decoration: none;
   display: flex;
@@ -92,27 +97,27 @@ header .logo a {
   gap: 1rem;
   color: #b92770;
 }
-header .logo a:hover {
+header .heading .logo a:hover {
   transform: scale(1.015);
 }
-header .user-section {
+header .heading .user-section {
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
 @media (max-width: 480px) {
-  header .user-section {
+  header .heading .user-section {
     grid-template-columns: 1fr;
   }
 }
-header .user-section {
+header .heading .user-section {
   gap: 0.5rem;
 }
-header .user-section .user-icon,
-header .user-section .cart-icon {
+header .heading .user-section .user-icon,
+header .heading .user-section .cart-icon {
   transition: all 0.3s ease;
 }
-header .user-section .user-icon:hover,
-header .user-section .cart-icon:hover {
+header .heading .user-section .user-icon:hover,
+header .heading .user-section .cart-icon:hover {
   transform: scale(1.015);
 }
 header .devider {
