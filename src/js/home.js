@@ -5,7 +5,7 @@ const burger = () => {
   burger.addEventListener("click", openMenu)
   function openMenu() {
     nav.classList.toggle("mobile")
-    console.log(nav.classList)
+    // console.log(nav.classList)
   }
   document.addEventListener("click", (e) => {
     if (!e.target.closest(".burger") && !e.target.closest("nav.mobile")) {
@@ -27,7 +27,7 @@ const fetchProducts = async () => {
 }
 const getProductsArr = async () => {
   const res = await fetchProducts()
-  console.log(res.data)
+  // console.log(res.data)
   products.push(...res.data)
 }
 const renderProductsByRange = (
