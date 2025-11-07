@@ -38,6 +38,7 @@
         >
           &#9776;
         </div>
+        <div class="mobile-menu"></div>
         <div class="socials">
           <div>
             <a
@@ -99,28 +100,44 @@
         </div>
       </div>
       <div class="devider"></div>
-      <nav>
-        <ul>
-          <li>
-            <a
-              href="#"
-              class="active"
-              >Home</a
-            >
-          </li>
-          <li>
-            <a href="#"
-              >Catalog<span>
-                <img
-                  src="../assets/icons/arrow-down-menu.svg"
-                  alt="arrow down"
-                /> </span
-            ></a>
-          </li>
-          <li><a href="#">About Us</a></li>
-          <li><a href="#">Contact Us</a></li>
-        </ul>
-      </nav>
+      <div class="nav-container">
+        <nav>
+          <ul>
+            <li>
+              <a
+                href="#"
+                class="navLink active"
+                >Home</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                class="navLink"
+                >Catalog<span>
+                  <img
+                    src="../assets/icons/arrow-down-menu.svg"
+                    alt="arrow down"
+                  /> </span
+              ></a>
+            </li>
+            <li>
+              <a
+                href="#"
+                class="navLink"
+                >About Us</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                class="navLink"
+                >Contact Us</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
     </header>
     <main>
       <section class="hero">
@@ -195,48 +212,19 @@
           <p>Duis vestibulum elit vel neque pharetra</p>
         </div>
         <div class="products-carousel">
-          <!-- <button
+          <button
             class="carousel-btn prev"
             type="button"
           >
-            <
-          </button> -->
-          <div class="carousel-track">
-            <div class="product-card image-1">
-              <h4>Duis vestibulum elit vel neque.</h4>
-              <p>
-                Duis vestibulum vel neque pharetra vulputate. Quisque
-                scelerisque nisi.
-              </p>
-            </div>
-            <div class="product-card image-2">
-              <h4>Neque vestibulum elit nequvel.</h4>
-              <p>
-                Duis vestibulum vel neque pharetra vulputate. Quisque
-                scelerisque nisi.
-              </p>
-            </div>
-            <div class="product-card image-3">
-              <h4>Elituis stibulum elit velneque.</h4>
-              <p>
-                Duis vestibulum vel neque pharetra vulputate. Quisque
-                scelerisque nisi.
-              </p>
-            </div>
-            <div class="product-card image-4">
-              <h4>Vel vestibulum elit tuvel euqen.</h4>
-              <p>
-                Duis vestibulum vel neque pharetra vulputate. Quisque
-                scelerisque nisi.
-              </p>
-            </div>
-          </div>
-          <!-- <button
+            &lsaquo;
+          </button>
+          <div class="carousel-track"></div>
+          <button
             class="carousel-btn next"
             type="button"
           >
-            >
-          </button> -->
+            &rsaquo;
+          </button>
         </div>
       </section>
       <section class="selected-products">
@@ -597,7 +585,7 @@
       </div>
     </footer>
     <script
-      src=""
+      src="../js/home.js"
       async
       defer
     ></script>

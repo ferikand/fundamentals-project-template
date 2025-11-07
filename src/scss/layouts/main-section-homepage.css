@@ -102,101 +102,39 @@ main .carousel .carousel-header {
 main .carousel .carousel-header h4 {
   margin: 0;
 }
+main .carousel .products-carousel {
+  position: relative;
+  overflow: hidden;
+}
 main .carousel .products-carousel .carousel-track {
-  display: grid;
+  transition: all 0.3s ease;
+  display: flex;
   gap: 1rem;
-  grid-template-columns: repeat(4, 1fr);
-}
-main .carousel .products-carousel .carousel-track .image-1 {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../src/assets/products/image-1.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-main .carousel .products-carousel .carousel-track .image-2 {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../src/assets/products/image-2.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-main .carousel .products-carousel .carousel-track .image-3 {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../src/assets/products/image-3.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-main .carousel .products-carousel .carousel-track .image-4 {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../src/assets/products/image-4.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-main .carousel .products-carousel .carousel-track .image-5 {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../src/assets/products/image-5.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-main .carousel .products-carousel .carousel-track .image-6 {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../src/assets/products/image-6.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-main .carousel .products-carousel .carousel-track .image-7 {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../src/assets/products/image-7.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-main .carousel .products-carousel .carousel-track .image-8 {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../src/assets/products/image-8.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-main .carousel .products-carousel .carousel-track .image-9 {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../src/assets/products/image-9.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-main .carousel .products-carousel .carousel-track .image-10 {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../src/assets/products/image-10.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-main .carousel .products-carousel .carousel-track .image-11 {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../src/assets/products/image-11.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-main .carousel .products-carousel .carousel-track .image-12 {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../src/assets/products/image-12.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-@media (max-width: 768px) {
-  main .carousel .products-carousel .carousel-track {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-@media (max-width: 480px) {
-  main .carousel .products-carousel .carousel-track {
-    grid-template-columns: 1fr;
-  }
 }
 main .carousel .products-carousel .carousel-track .product-card {
+  transition: all 0.3s ease;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   justify-content: flex-end;
+  flex-shrink: 0;
+  flex-basis: calc((100% - 3rem) / 4);
   padding: 2rem;
-  min-height: 37.5rem;
+  min-height: 24.5rem;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+@media (max-width: 768px) {
+  main .carousel .products-carousel .carousel-track .product-card {
+    flex-basis: calc((100% - 1rem) / 2);
+  }
+}
+@media (max-width: 480px) {
+  main .carousel .products-carousel .carousel-track .product-card {
+    flex-basis: 100%;
+  }
 }
 main .carousel .products-carousel .carousel-track .product-card h4,
 main .carousel .products-carousel .carousel-track .product-card p {
@@ -206,6 +144,25 @@ main .carousel .products-carousel .carousel-track .product-card p {
 }
 main .carousel .products-carousel .carousel-track .product-card p {
   font-weight: 200;
+}
+main .carousel .products-carousel .carousel-btn {
+  position: absolute;
+  top: 50%;
+  background-color: rgba(0, 0, 0, 0);
+  color: #fff;
+  width: 3rem;
+  height: 3rem;
+  border: none;
+  font-size: 3rem;
+  transform: translateY(-50%);
+}
+main .carousel .products-carousel .prev {
+  left: 1rem;
+  z-index: 1;
+}
+main .carousel .products-carousel .next {
+  right: 1rem;
+  z-index: 1;
 }
 main .selected-products {
   max-width: 80%;

@@ -1,3 +1,150 @@
+header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background-color: #fff;
+  z-index: 100;
+}
 
+header .burger {
+  font-size: 1.5rem;
+  border: 2px solid black;
+  border-radius: 0.25rem;
+  padding: 0 0.5rem 0.2rem 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (min-width: 769px) {
+  header .burger {
+    display: none;
+  }
+}
+header .socials {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 768px) {
+  header .socials {
+    display: none;
+  }
+}
+header .heading {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-bottom: 0.25rem;
+}
+
+@media (max-width: 768px) {
+  header .heading {
+    width: 100%;
+    padding: 0.25rem;
+    justify-content: space-around;
+  }
+}
+header .logo a {
+  display: inline-block;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 1rem;
+  color: #b92770;
+}
+
+header .logo a:hover {
+  transform: scale(1.015);
+}
+
+header .user-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+@media (max-width: 480px) {
+  header .user-section {
+    grid-template-columns: 1fr;
+  }
+}
+header .user-section .user-icon,
+header .user-section .cart-icon {
+  transition: all 0.3s ease;
+}
+
+header .user-section .user-icon:hover,
+header .user-section .cart-icon:hover {
+  transform: scale(1.015);
+}
+
+header .devider {
+  border-bottom: 0.1px solid rgba(114, 113, 116, 0.2);
+  width: 78%;
+  justify-self: center;
+  height: 0.05px;
+}
+
+header .nav-container {
+  position: relative;
+}
+
+header .nav-container nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  header .nav-container nav {
+    display: none;
+  }
+}
+header .nav-container nav ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  list-style: none;
+  gap: 2rem;
+}
+
+header .nav-container nav ul li a {
+  text-decoration: none;
+  color: #000;
+  font-size: 1.1rem;
+  font-weight: bold;
+  display: inline-block;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+header .nav-container nav ul li a.active {
+  color: #b92770;
+}
+
+header .nav-container nav ul li a:hover {
+  transform: scale(1.015);
+  color: #b92770;
+}
+
+header .nav-container nav.mobile {
+  position: absolute;
+  display: flex;
+  width: 80%;
+  background-color: #fff;
+}
+
+header .nav-container nav.mobile ul {
+  display: flex;
+  flex-direction: column;
+} 
 
 /*# sourceMappingURL=header.css.map */

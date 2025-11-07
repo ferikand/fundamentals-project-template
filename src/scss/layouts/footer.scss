@@ -85,8 +85,10 @@ footer {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 0.25rem;
-        @include tablet {
+        @media (max-width: 1024px) {
           grid-template-columns: 1fr;
+        }
+        @include tablet {
         }
         .footer-contact-element {
           display: grid;

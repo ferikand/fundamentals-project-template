@@ -9,7 +9,10 @@ header .burger {
   font-size: 1.5rem;
   border: 2px solid black;
   border-radius: 0.25rem;
-  padding: 0 0.25rem;
+  padding: 0 0.5rem 0.2rem 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 @media (min-width: 769px) {
   header .burger {
@@ -79,17 +82,20 @@ header .devider {
   justify-self: center;
   height: 0.05px;
 }
-header nav {
+header .nav-container {
+  position: relative;
+}
+header .nav-container nav {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 @media (max-width: 768px) {
-  header nav {
+  header .nav-container nav {
     display: none;
   }
 }
-header nav ul {
+header .nav-container nav ul {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -97,7 +103,7 @@ header nav ul {
   list-style: none;
   gap: 2rem;
 }
-header nav ul li a {
+header .nav-container nav ul li a {
   text-decoration: none;
   color: #000;
   font-size: 1.1rem;
@@ -106,10 +112,20 @@ header nav ul li a {
   text-decoration: none;
   transition: all 0.3s ease;
 }
-header nav ul li a.active {
+header .nav-container nav ul li a.active {
   color: #b92770;
 }
-header nav ul li a:hover {
+header .nav-container nav ul li a:hover {
   transform: scale(1.015);
   color: #b92770;
+}
+header .nav-container nav.mobile {
+  position: absolute;
+  display: flex;
+  width: 80%;
+  background-color: #fff;
+}
+header .nav-container nav.mobile ul {
+  display: flex;
+  flex-direction: column;
 }/*# sourceMappingURL=header.css.map */
