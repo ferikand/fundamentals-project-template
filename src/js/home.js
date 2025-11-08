@@ -30,6 +30,15 @@ const getProductsArr = async () => {
   // console.log(res.data)
   products.push(...res.data)
 }
+function generateStars(ratingValue) {
+  const filledStarHtml =
+    '<img src="../assets/icons/star-filled.svg"alt="stat filled"/>'
+  const emptyStarHtml =
+    '<img src="../assets/icons/star-empty.svg"alt="stat filled"/>'
+  const starsHtml =
+    filledStarHtml.repeat(ratingValue) + emptyStarHtml.repeat(5 - ratingValue)
+  return starsHtml
+}
 const renderProductsByRange = (
   containerClass,
   cardClass,
@@ -51,19 +60,19 @@ const renderProductsByRange = (
     if (cardClass === "product-card") {
       newCard.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${product.imageUrl})`
       newCard.innerHTML = `<h4>${product.id}</h4><p>${product.name}</p>`
-    }
-    if (cardClass === "top-card_container") {
+    } else if (cardClass === "top-card_container") {
+      const stars = generateStars(product.rating)
       newCard.innerHTML = `<div class="top-card-img_container">
-                <img
-                  src=${product.imageUrl}
-                  alt=${product.id}
-                />
-              </div>
-              <div class="top-card_description">
-                <p class="top-card_text">${product.name}</p>
-                <div class="top-card_rating">${product.rating}</div>
-                <p class="top-card_price">$${product.price}</p>
-              </div>`
+                              <img
+                                src=${product.imageUrl}
+                                alt=${product.id}
+                              />
+                           </div>
+                           <div class="top-card_description">
+                               <p class="top-card_text">${product.name}</p>
+                               <div class="top-card_rating">${stars}</div>
+                               <p class="top-card_price">$${product.price}</p>
+                           </div>`
     } else {
       newCard.innerHTML = `
                 <img src=${product.imageUrl} alt=${product.name}/>

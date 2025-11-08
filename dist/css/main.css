@@ -773,12 +773,10 @@ main .grateful-customers .grateful-customers_container .grateful-customers-card 
 }
 
 .main_container {
-  padding-top: 3rem;
-  border: 1px solid red;
   width: 80%;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 3fr 1fr;
+  grid-template-columns: 2fr 1fr;
 }
 
 .sort-dropdown-container {
@@ -854,10 +852,13 @@ main .grateful-customers .grateful-customers_container .grateful-customers-card 
 
 .search-panel {
   display: grid;
-  grid-template-columns: 3fr 1fr;
+  grid-template-columns: 2fr 1fr;
 }
 
 .search-panel .search-panel-left {
+  align-items: center;
+  max-width: 80%;
+  margin: 0 10%;
   display: flex;
   justify-content: space-between;
 }
@@ -878,6 +879,20 @@ main .grateful-customers .grateful-customers_container .grateful-customers-card 
   .catalog_container {
     grid-template-columns: 1fr;
   }
+}
+.top-card_container {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+
+.top-card_container .top-card-img_container {
+  display: block;
+  margin-right: 1rem;
+}
+
+.top-card_container .top-card_description p {
+  font-size: 0.9rem;
+  margin: 0.125rem;
 } 
 
 /*# sourceMappingURL=main.css.map */
