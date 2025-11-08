@@ -413,13 +413,4 @@ const footer = () => {
       </div>`
   footer.innerHTML = footerInnerHtml
 }
-export {
-  header,
-  footer,
-  burger,
-  products,
-  fetchProducts,
-  getProductsArr,
-  renderProductsByRange,
-  slides,
-}
+export { header, footer, burger, getProductsArr, renderProductsByRange, slides }

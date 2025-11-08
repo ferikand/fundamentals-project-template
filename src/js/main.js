@@ -2,8 +2,6 @@ import {
   header,
   footer,
   burger,
-  products,
-  fetchProducts,
   getProductsArr,
   renderProductsByRange,
   slides,
@@ -19,7 +17,6 @@ window.onload = async () => {
     renderProductsByRange(".carousel-track", "product-card")
     renderProductsByRange(".catalog_container", "selected-product-card", 4, 18)
     renderProductsByRange(".top-best-sets", "top-card_container", 19, 25)
-
     slides()
   } catch (error) {
     console.log(error)
