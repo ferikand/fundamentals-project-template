@@ -1,9 +1,0 @@
-main .hero .hero-upper_container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-}
-@media (max-width: 768px) {
-  main .hero .hero-upper_container {
-    grid-template-columns: 1fr;
-  }
-}/*# sourceMappingURL=main.css.map */
