@@ -37,6 +37,11 @@ const renderProductsByRange = (
   until = -1
 ) => {
   const container = document.querySelector(containerClass)
+  if (!container) {
+    // console.error(`Container with class ${containerClass} not found.`)
+    return
+  }
+  container.innerHTML = ""
   products.forEach((product, i) => {
     if (from !== -1 && !(i > from && i <= until)) {
       return
@@ -46,12 +51,25 @@ const renderProductsByRange = (
     if (cardClass === "product-card") {
       newCard.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${product.imageUrl})`
       newCard.innerHTML = `<h4>${product.id}</h4><p>${product.name}</p>`
+    }
+    if (cardClass === "top-card_container") {
+      newCard.innerHTML = `<div class="top-card-img_container">
+                <img
+                  src=${product.imageUrl}
+                  alt=${product.id}
+                />
+              </div>
+              <div class="top-card_description">
+                <p class="top-card_text">${product.name}</p>
+                <div class="top-card_rating">${product.rating}</div>
+                <p class="top-card_price">$${product.price}</p>
+              </div>`
     } else {
       newCard.innerHTML = `
                 <img src=${product.imageUrl} alt=${product.name}/>
                 <div class="selected-product-card_info__container">
                     <p>${product.name}</p>
-                    <p>${product.price}</p>
+                    <p>$${product.price}</p>
                 </div>
                 <a href="#" class="btn-sm">View Product</a>
             `
@@ -61,11 +79,13 @@ const renderProductsByRange = (
 }
 const slides = () => {
   const carouselTrack = document.querySelector(".carousel-track")
+  if (!carouselTrack) return
   const productsCarousel = document.querySelector(".products-carousel")
   const prevBtn = document.querySelector(".carousel-btn.prev")
   const nextBtn = document.querySelector(".carousel-btn.next")
   const cards = Array.from(carouselTrack.children)
   const totalCards = 8
+
   if (cards.length === 0) return
   let currentIndex = 0
   let visibleCards = 0

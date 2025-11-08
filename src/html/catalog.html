@@ -27,6 +27,81 @@
   </head>
   <body>
     <header></header>
+    <main>
+      <div class="search-panel container-wrapper">
+        <div class="search-panel-left">
+          <p>Showing 1-12 Of 15 Results</p>
+          <div class="sort-dropdown-container">
+            <button
+              class="sort-title"
+              data-sort-key="sort"
+            >
+              Default Sorting
+              <span class="active-value"> (Default)</span>
+              <img
+                src="../assets/icons/arrow-down-menu.svg"
+                alt="arrow down"
+              />
+            </button>
+
+            <ul class="sort-list">
+              <li
+                class="sort-list-item active"
+                data-sort-value="default"
+              >
+                Default Sorting
+              </li>
+              <li
+                class="sort-list-item"
+                data-sort-value="price_asc"
+              >
+                Price: Low to High
+              </li>
+              <li
+                class="sort-list-item"
+                data-sort-value="price_desc"
+              >
+                Price: High to Low
+              </li>
+              <li
+                class="sort-list-item"
+                data-sort-value="popularity_desc"
+              >
+                Popularity: Highest First
+              </li>
+              <li
+                class="sort-list-item"
+                data-sort-value="rating_desc"
+              >
+                Rating: Highest First
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="filter"></div>
+      </div>
+      <div class="main_container">
+        <div class="catalog_container container-wrapper"></div>
+        <aside class="top-sets">
+          <h6>Top Best Sets</h6>
+          <div class="top-best-sets">
+            <div class="top-card_container">
+              <div class="top-card-img_container">
+                <img
+                  src=""
+                  alt=""
+                />
+              </div>
+              <div class="top-card_description">
+                <p class="top-card_text"></p>
+                <div class="top-card_rating"></div>
+                <p class="top-card_price"></p>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </main>
     <footer></footer>
     <script
       type="module"

@@ -155,7 +155,8 @@ main {
       }
     }
   }
-  .selected-products {
+  .selected-products,
+  .container-wrapper {
     max-width: 80%;
     margin: 0 auto;
     .selected-header {

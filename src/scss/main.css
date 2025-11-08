@@ -76,7 +76,7 @@ header .heading .burger {
     align-items: center;
   }
 }
-header .heading .burger::hover {
+header .heading .burger:hover {
   cursor: pointer;
 }
 header .heading .socials {
@@ -465,38 +465,49 @@ main .carousel .products-carousel .next {
   right: 1rem;
   z-index: 1;
 }
-main .selected-products {
+main .selected-products,
+main .container-wrapper {
   max-width: 80%;
   margin: 0 auto;
 }
-main .selected-products .selected-header {
+main .selected-products .selected-header,
+main .container-wrapper .selected-header {
   text-align: center;
   margin-bottom: 1.5rem;
   margin-top: 3rem;
 }
-main .selected-products .selected-header h4 {
+main .selected-products .selected-header h4,
+main .container-wrapper .selected-header h4 {
   margin: 0;
 }
 main .selected-products .selected-products_container,
-main .selected-products .new-products {
+main .selected-products .new-products,
+main .container-wrapper .selected-products_container,
+main .container-wrapper .new-products {
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(4, 1fr);
 }
 @media (max-width: 768px) {
   main .selected-products .selected-products_container,
-  main .selected-products .new-products {
+  main .selected-products .new-products,
+  main .container-wrapper .selected-products_container,
+  main .container-wrapper .new-products {
     grid-template-columns: 1fr 1fr;
   }
 }
 @media (max-width: 480px) {
   main .selected-products .selected-products_container,
-  main .selected-products .new-products {
+  main .selected-products .new-products,
+  main .container-wrapper .selected-products_container,
+  main .container-wrapper .new-products {
     grid-template-columns: 1fr;
   }
 }
 main .selected-products .selected-products_container .selected-product-card,
-main .selected-products .new-products .selected-product-card {
+main .selected-products .new-products .selected-product-card,
+main .container-wrapper .selected-products_container .selected-product-card,
+main .container-wrapper .new-products .selected-product-card {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -504,7 +515,9 @@ main .selected-products .new-products .selected-product-card {
   justify-content: space-between;
 }
 main .selected-products .selected-products_container .selected-product-card .selected-product-card_info__container,
-main .selected-products .new-products .selected-product-card .selected-product-card_info__container {
+main .selected-products .new-products .selected-product-card .selected-product-card_info__container,
+main .container-wrapper .selected-products_container .selected-product-card .selected-product-card_info__container,
+main .container-wrapper .new-products .selected-product-card .selected-product-card_info__container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -512,12 +525,16 @@ main .selected-products .new-products .selected-product-card .selected-product-c
   width: 70%;
 }
 main .selected-products .selected-products_container .selected-product-card .selected-product-card_info__container p,
-main .selected-products .new-products .selected-product-card .selected-product-card_info__container p {
+main .selected-products .new-products .selected-product-card .selected-product-card_info__container p,
+main .container-wrapper .selected-products_container .selected-product-card .selected-product-card_info__container p,
+main .container-wrapper .new-products .selected-product-card .selected-product-card_info__container p {
   font-weight: bold;
   margin-bottom: 0;
 }
 main .selected-products .selected-products_container .selected-product-card .btn-sm,
-main .selected-products .new-products .selected-product-card .btn-sm {
+main .selected-products .new-products .selected-product-card .btn-sm,
+main .container-wrapper .selected-products_container .selected-product-card .btn-sm,
+main .container-wrapper .new-products .selected-product-card .btn-sm {
   margin-top: 1rem;
 }
 main .offer {
@@ -671,18 +688,99 @@ main .grateful-customers .grateful-customers_container .grateful-customers-card 
   height: 32px;
 }
 
-.catalog-grid {
+.main_container {
+  padding-top: 3rem;
+  border: 1px solid red;
+  width: 80%;
+  margin: 0 auto;
   display: grid;
+  grid-template-columns: 3fr 1fr;
+}
+
+.sort-dropdown-container {
+  position: relative;
+  display: inline-block;
+}
+.sort-dropdown-container .sort-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  border: 1px solid rgba(114, 113, 116, 0.2);
+  border-radius: 0.25rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  color: #000;
+  gap: 0.5rem;
+}
+.sort-dropdown-container .sort-title:hover {
+  border-color: #b92770;
+}
+.sort-dropdown-container .sort-title img {
+  width: 0.75rem;
+  height: 0.75rem;
+  transition: all 0.3s ease;
+}
+.sort-dropdown-container .sort-list {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 50;
+  background-color: #fff;
+  border: 1px solid rgba(114, 113, 116, 0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  min-width: 12.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: none;
+  border-radius: 0 0 0.25rem 0.25rem;
+  overflow: hidden;
+}
+.sort-dropdown-container .sort-list .sort-list-item {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+.sort-dropdown-container .sort-list .sort-list-item:hover {
+  background-color: rgba(114, 113, 116, 0.2);
+  color: #b92770;
+}
+.sort-dropdown-container .sort-list .sort-list-item.active {
+  background-color: #b92770;
+  color: #fff;
+  font-weight: bold;
+}
+.sort-dropdown-container:hover .sort-list {
+  display: block;
+}
+.sort-dropdown-container:hover .sort-title img {
+  transform: rotate(180deg);
+}
+
+.search-panel {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+}
+.search-panel .search-panel-left {
+  display: flex;
+  justify-content: space-between;
+}
+
+.catalog_container {
+  display: grid;
+  gap: 1rem;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 2rem;
+  padding-top: 3rem;
 }
 @media (max-width: 768px) {
-  .catalog-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .catalog_container {
+    grid-template-columns: 1fr 1fr;
   }
 }
 @media (max-width: 480px) {
-  .catalog-grid {
-    grid-column: 1fr;
+  .catalog_container {
+    grid-template-columns: 1fr;
   }
 }/*# sourceMappingURL=main.css.map */
