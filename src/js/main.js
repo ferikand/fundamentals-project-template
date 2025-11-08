@@ -1,11 +1,6 @@
-import {
-  header,
-  footer,
-  burger,
-  getProductsArr,
-  renderProductsByRange,
-  slides,
-} from "./home.js"
+import { getProductsArr, renderProductsByRange, slides } from "./home.js"
+import { header, burger } from "./header.js"
+import { footer } from "./footer.js"
 window.onload = async () => {
   try {
     header()
