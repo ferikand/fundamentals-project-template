@@ -3,10 +3,15 @@
   grid-template-columns: 2fr 1fr;
   gap: 1rem;
   max-width: 80%;
-  margin: 0 auto;
+  margin: 0 auto 1rem;
   align-items: center;
 }
 
+@media (max-width: 480px) {
+  .search-panel {
+    grid-template-columns: 1fr;
+  }
+}
 .search-panel .search-panel-left {
   align-items: center;
   display: flex;
