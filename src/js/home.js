@@ -53,7 +53,7 @@ const renderProductsByRange = (
       newCard.innerHTML = `<img src=${product.imageUrl} alt=${product.name}/>
                            <div class="selected-product-card_info__container">
                                <p>${product.name}</p>
-                               <p>$${product.price}</p>
+                               <p class="price-in-card">$${product.price}</p>
                            </div>
                            <a href="#" class="btn-sm">View Product</a>`
     }

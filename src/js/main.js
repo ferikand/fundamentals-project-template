@@ -20,7 +20,7 @@ window.onload = async () => {
       11
     )
     renderProductsByRange(".carousel-track", "product-card")
-    renderProductsByRange(".catalog_container", "selected-product-card", 4, 18)
+    renderProductsByRange(".catalog_container", "selected-product-card", 0, 19)
     renderProductsByRange(".top-best-sets", "top-card_container", 19, 25)
     slides()
   } catch (error) {

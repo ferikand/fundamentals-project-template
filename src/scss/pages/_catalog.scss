@@ -4,7 +4,11 @@
   @include main-container;
   display: grid;
   grid-template-columns: 2fr 1fr;
+  gap: $spacing-sm;
   padding-bottom: $spacing-lg;
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
 }
 .sort-dropdown-container {
   position: relative;
@@ -23,7 +27,6 @@
       color: $color-primary;
       font-weight: $font-weight-regular;
     }
-
     &:hover {
       border-color: $color-primary;
     }
@@ -70,34 +73,11 @@
     transform: rotate(180deg);
   }
 }
-// .search-panel {
-//   display: grid;
-//   grid-template-columns: 2fr 1fr;
-//   padding: $spacing-md 0;
-//   border-bottom: 1px solid $color-border;
-//   .search-panel-left {
-//     align-items: center;
-//     max-width: 80%;
-//     margin: 0 10%;
-//     display: flex;
-//     justify-content: space-between;
-//     p {
-//       color: $color-text-secondary;
-//       font-size: $font-size-sm;
-//     }
-//     @include tablet {
-//       flex-direction: column;
-//       align-items: flex-start;
-//       gap: $spacing-xs;
-//     }
-//   }
-// }
 .catalog_container {
   display: grid;
   gap: $spacing-sm;
   grid-template-columns: repeat(3, 1fr);
-  padding-top: $spacing-lg;
-  padding-right: $spacing-md;
+
   @include tablet {
     grid-template-columns: 1fr 1fr;
     padding-right: 0;
@@ -106,72 +86,3 @@
     grid-template-columns: 1fr;
   }
 }
-// aside.top-sets {
-//   padding-left: $spacing-md;
-//   padding-top: $spacing-lg;
-//   @include tablet {
-//     padding-left: 0;
-//     padding-top: $spacing-md;
-//     border-top: 1px solid $color-border;
-//   }
-//   h6 {
-//     color: $color-dark;
-//     border-bottom: 2px solid $color-primary;
-//     padding-bottom: $spacing-s;
-//     margin-bottom: $spacing-sm;
-//     font-weight: $font-weight-bold;
-//   }
-//   .top-best-sets {
-//     display: flex;
-//     flex-direction: column;
-//     gap: $spacing-sm;
-//   }
-//   .top-card_container {
-//     display: grid;
-//     grid-template-columns: 1fr 3fr;
-//     gap: $spacing-s;
-//     padding-bottom: $spacing-sm;
-//     border-bottom: 1px solid $color-border;
-//     @include transition;
-//     &:last-child {
-//       border-bottom: none;
-//       padding-bottom: 0;
-//     }
-//     &:hover {
-//       background-color: $color-light-gray;
-//       cursor: pointer;
-//       padding-left: $spacing-s;
-//     }
-//     .top-card-img_container {
-//       display: block;
-//       margin-right: $spacing-s;
-//       img {
-//         width: 100%;
-//         height: 60px;
-//         object-fit: cover;
-//         border-radius: $border-radius-sm;
-//       }
-//     }
-//     .top-card_description {
-//       display: flex;
-//       flex-direction: column;
-//       justify-content: center;
-//       p {
-//         font-size: $font-size-sm;
-//         margin: 0.125rem 0;
-//       }
-//       .top-card_text {
-//         font-weight: $font-weight-medium;
-//         color: $color-text-secondary;
-//       }
-//       .top-card_rating {
-//         font-size: $spacing-sm;
-//         color: #ffc107;
-//       }
-//       .top-card_price {
-//         font-weight: $font-weight-bold;
-//         color: $color-primary;
-//       }
-//     }
-//   }
-// }

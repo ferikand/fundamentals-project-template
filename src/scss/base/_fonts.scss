@@ -1,12 +1,12 @@
-@use "../abstracts/mixins";
-@use "../abstracts/variables";
+@use "../abstracts/mixins" as *;
+@use "../abstracts/variables" as *;
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  color: variables.$color-text;
+  color: $color-text;
 }
 body {
   font-family: "Montserrat", sans-serif;

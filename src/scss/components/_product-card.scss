@@ -16,6 +16,15 @@
       object-fit: contain;
     }
   }
+  .selected-product-card_info__container {
+    p {
+      font-weight: bold;
+      text-align: center;
+    }
+    p.price-in-card {
+      color: $color-primary;
+    }
+  }
   &:hover {
     box-shadow: 0 1.25rem 2rem rgba(193, 199, 212, 0.72);
     @include transform;

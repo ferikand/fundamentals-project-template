@@ -1,47 +1,42 @@
-// src/scss/layouts/_top-sets.scss
-
 @use "../abstracts/mixins" as *;
 @use "../abstracts/variables" as *;
-
 aside.top-sets {
-  padding-top: $spacing-lg;
-
-  @include tablet {
-    padding-top: $spacing-md;
-    border-top: 1px solid $color-devider;
+  @include mobile {
+    display: none;
   }
-
   h6 {
     margin-bottom: $spacing-sm;
+    margin: $spacing-s;
+    // text-align: center;
   }
-
   .top-best-sets {
     display: flex;
     flex-direction: column;
-    gap: $spacing-sm;
+    gap: $spacing-xs;
   }
-
   .top-card_container {
     @include to-flex-and-center;
-    justify-content: flex-start;
-    gap: $spacing-sm;
-    padding: $spacing-s;
-    background-color: $color-light-gray;
-    border-radius: $border-radius-sm;
-
+    justify-content: center;
+    gap: $spacing-xs;
+    padding: $spacing-xs;
     .top-card-img_container {
       width: 4rem;
-      height: 4rem;
       img {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        border-radius: $border-radius-sm;
       }
     }
-
-    // .top-card_description {
-    //   // styles for text content
-    // }
+    .top-card_description {
+      p {
+        margin: $spacing-xs;
+        margin-top: 0;
+        font-size: 0.75rem;
+      }
+      .top-card_price {
+        color: $color-primary;
+        font-weight: 600;
+      }
+    }
   }
 }
