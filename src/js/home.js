@@ -31,7 +31,7 @@ const renderProductsByRange = (
   }
   container.innerHTML = ""
   products.forEach((product, i) => {
-    if (from !== -1 && !(i > from && i <= until)) {
+    if (from !== -1 && !(i >= from && i <= until)) {
       return
     }
     const newCard = document.createElement("div")
@@ -115,4 +115,4 @@ const slides = () => {
   })
 }
 
-export { getProductsArr, renderProductsByRange, slides }
+export { products, getProductsArr, renderProductsByRange, slides }

@@ -1,6 +1,7 @@
 import { getProductsArr, renderProductsByRange, slides } from "./home.js"
 import { header, burger } from "./header.js"
 import { footer } from "./footer.js"
+// import { pagination } from "./catalog.js"
 window.onload = async () => {
   try {
     header()
@@ -23,6 +24,8 @@ window.onload = async () => {
     renderProductsByRange(".catalog_container", "selected-product-card", 0, 19)
     renderProductsByRange(".top-best-sets", "top-card_container", 19, 25)
     slides()
+    const { pagination } = await import("./catalog.js")
+    pagination()
   } catch (error) {
     console.log(error)
   }

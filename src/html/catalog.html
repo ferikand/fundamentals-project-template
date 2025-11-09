@@ -30,7 +30,7 @@
     <main>
       <div class="search-panel container-wrapper">
         <div class="search-panel-left">
-          <p>Showing 1-12 Of 15 Results</p>
+          <p class="quantity-on-page">Showing 1-12 Of 15 Results</p>
           <div class="sort-dropdown-container">
             <button
               class="sort-title"
@@ -112,6 +112,51 @@
             </div>
           </div>
         </aside>
+        <div class="pagination-wrapper">
+          <button
+            class="pagination-arrow prev"
+            disabled
+            type="button"
+          >
+            <span>
+              <img
+                src="../assets/icons/arrow-down-menu.svg"
+                alt="arrow right"
+                class="arrow previous"
+              />
+            </span>
+            PREVIOUS
+          </button>
+          <div class="pagination">
+            <button
+              class="pagination-number active"
+              data-page="1"
+              type="button"
+            >
+              1
+            </button>
+            <button
+              class="pagination-number"
+              data-page="2"
+              type="button"
+            >
+              2
+            </button>
+          </div>
+          <button
+            class="pagination-arrow next"
+            type="button"
+          >
+            NEXT
+            <span>
+              <img
+                src="../assets/icons/arrow-down-menu.svg"
+                alt="arrow right"
+                class="arrow next"
+              />
+            </span>
+          </button>
+        </div>
       </div>
     </main>
     <footer></footer>
