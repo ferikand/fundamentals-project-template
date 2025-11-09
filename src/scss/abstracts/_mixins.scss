@@ -1,3 +1,4 @@
+@use "./variables" as *;
 @mixin to-flex-and-center {
   display: flex;
   justify-content: center;
@@ -27,21 +28,98 @@
   display: inline-block;
   text-decoration: none;
 }
-// @mixin generate-bg-images($count) {
-//   @for $i from 1 through $count {
-//     .image-#{$i} {
-//       background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-//         url("../../src/assets/products/image-#{$i}.png");
-//       background-size: cover;
-//       background-position: center;
-//       background-repeat: no-repeat;
-//     }
-//   }
-// }
 @mixin section-header {
   text-align: center;
   h4 {
     margin: 0;
   }
-  margin-bottom: 1.5rem;
+  margin-bottom: $spacing-sm;
+}
+@mixin main-container {
+  max-width: 80%;
+  margin: 0 auto;
+}
+@mixin product-card-style {
+  @include to-flex-and-center;
+  flex-direction: column;
+  justify-content: flex-start;
+  // padding: $spacing-s $spacing-sm;
+  .product-card_info__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 70%;
+    p {
+      font-weight: $font-weight-bold;
+      margin-bottom: 0;
+    }
+  }
+  .btn-sm {
+    margin-top: auto;
+    margin-bottom: $spacing-s;
+  }
+}
+@mixin selected-products-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $spacing-sm;
+  @include tablet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+@mixin product-section-layout($header-class, $container-class) {
+  max-width: 80%;
+  margin: 0 auto;
+  margin-top: $spacing-l;
+  .#{$header-class} {
+    @include section-header;
+    margin-bottom: 2.5rem;
+  }
+  .#{$container-class} {
+    @include selected-products-grid;
+  }
+}
+@mixin offer-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  @include tablet {
+    grid-template-columns: 1fr;
+  }
+  max-width: 80%;
+  min-height: 18.75rem;
+  margin: 3rem auto;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("../../src/assets/icons/offer_of_the_month.png");
+  background-position: center;
+  background-attachment: local;
+  background-size: cover;
+  background-repeat: no-repeat;
+  .offer-left,
+  .offer-right {
+    padding: 2rem;
+    @include to-flex-and-center;
+    flex-direction: column;
+    h2,
+    h4,
+    p {
+      color: $color-light;
+      font-size: 6.5rem;
+    }
+    h2 {
+      margin: 0;
+    }
+    h4 {
+      font-size: 2.25rem;
+      margin: 0;
+    }
+    p {
+      font-size: 1rem;
+      font-weight: 200;
+    }
+  }
 }

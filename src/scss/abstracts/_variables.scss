@@ -1,11 +1,28 @@
-$spacing-l: 2rem;
-$spacing-s: 0.5rem;
+// Colors
 $color-primary: #b92770;
 $color-dark: #000;
 $color-button-text: #fff;
 $color-text: #000;
 $color-hero-section: #e7e8e9;
 $color-text-content: #504e4a;
+$color-text-secondary: #504e4a;
 $color-light: #fff;
 $color-devider: rgba(114, 113, 116, 0.2);
+$color-border: rgba(114, 113, 116, 0.2);
+$color-light-gray: #f7f7f7;
+// Spacing
+$spacing-l: 2rem;
+$spacing-s: 0.5rem;
+$spacing-xs: 0.5rem;
+$spacing-sm: 1rem;
+$spacing-md: 2rem;
+$spacing-lg: 3rem;
+// Typography
+$font-weight-bold: bold;
+$font-weight-medium: 500;
+$font-weight-regular: normal;
+$font-size-sm: 0.95rem;
+// Border Radius
+$border-radius-sm: 0.25rem;
+// Other
 $images-quantity: 12;

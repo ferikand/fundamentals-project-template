@@ -1,0 +1,74 @@
+.search-panel {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+.search-panel .search-panel-left {
+  align-items: center;
+  max-width: 80%;
+  margin: 0 10%;
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.sort-dropdown-container {
+  position: relative;
+  display: inline-block;
+}
+.sort-dropdown-container .sort-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  border: 1px solid rgba(114, 113, 116, 0.2);
+  border-radius: 0.25rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  color: #000;
+  gap: 0.5rem;
+}
+.sort-dropdown-container .sort-title:hover {
+  border-color: #b92770;
+}
+.sort-dropdown-container .sort-title img {
+  width: 0.75rem;
+  height: 0.75rem;
+  transition: all 0.3s ease;
+}
+.sort-dropdown-container .sort-list {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 50;
+  background-color: #fff;
+  border: 1px solid rgba(114, 113, 116, 0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  min-width: 12.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: none;
+  border-radius: 0 0 0.25rem 0.25rem;
+  overflow: hidden;
+}
+.sort-dropdown-container .sort-list .sort-list-item {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+.sort-dropdown-container .sort-list .sort-list-item:hover {
+  background-color: rgba(114, 113, 116, 0.2);
+  color: #b92770;
+}
+.sort-dropdown-container .sort-list .sort-list-item.active {
+  background-color: #b92770;
+  color: #fff;
+  font-weight: bold;
+}
+.sort-dropdown-container:hover .sort-list {
+  display: block;
+}
+.sort-dropdown-container:hover .sort-title img {
+  transform: rotate(180deg);
+}/*# sourceMappingURL=search-panel.css.map */

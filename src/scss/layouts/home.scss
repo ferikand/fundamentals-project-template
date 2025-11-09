@@ -112,7 +112,7 @@ main {
           flex-shrink: 0;
           flex-basis: calc((100% - 3rem) / 4);
           padding: 2rem;
-          min-height: 24.5rem;
+          min-height: 32.5rem;
           background-repeat: no-repeat;
           background-size: cover;
           background-position: center;
@@ -155,84 +155,18 @@ main {
       }
     }
   }
-  .selected-products,
-  .container-wrapper {
-    max-width: 80%;
-    margin: 0 auto;
-    .selected-header {
-      @include mixins.section-header;
-      margin-top: 3rem;
-    }
-    .selected-products_container,
-    .new-products {
-      display: grid;
-      gap: 1rem;
-      grid-template-columns: repeat(4, 1fr);
-      @include mixins.tablet {
-        grid-template-columns: 1fr 1fr;
-      }
-      @include mixins.mobile {
-        grid-template-columns: 1fr;
-      }
-      .selected-product-card {
-        @include mixins.to-flex-and-center;
-        flex-direction: column;
-        justify-content: space-between;
-        .selected-product-card_info__container {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: space-around;
-          width: 70%;
-          p {
-            font-weight: bold;
-            margin-bottom: 0;
-          }
-        }
-        .btn-sm {
-          margin-top: 1rem;
-        }
-      }
-    }
+  .products-selected.container-wrapper {
+    @include mixins.product-section-layout(
+      section-header,
+      selected-products-wrapper
+    );
+    @include mixins.product-section-layout(
+      section-header,
+      new-products-wrapper
+    );
   }
   .offer {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    @include mixins.tablet {
-      grid-template-columns: 1fr;
-    }
-    max-width: 80%;
-    min-height: 18.75rem;
-    margin: 3rem auto;
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-      url("../../src/assets/icons/offer_of_the_month.png");
-    background-position: center;
-    background-attachment: local;
-    background-size: cover;
-    background-repeat: no-repeat;
-    .offer-left,
-    .offer-right {
-      padding: 2rem;
-      @include mixins.to-flex-and-center;
-      flex-direction: column;
-      h2,
-      h4,
-      p {
-        color: variables.$color-light;
-        font-size: 6.5rem;
-      }
-      h2 {
-        margin: 0;
-      }
-      h4 {
-        font-size: 2.25rem;
-        margin: 0;
-      }
-      p {
-        font-size: 1rem;
-        font-weight: 200;
-      }
-    }
+    @include mixins.offer-section;
   }
   .grateful-customers {
     max-width: 80%;

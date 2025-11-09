@@ -1,0 +1,23 @@
+@use "../abstracts/mixins" as *;
+@use "../abstracts/variables" as *;
+.selected-product-card {
+  @include product-card-style;
+  height: 100%;
+  box-shadow: 0 1.25rem 2rem rgba(193, 199, 212, 0.3);
+  background-color: $color-light;
+  @include transition;
+  .product-card_img__container {
+    height: 12.5rem;
+    width: 100%;
+    margin-bottom: $spacing-s;
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
+    }
+  }
+  &:hover {
+    box-shadow: 0 1.25rem 2rem rgba(193, 199, 212, 0.72);
+    @include transform;
+  }
+}
