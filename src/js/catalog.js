@@ -32,6 +32,13 @@ const renderPage = (page) => {
   })
   const prevBtn = document.querySelector(".pagination-arrow.prev")
   const nextBtn = document.querySelector(".pagination-arrow.next")
+  if (prevBtn) {
+    prevBtn.style.visibility = page === 1 ? "hidden" : "visible"
+  }
+  if (nextBtn) {
+    nextBtn.style.visibility =
+      end >= catalogueProducts.length ? "hidden" : "visible"
+  }
   if (prevBtn) prevBtn.disabled = page === 1
   if (nextBtn) nextBtn.disabled = end >= catalogueProducts.length
   window.scrollTo({ top: 0, behavior: "smooth" })
