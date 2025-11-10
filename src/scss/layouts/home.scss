@@ -1,32 +1,32 @@
-@use "../abstracts/mixins";
-@use "../abstracts/variables";
+@use "../abstracts/mixins" as *;
+@use "../abstracts/variables" as *;
 main {
   .hero {
-    background-color: variables.$color-hero-section;
+    background-color: $color-hero-section;
     padding-bottom: 12rem;
     .hero-upper_container {
       margin: 0 auto;
       max-width: 80%;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      @include mixins.tablet {
+      @include tablet {
         grid-template-columns: 1fr;
       }
       .hero-upper-left_container,
       .hero-upper-right_container {
-        @include mixins.to-flex-and-center;
+        @include to-flex-and-center;
         flex-direction: column;
         flex: 1;
-        color: variables.$color-text-content;
+        color: $color-text-content;
         .btn {
           align-self: start;
-          margin-top: variables.$spacing-l;
+          margin-top: $spacing-l;
         }
       }
     }
   }
   .hero-lower-wrapper {
-    background-color: variables.$color-light;
+    background-color: $color-light;
     position: relative;
     z-index: 1;
     padding-top: 3.5rem;
@@ -40,9 +40,9 @@ main {
         margin: 0 auto;
         transform: translateY(-12rem);
         box-shadow: 0 1.25rem 2rem rgba(0, 0, 0, 0.08);
-        background-color: variables.$color-light;
+        background-color: $color-light;
       }
-      @include mixins.tablet {
+      @include tablet {
         grid-template-columns: 1fr;
       }
       .hero-lower-left_container {
@@ -65,7 +65,7 @@ main {
         }
         .person-text {
           p {
-            color: variables.$color-text-content;
+            color: $color-text-content;
           }
         }
       }
@@ -82,7 +82,7 @@ main {
         width: 100%;
         h4,
         p {
-          color: variables.$color-light;
+          color: $color-light;
         }
         p {
           font-weight: 200;
@@ -94,19 +94,19 @@ main {
     max-width: 80%;
     margin: 0 auto;
     .carousel-header {
-      @include mixins.section-header;
+      @include section-header;
     }
     .products-carousel {
       position: relative;
       overflow: hidden;
       .carousel-track {
-        @include mixins.transition;
-        // @include mixins.generate-bg-images(variables.$images-quantity);
+        @include transition;
+        // @include generate-bg-images($images-quantity);
         display: flex;
         gap: 1rem;
         .product-card {
-          @include mixins.transition;
-          @include mixins.to-flex-and-center;
+          @include transition;
+          @include to-flex-and-center;
           flex-direction: column;
           justify-content: flex-end;
           flex-shrink: 0;
@@ -116,15 +116,15 @@ main {
           background-repeat: no-repeat;
           background-size: cover;
           background-position: center;
-          @include mixins.tablet {
+          @include tablet {
             flex-basis: calc((100% - 1rem) / 2);
           }
-          @include mixins.mobile {
+          @include mobile {
             flex-basis: 100%;
           }
           h4,
           p {
-            color: variables.$color-light;
+            color: $color-light;
             font-size: 1rem;
             margin: 0.5rem;
           }
@@ -137,7 +137,7 @@ main {
         position: absolute;
         top: 50%;
         background-color: rgba(0, 0, 0, 0);
-        color: variables.$color-light;
+        color: $color-light;
         width: 3rem;
         height: 3rem;
         border: none;
@@ -156,35 +156,29 @@ main {
     }
   }
   .products-selected.container-wrapper {
-    @include mixins.product-section-layout(
-      section-header,
-      selected-products-wrapper
-    );
-    @include mixins.product-section-layout(
-      section-header,
-      new-products-wrapper
-    );
+    @include product-section-layout(section-header, selected-products-wrapper);
+    @include product-section-layout(section-header, new-products-wrapper);
   }
   .offer {
-    @include mixins.offer-section;
+    @include offer-section;
   }
   .grateful-customers {
     max-width: 80%;
     margin: 0 auto;
-    margin-bottom: 5rem;
+    margin-bottom: 3rem;
     .grateful-header {
-      @include mixins.section-header;
+      @include section-header;
       margin-top: 3rem;
     }
     .grateful-customers_container {
       display: grid;
       gap: 1rem;
       grid-template-columns: repeat(3, 1fr);
-      @include mixins.mobile {
+      @include mobile {
         grid-template-columns: 1fr;
       }
       .grateful-customers-card {
-        @include mixins.to-flex-and-center;
+        @include to-flex-and-center;
         flex-direction: column;
         padding: 2rem;
         box-shadow: 0 1.25rem 2rem rgba(193, 199, 212, 0.72);
