@@ -116,5 +116,4 @@ const slides = () => {
     updateCarouselPosition()
   })
 }
-
 export { products, getProductsArr, renderProductsByRange, slides }

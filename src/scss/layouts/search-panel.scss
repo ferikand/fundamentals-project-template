@@ -80,6 +80,7 @@
   border: 1px solid $color-border;
   border-radius: $border-radius-sm;
   overflow: hidden;
+  cursor: pointer;
   height: 33px;
   @include mobile {
     width: 100%;
@@ -91,6 +92,7 @@
     font-size: 0.95rem;
     font-weight: 500;
     color: $color-text-secondary;
+    cursor: pointer;
     width: 100%;
     height: 100%;
     &::placeholder {
@@ -109,8 +111,12 @@
     top: 50%;
     transform: translateY(-30%);
     color: $color-devider;
-    pointer-events: none;
+    pointer-events: auto;
+    cursor: pointer;
     transition: color 0.3s ease;
+    &:hover {
+      color: $color-primary;
+    }
   }
   .search-input:focus + .search-icon {
     color: $color-primary;
@@ -233,5 +239,58 @@
   &:hover {
     background: $color-primary;
     color: $color-light;
+  }
+}
+.search-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .popup-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+  }
+  .popup-content {
+    position: relative;
+    background: $color-light;
+    padding: $spacing-lg;
+    border-radius: $border-radius-sm;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    h3 {
+      color: $color-text;
+      margin-bottom: $spacing-sm;
+      font-size: $font-size-sm;
+    }
+    p {
+      color: $color-text-secondary;
+      margin-bottom: $spacing-md;
+      line-height: 1.5;
+    }
+    .popup-close-btn {
+      @include to-flex-and-center;
+      background: $color-primary;
+      color: $color-light;
+      border: none;
+      border-radius: $border-radius-sm;
+      padding: $spacing-s $spacing-lg;
+      cursor: pointer;
+      font-weight: bold;
+      margin: 0 auto;
+      &:hover {
+        background: darken($color-primary, 10%);
+      }
+    }
   }
 }

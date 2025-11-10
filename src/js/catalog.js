@@ -88,7 +88,6 @@ const applySorting = (sortType) => {
       sorted = productsToSort
       break
     default:
-      console.warn("Unknown sort type:", type)
   }
   filteredProducts = sorted
   currentPage = 1
@@ -140,10 +139,7 @@ const updateActiveFiltersDisplay = () => {
       const filterChip = document.createElement("div")
       filterChip.className = "active-filter-chip"
       const filterName = getFilterDisplayName(filterType, filterValue)
-      filterChip.innerHTML = `
-${filterName}
-<button class="remove-filter" data-filter-type="${filterType}">×</button>
-`
+      filterChip.innerHTML = `${filterName}<button class="remove-filter" data-filter-type="${filterType}">×</button>`
       activeFiltersContainer.appendChild(filterChip)
     }
   })
@@ -198,11 +194,53 @@ const resetFilters = () => {
   renderPage(1)
   updateActiveFiltersDisplay()
 }
+const searchProducts = (searchTerm) => {
+  if (!searchTerm.trim()) {
+    filteredProducts = []
+    currentPage = 1
+    renderPage(1)
+    return
+  }
+  const searchLower = searchTerm.toLowerCase().trim()
+  const results = products.filter(
+    (product) =>
+      product.name.toLowerCase().includes(searchLower) ||
+      (product.id && product.id.toLowerCase().includes(searchLower)) ||
+      (product.category && product.category.toLowerCase().includes(searchLower))
+  )
+  if (results.length > 0) {
+    filteredProducts = results
+    currentPage = 1
+    renderPage(1)
+  } else {
+    showNotFoundPopup(searchTerm)
+  }
+}
+const showNotFoundPopup = (searchTerm) => {
+  const popup = document.createElement("div")
+  popup.className = "search-popup"
+  popup.innerHTML = `<div class="popup-overlay"></div><div class="popup-content"><h3>Product Not Found</h3><p>No products found for "<strong>${searchTerm}</strong>"</p><button class="popup-close-btn">OK</button></div>`
+  document.body.appendChild(popup)
+  const closeBtn = popup.querySelector(".popup-close-btn")
+  const overlay = popup.querySelector(".popup-overlay")
+  const closePopup = () => {
+    document.body.removeChild(popup)
+  }
+  closeBtn.addEventListener("click", closePopup)
+  overlay.addEventListener("click", closePopup)
+  const handleEsc = (e) => {
+    if (e.key === "Escape") {
+      closePopup()
+      document.removeEventListener("keydown", handleEsc)
+    }
+  }
+  document.addEventListener("keydown", handleEsc)
+  closeBtn.focus()
+}
 export const pagination = () => {
   catalogueProducts = products.slice(0, 20)
   filteredProducts = []
   if (catalogueProducts.length === 0) {
-    console.error("Продукты не загружены!")
     return
   }
   renderPage(1)
@@ -297,4 +335,23 @@ export const filtering = () => {
       applyFilters()
     }
   })
+  const searchInput = document.getElementById("searchModels")
+  const searchWrapper = document.querySelector(".search-wrapper")
+  if (searchInput && searchWrapper) {
+    searchInput.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") {
+        searchProducts(searchInput.value)
+      }
+    })
+    searchWrapper.addEventListener("click", () => {
+      searchProducts(searchInput.value)
+    })
+    searchInput.addEventListener("input", (e) => {
+      if (!e.target.value.trim()) {
+        filteredProducts = []
+        currentPage = 1
+        renderPage(1)
+      }
+    })
+  }
 }
