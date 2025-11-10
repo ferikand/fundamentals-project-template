@@ -21,7 +21,7 @@ window.onload = async () => {
       10
     )
     renderProductsByRange(".carousel-track", "product-card")
-    renderProductsByRange(".top-best-sets", "top-card_container", 19, 25)
+    renderProductsByRange(".top-best-sets", "top-card_container", 20, 25)
     slides()
     if (document.querySelector(".catalog_container")) {
       const { pagination, sorting } = await import("./catalog.js")

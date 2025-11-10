@@ -40,9 +40,7 @@ const renderPage = (page) => {
   window.scrollTo({ top: 0, behavior: "smooth" })
 }
 const applySorting = (sortType) => {
-  console.log("Applying sort:", sortType)
   const type = (sortType || "default").trim()
-  currentSort = type
   let sorted = [...catalogueProducts]
   switch (type) {
     case "price_asc":
