@@ -22,7 +22,8 @@ const renderProductsByRange = (
   containerClass,
   cardClass,
   from = -1,
-  until = -1
+  until = -1,
+  productsArray = products
 ) => {
   const container = document.querySelector(containerClass)
   if (!container) {
@@ -30,7 +31,8 @@ const renderProductsByRange = (
     return
   }
   container.innerHTML = ""
-  products.forEach((product, i) => {
+  const productsToRender = productsArray || products
+  productsToRender.forEach((product, i) => {
     if (from !== -1 && !(i >= from && i <= until)) {
       return
     }

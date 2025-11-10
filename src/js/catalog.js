@@ -1,6 +1,6 @@
 import { renderProductsByRange } from "./home.js"
 import { products } from "./home.js"
-const catalogueProducts = products.slice(0, 20)
+let catalogueProducts = []
 let currentPage = 1
 const itemsPerPage = 12
 const renderPage = (page) => {
@@ -8,19 +8,15 @@ const renderPage = (page) => {
   if (!container) return
   container.innerHTML = ""
   const start = (page - 1) * itemsPerPage
-  const end = start + itemsPerPage
+  const end = Math.min(start + itemsPerPage, catalogueProducts.length)
   renderProductsByRange(
     ".catalog_container",
     "selected-product-card",
     start,
-    Math.min(
-      end - 1,
-      catalogueProducts.length >= 20 ? 19 : catalogueProducts.length - 1
-    )
+    end - 1,
+    catalogueProducts
   )
-  const displayedCount = document.querySelectorAll(
-    ".catalog_container .selected-product-card"
-  ).length
+  const displayedCount = container.children.length
   const counter = document.querySelector(".quantity-on-page")
   if (counter) {
     counter.textContent = `Showing ${start + 1}-${start + displayedCount} Of ${
@@ -34,17 +30,47 @@ const renderPage = (page) => {
   const nextBtn = document.querySelector(".pagination-arrow.next")
   if (prevBtn) {
     prevBtn.style.visibility = page === 1 ? "hidden" : "visible"
+    prevBtn.disabled = page === 1
   }
   if (nextBtn) {
     nextBtn.style.visibility =
       end >= catalogueProducts.length ? "hidden" : "visible"
+    nextBtn.disabled = end >= catalogueProducts.length
   }
-  if (prevBtn) prevBtn.disabled = page === 1
-  if (nextBtn) nextBtn.disabled = end >= catalogueProducts.length
   window.scrollTo({ top: 0, behavior: "smooth" })
 }
+const applySorting = (sortType) => {
+  console.log("Applying sort:", sortType)
+  const type = (sortType || "default").trim()
+  currentSort = type
+  let sorted = [...catalogueProducts]
+  switch (type) {
+    case "price_asc":
+      sorted.sort((a, b) => (a.price || 0) - (b.price || 0))
+      break
+    case "price_desc":
+      sorted.sort((a, b) => (b.price || 0) - (a.price || 0))
+      break
+    case "popularity_desc":
+      sorted.sort((a, b) => (b.popularity || 0) - (a.popularity || 0))
+      break
+    case "rating_desc":
+      sorted.sort((a, b) => (b.rating || 0) - (a.rating || 0))
+      break
+    case "default":
+      sorted = products.slice(0, 20)
+      break
+    default:
+      console.warn("Unknown sort type:", type)
+  }
+  catalogueProducts.length = 0
+  catalogueProducts.push(...sorted)
+  currentPage = 1
+  renderPage(1)
+}
 export const pagination = () => {
-  if (!catalogueProducts || catalogueProducts.length === 0) {
+  catalogueProducts = products.slice(0, 20)
+  if (catalogueProducts.length === 0) {
     console.error("Продукты не загружены!")
     return
   }
@@ -77,11 +103,13 @@ export const sorting = () => {
   const sortList = document.querySelector(".sort-list")
   const sortItems = document.querySelectorAll(".sort-list-item")
   const activeValue = document.querySelector(".active-value")
-  sortBtn?.addEventListener("click", () => {
+  if (!sortBtn || !sortList) return
+  sortBtn.addEventListener("click", (e) => {
+    e.stopPropagation()
     sortList.classList.toggle("open")
   })
   document.addEventListener("click", (e) => {
-    if (!sortBtn?.contains(e.target)) {
+    if (!sortBtn.contains(e.target)) {
       sortList.classList.remove("open")
     }
   })
@@ -90,32 +118,11 @@ export const sorting = () => {
       sortItems.forEach((i) => i.classList.remove("active"))
       item.classList.add("active")
       const text = item.textContent.trim()
-      activeValue.textContent = ` (${text.split(" ").slice(0, 3).join(" ")})`
+      activeValue.textContent = ` (${text})`
+      const raw = item.getAttribute("data-sort-value") || ""
+      const sortValue = raw.replace(/\s+/g, "")
       sortList.classList.remove("open")
-      applySorting(item.dataset.sortValue)
+      applySorting(sortValue)
     })
   })
-}
-let currentSort = "default"
-const applySorting = (sortType) => {
-  currentSort = sortType
-  const sorted = [...catalogueProducts].sort((a, b) => {
-    switch (sortType) {
-      case "price_asc":
-        return a.price - b.price
-      case "price_desc":
-        return b.price - a.price
-      case "popularity_desc":
-        return b.popularity - a.popularity
-      case "rating_desc":
-        return b.rating - a.rating
-      case "default":
-      default:
-        return catalogueProducts.indexOf(a) - catalogueProducts.indexOf(b)
-    }
-  })
-  catalogueProducts.length = 0
-  catalogueProducts.push(...sorted)
-  currentPage = 1
-  renderPage(1)
 }
