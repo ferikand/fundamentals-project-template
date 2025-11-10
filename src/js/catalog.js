@@ -72,3 +72,50 @@ export const pagination = () => {
       }
     })
 }
+export const sorting = () => {
+  const sortBtn = document.querySelector(".sort-title")
+  const sortList = document.querySelector(".sort-list")
+  const sortItems = document.querySelectorAll(".sort-list-item")
+  const activeValue = document.querySelector(".active-value")
+  sortBtn?.addEventListener("click", () => {
+    sortList.classList.toggle("open")
+  })
+  document.addEventListener("click", (e) => {
+    if (!sortBtn?.contains(e.target)) {
+      sortList.classList.remove("open")
+    }
+  })
+  sortItems.forEach((item) => {
+    item.addEventListener("click", () => {
+      sortItems.forEach((i) => i.classList.remove("active"))
+      item.classList.add("active")
+      const text = item.textContent.trim()
+      activeValue.textContent = ` (${text.split(" ").slice(0, 3).join(" ")})`
+      sortList.classList.remove("open")
+      applySorting(item.dataset.sortValue)
+    })
+  })
+}
+let currentSort = "default"
+const applySorting = (sortType) => {
+  currentSort = sortType
+  const sorted = [...catalogueProducts].sort((a, b) => {
+    switch (sortType) {
+      case "price_asc":
+        return a.price - b.price
+      case "price_desc":
+        return b.price - a.price
+      case "popularity_desc":
+        return b.popularity - a.popularity
+      case "rating_desc":
+        return b.rating - a.rating
+      case "default":
+      default:
+        return catalogueProducts.indexOf(a) - catalogueProducts.indexOf(b)
+    }
+  })
+  catalogueProducts.length = 0
+  catalogueProducts.push(...sorted)
+  currentPage = 1
+  renderPage(1)
+}
