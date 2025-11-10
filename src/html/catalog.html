@@ -31,6 +31,7 @@
       <div class="search-panel container-wrapper">
         <div class="search-panel-left">
           <p class="quantity-on-page">Showing 1-12 Of 15 Results</p>
+
           <div class="sort-dropdown-container">
             <button
               class="sort-title"
@@ -91,7 +92,220 @@
             />
           </span>
         </div>
+
+        <div class="filters-panel container-wrapper">
+          <div class="filters-container">
+            <div class="filter-dropdown">
+              <button class="filter-title">
+                Category
+                <img
+                  src="../assets/icons/arrow-down-menu.svg"
+                  alt="arrow down"
+                />
+              </button>
+              <ul class="filter-list">
+                <li
+                  class="filter-list-item"
+                  data-filter-type="category"
+                  data-filter-value="all"
+                >
+                  All Categories
+                </li>
+                <li
+                  class="filter-list-item"
+                  data-filter-type="category"
+                  data-filter-value="carry-ons"
+                >
+                  Carry-ons
+                </li>
+                <li
+                  class="filter-list-item"
+                  data-filter-type="category"
+                  data-filter-value="suitcases"
+                >
+                  Suitcases
+                </li>
+                <li
+                  class="filter-list-item"
+                  data-filter-type="category"
+                  data-filter-value="luggage sets"
+                >
+                  Luggage Sets
+                </li>
+                <li
+                  class="filter-list-item"
+                  data-filter-type="category"
+                  data-filter-value="kids' luggage"
+                >
+                  Kids' Luggage
+                </li>
+              </ul>
+            </div>
+
+            <div class="filter-dropdown">
+              <button class="filter-title">
+                Color
+                <img
+                  src="../assets/icons/arrow-down-menu.svg"
+                  alt="arrow down"
+                />
+              </button>
+              <ul class="filter-list">
+                <li
+                  class="filter-list-item"
+                  data-filter-type="color"
+                  data-filter-value="all"
+                >
+                  All Colors
+                </li>
+                <li
+                  class="filter-list-item"
+                  data-filter-type="color"
+                  data-filter-value="red"
+                >
+                  Red
+                </li>
+                <li
+                  class="filter-list-item"
+                  data-filter-type="color"
+                  data-filter-value="blue"
+                >
+                  Blue
+                </li>
+                <li
+                  class="filter-list-item"
+                  data-filter-type="color"
+                  data-filter-value="green"
+                >
+                  Green
+                </li>
+                <li
+                  class="filter-list-item"
+                  data-filter-type="color"
+                  data-filter-value="black"
+                >
+                  Black
+                </li>
+                <li
+                  class="filter-list-item"
+                  data-filter-type="color"
+                  data-filter-value="grey"
+                >
+                  Grey
+                </li>
+                <li
+                  class="filter-list-item"
+                  data-filter-type="color"
+                  data-filter-value="yellow"
+                >
+                  Yellow
+                </li>
+                <li
+                  class="filter-list-item"
+                  data-filter-type="color"
+                  data-filter-value="pink"
+                >
+                  Pink
+                </li>
+              </ul>
+            </div>
+
+            <div class="filter-dropdown">
+              <button class="filter-title">
+                Size
+                <img
+                  src="../assets/icons/arrow-down-menu.svg"
+                  alt="arrow down"
+                />
+              </button>
+              <ul class="filter-list">
+                <li
+                  class="filter-list-item"
+                  data-filter-type="size"
+                  data-filter-value="all"
+                >
+                  All Sizes
+                </li>
+                <li
+                  class="filter-list-item"
+                  data-filter-type="size"
+                  data-filter-value="S"
+                >
+                  S
+                </li>
+                <li
+                  class="filter-list-item"
+                  data-filter-type="size"
+                  data-filter-value="M"
+                >
+                  M
+                </li>
+                <li
+                  class="filter-list-item"
+                  data-filter-type="size"
+                  data-filter-value="L"
+                >
+                  L
+                </li>
+                <li
+                  class="filter-list-item"
+                  data-filter-type="size"
+                  data-filter-value="XL"
+                >
+                  XL
+                </li>
+                <li
+                  class="filter-list-item"
+                  data-filter-type="size"
+                  data-filter-value="S-L"
+                >
+                  S-L
+                </li>
+              </ul>
+            </div>
+
+            <div class="filter-dropdown">
+              <button class="filter-title">
+                Sales
+                <img
+                  src="../assets/icons/arrow-down-menu.svg"
+                  alt="arrow down"
+                />
+              </button>
+              <ul class="filter-list">
+                <li
+                  class="filter-list-item"
+                  data-filter-type="salesStatus"
+                  data-filter-value="all"
+                >
+                  All Items
+                </li>
+                <li
+                  class="filter-list-item"
+                  data-filter-type="salesStatus"
+                  data-filter-value="true"
+                >
+                  On Sale
+                </li>
+                <li
+                  class="filter-list-item"
+                  data-filter-type="salesStatus"
+                  data-filter-value="false"
+                >
+                  Regular Price
+                </li>
+              </ul>
+            </div>
+
+            <button class="reset-filters-btn">Reset Filters</button>
+          </div>
+
+          <div class="active-filters">
+            <!-- Active filters -->
+          </div>
+        </div>
       </div>
+
       <div class="main_container">
         <div class="catalog_container container-wrapper"></div>
         <aside class="top-sets">

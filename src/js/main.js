@@ -24,9 +24,10 @@ window.onload = async () => {
     renderProductsByRange(".top-best-sets", "top-card_container", 20, 25)
     slides()
     if (document.querySelector(".catalog_container")) {
-      const { pagination, sorting } = await import("./catalog.js")
+      const { pagination, sorting, filtering } = await import("./catalog.js")
       pagination()
       sorting()
+      filtering()
     }
   } catch (error) {
     console.log(error)
