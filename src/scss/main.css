@@ -1519,4 +1519,89 @@ main .incredible_wrapper .incredibles_container .incredible-card img {
   color: #504e4a;
   padding: 0 0.5rem;
   font-weight: 500;
+}
+
+.main-contact-us .hero-about {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../src/assets/icons/contact-hero-bg.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.contact-form_container {
+  max-width: 80%;
+  margin: 3rem auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: #fff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+@media (max-width: 480px) {
+  .contact-form_container {
+    grid-template-columns: 1fr;
+    box-shadow: none;
+  }
+}
+.contact-form_container .contact-form-img_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  max-height: 600px;
+}
+.contact-form_container .contact-form-img_container img {
+  display: block;
+  width: 100%;
+  -o-object-fit: fill;
+     object-fit: fill;
+}
+.contact-form_container .contact-form-feedback_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+  padding: 2rem 2rem 0;
+}
+@media (max-width: 768px) {
+  .contact-form_container .contact-form-feedback_container {
+    padding: 1.5rem;
+  }
+}
+.contact-form_container .contact-form-feedback_container .contact-form-feedback_header {
+  margin-bottom: 1.5rem;
+}
+.contact-form_container .contact-form-feedback_container .contact-form-feedback_header h6 {
+  margin-top: 0;
+  font-size: 1.5rem;
+}
+.contact-form_container form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.contact-form_container form label {
+  display: block;
+  margin-bottom: 0.25px;
+  font-weight: 600;
+  color: #000;
+  font-size: 0.95rem;
+}
+.contact-form_container form input,
+.contact-form_container form textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid rgba(114, 113, 116, 0.2);
+  border-radius: 4px;
+  box-sizing: border-box;
+  transition: border-color 0.3s;
+}
+.contact-form_container form input:focus,
+.contact-form_container form textarea:focus {
+  border-color: #b92770;
+  outline: none;
+}
+.contact-form_container form textarea {
+  resize: vertical;
 }/*# sourceMappingURL=main.css.map */
