@@ -5,9 +5,13 @@ const fetchProducts = async () => {
   return result
 }
 const getProductsArr = async () => {
+  if (products.length > 0) {
+    return products
+  }
   const res = await fetchProducts()
   // console.log(res.data)
   products.push(...res.data)
+  return products
 }
 function generateStars(ratingValue) {
   const filledStarHtml =
@@ -37,6 +41,7 @@ const renderProductsByRange = (
       return
     }
     const newCard = document.createElement("div")
+    newCard.dataset.id = product.id
     newCard.classList.add(cardClass, `image-${i + 1}`)
     if (cardClass === "product-card") {
       newCard.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${product.imageUrl})`
@@ -57,7 +62,7 @@ const renderProductsByRange = (
                                <p>${product.name}</p>
                                <p class="price-in-card">$${product.price}</p>
                            </div>
-                           <a href="../html/product.html" class="btn-sm">View Product</a>`
+                           <a href="../html/product.html" class="btn-sm view-product">View Product</a>`
     }
     container.appendChild(newCard)
   })
@@ -70,7 +75,6 @@ const slides = () => {
   const nextBtn = document.querySelector(".carousel-btn.next")
   const cards = Array.from(carouselTrack.children)
   const totalCards = 8
-
   if (cards.length === 0) return
   let currentIndex = 0
   let visibleCards = 0

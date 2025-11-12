@@ -1,7 +1,7 @@
 import { getProductsArr, renderProductsByRange, slides } from "./home.js"
 import { header, burger } from "./header.js"
 import { footer } from "./footer.js"
-// import { pagination, sorting } from "./catalog.js"
+import { setProductPage, setDataOnProductPage } from "./product.js"
 window.onload = async () => {
   try {
     header()
@@ -29,6 +29,8 @@ window.onload = async () => {
       sorting()
       filtering()
     }
+    setProductPage()
+    setDataOnProductPage()
   } catch (error) {
     console.log(error)
   }

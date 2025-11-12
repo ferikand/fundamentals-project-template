@@ -1,0 +1,49 @@
+<article class="contact-form_container product_container">
+  <div class="product-images_container">
+    <div class="product-img_container"></div>
+    <div class="product-img-sm_container"></div>
+  </div>
+  <div class="contact-form-feedback_container product-description_container">
+    <div class="contact-form-feedback_header product-description-header">
+      <h6>${product.name}</h6>
+      <p>${product.name}</p>
+    </div>
+    <form action="">
+      <label for="your_name">Size</label>
+      <input
+        type="text"
+        id="your_name"
+        name="your_name"
+        required
+      />
+      <label for="your_email">Color</label>
+      <input
+        type="text"
+        id="your_email"
+        name="your_email"
+        required
+      />
+      <label for="topic">Category</label>
+      <input
+        type="text"
+        id="topic"
+        name="topic"
+        required
+      />
+      <div class="product-bottom">
+        <div class="add-deduct-group">
+          <div class="add">
+            <p>+</p>
+          </div>
+          <div class="quantity">
+            <p>${counter}</p>
+          </div>
+          <div class="deduct">
+            <p>+</p>
+          </div>
+        </div>
+        <div class="btn-sm">Add To Cart</div>
+      </div>
+    </form>
+  </div>
+</article>
