@@ -1,5 +1,6 @@
+import { getCart, saveCart, updateCartBadge } from "./cart.js"
 import { getProductsArr } from "/src/js/home.js"
-
+let count = 1
 const setProductPage = () => {
   let productId = ""
   const buttons = document.querySelectorAll(".view-product")
@@ -20,7 +21,6 @@ const getProductData = async () => {
   // console.log(product)
   return product
 }
-let count = 1
 const setupCounter = () => {
   const productBottom = document.querySelector(".product-bottom")
   if (!productBottom) return
@@ -43,16 +43,12 @@ const setupCounter = () => {
 const setDataOnProductPage = async () => {
   const product = await getProductData()
   console.log(product)
-  const productImgContainer = document.querySelector(".product-img_container")
-  productImgContainer.innerHTML = ""
-  const img = document.createElement("img")
-  img.classList.add("product-img-lg")
-  img.src = product.imageUrl
-  img.alt = product.name
-  productImgContainer.appendChild(img)
+  const imgContainer = document.querySelector(".product-img_container")
+  imgContainer.innerHTML = `<img class="product-img-lg" src="${product.imageUrl}" alt="${product.name}">`
   const productDescription = document.querySelector(
     ".product-description_container"
   )
+  if (!imgContainer || !productDescription) return
   productDescription.innerHTML = ""
   const productDescriptioninnerHTML = `<div class="contact-form-feedback_header product-description-header">
       <h6>${product.name}</h6>
@@ -62,22 +58,22 @@ const setDataOnProductPage = async () => {
       <label for="your_name">Size</label>
       <input
         type="text"
-        id="your_name"
-        name="your_name"
+        id="size"
+        name="size"
         required
       />
       <label for="your_email">Color</label>
       <input
         type="text"
-        id="your_email"
-        name="your_email"
+        id="color"
+        name="color"
         required
       />
       <label for="topic">Category</label>
       <input
         type="text"
-        id="topic"
-        name="topic"
+        id="category"
+        name="category"
         required
       />
       <div class="product-bottom">
@@ -95,10 +91,42 @@ const setDataOnProductPage = async () => {
         <div id="add-to-cart" class="btn-sm">Add To Cart</div>
       </div>
     </form>`
-  productDescription.insertAdjacentHTML(
-    "afterbegin",
-    productDescriptioninnerHTML
-  )
+  productDescription.innerHTML = productDescriptioninnerHTML
   setupCounter()
+  addProductToCart(product)
+}
+const addProductToCart = (product) => {
+  const addToCartBtn = document.getElementById("add-to-cart")
+  if (!addToCartBtn) return
+  addToCartBtn.addEventListener("click", () => {
+    if (!product) return
+    const size = document.getElementById("size").value.trim() || null
+    const color = document.getElementById("color").value.trim() || null
+    const category = document.getElementById("category").value.trim() || null
+    const cartItem = {
+      ...product,
+      selectedSize: size,
+      selectedColor: color,
+      selectedCategory: category,
+      quantity: count,
+    }
+    // console.log(cartItem)
+    const cart = getCart()
+    const existingIndex = cart.findIndex(
+      (item) =>
+        item.id === cartItem.id &&
+        item.selectedSize === cartItem.selectedSize &&
+        item.selectedColor === cartItem.selectedColor
+    )
+    if (existingIndex !== -1) {
+      cart[existingIndex].quantity += count
+    } else {
+      cart.push(cartItem)
+    }
+    saveCart(cart)
+    updateCartBadge()
+    count = 1
+    document.querySelector(".quantity p").textContent = count
+  })
 }
 export { setProductPage, setDataOnProductPage }

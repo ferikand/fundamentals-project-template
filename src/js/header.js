@@ -58,12 +58,12 @@ const header = () => {
           </div>
           <div>
             <a
-              href="#"
+              href="../html/cart.html"
               class="icon cart-icon"
               ><img
                 src="../assets/icons/shopping-cart.svg"
                 alt="shopping cart"
-            /></a>
+            /><span class="cart-count">0</span></a>            
           </div>
         </div>
       </div>

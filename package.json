@@ -13,7 +13,7 @@
   "scripts": {
     "compile:scss": "sass src/scss:dist/css",
     "watch": "sass src/scss:dist/css --watch",
-    "dev": "concurrently \"npm run watch\" \"live-server --open=src/html/product.html\"",
+    "dev": "concurrently \"npm run watch\" \"live-server --open=src/html/cart.html\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {

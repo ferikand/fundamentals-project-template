@@ -1,20 +1,20 @@
-@use "../abstracts/mixins";
-@use "../abstracts/variables";
+@use "../abstracts/mixins" as *;
+@use "../abstracts/variables" as *;
 header {
   position: sticky;
   top: 0;
   width: 100%;
-  background-color: variables.$color-light;
+  background-color: $color-light;
   z-index: 100;
   .heading {
     position: relative;
     width: 80%;
     margin: 0 auto;
-    @include mixins.to-flex-and-center;
+    @include to-flex-and-center;
     flex-direction: row;
     justify-content: space-between;
     padding-bottom: 0.25rem;
-    @include mixins.tablet {
+    @include tablet {
       width: 100%;
       padding: 0.25rem;
       justify-content: space-around;
@@ -28,7 +28,7 @@ header {
       border-radius: 0.25rem;
       padding: 0 0.5rem 0.2rem 0.5rem;
       @media (max-width: 768px) {
-        @include mixins.to-flex-and-center;
+        @include to-flex-and-center;
       }
       &:hover {
         cursor: pointer;
@@ -37,40 +37,59 @@ header {
     .socials {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      @include mixins.tablet {
+      @include tablet {
         display: none;
       }
     }
     .logo {
       a {
-        @include mixins.link-inline-block;
-        @include mixins.to-flex-and-center;
+        @include link-inline-block;
+        @include to-flex-and-center;
         flex-direction: row;
         gap: 1rem;
-        color: variables.$color-primary;
+        color: $color-primary;
         &:hover {
-          @include mixins.transform;
+          @include transform;
         }
       }
     }
     .user-section {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      @include mixins.mobile {
+      @include mobile {
         grid-template-columns: 1fr;
       }
       gap: 0.5rem;
       .user-icon,
       .cart-icon {
-        @include mixins.transition;
+        @include transition;
         &:hover {
-          @include mixins.transform;
+          @include transform;
+        }
+      }
+      .cart-icon {
+        position: relative;
+        cursor: pointer;
+        .cart-count {
+          position: absolute;
+          top: -8px;
+          right: -8px;
+          color: $color-primary;
+          font-size: 0.75rem;
+          width: 18px;
+          height: 18px;
+          border-radius: 50%;
+          border: 1px solid $color-primary;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: bold;
         }
       }
     }
   }
   .devider {
-    border-bottom: 0.1px solid variables.$color-devider;
+    border-bottom: 0.1px solid $color-devider;
     width: 78%;
     justify-self: center;
     height: 0.05px;
@@ -78,28 +97,28 @@ header {
   .nav-container {
     position: relative;
     nav {
-      @include mixins.to-flex-and-center;
-      @include mixins.tablet {
+      @include to-flex-and-center;
+      @include tablet {
         display: none;
       }
       ul {
-        @include mixins.to-flex-and-center;
+        @include to-flex-and-center;
         flex-direction: row;
         list-style: none;
         gap: 2rem;
         li a {
           text-decoration: none;
-          color: variables.$color-text;
+          color: $color-text;
           font-size: 1.1rem;
           font-weight: bold;
-          @include mixins.link-inline-block;
-          @include mixins.transition;
+          @include link-inline-block;
+          @include transition;
           &.active {
-            color: variables.$color-primary;
+            color: $color-primary;
           }
           &:hover {
-            @include mixins.transform;
-            color: variables.$color-primary;
+            @include transform;
+            color: $color-primary;
           }
         }
       }
@@ -108,7 +127,7 @@ header {
       position: absolute;
       display: flex;
       width: 80%;
-      background-color: variables.$color-light;
+      background-color: $color-light;
       ul {
         display: flex;
         flex-direction: column;
