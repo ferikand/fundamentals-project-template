@@ -7,10 +7,13 @@
 @use "layouts/home.scss";
 @use "layouts/search-panel";
 @use "layouts/top-sets";
+@use "components/hero";
+@use "components/carousel";
 @use "components/buttons";
 @use "components/forms";
 @use "components/product-card";
 @use "components/icons";
+@use "components/offer";
 @use "pages/about";
 @use "pages/cart";
 @use "pages/catalog";

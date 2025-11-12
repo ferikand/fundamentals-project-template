@@ -57,7 +57,7 @@ const renderProductsByRange = (
                                <p>${product.name}</p>
                                <p class="price-in-card">$${product.price}</p>
                            </div>
-                           <a href="#" class="btn-sm">View Product</a>`
+                           <a href="../html/product.html" class="btn-sm">View Product</a>`
     }
     container.appendChild(newCard)
   })
