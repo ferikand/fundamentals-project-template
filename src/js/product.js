@@ -21,7 +21,7 @@ const getProductData = async () => {
   // console.log(product)
   return product
 }
-const setupCounter = () => {
+const setupCounter = (product) => {
   const productBottom = document.querySelector(".product-bottom")
   if (!productBottom) return
   const quantityEl = productBottom.querySelector(".quantity p")
@@ -29,6 +29,7 @@ const setupCounter = () => {
   const deductBtn = productBottom.querySelector(".deduct")
   const updateQuantity = () => {
     quantityEl.textContent = count
+    syncCartQuantity(product, count)
   }
   addBtn.addEventListener("click", () => {
     count++
@@ -36,13 +37,29 @@ const setupCounter = () => {
   })
   deductBtn.addEventListener("click", () => {
     if (count > 1) count--
-    updateQuantity()
+    updateQuantity(product, count)
   })
   updateQuantity()
+}
+const syncCartQuantity = (product, newCount) => {
+  let cart = getCart().filter((item) => item !== null)
+  const index = cart.findIndex((item) => item && item.id === product.id)
+  if (index !== -1) {
+    cart[index].quantity = newCount
+  } else {
+    cart.push({ ...product, quantity: newCount })
+  }
+  saveCart(cart)
+  updateCartBadge()
 }
 const setDataOnProductPage = async () => {
   const product = await getProductData()
   console.log(product)
+  const cart = getCart()
+  const existingItem = cart.find((item) => item && item.id === product.id)
+  if (existingItem) {
+    count = existingItem.quantity
+  }
   const imgContainer = document.querySelector(".product-img_container")
   imgContainer.innerHTML = `<img class="product-img-lg" src="${product.imageUrl}" alt="${product.name}">`
   const productDescription = document.querySelector(
@@ -92,7 +109,7 @@ const setDataOnProductPage = async () => {
       </div>
     </form>`
   productDescription.innerHTML = productDescriptioninnerHTML
-  setupCounter()
+  setupCounter(product)
   addProductToCart(product)
 }
 const addProductToCart = (product) => {
@@ -125,7 +142,6 @@ const addProductToCart = (product) => {
     }
     saveCart(cart)
     updateCartBadge()
-    count = 1
     document.querySelector(".quantity p").textContent = count
   })
 }
