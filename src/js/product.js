@@ -1,6 +1,7 @@
 import { getCart, saveCart, updateCartBadge } from "./cart.js"
 import { getProductsArr } from "/src/js/home.js"
 let count = 1
+const FIXED_DISCOUNT_AMOUNT = 20
 const setProductPage = () => {
   let productId = ""
   const buttons = document.querySelectorAll(".view-product")
@@ -119,6 +120,12 @@ const addProductToCart = (product) => {
   if (!addToCartBtn) return
   addToCartBtn.addEventListener("click", () => {
     if (!product) return
+    const hasDiscount = product.salesStatus
+    const discountAmount = hasDiscount ? FIXED_DISCOUNT_AMOUNT : 0
+    const calculatedFinalPrice = product.price - discountAmount
+    const finalPriceForStorage = calculatedFinalPrice.toFixed(2)
+    const originalPriceForStorage = product.price.toFixed(2)
+    const discountValueForStorage = discountAmount.toFixed(2)
     const size = document.getElementById("size").value.trim() || null
     const color = document.getElementById("color").value.trim() || null
     const category = document.getElementById("category").value.trim() || null
@@ -128,7 +135,10 @@ const addProductToCart = (product) => {
       selectedColor: color,
       selectedCategory: category,
       quantity: count,
-      total: product.price * count,
+      originalPrice: originalPriceForStorage,
+      price: finalPriceForStorage,
+      discountValue: discountValueForStorage,
+      total: (calculatedFinalPrice * count).toFixed(2),
     }
     // console.log(cartItem)
     const cart = getCart()

@@ -1,6 +1,15 @@
 @use "../abstracts/mixins" as *;
 @use "../abstracts/variables" as *;
 .selected-product-card {
+  position: relative;
+  .sale-badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background-color: $color-primary;
+    color: $color-light;
+    padding: 0.25rem;
+  }
   @include product-card-style;
   height: 100%;
   box-shadow: 0 1.25rem 2rem rgba(193, 199, 212, 0.3);

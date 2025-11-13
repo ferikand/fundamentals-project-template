@@ -27,6 +27,7 @@ const updateCartItemQuantity = (productId, change) => {
     }
     saveCart(cart)
     getCartContent()
+    updateSummary()
   }
 }
 const deleteCartItem = (productId) => {
@@ -34,12 +35,54 @@ const deleteCartItem = (productId) => {
   const newCart = cart.filter((item) => item.id !== productId)
   saveCart(newCart)
   getCartContent()
+  updateSummary()
 }
 const updateCartBadge = () => {
   const cart = getCart()
   const totalItems = cart.reduce((sum, item) => sum + (item?.quantity || 0), 0)
   const badge = document.querySelector(".cart-count")
   if (badge) badge.textContent = totalItems
+}
+const SHIPPING_COST = 50.0
+const updateSummary = () => {
+  const cart = getCart()
+  let totalDiscount = 0
+  const subTotal = cart.reduce((sum, item) => {
+    const finalPrice = parseFloat(item.price.toString().replace("$", "")) || 0
+    return sum + finalPrice * (item?.quantity || 0)
+  }, 0)
+  totalDiscount = cart.reduce((sum, item) => {
+    const originalPrice =
+      parseFloat(
+        item.originalPrice?.toString().replace("$", "") ||
+          item.price.toString().replace("$", "")
+      ) || 0
+    const finalPrice = parseFloat(item.price.toString().replace("$", "")) || 0
+    const discountPerItem = originalPrice - finalPrice
+    if (discountPerItem > 0.01) {
+      return sum + discountPerItem * (item?.quantity || 0)
+    }
+    return sum
+  }, 0)
+  const total = subTotal + SHIPPING_COST
+  const subTotalEl = document.getElementById("subtotal")
+  const totalEl = document.getElementById("total")
+  const shippingEl = document.querySelector(
+    ".summary-line:nth-child(3) span:last-child"
+  )
+  const discountLineEl = document.querySelector(".summary-line.discount")
+  const discountValueEl = document.getElementById("discount-value")
+  if (subTotalEl) subTotalEl.textContent = `$${subTotal.toFixed(2)}`
+  if (shippingEl) shippingEl.textContent = `$${SHIPPING_COST.toFixed(2)}`
+  if (totalEl) totalEl.textContent = `$${total.toFixed(2)}`
+  if (discountLineEl && discountValueEl) {
+    if (totalDiscount > 0.01) {
+      discountValueEl.textContent = `-$${totalDiscount.toFixed(2)}`
+      discountLineEl.style.display = "flex"
+    } else {
+      discountLineEl.style.display = "none"
+    }
+  }
 }
 const getCartContent = () => {
   const cartContainer = document.querySelector(".cart-container")
@@ -103,6 +146,7 @@ const getCartContent = () => {
       }
     })
   })
+  updateSummary()
 }
 document.addEventListener("DOMContentLoaded", updateCartBadge)
-export { getCart, saveCart, updateCartBadge, getCartContent }
+export { getCart, saveCart, updateCartBadge, getCartContent, updateSummary }

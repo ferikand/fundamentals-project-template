@@ -37,8 +37,11 @@ const renderProductsByRange = (
   container.innerHTML = ""
   const productsToRender = productsArray || products
   productsToRender.forEach((product, i) => {
-    if (from !== -1 && !(i >= from && i <= until)) {
-      return
+    if (from !== -1 && !(i >= from && i <= until)) return
+    const hasDiscount = product.salesStatus
+    let discountBadge = ""
+    if (hasDiscount) {
+      discountBadge = `<div class="sale-badge">SALE</div>`
     }
     const newCard = document.createElement("div")
     newCard.dataset.id = product.id
@@ -57,7 +60,8 @@ const renderProductsByRange = (
                                <p class="top-card_price">$${product.price}</p>
                            </div>`
     } else {
-      newCard.innerHTML = `<img src=${product.imageUrl} alt=${product.name}/>
+      newCard.innerHTML = `${discountBadge} 
+                           <img src=${product.imageUrl}  alt=${product.name}/>
                            <div class="selected-product-card_info__container">
                                <p>${product.name}</p>
                                <p class="price-in-card">$${product.price}</p>

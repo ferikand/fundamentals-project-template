@@ -1301,6 +1301,7 @@ form textarea {
 }
 
 .selected-product-card {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1310,6 +1311,15 @@ form textarea {
   box-shadow: 0 1.25rem 2rem rgba(193, 199, 212, 0.3);
   background-color: #fff;
   transition: all 0.3s ease;
+}
+
+.selected-product-card .sale-badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background-color: #b92770;
+  color: #fff;
+  padding: 0.25rem;
 }
 
 .selected-product-card .product-card_info__container {
