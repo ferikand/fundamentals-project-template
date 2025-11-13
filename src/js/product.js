@@ -32,7 +32,7 @@ const setupCounter = (product) => {
   const deductBtn = productBottom.querySelector(".deduct")
   const updateQuantity = () => {
     quantityEl.textContent = count
-    syncCartQuantity(product, count)
+    // syncCartQuantity(product, count)
   }
   addBtn.addEventListener("click", () => {
     count++

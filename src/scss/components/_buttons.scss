@@ -2,14 +2,16 @@
 @use "../abstracts/variables";
 .btn,
 .btn-sm {
-  width: 174px;
+  min-width: 174px;
   height: 60px;
+  padding: 1rem;
   text-decoration: none;
   color: variables.$color-button-text;
-  display: inline-block;
+  // display: block;
   font-size: 1.1rem;
   font-weight: bold;
   margin-top: 2rem;
+  // flex-wrap: nowrap;
   @include mixins.transition;
   @include mixins.to-flex-and-center;
   background-color: variables.$color-primary;
@@ -19,6 +21,7 @@
   }
 }
 .btn-sm {
-  width: 156px;
-  height: 40px;
+  min-width: 156px;
+  max-height: 40px;
+  padding: 0.9rem;
 }
