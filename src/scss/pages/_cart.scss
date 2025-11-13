@@ -26,13 +26,23 @@ main.cart {
   justify-items: center;
 }
 .cart-item {
+  // max-height: 4rem;
   display: grid;
   grid-template-columns: 2fr 3fr 1fr 2fr 1fr 1fr;
   padding: 1rem;
   border-bottom: 1px solid #ddd;
   justify-items: center;
+  align-items: center;
 }
-
+.cart-item-img_container {
+  width: auto;
+  height: 80px;
+  img {
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+}
 .cart-product-name {
   font-weight: 500;
 }

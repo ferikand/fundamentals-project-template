@@ -1540,6 +1540,18 @@ main.cart .hero-about {
   padding: 1rem;
   border-bottom: 1px solid #ddd;
   justify-items: center;
+  align-items: center;
+}
+
+.cart-item-img_container {
+  width: auto;
+  height: 80px;
+}
+.cart-item-img_container img {
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  display: block;
 }
 
 .cart-product-name {

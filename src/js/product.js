@@ -10,12 +10,15 @@ const setProductPage = () => {
       const card = btn.closest("[data-id]")
       productId = card.dataset.id
       // console.log(productId)
+      localStorage.setItem("selectedProductId", productId)
       window.location.href = `../html/product.html?id=${productId}`
     })
   })
 }
 const getProductData = async () => {
-  const productId = window.location.href.split("=")[1]
+  // const productId = window.location.href.split("=")[1]
+  const productId = localStorage.getItem("selectedProductId")
+  if (!productId) return
   const productsArr = await getProductsArr()
   const product = productsArr.find((product) => product.id === productId)
   // console.log(product)
@@ -46,8 +49,6 @@ const syncCartQuantity = (product, newCount) => {
   const index = cart.findIndex((item) => item && item.id === product.id)
   if (index !== -1) {
     cart[index].quantity = newCount
-  } else {
-    cart.push({ ...product, quantity: newCount })
   }
   saveCart(cart)
   updateCartBadge()
@@ -67,7 +68,8 @@ const setDataOnProductPage = async () => {
   )
   if (!imgContainer || !productDescription) return
   productDescription.innerHTML = ""
-  const productDescriptioninnerHTML = `<div class="contact-form-feedback_header product-description-header">
+  const productDescriptioninnerHTML = `
+    <div class="contact-form-feedback_header product-description-header">
       <h6>${product.name}</h6>
       <p>${product.name}</p>
     </div>
@@ -105,7 +107,7 @@ const setDataOnProductPage = async () => {
             <p>+</p>
           </div>
         </div>
-        <div id="add-to-cart" class="btn-sm">Add To Cart</div>
+        <div id="add-to-cart-btn" class="btn-sm">Add To Cart</div>
       </div>
     </form>`
   productDescription.innerHTML = productDescriptioninnerHTML
@@ -113,7 +115,7 @@ const setDataOnProductPage = async () => {
   addProductToCart(product)
 }
 const addProductToCart = (product) => {
-  const addToCartBtn = document.getElementById("add-to-cart")
+  const addToCartBtn = document.getElementById("add-to-cart-btn")
   if (!addToCartBtn) return
   addToCartBtn.addEventListener("click", () => {
     if (!product) return
@@ -126,6 +128,7 @@ const addProductToCart = (product) => {
       selectedColor: color,
       selectedCategory: category,
       quantity: count,
+      total: product.price * count,
     }
     // console.log(cartItem)
     const cart = getCart()
