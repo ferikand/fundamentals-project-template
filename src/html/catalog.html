@@ -91,11 +91,13 @@
             />
           </span>
         </div>
+        <!-- filters -->
         <div class="filters-panel container-wrapper">
           <div class="filters-container">
             <div class="filter-dropdown">
+              <h6>Size</h6>
               <button class="filter-title">
-                Category
+                Coose option
                 <img
                   src="../assets/icons/arrow-down-menu.svg"
                   alt="arrow down"
@@ -104,57 +106,52 @@
               <ul class="filter-list">
                 <li
                   class="filter-list-item"
-                  data-filter-type="category"
-                  data-filter-value="all"
+                  data-filter-type="size"
+                  data-filter-value="S"
                 >
-                  All Categories
+                  S
                 </li>
                 <li
                   class="filter-list-item"
-                  data-filter-type="category"
-                  data-filter-value="carry-ons"
+                  data-filter-type="size"
+                  data-filter-value="M"
                 >
-                  Carry-ons
+                  M
                 </li>
                 <li
                   class="filter-list-item"
-                  data-filter-type="category"
-                  data-filter-value="suitcases"
+                  data-filter-type="size"
+                  data-filter-value="L"
                 >
-                  Suitcases
+                  L
                 </li>
                 <li
                   class="filter-list-item"
-                  data-filter-type="category"
-                  data-filter-value="luggage sets"
+                  data-filter-type="size"
+                  data-filter-value="XL"
                 >
-                  Luggage Sets
+                  XL
                 </li>
                 <li
                   class="filter-list-item"
-                  data-filter-type="category"
-                  data-filter-value="kids' luggage"
+                  data-filter-type="size"
+                  data-filter-value="S-L"
                 >
-                  Kids' Luggage
+                  S-L
                 </li>
               </ul>
             </div>
+
             <div class="filter-dropdown">
+              <h6>Color</h6>
               <button class="filter-title">
-                Color
+                Choose option
                 <img
                   src="../assets/icons/arrow-down-menu.svg"
                   alt="arrow down"
                 />
               </button>
               <ul class="filter-list">
-                <li
-                  class="filter-list-item"
-                  data-filter-type="color"
-                  data-filter-value="all"
-                >
-                  All Colors
-                </li>
                 <li
                   class="filter-list-item"
                   data-filter-type="color"
@@ -206,9 +203,11 @@
                 </li>
               </ul>
             </div>
+
             <div class="filter-dropdown">
+              <h6>Category</h6>
               <button class="filter-title">
-                Size
+                Choose option
                 <img
                   src="../assets/icons/arrow-down-menu.svg"
                   alt="arrow down"
@@ -217,84 +216,52 @@
               <ul class="filter-list">
                 <li
                   class="filter-list-item"
-                  data-filter-type="size"
-                  data-filter-value="all"
+                  data-filter-type="category"
+                  data-filter-value="carry-ons"
                 >
-                  All Sizes
+                  Carry-ons
                 </li>
                 <li
                   class="filter-list-item"
-                  data-filter-type="size"
-                  data-filter-value="S"
+                  data-filter-type="category"
+                  data-filter-value="suitcases"
                 >
-                  S
+                  Suitcases
                 </li>
                 <li
                   class="filter-list-item"
-                  data-filter-type="size"
-                  data-filter-value="M"
+                  data-filter-type="category"
+                  data-filter-value="luggage sets"
                 >
-                  M
+                  Luggage Sets
                 </li>
                 <li
                   class="filter-list-item"
-                  data-filter-type="size"
-                  data-filter-value="L"
+                  data-filter-type="category"
+                  data-filter-value="kids' luggage"
                 >
-                  L
-                </li>
-                <li
-                  class="filter-list-item"
-                  data-filter-type="size"
-                  data-filter-value="XL"
-                >
-                  XL
-                </li>
-                <li
-                  class="filter-list-item"
-                  data-filter-type="size"
-                  data-filter-value="S-L"
-                >
-                  S-L
+                  Kids' Luggage
                 </li>
               </ul>
             </div>
-            <div class="filter-dropdown">
-              <button class="filter-title">
-                Sales
-                <img
-                  src="../assets/icons/arrow-down-menu.svg"
-                  alt="arrow down"
-                />
-              </button>
-              <ul class="filter-list">
-                <li
-                  class="filter-list-item"
-                  data-filter-type="salesStatus"
-                  data-filter-value="all"
-                >
-                  All Items
-                </li>
-                <li
-                  class="filter-list-item"
+
+            <div class="sales-checkbox-filter">
+              <label class="sales-checkbox-label">
+                <input
+                  type="checkbox"
+                  class="sales-checkbox"
                   data-filter-type="salesStatus"
                   data-filter-value="true"
-                >
-                  On Sale
-                </li>
-                <li
-                  class="filter-list-item"
-                  data-filter-type="salesStatus"
-                  data-filter-value="false"
-                >
-                  Regular Price
-                </li>
-              </ul>
+                />
+                <span class="checkbox-custom"></span>
+                On Sale
+              </label>
             </div>
-            <button class="reset-filters-btn">Reset Filters</button>
           </div>
-          <div class="active-filters">
-            <!-- Active filters -->
+          <div class="active-filters"></div>
+          <div class="filters-actions">
+            <div class="reset-filters-btn btn-sm">CLEAR FILTERS</div>
+            <div class="toggle-filters-btn btn-sm">HIDE FILTERS</div>
           </div>
         </div>
       </div>

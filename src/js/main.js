@@ -2,7 +2,7 @@ import { getProductsArr, renderProductsByRange, slides } from "./home.js"
 import { header, burger } from "./header.js"
 import { footer } from "./footer.js"
 import { setProductPage, setDataOnProductPage } from "./product.js"
-import { updateCartBadge, getCartContent } from "./cart.js"
+import { updateCartBadge, getCartContent, initCartPage } from "./cart.js"
 window.onload = async () => {
   try {
     header()
@@ -37,8 +37,12 @@ window.onload = async () => {
     if (window.location.pathname.includes("product.html")) {
       setDataOnProductPage()
     }
-    getCartContent()
-    updateCartBadge()
+    if (window.location.pathname.includes("cart.html")) {
+      initCartPage()
+    } else {
+      getCartContent()
+      updateCartBadge()
+    }
   } catch (error) {
     console.log(error)
   }

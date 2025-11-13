@@ -1,3 +1,7 @@
+const FIXED_DISCOUNT_AMOUNT = 20
+const MIN_TOTAL_FOR_VOLUME_DISCOUNT = 3000
+const VOLUME_DISCOUNT_RATE = 0.1
+const SHIPPING_COST = 50
 const getCart = () => {
   try {
     const data = JSON.parse(localStorage.getItem("cart")) || []
@@ -41,30 +45,34 @@ const updateCartBadge = () => {
   const cart = getCart()
   const totalItems = cart.reduce((sum, item) => sum + (item?.quantity || 0), 0)
   const badge = document.querySelector(".cart-count")
-  if (badge) badge.textContent = totalItems
+  if (badge) {
+    if (totalItems > 0) {
+      badge.textContent = totalItems
+      badge.style.display = "flex"
+    } else {
+      badge.textContent = 0
+      badge.style.display = "none"
+    }
+  }
 }
-const SHIPPING_COST = 50.0
 const updateSummary = () => {
   const cart = getCart()
-  let totalDiscount = 0
   const subTotal = cart.reduce((sum, item) => {
-    const finalPrice = parseFloat(item.price.toString().replace("$", "")) || 0
-    return sum + finalPrice * (item?.quantity || 0)
-  }, 0)
-  totalDiscount = cart.reduce((sum, item) => {
     const originalPrice =
-      parseFloat(
-        item.originalPrice?.toString().replace("$", "") ||
-          item.price.toString().replace("$", "")
-      ) || 0
-    const finalPrice = parseFloat(item.price.toString().replace("$", "")) || 0
-    const discountPerItem = originalPrice - finalPrice
-    if (discountPerItem > 0.01) {
-      return sum + discountPerItem * (item?.quantity || 0)
-    }
-    return sum
+      parseFloat(item.price.toString().replace("$", "")) || 0
+    return sum + originalPrice * (item?.quantity || 0)
   }, 0)
-  const total = subTotal + SHIPPING_COST
+  let itemDiscount = cart.reduce((sum, item) => {
+    const discountPerItem = parseFloat(item.discountValue || 0)
+    return sum + discountPerItem * (item?.quantity || 0)
+  }, 0)
+  let volumeDiscount = 0
+  const subTotalAfterItemDiscount = subTotal - itemDiscount
+  if (subTotalAfterItemDiscount > MIN_TOTAL_FOR_VOLUME_DISCOUNT) {
+    volumeDiscount = subTotalAfterItemDiscount * VOLUME_DISCOUNT_RATE
+  }
+  const totalDiscount = itemDiscount + volumeDiscount
+  const total = subTotal - totalDiscount + SHIPPING_COST
   const subTotalEl = document.getElementById("subtotal")
   const totalEl = document.getElementById("total")
   const shippingEl = document.querySelector(
@@ -86,8 +94,20 @@ const updateSummary = () => {
 }
 const getCartContent = () => {
   const cartContainer = document.querySelector(".cart-container")
+  const cartHeader = document.querySelector(".cart-header")
+  const cartLowerContainer = document.querySelector(".cart-lower_container")
   if (!cartContainer) return
   const cart = getCart()
+  if (cart.length === 0) {
+    cartContainer.innerHTML = `
+        <div class="empty-cart-message">
+            Your cart is empty. Use the catalog to add new items.
+        </div>
+    `
+    if (cartHeader) cartHeader.style.display = "none"
+    if (cartLowerContainer) cartLowerContainer.style.display = "none"
+    return
+  }
   cartContainer.innerHTML = ""
   cart.forEach((product) => {
     const price = parseFloat(product.price.toString().replace("$", "")) || 0
@@ -148,5 +168,29 @@ const getCartContent = () => {
   })
   updateSummary()
 }
-document.addEventListener("DOMContentLoaded", updateCartBadge)
-export { getCart, saveCart, updateCartBadge, getCartContent, updateSummary }
+const clearCart = () => {
+  saveCart([])
+  getCartContent()
+  updateSummary()
+}
+const checkout = () => {
+  clearCart()
+  alert("Thank you for your purchase.")
+}
+function initCartPage() {
+  document.querySelector(".btn-clear")?.addEventListener("click", clearCart)
+  document.querySelector(".btn-checkout")?.addEventListener("click", checkout)
+  getCartContent()
+  updateSummary()
+  updateCartBadge()
+}
+export {
+  getCart,
+  saveCart,
+  updateCartBadge,
+  getCartContent,
+  updateSummary,
+  clearCart,
+  checkout,
+  initCartPage,
+}

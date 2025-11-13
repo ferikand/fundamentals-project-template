@@ -122,23 +122,19 @@ const addProductToCart = (product) => {
     if (!product) return
     const hasDiscount = product.salesStatus
     const discountAmount = hasDiscount ? FIXED_DISCOUNT_AMOUNT : 0
-    const calculatedFinalPrice = product.price - discountAmount
-    const finalPriceForStorage = calculatedFinalPrice.toFixed(2)
-    const originalPriceForStorage = product.price.toFixed(2)
-    const discountValueForStorage = discountAmount.toFixed(2)
     const size = document.getElementById("size").value.trim() || null
     const color = document.getElementById("color").value.trim() || null
     const category = document.getElementById("category").value.trim() || null
+    const itemTotalBasedOnOriginalPrice = product.price * count
     const cartItem = {
       ...product,
       selectedSize: size,
       selectedColor: color,
       selectedCategory: category,
       quantity: count,
-      originalPrice: originalPriceForStorage,
-      price: finalPriceForStorage,
-      discountValue: discountValueForStorage,
-      total: (calculatedFinalPrice * count).toFixed(2),
+      price: product.price.toFixed(2),
+      discountValue: discountAmount.toFixed(2),
+      total: itemTotalBasedOnOriginalPrice.toFixed(2),
     }
     // console.log(cartItem)
     const cart = getCart()
