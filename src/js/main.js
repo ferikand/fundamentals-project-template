@@ -4,7 +4,7 @@ import {
   slides,
   generateStars,
 } from "./home.js"
-import { header, burger } from "./header.js"
+import { header, burger, initLoginModal } from "./header.js"
 import { footer } from "./footer.js"
 import { setProductPage, setDataOnProductPage } from "./product.js"
 import { updateCartBadge, getCartContent, initCartPage } from "./cart.js"
@@ -13,6 +13,7 @@ window.onload = async () => {
     header()
     footer()
     burger()
+    initLoginModal()
     await getProductsArr()
     renderProductsByRange(
       ".products-grid-wrapper.selected-products-wrapper",
@@ -42,6 +43,15 @@ window.onload = async () => {
     }
     if (window.location.pathname.includes("product.html")) {
       setDataOnProductPage()
+      renderProductsByRange(
+        ".may-also-like",
+        "selected-product-card",
+        3,
+        10,
+        undefined,
+        true,
+        4
+      )
     }
     if (window.location.pathname.includes("cart.html")) {
       initCartPage()

@@ -67,12 +67,12 @@ const syncCartQuantity = (product, newCount) => {
     cart[index].total = calculateTotal(product, newCount)
     saveCart(cart)
     updateCartBadge()
-    console.log(newCount, cart[index].total)
+    // console.log(newCount, cart[index].total)
   }
 }
 const setDataOnProductPage = async () => {
   const product = await getProductData()
-  console.log(product)
+  // console.log(product)
   if (!product) return
   const cart = getCart()
   const selectedOptions = getSelectedOptions()

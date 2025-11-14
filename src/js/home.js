@@ -22,12 +22,22 @@ function generateStars(ratingValue) {
     filledStarHtml.repeat(ratingValue) + emptyStarHtml.repeat(5 - ratingValue)
   return starsHtml
 }
+function shuffleArray(array) {
+  const shuffled = [...array]
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
+  }
+  return shuffled
+}
 const renderProductsByRange = (
   containerClass,
   cardClass,
   from = -1,
   until = -1,
-  productsArray = products
+  productsArray = products,
+  randomize = false,
+  limit = null
 ) => {
   const container = document.querySelector(containerClass)
   if (!container) {
@@ -35,9 +45,18 @@ const renderProductsByRange = (
     return
   }
   container.innerHTML = ""
-  const productsToRender = productsArray || products
+  let productsToRender = productsArray || products
+  if (from !== -1 && until !== -1) {
+    productsToRender = productsToRender.slice(from, until + 1)
+  }
+  if (randomize) {
+    productsToRender = shuffleArray(productsToRender)
+  }
+  if (limit !== null && limit > 0) {
+    productsToRender = productsToRender.slice(0, limit)
+  }
   productsToRender.forEach((product, i) => {
-    if (from !== -1 && !(i >= from && i <= until)) return
+    // if (from !== -1 && !(i >= from && i <= until)) return
     const hasDiscount = product.salesStatus
     let discountBadge = ""
     if (hasDiscount) {

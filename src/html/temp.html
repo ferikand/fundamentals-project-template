@@ -1,49 +1,84 @@
-<article class="contact-form_container product_container">
-  <div class="product-images_container">
-    <div class="product-img_container"></div>
-    <div class="product-img-sm_container"></div>
-  </div>
-  <div class="contact-form-feedback_container product-description_container">
-    <div class="contact-form-feedback_header product-description-header">
-      <h6>${product.name}</h6>
-      <p>${product.name}</p>
-    </div>
-    <form action="">
-      <label for="your_name">Size</label>
-      <input
-        type="text"
-        id="your_name"
-        name="your_name"
-        required
-      />
-      <label for="your_email">Color</label>
-      <input
-        type="text"
-        id="your_email"
-        name="your_email"
-        required
-      />
-      <label for="topic">Category</label>
-      <input
-        type="text"
-        id="topic"
-        name="topic"
-        required
-      />
-      <div class="product-bottom">
-        <div class="add-deduct-group">
-          <div class="add">
-            <p>+</p>
-          </div>
-          <div class="quantity">
-            <p>${counter}</p>
-          </div>
-          <div class="deduct">
-            <p>+</p>
-          </div>
+<!-- Login Modal -->
+<div
+  class="login-modal"
+  id="login-modal"
+>
+  <div
+    class="modal-overlay"
+    id="modal-overlay"
+  ></div>
+  <div class="modal-content">
+    <button
+      class="modal-close"
+      id="modal-close"
+    >
+      &times;
+    </button>
+    <h3>Log In</h3>
+    <form
+      class="login-form"
+      id="login-form"
+    >
+      <div class="form-group">
+        <label for="login-email">Email Address *</label>
+        <input
+          type="email"
+          id="login-email"
+          name="email"
+          required
+          placeholder="Enter your email"
+        />
+        <span
+          class="error-message"
+          id="email-error"
+        ></span>
+      </div>
+
+      <div class="form-group">
+        <label for="login-password">Password *</label>
+        <div class="password-input-wrapper">
+          <input
+            type="password"
+            id="login-password"
+            name="password"
+            required
+            placeholder="Enter your password"
+          />
+          <button
+            type="button"
+            class="toggle-password"
+            id="toggle-password"
+          >
+            <img
+              src="../assets/icons/eye-closed.svg"
+              alt="Show password"
+              class="eye-icon"
+            />
+          </button>
         </div>
-        <div class="btn-sm">Add To Cart</div>
+        <span
+          class="error-message"
+          id="password-error"
+        ></span>
+      </div>
+
+      <button
+        type="submit"
+        class="btn btn-primary login-btn"
+      >
+        Log In
+      </button>
+
+      <div class="form-footer">
+        <p>
+          Don't have an account?
+          <a
+            href="#"
+            class="signup-link"
+            >Sign Up</a
+          >
+        </p>
       </div>
     </form>
   </div>
-</article>
+</div>
