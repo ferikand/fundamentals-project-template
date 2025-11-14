@@ -1,4 +1,9 @@
-import { getProductsArr, renderProductsByRange, slides } from "./home.js"
+import {
+  getProductsArr,
+  renderProductsByRange,
+  slides,
+  generateStars,
+} from "./home.js"
 import { header, burger } from "./header.js"
 import { footer } from "./footer.js"
 import { setProductPage, setDataOnProductPage } from "./product.js"
@@ -24,6 +29,7 @@ window.onload = async () => {
     renderProductsByRange(".carousel-track", "product-card")
     renderProductsByRange(".top-best-sets", "top-card_container", 20, 25)
     slides()
+    generateStars()
     if (document.querySelector(".catalog_container")) {
       const { pagination, sorting, filtering } = await import("./catalog.js")
       pagination()

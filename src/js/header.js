@@ -37,7 +37,7 @@ const header = () => {
           </div>
         </div>
         <div class="logo">
-          <a href="#"
+          <a href="home.html"
             ><span class="suitcase"
               ><img
                 src="../assets/icons/suitcase.svg"
@@ -63,7 +63,7 @@ const header = () => {
               ><img
                 src="../assets/icons/shopping-cart.svg"
                 alt="shopping cart"
-            /><span class="cart-count">0</span></a>            
+            /><span class="cart-count">0</span></a>
           </div>
         </div>
       </div>

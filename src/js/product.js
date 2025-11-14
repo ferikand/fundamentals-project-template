@@ -1,5 +1,5 @@
 import { getCart, saveCart, updateCartBadge } from "./cart.js"
-import { getProductsArr } from "/src/js/home.js"
+import { getProductsArr, generateStars } from "/src/js/home.js"
 let count = 1
 const FIXED_DISCOUNT_AMOUNT = 20
 const setProductPage = () => {
@@ -25,6 +25,12 @@ const getProductData = async () => {
   // console.log(product)
   return product
 }
+const getSelectedOptions = () => {
+  const size = document.getElementById("size")?.value.trim() || null
+  const color = document.getElementById("color")?.value.trim() || null
+  const category = document.getElementById("category")?.value.trim() || null
+  return { size, color, category }
+}
 const setupCounter = (product) => {
   const productBottom = document.querySelector(".product-bottom")
   if (!productBottom) return
@@ -33,7 +39,8 @@ const setupCounter = (product) => {
   const deductBtn = productBottom.querySelector(".deduct")
   const updateQuantity = () => {
     quantityEl.textContent = count
-    // syncCartQuantity(product, count)
+    syncCartQuantity(product, count)
+    updateCartBadge()
   }
   addBtn.addEventListener("click", () => {
     count++
@@ -41,24 +48,41 @@ const setupCounter = (product) => {
   })
   deductBtn.addEventListener("click", () => {
     if (count > 1) count--
-    updateQuantity(product, count)
+    updateQuantity()
   })
   updateQuantity()
 }
 const syncCartQuantity = (product, newCount) => {
   let cart = getCart().filter((item) => item !== null)
-  const index = cart.findIndex((item) => item && item.id === product.id)
+  const selectedOptions = getSelectedOptions()
+  const index = cart.findIndex(
+    (item) =>
+      item &&
+      item.id === product.id &&
+      item.selectedSize === selectedOptions.size &&
+      item.selectedColor === selectedOptions.color
+  )
   if (index !== -1) {
     cart[index].quantity = newCount
+    cart[index].total = calculateTotal(product, newCount)
+    saveCart(cart)
+    updateCartBadge()
+    console.log(newCount, cart[index].total)
   }
-  saveCart(cart)
-  updateCartBadge()
 }
 const setDataOnProductPage = async () => {
   const product = await getProductData()
   console.log(product)
+  if (!product) return
   const cart = getCart()
-  const existingItem = cart.find((item) => item && item.id === product.id)
+  const selectedOptions = getSelectedOptions()
+  const existingItem = cart.find(
+    (item) =>
+      item &&
+      item.id === product.id &&
+      item.selectedSize === selectedOptions.size &&
+      item.selectedColor === selectedOptions.color
+  )
   if (existingItem) {
     count = existingItem.quantity
   }
@@ -68,28 +92,41 @@ const setDataOnProductPage = async () => {
     ".product-description_container"
   )
   if (!imgContainer || !productDescription) return
+  const stars = generateStars(product.rating)
+  const productDescriptionText = `
+  The new Global Explorer Max Comfort Suitcase Pro is a bold reimagining of 
+  travel essentials, designed to elevate every journey. Made with at least 30% 
+  recycled materials, its lightweight yet impact-resistant shell combines eco-
+  conscious innovation with rugged durability.<br/>
+  The ergonomic handle and GlideMotion spinner wheels ensure effortless  
+  mobility while making a statement in sleek design. Inside, the modular  
+  compartments and adjustable straps keep your belongings secure and 
+  neatly organized, no matter the destination.
+  `
   productDescription.innerHTML = ""
   const productDescriptioninnerHTML = `
     <div class="contact-form-feedback_header product-description-header">
       <h6>${product.name}</h6>
-      <p>${product.name}</p>
+      <b>$${product.price}</b>
+      <div class="rating">${stars}</div>
+      <p>${productDescriptionText}</p>      
     </div>
     <form action="">
-      <label for="your_name">Size</label>
+      <label for="size">Size</label>
       <input
         type="text"
         id="size"
         name="size"
         required
       />
-      <label for="your_email">Color</label>
+      <label for="color">Color</label>
       <input
         type="text"
         id="color"
         name="color"
         required
       />
-      <label for="topic">Category</label>
+      <label for="category">Category</label>
       <input
         type="text"
         id="category"
@@ -112,8 +149,20 @@ const setDataOnProductPage = async () => {
       </div>
     </form>`
   productDescription.innerHTML = productDescriptioninnerHTML
+  const sizeInput = document.getElementById("size")
+  const colorInput = document.getElementById("color")
+  if (sizeInput) {
+    sizeInput.addEventListener("input", () => syncCartQuantity(product, count))
+  }
+  if (colorInput) {
+    colorInput.addEventListener("input", () => syncCartQuantity(product, count))
+  }
   setupCounter(product)
   addProductToCart(product)
+}
+const calculateTotal = (product, quantity) => {
+  const itemTotalBasedOnOriginalPrice = product.price * quantity
+  return itemTotalBasedOnOriginalPrice.toFixed(2)
 }
 const addProductToCart = (product) => {
   const addToCartBtn = document.getElementById("add-to-cart-btn")
@@ -122,15 +171,13 @@ const addProductToCart = (product) => {
     if (!product) return
     const hasDiscount = product.salesStatus
     const discountAmount = hasDiscount ? FIXED_DISCOUNT_AMOUNT : 0
-    const size = document.getElementById("size").value.trim() || null
-    const color = document.getElementById("color").value.trim() || null
-    const category = document.getElementById("category").value.trim() || null
+    const selectedOptions = getSelectedOptions()
     const itemTotalBasedOnOriginalPrice = product.price * count
     const cartItem = {
       ...product,
-      selectedSize: size,
-      selectedColor: color,
-      selectedCategory: category,
+      selectedSize: selectedOptions.size,
+      selectedColor: selectedOptions.color,
+      selectedCategory: selectedOptions.category,
       quantity: count,
       price: product.price.toFixed(2),
       discountValue: discountAmount.toFixed(2),
@@ -145,7 +192,8 @@ const addProductToCart = (product) => {
         item.selectedColor === cartItem.selectedColor
     )
     if (existingIndex !== -1) {
-      cart[existingIndex].quantity += count
+      cart[existingIndex].quantity = count
+      cart[existingIndex].total = calculateTotal(product, count)
     } else {
       cart.push(cartItem)
     }

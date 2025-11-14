@@ -124,4 +124,10 @@ const slides = () => {
     updateCarouselPosition()
   })
 }
-export { products, getProductsArr, renderProductsByRange, slides }
+export {
+  products,
+  getProductsArr,
+  renderProductsByRange,
+  slides,
+  generateStars,
+}

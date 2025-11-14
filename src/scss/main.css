@@ -1129,20 +1129,21 @@ form textarea {
 }
 
 .filters-container {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: flex-start;
   gap: 1rem;
   align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
   border-top: 1px solid #b92770;
   border-bottom: 1px solid #b92770;
-  padding: 1rem;
+  padding: 0.5rem;
 }
 
 .filter-dropdown {
   display: flex;
   flex-direction: column;
   flex: 1;
+  width: 100%;
   position: relative;
 }
 .filter-dropdown h6 {
@@ -1159,7 +1160,7 @@ form textarea {
   padding: 0.5rem 1rem;
   cursor: pointer;
   font-size: 0.75rem;
-  color: #717174;
+  color: rgba(114, 113, 116, 0.3);
   gap: 0.5rem;
   height: 33px;
 }
@@ -1260,6 +1261,71 @@ form textarea {
   color: #fff;
 }
 
+.sales-checkbox-filter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  height: 100%;
+}
+
+.sales-checkbox-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  cursor: pointer;
+  font-weight: 600;
+  margin: 0;
+  font-size: 0.95rem;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+}
+
+.sales-checkbox {
+  display: none;
+}
+
+.checkbox-custom {
+  width: 1rem;
+  height: 1rem;
+  border: 1px solid rgba(114, 113, 116, 0.3);
+  border-radius: 50%;
+  position: relative;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  order: 2;
+}
+
+.checkbox-custom::after {
+  content: "";
+  width: 0.75rem;
+  height: 0.75rem;
+  background: #b92770;
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 0.3s ease;
+  transform: scale(0);
+}
+
+.sales-checkbox:checked + .checkbox-custom {
+  border-color: #b92770;
+}
+
+.sales-checkbox:checked + .checkbox-custom::after {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.checkbox-text {
+  order: 1;
+  font-weight: 600;
+}
+
 .search-popup {
   position: fixed;
   top: 0;
@@ -1283,7 +1349,6 @@ form textarea {
   position: relative;
   background: #fff;
   padding: 3rem;
-  border-radius: 0.25rem;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   max-width: 400px;
   width: 90%;
@@ -1297,23 +1362,10 @@ form textarea {
 .search-popup .popup-content p {
   color: #504e4a;
   margin-bottom: 2rem;
-  line-height: 1.5;
 }
 .search-popup .popup-content .popup-close-btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #b92770;
-  color: #fff;
-  border: none;
-  border-radius: 0.25rem;
-  padding: 0.5rem 3rem;
   cursor: pointer;
-  font-weight: bold;
   margin: 0 auto;
-}
-.search-popup .popup-content .popup-close-btn:hover {
-  background: rgb(142.8794642857, 30.1205357143, 86.5);
 }
 
 main .hero-about {
@@ -1783,6 +1835,18 @@ main.cart .hero-about {
     grid-template-columns: 1fr;
   }
 }
+.main-product .product_container .product-description_container {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.main-product .product_container .product-description_container .product-description-header {
+  margin-bottom: 0.5rem;
+}
+.main-product .product_container .product-description_container .product-description-header h6 {
+  margin-bottom: 0.5rem;
+}
 .main-product .product_container .product-images_container .product-img_container {
   display: flex;
   flex-direction: column;
@@ -1803,11 +1867,27 @@ main.cart .hero-about {
 .main-product .product_container .product-bottom {
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr 3fr;
+  grid-template-columns: 3fr 5fr;
+  gap: 0.5rem;
 }
 .main-product .product_container .product-bottom .add-deduct-group {
+  max-height: 40px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  align-content: center;
+  justify-content: center;
+  border: 2px solid #b92770;
+}
+.main-product .product_container .product-bottom .add-deduct-group .deduct,
+.main-product .product_container .product-bottom .add-deduct-group .quantity,
+.main-product .product_container .product-bottom .add-deduct-group .add {
+  text-align: center;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.5);
+}
+.main-product .product_container .product-bottom .add-deduct-group .deduct:hover,
+.main-product .product_container .product-bottom .add-deduct-group .add:hover {
+  cursor: pointer;
 }
 .main-product .product_container .product-bottom .btn-sm {
   margin: 0;

@@ -170,7 +170,6 @@ const getFilterDisplayName = (filterType, filterValue) => {
     },
     salesStatus: {
       true: "On Sale",
-      false: "Regular Price",
     },
   }
   return names[filterType]?.[filterValue] || filterValue
@@ -182,13 +181,23 @@ const resetFilters = () => {
     size: "all",
     salesStatus: "all",
   }
-  document.querySelectorAll(".filter-list-item").forEach((item) => {
-    if (item.dataset.filterValue === "all") {
-      item.classList.add("active")
-    } else {
-      item.classList.remove("active")
-    }
+  document.querySelectorAll(".filter-dropdown").forEach((dropdown) => {
+    const title = dropdown.querySelector(".filter-title")
+    const filterType =
+      dropdown.querySelector(".filter-list-item").dataset.filterType
+    title.innerHTML = `Choose option <img src="../assets/icons/arrow-down-menu.svg" alt="arrow down" />`
+    dropdown.querySelectorAll(".filter-list-item").forEach((item) => {
+      if (item.dataset.filterValue === "all") {
+        item.classList.add("active")
+      } else {
+        item.classList.remove("active")
+      }
+    })
   })
+  const salesCheckbox = document.querySelector(".sales-checkbox")
+  if (salesCheckbox) {
+    salesCheckbox.checked = false
+  }
   filteredProducts = []
   currentPage = 1
   renderPage(1)
@@ -209,9 +218,14 @@ const searchProducts = (searchTerm) => {
       (product.category && product.category.toLowerCase().includes(searchLower))
   )
   if (results.length > 0) {
-    filteredProducts = results
-    currentPage = 1
-    renderPage(1)
+    if (results.length === 1) {
+      const product = results[0]
+      window.location.href = `product-details.html?id=${product.id}`
+    } else {
+      filteredProducts = results
+      currentPage = 1
+      renderPage(1)
+    }
   } else {
     showNotFoundPopup(searchTerm)
   }
@@ -219,7 +233,7 @@ const searchProducts = (searchTerm) => {
 const showNotFoundPopup = (searchTerm) => {
   const popup = document.createElement("div")
   popup.className = "search-popup"
-  popup.innerHTML = `<div class="popup-overlay"></div><div class="popup-content"><h3>Product Not Found</h3><p>No products found for "<strong>${searchTerm}</strong>"</p><button class="popup-close-btn">OK</button></div>`
+  popup.innerHTML = `<div class="popup-overlay"></div><div class="popup-content"><h3>Product Not Found</h3><p>No products found for "<strong>${searchTerm}</strong>"</p><div class="popup-close-btn btn-sm">OK</div></div>`
   document.body.appendChild(popup)
   const closeBtn = popup.querySelector(".popup-close-btn")
   const overlay = popup.querySelector(".popup-overlay")
@@ -292,66 +306,106 @@ export const sorting = () => {
   })
 }
 export const filtering = () => {
-  const filterDropdowns = document.querySelectorAll(".filter-dropdown")
-  filterDropdowns.forEach((dropdown) => {
-    const title = dropdown.querySelector(".filter-title")
-    const list = dropdown.querySelector(".filter-list")
-    title.addEventListener("click", (e) => {
-      e.stopPropagation()
-      list.classList.toggle("open")
-    })
-    document.addEventListener("click", () => {
-      list.classList.remove("open")
-    })
-    const filterItems = dropdown.querySelectorAll(".filter-list-item")
-    filterItems.forEach((item) => {
-      item.addEventListener("click", () => {
-        const filterType = item.dataset.filterType
-        const filterValue = item.dataset.filterValue
-        filterItems.forEach((i) => i.classList.remove("active"))
-        item.classList.add("active")
-        activeFilters[filterType] = filterValue
-        list.classList.remove("open")
-        applyFilters()
-      })
-    })
-  })
-  document
-    .querySelector(".reset-filters-btn")
-    ?.addEventListener("click", resetFilters)
-  document.addEventListener("click", (e) => {
-    if (e.target.classList.contains("remove-filter")) {
-      const filterType = e.target.dataset.filterType
-      activeFilters[filterType] = "all"
-      const dropdown = document.querySelector(
-        `[data-filter-type="${filterType}"]`
-      )
-      if (dropdown) {
-        dropdown
-          .closest(".filter-list")
-          .querySelector('[data-filter-value="all"]')
-          .classList.add("active")
-      }
-      applyFilters()
-    }
-  })
   const searchInput = document.getElementById("searchModels")
   const searchWrapper = document.querySelector(".search-wrapper")
+  const searchIcon = searchWrapper?.querySelector(".search-icon")
   if (searchInput && searchWrapper) {
     searchInput.addEventListener("keypress", (e) => {
       if (e.key === "Enter") {
         searchProducts(searchInput.value)
       }
     })
-    searchWrapper.addEventListener("click", () => {
-      searchProducts(searchInput.value)
-    })
-    searchInput.addEventListener("input", (e) => {
-      if (!e.target.value.trim()) {
-        filteredProducts = []
-        currentPage = 1
-        renderPage(1)
+    if (searchIcon) {
+      searchIcon.addEventListener("click", () => {
+        searchProducts(searchInput.value)
+      })
+    }
+    searchWrapper.addEventListener("click", (e) => {
+      if (
+        e.target !== searchIcon &&
+        e.target !== searchIcon.querySelector("img")
+      ) {
+        searchInput.focus()
       }
     })
   }
+  const filterDropdowns = document.querySelectorAll(".filter-dropdown")
+  filterDropdowns.forEach((dropdown) => {
+    const title = dropdown.querySelector(".filter-title")
+    const list = dropdown.querySelector(".filter-list")
+    dropdown.addEventListener("mouseenter", () => {
+      list.style.display = "block"
+    })
+    dropdown.addEventListener("mouseleave", () => {
+      list.style.display = "none"
+    })
+    const filterItems = dropdown.querySelectorAll(".filter-list-item")
+    filterItems.forEach((item) => {
+      item.addEventListener("click", () => {
+        const filterType = item.dataset.filterType
+        const filterValue = item.dataset.filterValue
+        if (filterValue === "all") {
+          const defaultText =
+            filterType.charAt(0).toUpperCase() + filterType.slice(1)
+          title.innerHTML = `${defaultText} <img src="../assets/icons/arrow-down-menu.svg" alt="arrow down" />`
+        } else {
+          const displayName = getFilterDisplayName(filterType, filterValue)
+          title.innerHTML = `${displayName} <img src="../assets/icons/arrow-down-menu.svg" alt="arrow down" />`
+        }
+        filterItems.forEach((i) => i.classList.remove("active"))
+        item.classList.add("active")
+        activeFilters[filterType] = filterValue
+        applyFilters()
+        list.style.display = "none"
+      })
+    })
+  })
+  const salesCheckbox = document.querySelector(".sales-checkbox")
+  if (salesCheckbox) {
+    salesCheckbox.addEventListener("change", (e) => {
+      if (e.target.checked) {
+        activeFilters.salesStatus = "true"
+      } else {
+        activeFilters.salesStatus = "all"
+      }
+      applyFilters()
+    })
+  }
+  document
+    .querySelector(".reset-filters-btn")
+    ?.addEventListener("click", resetFilters)
+  document
+    .querySelector(".toggle-filters-btn")
+    ?.addEventListener("click", function () {
+      const filtersContainer = document.querySelector(".filters-container")
+      const isHidden = filtersContainer.style.display === "none"
+      filtersContainer.style.display = isHidden ? "flex" : "none"
+      this.textContent = isHidden ? "HIDE FILTERS" : "SHOW FILTERS"
+    })
+  document.addEventListener("click", (e) => {
+    if (e.target.classList.contains("remove-filter")) {
+      const filterType = e.target.dataset.filterType
+      activeFilters[filterType] = "all"
+      const dropdown = document.querySelector(
+        `.filter-dropdown [data-filter-type="${filterType}"][data-filter-value="all"]`
+      )
+      if (dropdown) {
+        const title = dropdown
+          .closest(".filter-dropdown")
+          .querySelector(".filter-title")
+        const filterTypeName =
+          filterType.charAt(0).toUpperCase() + filterType.slice(1)
+        title.innerHTML = `${filterTypeName} <img src="../assets/icons/arrow-down-menu.svg" alt="arrow down" />`
+        dropdown
+          .closest(".filter-list")
+          .querySelectorAll(".filter-list-item")
+          .forEach((item) => item.classList.remove("active"))
+        dropdown.classList.add("active")
+      }
+      if (filterType === "salesStatus" && salesCheckbox) {
+        salesCheckbox.checked = false
+      }
+      applyFilters()
+    }
+  })
 }

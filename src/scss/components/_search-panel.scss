@@ -128,19 +128,20 @@
   position: relative;
 }
 .filters-container {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: flex-start;
   gap: $spacing-sm;
   align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
   border-top: 1px solid $color-primary;
   border-bottom: 1px solid $color-primary;
-  padding: 1rem;
+  padding: 0.5rem;
 }
 .filter-dropdown {
   display: flex;
   flex-direction: column;
   flex: 1;
+  width: 100%;
   h6 {
     margin: 0.25rem;
     font-size: 0.95rem;
@@ -156,7 +157,7 @@
     padding: $spacing-s $spacing-sm;
     cursor: pointer;
     font-size: 0.75rem;
-    color: #717174;
+    color: rgba(114, 113, 116, 0.3);
     gap: $spacing-s;
     height: 33px;
     &:hover {
@@ -252,6 +253,63 @@
     color: $color-light;
   }
 }
+.sales-checkbox-filter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  height: 100%;
+}
+.sales-checkbox-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  cursor: pointer;
+  font-weight: 600;
+  margin: 0;
+  font-size: 0.95rem;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+}
+.sales-checkbox {
+  display: none;
+}
+.checkbox-custom {
+  width: 1rem;
+  height: 1rem;
+  border: 1px solid rgba(114, 113, 116, 0.3);
+  border-radius: 50%;
+  position: relative;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  order: 2;
+}
+.checkbox-custom::after {
+  content: "";
+  width: 0.75rem;
+  height: 0.75rem;
+  background: $color-primary;
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 0.3s ease;
+  transform: scale(0);
+}
+.sales-checkbox:checked + .checkbox-custom {
+  border-color: $color-primary;
+}
+.sales-checkbox:checked + .checkbox-custom::after {
+  opacity: 1;
+  transform: scale(1);
+}
+.checkbox-text {
+  order: 1;
+  font-weight: 600;
+}
 .search-popup {
   position: fixed;
   top: 0;
@@ -274,7 +332,6 @@
     position: relative;
     background: $color-light;
     padding: $spacing-lg;
-    border-radius: $border-radius-sm;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     max-width: 400px;
     width: 90%;
@@ -287,21 +344,10 @@
     p {
       color: $color-text-secondary;
       margin-bottom: $spacing-md;
-      line-height: 1.5;
     }
     .popup-close-btn {
-      @include to-flex-and-center;
-      background: $color-primary;
-      color: $color-light;
-      border: none;
-      border-radius: $border-radius-sm;
-      padding: $spacing-s $spacing-lg;
       cursor: pointer;
-      font-weight: bold;
       margin: 0 auto;
-      &:hover {
-        background: darken($color-primary, 10%);
-      }
     }
   }
 }
