@@ -26,9 +26,14 @@ const getProductData = async () => {
   return product
 }
 const getSelectedOptions = () => {
-  const size = document.getElementById("size")?.value.trim() || null
-  const color = document.getElementById("color")?.value.trim() || null
-  const category = document.getElementById("category")?.value.trim() || null
+  const sizeSelect = document.getElementById("size")
+  const colorSelect = document.getElementById("color")
+  const categorySelect = document.getElementById("category")
+
+  const size = sizeSelect ? sizeSelect.value : ""
+  const color = colorSelect ? colorSelect.value : ""
+  const category = categorySelect ? categorySelect.value : ""
+
   return { size, color, category }
 }
 const setupCounter = (product) => {
@@ -75,17 +80,7 @@ const setDataOnProductPage = async () => {
   // console.log(product)
   if (!product) return
   const cart = getCart()
-  const selectedOptions = getSelectedOptions()
-  const existingItem = cart.find(
-    (item) =>
-      item &&
-      item.id === product.id &&
-      item.size === selectedOptions.size &&
-      item.color === selectedOptions.color
-  )
-  if (existingItem) {
-    count = existingItem.quantity
-  }
+
   const imgContainer = document.querySelector(".product-img_container")
   imgContainer.innerHTML = `<img class="product-img-lg" src="${product.imageUrl}" alt="${product.name}">`
   const productDescription = document.querySelector(
@@ -155,14 +150,58 @@ const setDataOnProductPage = async () => {
       </div>
     </form>`
   productDescription.innerHTML = productDescriptioninnerHTML
-  const sizeInput = document.getElementById("size")
-  const colorInput = document.getElementById("color")
-  if (sizeInput) {
-    sizeInput.addEventListener("input", () => syncCartQuantity(product, count))
+
+  const selectedOptions = getSelectedOptions()
+  const existingItem = cart.find(
+    (item) =>
+      item &&
+      item.id === product.id &&
+      item.size === selectedOptions.size &&
+      item.color === selectedOptions.color
+  )
+
+  if (existingItem) {
+    count = existingItem.quantity
+    const quantityEl = productDescription.querySelector(".quantity p")
+    if (quantityEl) {
+      quantityEl.textContent = count
+    }
+
+    const sizeSelect = document.getElementById("size")
+    const colorSelect = document.getElementById("color")
+    const categorySelect = document.getElementById("category")
+
+    if (sizeSelect && existingItem.size) {
+      sizeSelect.value = existingItem.size
+    }
+    if (colorSelect && existingItem.color) {
+      colorSelect.value = existingItem.color
+    }
+    if (categorySelect && existingItem.category) {
+      categorySelect.value = existingItem.category
+    }
   }
-  if (colorInput) {
-    colorInput.addEventListener("input", () => syncCartQuantity(product, count))
+
+  const sizeSelect = document.getElementById("size")
+  const colorSelect = document.getElementById("color")
+  const categorySelect = document.getElementById("category")
+
+  if (sizeSelect) {
+    sizeSelect.addEventListener("change", () =>
+      syncCartQuantity(product, count)
+    )
   }
+  if (colorSelect) {
+    colorSelect.addEventListener("change", () =>
+      syncCartQuantity(product, count)
+    )
+  }
+  if (categorySelect) {
+    categorySelect.addEventListener("change", () =>
+      syncCartQuantity(product, count)
+    )
+  }
+
   setupCounter(product)
   addProductToCart(product)
 }
@@ -181,8 +220,6 @@ const addProductToCart = (product) => {
   if (!addToCartBtn) return
   addToCartBtn.addEventListener("click", () => {
     if (!product) return
-    const hasDiscount = product.salesStatus
-    const discountAmount = hasDiscount ? FIXED_DISCOUNT_AMOUNT : 0
     const selectedOptions = getSelectedOptions()
     const itemTotalBasedOnOriginalPrice = product.price * count
     const cartItem = {

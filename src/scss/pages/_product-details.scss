@@ -71,7 +71,6 @@
       }
     }
   }
-
   select {
     width: 100%;
     padding: 0.75rem 1rem;
@@ -81,36 +80,30 @@
     margin-bottom: 0.5rem;
     margin-top: 0.5rem;
   }
-
   select {
     &:focus {
       outline: none;
       border-color: $color-primary;
     }
   }
-
   select:required:invalid {
     color: $color-primary;
   }
-
   option[value=""][disabled] {
     display: none;
   }
   option {
-    color: #333;
+    color: $color-text;
   }
-
-  /* Product Tabs */
   .product-tabs {
-    margin: 40px 0;
+    margin: 3.5rem auto;
+    max-width: 80%;
   }
-
   .tabs-header {
     display: flex;
     border-bottom: 2px solid $color-devider;
     margin-bottom: 30px;
   }
-
   .tab-button {
     background: none;
     border: none;
@@ -121,7 +114,6 @@
     border-bottom: 3px solid transparent;
     transition: all 0.3s ease;
   }
-
   .tab-button.active {
     color: #b92770;
     border-bottom-color: #b92770;

@@ -2143,7 +2143,6 @@ main.cart .hero-about {
 }
 
 .main-product {
-  /* Product Tabs */
   /* Reviews Styles */
   /* Review Form */
 }
@@ -2255,11 +2254,12 @@ main.cart .hero-about {
 }
 
 .main-product option {
-  color: #333;
+  color: #000;
 }
 
 .main-product .product-tabs {
-  margin: 40px 0;
+  margin: 3.5rem auto;
+  max-width: 80%;
 }
 
 .main-product .tabs-header {
