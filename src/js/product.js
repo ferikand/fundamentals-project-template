@@ -59,8 +59,8 @@ const syncCartQuantity = (product, newCount) => {
     (item) =>
       item &&
       item.id === product.id &&
-      item.selectedSize === selectedOptions.size &&
-      item.selectedColor === selectedOptions.color
+      item.size === selectedOptions.size &&
+      item.color === selectedOptions.color
   )
   if (index !== -1) {
     cart[index].quantity = newCount
@@ -80,8 +80,8 @@ const setDataOnProductPage = async () => {
     (item) =>
       item &&
       item.id === product.id &&
-      item.selectedSize === selectedOptions.size &&
-      item.selectedColor === selectedOptions.color
+      item.size === selectedOptions.size &&
+      item.color === selectedOptions.color
   )
   if (existingItem) {
     count = existingItem.quantity
@@ -109,30 +109,36 @@ const setDataOnProductPage = async () => {
       <h6>${product.name}</h6>
       <b>$${product.price}</b>
       <div class="rating">${stars}</div>
-      <p>${productDescriptionText}</p>      
+      <p>${productDescriptionText}</p>
     </div>
-    <form action="">
+    <form class="product-options" action="">
       <label for="size">Size</label>
-      <input
-        type="text"
-        id="size"
-        name="size"
-        required
-      />
+      <select id="size" name="size" required>
+        <option value="">Select Size</option>
+        <option value="S">S</option>
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+      </select>
       <label for="color">Color</label>
-      <input
-        type="text"
-        id="color"
-        name="color"
-        required
-      />
+      <select id="color" name="color" required>
+        <option value="">Select Color</option>
+        <option value="red">Red</option>
+        <option value="blue">Blue</option>
+        <option value="green">Green</option>
+        <option value="black">Black</option>
+        <option value="grey">Grey</option>
+        <option value="yellow">Yellow</option>
+        <option value="pink">Pink</option>
+      </select>
       <label for="category">Category</label>
-      <input
-        type="text"
-        id="category"
-        name="category"
-        required
-      />
+      <select id="category" name="category" required>
+        <option value="">Select Category</option>
+        <option value="carry-ons">Carry-ons</option>
+        <option value="suitcases">Suitcases</option>
+        <option value="luggage-sets">Luggage Sets</option>
+        <option value="kids-luggage">Kids' Luggage</option>
+      </select>
       <div class="product-bottom">
         <div class="add-deduct-group">
           <div class="deduct">
@@ -164,6 +170,12 @@ const calculateTotal = (product, quantity) => {
   const itemTotalBasedOnOriginalPrice = product.price * quantity
   return itemTotalBasedOnOriginalPrice.toFixed(2)
 }
+const calculateDiscount = (product) => {
+  if (product.salesStatus && product.discountValue) {
+    return product.discountValue
+  }
+  return 0
+}
 const addProductToCart = (product) => {
   const addToCartBtn = document.getElementById("add-to-cart-btn")
   if (!addToCartBtn) return
@@ -175,25 +187,29 @@ const addProductToCart = (product) => {
     const itemTotalBasedOnOriginalPrice = product.price * count
     const cartItem = {
       ...product,
-      selectedSize: selectedOptions.size,
-      selectedColor: selectedOptions.color,
-      selectedCategory: selectedOptions.category,
+      size: selectedOptions.size,
+      color: selectedOptions.color,
+      category: selectedOptions.category,
       quantity: count,
       price: product.price.toFixed(2),
-      discountValue: discountAmount.toFixed(2),
+      discountValue: calculateDiscount(product).toFixed(2),
       total: itemTotalBasedOnOriginalPrice.toFixed(2),
     }
     // console.log(cartItem)
     const cart = getCart()
     const existingIndex = cart.findIndex(
       (item) =>
+        item &&
         item.id === cartItem.id &&
-        item.selectedSize === cartItem.selectedSize &&
-        item.selectedColor === cartItem.selectedColor
+        item.size === cartItem.size &&
+        item.color === cartItem.color
     )
     if (existingIndex !== -1) {
       cart[existingIndex].quantity = count
-      cart[existingIndex].total = calculateTotal(product, count)
+      cart[existingIndex].total = calculateTotal(
+        product,
+        cart[existingIndex].quantity
+      )
     } else {
       cart.push(cartItem)
     }
@@ -202,4 +218,5 @@ const addProductToCart = (product) => {
     document.querySelector(".quantity p").textContent = count
   })
 }
+
 export { setProductPage, setDataOnProductPage }

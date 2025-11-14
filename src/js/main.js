@@ -7,7 +7,12 @@ import {
 import { header, burger, initLoginModal } from "./header.js"
 import { footer } from "./footer.js"
 import { setProductPage, setDataOnProductPage } from "./product.js"
-import { updateCartBadge, getCartContent, initCartPage } from "./cart.js"
+import {
+  updateCartBadge,
+  getCartContent,
+  initCartPage,
+  // debugCart,
+} from "./cart.js"
 window.onload = async () => {
   try {
     header()
@@ -55,6 +60,7 @@ window.onload = async () => {
     }
     if (window.location.pathname.includes("cart.html")) {
       initCartPage()
+      // debugCart()
     } else {
       getCartContent()
       updateCartBadge()

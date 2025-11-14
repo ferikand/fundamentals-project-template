@@ -1,4 +1,4 @@
-const FIXED_DISCOUNT_AMOUNT = 20
+const FIXED_DISCOUNT_AMOUNT = 0
 const MIN_TOTAL_FOR_VOLUME_DISCOUNT = 3000
 const VOLUME_DISCOUNT_RATE = 0.1
 const SHIPPING_COST = 50
@@ -112,6 +112,16 @@ const getCartContent = () => {
   cart.forEach((product) => {
     const price = parseFloat(product.price.toString().replace("$", "")) || 0
     const itemTotal = (price * product.quantity).toFixed(2)
+
+    const optionsInfo = []
+    if (product.size && product.size !== "null")
+      optionsInfo.push(`Size: ${product.size}`)
+    if (product.color && product.color !== "null")
+      optionsInfo.push(`Color: ${product.color}`)
+    const optionsHtml =
+      optionsInfo.length > 0
+        ? `<div class="cart-product-options">${optionsInfo.join(", ")}</div>`
+        : "No options choosen"
     const tableRow = document.createElement("div")
     tableRow.innerHTML = `
     <div class="cart-item" data-id="${product.id}">
@@ -122,7 +132,7 @@ const getCartContent = () => {
             />
           </div>
           <div class="cart-product-name">${product.name}</div>
-          <div class="cart-price">$${product.price}</div>
+          <div class="cart-price">$${product.price}</div>          
           <div class="cart-quantity">
             <div class="cart-deduct" data-product-id="${product.id}">
               <p>-</p>
@@ -184,6 +194,20 @@ function initCartPage() {
   updateSummary()
   updateCartBadge()
 }
+// const debugCart = () => {
+//   const cart = getCart()
+//   console.log("Current cart structure:", cart)
+//   cart.forEach((item, index) => {
+//     console.log(`Item ${index}:`, {
+//       id: item.id,
+//       name: item.name,
+//       size: item.size,
+//       color: item.color,
+//       quantity: item.quantity,
+//       price: item.price,
+//     })
+//   })
+// }
 export {
   getCart,
   saveCart,
@@ -193,4 +217,5 @@ export {
   clearCart,
   checkout,
   initCartPage,
+  // debugCart,
 }

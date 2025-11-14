@@ -41,10 +41,154 @@
           class="contact-form-feedback_container product-description_container"
         ></div>
       </article>
-      <section class="products-selected container-wrapper">
-        <div class="section-header">
-          <h4>Selected Products</h4>
-          <p>Duis vestibulum elit vel neque pharetra</p>
+
+      <section class="product-tabs container-wrapper">
+        <div class="tabs-header">
+          <button
+            class="tab-button active"
+            data-tab="description"
+          >
+            Description
+          </button>
+          <button
+            class="tab-button"
+            data-tab="reviews"
+          >
+            Reviews
+          </button>
+        </div>
+
+        <div class="tabs-content">
+          <div
+            class="tab-pane active"
+            id="description-tab"
+          >
+            <div class="product-description-content">
+              <p>
+                Vestibulum commodo sapien non elit porttitor, vitae volutpat
+                nibh mollis. Nulla porta risus id neque tempor, in efficitur
+                justo imperdiet. Etiam a ex at ante tincidunt imperdiet. Nunc
+                congue ex vel nisl viverra, sit amet aliquet lectus ullamcorper.
+                Praesent luctus lacus non lorem elementum, eu tristique sapien
+                suscipit. Sed bibendum, ipsum nec viverra malesuada, erat nisi
+                sodales purus, eget hendrerit dui ligula eu enim. Ut non est
+                nisi. Pellentesque tristique pretium dolor eu commodo. Proin
+                iaculis nibh vitae lectus mollis bibendum. Quisque varius eget
+                urna sit amet luctus. Suspendisse potenti. Curabitur ac placerat
+                est, sit amet sodales risus. Pellentesque viverra dui auctor,
+                ullamcorper turpis pharetra, facilisis quam.
+              </p>
+              <p>
+                Proin iaculis nibh vitae lectus mollis bibendum. Quisque varius
+                eget urna sit amet luctus. Suspendisse potenti. Curabitur ac
+                placerat est, sit amet sodales risus. Pellentesque viverra dui
+                auctor, ullamcorper turpis pharetra, facilisis quam. Proin
+                iaculis nibh vitae lectus mollis bibendum.
+              </p>
+              <p>
+                Quisque varius eget urna sit amet luctus. Suspendisse potenti.
+                Curabitur ac placerat est, sit amet sodales risus. Pellentesque
+                viverra dui auctor, ullamcorper turpis pharetra, facilisis quam.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="tab-pane"
+            id="reviews-tab"
+          >
+            <div class="reviews-container">
+              <div class="existing-reviews">
+                <h4>Customer Reviews</h4>
+                <div
+                  class="reviews-list"
+                  id="reviews-list"
+                ></div>
+              </div>
+
+              <!-- Форма добавления отзыва -->
+              <div class="add-review-form">
+                <h4>Add Your Review</h4>
+                <form id="review-form">
+                  <div class="form-group">
+                    <label for="reviewer-name">Your Name *</label>
+                    <input
+                      type="text"
+                      id="reviewer-name"
+                      name="reviewer-name"
+                      required
+                    />
+                    <span
+                      class="error-message"
+                      id="name-error"
+                    ></span>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="reviewer-email">Your Email *</label>
+                    <input
+                      type="email"
+                      id="reviewer-email"
+                      name="reviewer-email"
+                      required
+                    />
+                    <span
+                      class="error-message"
+                      id="email-error"
+                    ></span>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="review-rating">Rating *</label>
+                    <div
+                      class="rating-stars"
+                      id="review-rating"
+                    ></div>
+                    <span
+                      class="error-message"
+                      id="rating-error"
+                    ></span>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="review-title">Review Title</label>
+                    <input
+                      type="text"
+                      id="review-title"
+                      name="review-title"
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="review-text">Your Review *</label>
+                    <textarea
+                      id="review-text"
+                      name="review-text"
+                      rows="5"
+                      required
+                    ></textarea>
+                    <span
+                      class="error-message"
+                      id="text-error"
+                    ></span>
+                  </div>
+
+                  <button
+                    type="submit"
+                    class="btn-sm"
+                  >
+                    Submit Review
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="products-selected incredible_wrapper container-wrapper">
+        <div class="section-header bottom-border">
+          <h4>You May Also Like</h4>
         </div>
         <div
           class="products-grid-wrapper selected-products-wrapper may-also-like"
