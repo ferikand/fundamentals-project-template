@@ -78,6 +78,7 @@ main.cart {
 .cart-lower_container {
   max-width: 80%;
   display: grid;
+  margin: auto;
   gap: 1rem;
   grid-template-columns: 1fr 1fr;
   @include mobile {
@@ -86,7 +87,6 @@ main.cart {
 }
 .cart-actions {
   display: flex;
-  // justify-content: space-between;
   flex-wrap: wrap;
   gap: 1rem;
   .btn-continue,

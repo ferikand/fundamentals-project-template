@@ -1,7 +1,6 @@
 import { getCart, saveCart, updateCartBadge } from "./cart.js"
 import { getProductsArr, generateStars } from "/src/js/home.js"
 let count = 1
-const FIXED_DISCOUNT_AMOUNT = 20
 const setProductPage = () => {
   let productId = ""
   const buttons = document.querySelectorAll(".view-product")
@@ -100,14 +99,15 @@ const setDataOnProductPage = async () => {
   `
   productDescription.innerHTML = ""
   const productDescriptioninnerHTML = `
-    <div class="contact-form-feedback_header product-description-header">
-      <h6>${product.name}</h6>
-      <b>$${product.price}</b>
-      <div class="rating">${stars}</div>
-      <p>${productDescriptionText}</p>
-    </div>
-    <form class="product-options" action="">
-      <label for="size">Size</label>
+  <div class="contact-form-feedback_header product-description-header">
+    <h6>${product.name}</h6>
+    <b>$${product.price}</b>
+    <div class="rating">${stars}</div>
+    <p>${productDescriptionText}</p>
+  </div>
+  <form class="product-options" action="">
+    <label for="size">Size</label>
+    <div class="product-select-wrapper">
       <select id="size" name="size" required>
         <option value="">Select Size</option>
         <option value="S">S</option>
@@ -115,7 +115,10 @@ const setDataOnProductPage = async () => {
         <option value="L">L</option>
         <option value="XL">XL</option>
       </select>
-      <label for="color">Color</label>
+    </div>
+    
+    <label for="color">Color</label>
+    <div class="product-select-wrapper">
       <select id="color" name="color" required>
         <option value="">Select Color</option>
         <option value="red">Red</option>
@@ -126,7 +129,10 @@ const setDataOnProductPage = async () => {
         <option value="yellow">Yellow</option>
         <option value="pink">Pink</option>
       </select>
-      <label for="category">Category</label>
+    </div>
+    
+    <label for="category">Category</label>
+    <div class="product-select-wrapper">
       <select id="category" name="category" required>
         <option value="">Select Category</option>
         <option value="carry-ons">Carry-ons</option>
@@ -134,21 +140,23 @@ const setDataOnProductPage = async () => {
         <option value="luggage-sets">Luggage Sets</option>
         <option value="kids-luggage">Kids' Luggage</option>
       </select>
-      <div class="product-bottom">
-        <div class="add-deduct-group">
-          <div class="deduct">
-            <p>-</p>
-          </div>
-          <div class="quantity">
-            <p>${count}</p>
-          </div>
-          <div class="add">
-            <p>+</p>
-          </div>
+    </div>
+    
+    <div class="product-bottom">
+      <div class="add-deduct-group">
+        <div class="deduct">
+          <p>-</p>
         </div>
-        <div id="add-to-cart-btn" class="btn-sm">Add To Cart</div>
+        <div class="quantity">
+          <p>${count}</p>
+        </div>
+        <div class="add">
+          <p>+</p>
+        </div>
       </div>
-    </form>`
+      <div id="add-to-cart-btn" class="btn-sm">Add To Cart</div>
+    </div>
+  </form>`
   productDescription.innerHTML = productDescriptioninnerHTML
 
   const selectedOptions = getSelectedOptions()
@@ -201,6 +209,20 @@ const setDataOnProductPage = async () => {
       syncCartQuantity(product, count)
     )
   }
+
+  const selectWrappers = document.querySelectorAll(".product-select-wrapper")
+
+  selectWrappers.forEach((wrapper) => {
+    const select = wrapper.querySelector("select")
+
+    select.addEventListener("focus", () => {
+      wrapper.classList.add("active")
+    })
+
+    select.addEventListener("blur", () => {
+      wrapper.classList.remove("active")
+    })
+  })
 
   setupCounter(product)
   addProductToCart(product)

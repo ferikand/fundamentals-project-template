@@ -18,6 +18,7 @@
   &:hover {
     background-color: variables.$color-dark;
     @include mixins.transform;
+    cursor: pointer;
   }
 }
 .btn-sm {

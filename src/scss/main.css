@@ -788,6 +788,7 @@ main .carousel .products-carousel .next {
 .btn-sm:hover {
   background-color: #000;
   transform: scale(1.015);
+  cursor: pointer;
 }
 
 .btn-sm {
@@ -1766,6 +1767,7 @@ main.cart .hero-about {
 .cart-lower_container {
   max-width: 80%;
   display: grid;
+  margin: auto;
   gap: 1rem;
   grid-template-columns: 1fr 1fr;
 }
@@ -1928,10 +1930,6 @@ main.cart .hero-about {
   font-weight: 500;
 }
 
-.main-product {
-  /* Reviews Styles */
-  /* Review Form */
-}
 .main-product .product_container {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -2004,6 +2002,7 @@ main.cart .hero-about {
 .main-product select {
   width: 100%;
   padding: 0.75rem 1rem;
+  padding-right: 2.5rem;
   border: 1px solid rgba(114, 113, 116, 0.2);
   font-size: 0.95rem;
   -webkit-appearance: none;
@@ -2018,6 +2017,28 @@ main.cart .hero-about {
 }
 .main-product select:required:invalid {
   color: #b92770;
+}
+.main-product .product-select-wrapper {
+  position: relative;
+  width: 100%;
+}
+.main-product .product-select-wrapper::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+  width: 0.75rem;
+  height: 0.75rem;
+  background-image: url("/src/assets/icons/arrow-down-menu.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+.main-product .product-select-wrapper.active::after {
+  transform: translateY(-50%) rotate(180deg);
 }
 .main-product option[value=""][disabled] {
   display: none;
