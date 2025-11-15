@@ -1,6 +1,211 @@
 import { getCart, saveCart, updateCartBadge } from "./cart.js"
 import { getProductsArr, generateStars } from "/src/js/home.js"
+import { validateEmail } from "./header.js"
 let count = 1
+const createInteractiveRatingStars = (container, initialRating = 0) => {
+  if (!container) return
+  const starsHTML = generateStars(initialRating)
+  const starsWrapper = document.createElement("div")
+  starsWrapper.className = "top-card_rating"
+  starsWrapper.innerHTML = starsHTML
+  const starImages = starsWrapper.querySelectorAll("img")
+  starImages.forEach((star, index) => {
+    star.style.cursor = "pointer"
+    star.addEventListener("click", () => {
+      setRating(index + 1)
+    })
+  })
+  container.innerHTML = ""
+  container.appendChild(starsWrapper)
+}
+let currentRating = 0
+const setRating = (rating) => {
+  currentRating = rating
+  const starsWrapper = document.querySelector("#review-rating .top-card_rating")
+  if (!starsWrapper) return
+  starsWrapper.innerHTML = generateStars(rating)
+  const starImages = starsWrapper.querySelectorAll("img")
+  starImages.forEach((star, index) => {
+    star.style.cursor = "pointer"
+    star.addEventListener("click", () => {
+      setRating(index + 1)
+    })
+  })
+}
+const getCurrentProductId = () => {
+  const urlParams = new URLSearchParams(window.location.search)
+  const productIdFromUrl = urlParams.get("id")
+  const productIdFromStorage = localStorage.getItem("selectedProductId")
+  return productIdFromUrl || productIdFromStorage
+}
+const loadExistingReviews = async () => {
+  const reviewsList = document.getElementById("reviews-list")
+  const reviewsCount = document.getElementById("reviews-count")
+  if (!reviewsList) return
+  const productId = getCurrentProductId()
+  if (!productId) {
+    reviewsList.innerHTML = "<p>Product not found.</p>"
+    if (reviewsCount) {
+      reviewsCount.textContent = "Product not found"
+    }
+    return
+  }
+  const storedReviews =
+    JSON.parse(localStorage.getItem(`reviews_${productId}`)) || []
+  const product = await getProductData()
+  const productName = product ? product.name : "Product"
+  if (reviewsCount) {
+    const reviewCount = storedReviews.length
+    reviewsCount.textContent = `${reviewCount} review${
+      reviewCount !== 1 ? "s" : ""
+    } for ${productName}`
+  }
+  reviewsList.innerHTML = ""
+  if (storedReviews.length === 0) {
+    reviewsList.innerHTML =
+      "<p>No reviews yet. Be the first to review this product!</p>"
+    return
+  }
+  storedReviews.sort((a, b) => new Date(b.date) - new Date(a.date))
+  storedReviews.forEach((review) => {
+    const reviewElement = document.createElement("div")
+    reviewElement.className = "review-item"
+    const reviewDate = new Date(review.date).toLocaleDateString("en-US", {
+      month: "long",
+      day: "numeric",
+      year: "numeric",
+    })
+    reviewElement.innerHTML = `
+      <div class="review-header">
+        ${
+          review.imageUrl
+            ? `<div class="review-image"><img src="${review.imageUrl}" alt="${review.name} image"/></div>`
+            : ""
+        }
+        <span class="reviewer-name">${review.name}</span>
+        <span class="review-date">/${reviewDate}</span>
+        <div class="top-card_rating">
+          ${generateStars(review.rating)}
+        </div>
+        </div>
+      </div>
+      <div class="review-text">${review.text}</div>
+    `
+    reviewsList.appendChild(reviewElement)
+  })
+}
+const validateReviewForm = (formData) => {
+  const errors = {}
+  if (!formData.name.trim()) {
+    errors.name = "Name is required"
+  }
+  if (!formData.email.trim()) {
+    errors.email = "Email is required"
+  } else if (!validateEmail(formData.email)) {
+    errors.email = "Please enter a valid email address"
+  }
+  if (!currentRating) {
+    errors.rating = "Please select a rating"
+  }
+  if (!formData.text.trim()) {
+    errors.text = "Review text is required"
+  }
+  return errors
+}
+const showValidationErrors = (errors) => {
+  document.querySelectorAll(".error-message").forEach((el) => {
+    el.classList.remove("show")
+  })
+  Object.keys(errors).forEach((field) => {
+    const errorElement = document.getElementById(`${field}-error`)
+    if (errorElement) {
+      errorElement.textContent = errors[field]
+      errorElement.classList.add("show")
+    }
+  })
+}
+const handleReviewSubmit = (e) => {
+  e.preventDefault()
+  const productId = getCurrentProductId()
+  // console.log(productId)
+  if (!productId) {
+    alert("Product not found")
+    return
+  }
+  const formData = {
+    name: document.getElementById("reviewer-name").value,
+    email: document.getElementById("reviewer-email").value,
+    text: document.getElementById("review-text").value,
+  }
+  const errors = validateReviewForm(formData)
+  if (Object.keys(errors).length > 0) {
+    showValidationErrors(errors)
+    return
+  }
+  showValidationErrors({})
+  const review = {
+    ...formData,
+    rating: currentRating,
+    date: new Date().toISOString(),
+    productId: productId,
+  }
+  const existingReviews =
+    JSON.parse(localStorage.getItem(`reviews_${productId}`)) || []
+  existingReviews.push(review)
+  localStorage.setItem(`reviews_${productId}`, JSON.stringify(existingReviews))
+  showSuccessMessage()
+  loadExistingReviews()
+  resetReviewForm()
+}
+const showSuccessMessage = () => {
+  let successMessage = document.querySelector(".success-message")
+  if (successMessage) {
+    successMessage.remove()
+  }
+  if (!successMessage) {
+    successMessage = document.createElement("div")
+    successMessage.className = "success-message"
+    document.querySelector(".add-review-form").prepend(successMessage)
+  }
+  successMessage.textContent =
+    "Thank you for your review! It has been submitted successfully."
+  successMessage.classList.add("show")
+  setTimeout(() => {
+    successMessage.classList.remove("show")
+  }, 5000)
+}
+const resetReviewForm = () => {
+  document.getElementById("review-form").reset()
+  currentRating = 0
+  createInteractiveRatingStars(document.getElementById("review-rating"), 0)
+}
+const initTabs = () => {
+  const tabButtons = document.querySelectorAll(".tab-button")
+  const tabPanes = document.querySelectorAll(".tab-pane")
+  tabButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const tabName = button.dataset.tab
+      tabButtons.forEach((btn) => btn.classList.remove("active"))
+      tabPanes.forEach((pane) => pane.classList.remove("active"))
+      button.classList.add("active")
+      document.getElementById(`${tabName}-tab`).classList.add("active")
+      if (tabName === "reviews") {
+        loadExistingReviews()
+      }
+    })
+  })
+}
+const initReviews = () => {
+  const reviewForm = document.getElementById("review-form")
+  const ratingContainer = document.getElementById("review-rating")
+  if (ratingContainer) {
+    createInteractiveRatingStars(ratingContainer, 0)
+  }
+  if (reviewForm) {
+    reviewForm.addEventListener("submit", handleReviewSubmit)
+  }
+  loadExistingReviews()
+}
 const setProductPage = () => {
   let productId = ""
   const buttons = document.querySelectorAll(".view-product")
@@ -9,30 +214,25 @@ const setProductPage = () => {
       e.preventDefault()
       const card = btn.closest("[data-id]")
       productId = card.dataset.id
-      // console.log(productId)
       localStorage.setItem("selectedProductId", productId)
       window.location.href = `../html/product.html?id=${productId}`
     })
   })
 }
 const getProductData = async () => {
-  // const productId = window.location.href.split("=")[1]
   const productId = localStorage.getItem("selectedProductId")
   if (!productId) return
   const productsArr = await getProductsArr()
   const product = productsArr.find((product) => product.id === productId)
-  // console.log(product)
   return product
 }
 const getSelectedOptions = () => {
   const sizeSelect = document.getElementById("size")
   const colorSelect = document.getElementById("color")
   const categorySelect = document.getElementById("category")
-
   const size = sizeSelect ? sizeSelect.value : ""
   const color = colorSelect ? colorSelect.value : ""
   const category = categorySelect ? categorySelect.value : ""
-
   return { size, color, category }
 }
 const setupCounter = (product) => {
@@ -71,15 +271,12 @@ const syncCartQuantity = (product, newCount) => {
     cart[index].total = calculateTotal(product, newCount)
     saveCart(cart)
     updateCartBadge()
-    // console.log(newCount, cart[index].total)
   }
 }
 const setDataOnProductPage = async () => {
   const product = await getProductData()
-  // console.log(product)
   if (!product) return
   const cart = getCart()
-
   const imgContainer = document.querySelector(".product-img_container")
   imgContainer.innerHTML = `<img class="product-img-lg" src="${product.imageUrl}" alt="${product.name}">`
   const productDescription = document.querySelector(
@@ -88,7 +285,7 @@ const setDataOnProductPage = async () => {
   if (!imgContainer || !productDescription) return
   const stars = generateStars(product.rating)
   const productDescriptionText = `
-  The new Global Explorer Max Comfort Suitcase Pro is a bold reimagining of 
+  The new Global Explorer Max Comfort Suitcase Pro is a bold reimagining of 
   travel essentials, designed to elevate every journey. Made with at least 30% 
   recycled materials, its lightweight yet impact-resistant shell combines eco-
   conscious innovation with rugged durability.<br/>
@@ -116,7 +313,6 @@ const setDataOnProductPage = async () => {
         <option value="XL">XL</option>
       </select>
     </div>
-    
     <label for="color">Color</label>
     <div class="product-select-wrapper">
       <select id="color" name="color" required>
@@ -130,7 +326,6 @@ const setDataOnProductPage = async () => {
         <option value="pink">Pink</option>
       </select>
     </div>
-    
     <label for="category">Category</label>
     <div class="product-select-wrapper">
       <select id="category" name="category" required>
@@ -141,7 +336,6 @@ const setDataOnProductPage = async () => {
         <option value="kids-luggage">Kids' Luggage</option>
       </select>
     </div>
-    
     <div class="product-bottom">
       <div class="add-deduct-group">
         <div class="deduct">
@@ -158,7 +352,6 @@ const setDataOnProductPage = async () => {
     </div>
   </form>`
   productDescription.innerHTML = productDescriptioninnerHTML
-
   const selectedOptions = getSelectedOptions()
   const existingItem = cart.find(
     (item) =>
@@ -167,18 +360,15 @@ const setDataOnProductPage = async () => {
       item.size === selectedOptions.size &&
       item.color === selectedOptions.color
   )
-
   if (existingItem) {
     count = existingItem.quantity
     const quantityEl = productDescription.querySelector(".quantity p")
     if (quantityEl) {
       quantityEl.textContent = count
     }
-
     const sizeSelect = document.getElementById("size")
     const colorSelect = document.getElementById("color")
     const categorySelect = document.getElementById("category")
-
     if (sizeSelect && existingItem.size) {
       sizeSelect.value = existingItem.size
     }
@@ -189,11 +379,9 @@ const setDataOnProductPage = async () => {
       categorySelect.value = existingItem.category
     }
   }
-
   const sizeSelect = document.getElementById("size")
   const colorSelect = document.getElementById("color")
   const categorySelect = document.getElementById("category")
-
   if (sizeSelect) {
     sizeSelect.addEventListener("change", () =>
       syncCartQuantity(product, count)
@@ -209,23 +397,20 @@ const setDataOnProductPage = async () => {
       syncCartQuantity(product, count)
     )
   }
-
   const selectWrappers = document.querySelectorAll(".product-select-wrapper")
-
   selectWrappers.forEach((wrapper) => {
     const select = wrapper.querySelector("select")
-
     select.addEventListener("focus", () => {
       wrapper.classList.add("active")
     })
-
     select.addEventListener("blur", () => {
       wrapper.classList.remove("active")
     })
   })
-
   setupCounter(product)
   addProductToCart(product)
+  initTabs()
+  initReviews()
 }
 const calculateTotal = (product, quantity) => {
   const itemTotalBasedOnOriginalPrice = product.price * quantity
@@ -254,7 +439,6 @@ const addProductToCart = (product) => {
       discountValue: calculateDiscount(product).toFixed(2),
       total: itemTotalBasedOnOriginalPrice.toFixed(2),
     }
-    // console.log(cartItem)
     const cart = getCart()
     const existingIndex = cart.findIndex(
       (item) =>
@@ -277,5 +461,4 @@ const addProductToCart = (product) => {
     document.querySelector(".quantity p").textContent = count
   })
 }
-
 export { setProductPage, setDataOnProductPage }

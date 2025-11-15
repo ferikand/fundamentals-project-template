@@ -291,4 +291,4 @@ const resetForm = () => {
     eyeIcon.alt = "Show password"
   }
 }
-export { header, burger, initLoginModal }
+export { header, burger, initLoginModal, validateEmail }

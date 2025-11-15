@@ -41,23 +41,26 @@
           class="contact-form-feedback_container product-description_container"
         ></div>
       </article>
-
       <section class="product-tabs container-wrapper">
         <div class="tabs-header">
           <button
             class="tab-button active"
             data-tab="description"
           >
-            Description
+            DESCRIPTION
           </button>
           <button
             class="tab-button"
             data-tab="reviews"
           >
-            Reviews
+            REVIEWS
           </button>
+          <button
+            class="tab-button"
+            data-tab="shipping"
+          >
+            SHIPPING POLICY
         </div>
-
         <div class="tabs-content">
           <div
             class="tab-pane active"
@@ -92,79 +95,43 @@
               </p>
             </div>
           </div>
-
           <div
             class="tab-pane"
             id="reviews-tab"
           >
             <div class="reviews-container">
               <div class="existing-reviews">
-                <h4>Customer Reviews</h4>
+                <h4
+                  class="reviews-count"
+                  id="reviews-count"
+                ></h4>
                 <div
                   class="reviews-list"
                   id="reviews-list"
                 ></div>
               </div>
-
-              <!-- Форма добавления отзыва -->
               <div class="add-review-form">
-                <h4>Add Your Review</h4>
+                <h4>Add Review</h4>
+                <p class="privacy-notice">
+                  Your email address won't be shared with anybody. Required
+                  fields have the symbol *
+                </p>
                 <form id="review-form">
-                  <div class="form-group">
-                    <label for="reviewer-name">Your Name *</label>
-                    <input
-                      type="text"
-                      id="reviewer-name"
-                      name="reviewer-name"
-                      required
-                    />
-                    <span
-                      class="error-message"
-                      id="name-error"
-                    ></span>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="reviewer-email">Your Email *</label>
-                    <input
-                      type="email"
-                      id="reviewer-email"
-                      name="reviewer-email"
-                      required
-                    />
-                    <span
-                      class="error-message"
-                      id="email-error"
-                    ></span>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="review-rating">Rating *</label>
-                    <div
-                      class="rating-stars"
-                      id="review-rating"
-                    ></div>
+                  <div class="form-group rating-group">
+                    <label>RATE PRODUCT</label>
+                    <div id="review-rating"></div>
                     <span
                       class="error-message"
                       id="rating-error"
                     ></span>
                   </div>
-
                   <div class="form-group">
-                    <label for="review-title">Review Title</label>
-                    <input
-                      type="text"
-                      id="review-title"
-                      name="review-title"
-                    />
-                  </div>
-
-                  <div class="form-group">
-                    <label for="review-text">Your Review *</label>
+                    <label for="review-text">Your Review </label>
                     <textarea
                       id="review-text"
                       name="review-text"
                       rows="5"
+                      placeholder="Write your review here..."
                       required
                     ></textarea>
                     <span
@@ -172,12 +139,53 @@
                       id="text-error"
                     ></span>
                   </div>
-
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="reviewer-name">Your Name </label>
+                      <input
+                        type="text"
+                        id="reviewer-name"
+                        name="reviewer-name"
+                        placeholder="Enter your name"
+                        required
+                      />
+                      <span
+                        class="error-message"
+                        id="name-error"
+                      ></span>
+                    </div>
+                    <div class="form-group">
+                      <label for="reviewer-email">Your Email </label>
+                      <input
+                        type="email"
+                        id="reviewer-email"
+                        name="reviewer-email"
+                        placeholder="Enter your email"
+                        required
+                      />
+                      <span
+                        class="error-message"
+                        id="email-error"
+                      ></span>
+                    </div>
+                  </div>
+                  <div class="form-group checkbox-group">
+                    <label class="checkbox-label">
+                      <input
+                        type="checkbox"
+                        id="save-info"
+                        name="save-info"
+                      />
+                      <span class="checkmark"></span>
+                      Save my name, email, and website in this browser for when
+                      I leave another comment.
+                    </label>
+                  </div>
                   <button
                     type="submit"
-                    class="btn-sm"
+                    class="btn-sm submit-review-btn"
                   >
-                    Submit Review
+                    SUBMIT
                   </button>
                 </form>
               </div>
@@ -185,7 +193,6 @@
           </div>
         </div>
       </section>
-
       <section class="products-selected incredible_wrapper container-wrapper">
         <div class="section-header bottom-border">
           <h4>You May Also Like</h4>
