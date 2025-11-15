@@ -4,16 +4,6 @@
   justify-content: center;
   align-items: center;
 }
-@mixin tablet {
-  @media (max-width: 768px) {
-    @content;
-  }
-}
-@mixin mobile {
-  @media (max-width: 480px) {
-    @content;
-  }
-}
 @mixin transition {
   transition: all 0.3s ease;
 }
@@ -90,6 +80,9 @@
   @include tablet {
     grid-template-columns: 1fr;
   }
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
   max-width: 80%;
   min-height: 18.75rem;
   margin: 3rem auto;
@@ -121,5 +114,57 @@
       font-size: 1rem;
       font-weight: 200;
     }
+  }
+}
+// @mixin tablet {
+//   @media (max-width: 768px) {
+//     @content;
+//   }
+// }
+// @mixin mobile {
+//   @media (max-width: 480px) {
+//     @content;
+//   }
+// }
+// Mobile first approach - max-width
+@mixin mobile {
+  @media (max-width: #{$breakpoint-mobile - 1px}) {
+    @content;
+  }
+}
+// Tablet - between mobile and desktop
+@mixin tablet {
+  @media (min-width: #{$breakpoint-mobile}) and (max-width: #{$breakpoint-tablet - 1px}) {
+    @content;
+  }
+}
+// Desktop - tablet and larger
+@mixin desktop {
+  @media (min-width: #{$breakpoint-tablet}) {
+    @content;
+  }
+}
+// Large desktop
+@mixin large-desktop {
+  @media (min-width: #{$breakpoint-desktop}) {
+    @content;
+  }
+}
+// Tablet and down
+@mixin tablet-down {
+  @media (max-width: #{$breakpoint-tablet - 1px}) {
+    @content;
+  }
+}
+// Tablet and up
+@mixin tablet-up {
+  @media (min-width: #{$breakpoint-mobile}) {
+    @content;
+  }
+}
+// Desktop and up
+@mixin desktop-up {
+  @media (min-width: #{$breakpoint-tablet}) {
+    @content;
   }
 }

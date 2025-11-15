@@ -23,12 +23,12 @@ main .products-selected.container-wrapper .selected-products-wrapper {
   gap: 1rem;
 }
 
-@media (max-width: 768px) {
+@media (min-width: 768px) and (max-width: 1023px) {
   main .products-selected.container-wrapper .selected-products-wrapper {
     grid-template-columns: repeat(2, 1fr);
   }
 }
-@media (max-width: 480px) {
+@media (max-width: 767px) {
   main .products-selected.container-wrapper .selected-products-wrapper {
     grid-template-columns: 1fr;
   }
@@ -49,12 +49,12 @@ main .products-selected.container-wrapper .new-products-wrapper {
   gap: 1rem;
 }
 
-@media (max-width: 768px) {
+@media (min-width: 768px) and (max-width: 1023px) {
   main .products-selected.container-wrapper .new-products-wrapper {
     grid-template-columns: repeat(2, 1fr);
   }
 }
-@media (max-width: 480px) {
+@media (max-width: 767px) {
   main .products-selected.container-wrapper .new-products-wrapper {
     grid-template-columns: 1fr;
   }
@@ -72,7 +72,12 @@ main .offer {
   background-repeat: no-repeat;
 }
 
-@media (max-width: 768px) {
+@media (min-width: 768px) and (max-width: 1023px) {
+  main .offer {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 767px) {
   main .offer {
     grid-template-columns: 1fr;
   }
@@ -135,7 +140,7 @@ main .grateful-customers .grateful-customers_container {
   grid-template-columns: repeat(3, 1fr);
 }
 
-@media (max-width: 480px) {
+@media (max-width: 767px) {
   main .grateful-customers .grateful-customers_container {
     grid-template-columns: 1fr;
   }

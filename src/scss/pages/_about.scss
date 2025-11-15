@@ -1,6 +1,6 @@
 @use "../abstracts/mixins" as *;
 @use "../abstracts/variables" as *;
-main {
+main.about {
   .hero-about {
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
       url("../../src/assets/icons/about-us-bg.png");
@@ -64,19 +64,23 @@ main {
   }
   .hero-advantages-lower-wrapper {
     background-color: $color-light;
-    // position: relative;
     padding-top: 3.5rem;
     .hero-lower_container {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      // position: relative;
       max-width: 80%;
+      @include mobile {
+        grid-template-columns: 1fr;
+      }
       & {
         margin: 0 auto;
         box-shadow: 0 1.25rem 2rem rgba(0, 0, 0, 0.08);
         background-color: $color-light;
       }
       @include tablet {
+        grid-template-columns: 1fr;
+      }
+      @include mobile {
         grid-template-columns: 1fr;
       }
       .hero-lower-left_container {
@@ -155,9 +159,16 @@ main {
       }
       .incredible-card {
         img {
-          margin-bottom: 1.5rem;
+          display: flex;
+          flex-direction: column;
+          align-content: center;
+          margin: 1.5rem auto;
+          justify-content: center;
         }
       }
     }
+  }
+  .see-all-models {
+    display: inline-block;
   }
 }

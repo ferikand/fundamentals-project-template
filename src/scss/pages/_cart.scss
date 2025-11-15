@@ -31,7 +31,7 @@ main.cart {
   // max-height: 4rem;
   display: grid;
   grid-template-columns: 2fr 3fr 1fr 2fr 1fr 1fr;
-  padding: 1rem;
+  padding: 1rem auto;
   border-bottom: 1px solid #ddd;
   justify-items: center;
   align-items: center;
@@ -87,6 +87,7 @@ main.cart {
 }
 .cart-actions {
   display: flex;
+  align-content: flex-start;
   flex-wrap: wrap;
   gap: 1rem;
   .btn-continue,

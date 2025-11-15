@@ -18,7 +18,7 @@ header .heading {
   padding-bottom: 0.25rem;
 }
 
-@media (max-width: 768px) {
+@media (min-width: 768px) and (max-width: 1023px) {
   header .heading {
     width: 100%;
     padding: 0.25rem;
@@ -51,7 +51,7 @@ header .heading .socials {
   grid-template-columns: repeat(3, 1fr);
 }
 
-@media (max-width: 768px) {
+@media (min-width: 768px) and (max-width: 1023px) {
   header .heading .socials {
     display: none;
   }
@@ -77,7 +77,7 @@ header .heading .user-section {
   gap: 0.5rem;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 767px) {
   header .heading .user-section {
     grid-template-columns: 1fr;
   }
@@ -130,7 +130,7 @@ header .nav-container nav {
   align-items: center;
 }
 
-@media (max-width: 768px) {
+@media (min-width: 768px) and (max-width: 1023px) {
   header .nav-container nav {
     display: none;
   }
