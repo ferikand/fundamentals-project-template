@@ -122,13 +122,7 @@ const setActiveMenuItem = () => {
   const menuItemsArr = Array.from(menuItems)
   let currentPage = window.location.href.split(".html")[0].split("/")
   currentPage = currentPage[currentPage.length - 1]
-  // console.log(currentPage)
-  menuItemsArr.forEach((item) =>
-    item.addEventListener("click", (e) => {
-      menuItemsArr.forEach((item) => item.classList.remove("active"))
-      console.log(e.target.classList)
-    })
-  )
+  menuItemsArr.forEach((item) => item.classList.remove("active"))
   document.querySelector(`.${currentPage}`).classList.add("active")
 }
 const burger = () => {
