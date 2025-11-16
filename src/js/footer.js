@@ -63,10 +63,10 @@ const footer = () => {
         <div class="footer-lower-left_container">
           <div class="footer-lower-left-upper_container">
             <div class="footer-lower-left-upper_element">
-              <h6>About Us</h6>
-              <a href="#"> <p>Organisation</p> </a
-              ><a href="#"> <p>Partners</p> </a
-              ><a href="#">
+             <a href="/src/html/about.html"> <h6>About Us</h6></a>
+              <a href="/src/html/about.html"> <p>Organisation</p> </a
+              ><a href="/src/html/about.html"> <p>Partners</p> </a
+              ><a href="/src/html/about.html">
                 <p>Clients</p>
               </a>
             </div>
@@ -100,7 +100,7 @@ const footer = () => {
         </div>
         <div class="footer-lower-right_container">
           <div class="footer-lower-right-upper">
-            <h6>Contact Us</h6>
+          <a href="/src/html/contact.html">  <h6>Contact Us</h6></a>
             <p>
               Bendum dolor eu varius. Morbi fermentum velitsodales egetonec.
               volutpat orci. Sed ipsum felis, tristique egestas et, convallis ac

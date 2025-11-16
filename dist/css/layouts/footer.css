@@ -102,6 +102,11 @@ footer .footer-lower_container .footer-lower-left_container .footer-lower-left-u
   color: #000;
 }
 
+footer .footer-lower_container .footer-lower-right_container .footer-lower-right-upper a {
+  text-decoration: none;
+  color: #000;
+}
+
 footer .footer-lower_container .footer-lower-right_container .footer-lower-right-lower {
   display: grid;
   grid-template-columns: 1fr 1fr;
