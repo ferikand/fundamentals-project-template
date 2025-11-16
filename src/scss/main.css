@@ -187,11 +187,6 @@ header .nav-container nav {
   justify-content: center;
   align-items: center;
 }
-@media (min-width: 768px) and (max-width: 1023px) {
-  header .nav-container nav {
-    display: none;
-  }
-}
 @media (max-width: 767px) {
   header .nav-container nav {
     display: none;
@@ -424,6 +419,10 @@ footer .footer-lower_container .footer-lower-left_container .footer-lower-left-u
   }
 }
 footer .footer-lower_container .footer-lower-left_container .footer-lower-left-upper_container .footer-lower-left-upper_element a {
+  text-decoration: none;
+  color: #000;
+}
+footer .footer-lower_container .footer-lower-right_container .footer-lower-right-upper a {
   text-decoration: none;
   color: #000;
 }
@@ -801,6 +800,7 @@ main .carousel .products-carousel .carousel-track .product-card {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 @media (min-width: 768px) and (max-width: 1023px) {
   main .carousel .products-carousel .carousel-track .product-card {
@@ -820,6 +820,17 @@ main .carousel .products-carousel .carousel-track .product-card p {
 }
 main .carousel .products-carousel .carousel-track .product-card p {
   font-weight: 200;
+}
+main .carousel .products-carousel .carousel-track .product-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+main .carousel .products-carousel .carousel-track .product-card:hover::before {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.8) 100%);
+}
+main .carousel .products-carousel .carousel-track .product-card:hover h4,
+main .carousel .products-carousel .carousel-track .product-card:hover p {
+  transform: translateY(-5px);
 }
 main .carousel .products-carousel .carousel-btn {
   position: absolute;

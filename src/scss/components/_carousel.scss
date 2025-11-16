@@ -27,6 +27,7 @@ main {
           background-repeat: no-repeat;
           background-size: cover;
           background-position: center;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
           @include tablet {
             flex-basis: calc((100% - 1rem) / 2);
           }
@@ -41,6 +42,24 @@ main {
           }
           p {
             font-weight: 200;
+          }
+          &:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3),
+              0 0 0 1px rgba(255, 255, 255, 0.1);
+
+            &::before {
+              background: linear-gradient(
+                to bottom,
+                rgba(0, 0, 0, 0.5) 0%,
+                rgba(0, 0, 0, 0.2) 50%,
+                rgba(0, 0, 0, 0.8) 100%
+              );
+            }
+            h4,
+            p {
+              transform: translateY(-5px);
+            }
           }
         }
       }
