@@ -79,7 +79,7 @@ const renderProductsByRange = (
                                <p class="top-card_price">$${product.price}</p>
                            </div>`
     } else {
-      newCard.innerHTML = `${discountBadge} 
+      newCard.innerHTML = `${discountBadge}
                            <img src=${product.imageUrl}  alt=${product.name}/>
                            <div class="selected-product-card_info__container">
                                <p>${product.name}</p>

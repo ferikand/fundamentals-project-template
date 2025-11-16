@@ -55,14 +55,6 @@
       grid-template-columns: 3fr 5fr;
       gap: 0.5rem;
       margin-top: 1rem;
-      @include mobile {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-        .add-deduct-group {
-          max-width: 150px;
-          margin: 0 auto;
-        }
-      }
       .add-deduct-group {
         max-height: 40px;
         display: grid;

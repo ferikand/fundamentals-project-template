@@ -6,11 +6,12 @@ main.about {
       url("../../src/assets/icons/about-us-bg.png");
     background-size: cover;
     background-repeat: no-repeat;
-    padding: 6rem;
+    padding: 6rem auto;
     @include to-flex-and-center;
     .hero-upper_container {
-      margin: 0 auto;
+      margin: 3.5rem auto;
       max-width: 80%;
+      text-align: center;
       h2,
       p {
         color: $color-light;
@@ -21,7 +22,7 @@ main.about {
       }
       p {
         font-weight: 200;
-        margin: 0;
+        margin: 0 auto;
       }
       @include to-flex-and-center;
       flex-direction: column;
@@ -65,13 +66,13 @@ main.about {
   .hero-advantages-lower-wrapper {
     background-color: $color-light;
     padding-top: 3.5rem;
+    @include mobile {
+      width: 100%;
+    }
     .hero-lower_container {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       max-width: 80%;
-      @include mobile {
-        grid-template-columns: 1fr;
-      }
       & {
         margin: 0 auto;
         box-shadow: 0 1.25rem 2rem rgba(0, 0, 0, 0.08);
@@ -82,11 +83,12 @@ main.about {
       }
       @include mobile {
         grid-template-columns: 1fr;
+        max-width: 100%;
       }
       .hero-lower-left_container {
         padding: 2rem;
         justify-content: center;
-        width: 100%;
+        max-width: 100%;
         .person {
           display: flex;
           align-self: self-start;
@@ -111,13 +113,13 @@ main.about {
         background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
           url("../../src/assets/icons/road-suitcase.png");
         background-size: cover;
+        background-position: center;
         background-repeat: no-repeat;
-        width: 100%;
         display: flex;
         flex-direction: column;
         justify-content: center;
         padding: 2rem;
-        width: 100%;
+        max-width: 100%;
         h4,
         p,
         a {
@@ -130,7 +132,6 @@ main.about {
       }
     }
   }
-
   .offer {
     @include offer-section;
   }
@@ -148,7 +149,6 @@ main.about {
         margin: 0;
       }
     }
-
     .incredibles_container {
       max-width: 100%;
       display: grid;

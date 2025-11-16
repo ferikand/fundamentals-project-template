@@ -6,11 +6,65 @@
       url("../../src/assets/icons/contact-hero-bg.png");
     background-size: cover;
     background-repeat: no-repeat;
+    padding: 6rem auto;
+    @include to-flex-and-center;
+    .hero-upper_container {
+      margin: 3.5rem auto;
+      max-width: 80%;
+      text-align: center;
+      h2,
+      p {
+        color: $color-light;
+      }
+      h2 {
+        font-size: 3.5rem;
+        margin-bottom: 1.5rem;
+      }
+      p {
+        font-weight: 200;
+        margin: 0 auto;
+      }
+      @include to-flex-and-center;
+      flex-direction: column;
+    }
+  }
+  .advantages {
+    max-width: 80%;
+    margin: 3rem auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    @include tablet {
+      grid-template-columns: 1fr 1fr;
+    }
+    @include mobile {
+      grid-template-columns: 1fr;
+    }
+    .advatage {
+      height: 100%;
+      @include to-flex-and-center;
+      height: 100%;
+      justify-content: flex-start;
+      flex-direction: column;
+      padding: $spacing-sm;
+      .advatage-description_container {
+        justify-content: center;
+        align-items: center;
+        h4 {
+          text-align: center;
+          font-size: 1.25rem;
+          margin: $spacing-sm;
+        }
+        p {
+          font-size: 0.95rem;
+          text-align: center;
+          font-weight: 400;
+        }
+      }
+    }
   }
 }
 .contact-form_container {
   max-width: 80%;
-
   margin: 3rem auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -19,6 +73,7 @@
   @include mobile {
     grid-template-columns: 1fr;
     box-shadow: none;
+    max-width: 100%;
   }
   .contact-form-img_container {
     display: flex;
@@ -45,9 +100,8 @@
     .contact-form-feedback_header {
       margin-bottom: 3.5rem;
       h6 {
-        margin-top: 0;
-        // margin-bottom: 1.5rem;
         font-size: 1.5rem;
+        margin-top: 0.5rem;
       }
     }
   }

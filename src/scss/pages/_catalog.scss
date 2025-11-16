@@ -14,21 +14,25 @@
   display: grid;
   gap: $spacing-sm;
   grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
   @include tablet {
     grid-template-columns: 1fr 1fr;
     padding-right: 0;
   }
   @include mobile {
     grid-template-columns: 1fr;
+    max-width: 100%;
   }
 }
-
 .pagination-wrapper {
   max-width: 100%;
   // margin: 4rem auto 2rem;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   justify-content: center;
+  @include mobile {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 .pagination {
   display: inline-flex;

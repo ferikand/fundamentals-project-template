@@ -53,15 +53,14 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: $spacing-sm;
+  justify-items: center;
   @include tablet {
     grid-template-columns: repeat(2, 1fr);
   }
-
   @include mobile {
     grid-template-columns: 1fr;
   }
 }
-
 @mixin product-section-layout($header-class, $container-class) {
   max-width: 80%;
   margin: 0 auto;
@@ -82,6 +81,7 @@
   }
   @include mobile {
     grid-template-columns: 1fr;
+    max-width: 100%;
   }
   max-width: 80%;
   min-height: 18.75rem;
@@ -116,16 +116,6 @@
     }
   }
 }
-// @mixin tablet {
-//   @media (max-width: 768px) {
-//     @content;
-//   }
-// }
-// @mixin mobile {
-//   @media (max-width: 480px) {
-//     @content;
-//   }
-// }
 // Mobile first approach - max-width
 @mixin mobile {
   @media (max-width: #{$breakpoint-mobile - 1px}) {

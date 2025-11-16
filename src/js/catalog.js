@@ -379,7 +379,7 @@ export const filtering = () => {
     ?.addEventListener("click", function () {
       const filtersContainer = document.querySelector(".filters-container")
       const isHidden = filtersContainer.style.display === "none"
-      filtersContainer.style.display = isHidden ? "flex" : "none"
+      filtersContainer.style.display = isHidden ? "grid" : "none"
       this.textContent = isHidden ? "HIDE FILTERS" : "SHOW FILTERS"
     })
   document.addEventListener("click", (e) => {

@@ -2,6 +2,7 @@
 @use "../abstracts/variables" as *;
 .selected-product-card {
   position: relative;
+  max-width: 19rem;
   .sale-badge {
     position: absolute;
     top: 1rem;

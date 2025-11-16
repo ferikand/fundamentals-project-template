@@ -3,22 +3,30 @@
 .search-panel {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  @include mobile {
-    grid-template-columns: 1fr;
-  }
   gap: $spacing-sm;
   max-width: 80%;
   margin: 0 auto $spacing-sm;
   align-items: center;
+  @include mobile {
+    grid-template-columns: 1fr;
+    max-width: 100%;
+  }
   .search-panel-left {
     align-items: center;
     display: flex;
     justify-content: space-between;
     gap: $spacing-md;
+    // max-width: 100%;
+    min-width: 0;
+    // flex-direction: row;
   }
+}
+.main_container {
+  max-width: 80%;
 }
 .sort-dropdown-container {
   position: relative;
+  // max-width: 100%;
   .sort-title {
     @include to-flex-and-center;
     background: $color-light;
@@ -36,6 +44,9 @@
       @include icon-size(0.75rem);
       @include transition;
     }
+    @include mobile {
+      max-width: 100%;
+    }
   }
   .sort-list {
     position: absolute;
@@ -45,7 +56,6 @@
     background-color: $color-light;
     border: 1px solid $color-devider;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    min-width: 12.5rem;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -66,6 +76,9 @@
         font-weight: bold;
       }
     }
+    @include mobile {
+      max-width: 100%;
+    }
   }
   &:hover .sort-list {
     display: block;
@@ -84,6 +97,7 @@
   height: 33px;
   @include mobile {
     width: 100%;
+    margin: 0.5rem auto;
   }
   .search-input {
     background: transparent;
@@ -93,7 +107,7 @@
     font-weight: 500;
     color: $color-text-secondary;
     cursor: pointer;
-    width: 100%;
+    // max-width: 100%;
     height: 100%;
     &::placeholder {
       color: $color-devider;
@@ -102,7 +116,7 @@
       outline: none;
     }
     @include mobile {
-      width: 100%;
+      max-width: 100%;
     }
   }
   .search-icon {
@@ -126,8 +140,10 @@
 .filters-panel {
   padding: 0 0 $spacing-md 0;
   position: relative;
+  max-width: 100%;
 }
 .filters-container {
+  max-width: 100%;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   justify-items: flex-start;
@@ -136,6 +152,10 @@
   border-top: 1px solid $color-primary;
   border-bottom: 1px solid $color-primary;
   padding: 0.5rem;
+  @include mobile {
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+  }
 }
 .filter-dropdown {
   display: flex;
@@ -208,6 +228,11 @@
   display: flex;
   gap: 1rem;
   font-size: 0.95rem;
+  flex-wrap: wrap;
+  @include mobile {
+    flex-direction: column;
+    align-content: flex-end;
+  }
 }
 .toggle-filters-btn,
 .reset-filters-btn {
@@ -215,6 +240,11 @@
   font-size: 0.95rem;
   max-height: 33px;
   margin-top: 2.5rem;
+}
+.toggle-filters-btn {
+  @include mobile {
+    margin-top: 0;
+  }
 }
 .active-filters {
   position: absolute;

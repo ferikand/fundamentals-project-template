@@ -18,6 +18,7 @@ main .products-selected.container-wrapper .selected-products-wrapper {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
+  justify-items: center;
 }
 @media (min-width: 768px) and (max-width: 1023px) {
   main .products-selected.container-wrapper .selected-products-wrapper {
@@ -41,6 +42,7 @@ main .products-selected.container-wrapper .new-products-wrapper {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
+  justify-items: center;
 }
 @media (min-width: 768px) and (max-width: 1023px) {
   main .products-selected.container-wrapper .new-products-wrapper {
@@ -72,6 +74,7 @@ main .offer {
 @media (max-width: 767px) {
   main .offer {
     grid-template-columns: 1fr;
+    max-width: 100%;
   }
 }
 main .offer .offer-left,

@@ -7,11 +7,20 @@ main.cart {
     background-size: cover;
     background-repeat: no-repeat;
     padding: 2rem;
+    text-align: center;
+    .hero-upper_container {
+      h2 {
+        color: $color-light;
+      }
+    }
   }
 }
 .cart-outer {
   max-width: 80%;
   margin: 3rem auto;
+  @include mobile {
+    max-width: 100%;
+  }
 }
 .cart-container {
   width: 100%;
@@ -26,6 +35,11 @@ main.cart {
   text-transform: uppercase;
   font-size: 0.9em;
   justify-items: center;
+  @include mobile {
+    gap: 0.25rem;
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+  }
 }
 .cart-item {
   // max-height: 4rem;
