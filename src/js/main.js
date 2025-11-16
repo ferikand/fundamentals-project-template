@@ -4,7 +4,13 @@ import {
   slides,
   generateStars,
 } from "./home.js"
-import { header, burger, initLoginModal, validateEmail } from "./header.js"
+import {
+  header,
+  burger,
+  initLoginModal,
+  validateEmail,
+  setActiveMenuItem,
+} from "./header.js"
 import { footer } from "./footer.js"
 import { setProductPage, setDataOnProductPage } from "./product.js"
 import {
@@ -16,6 +22,7 @@ import {
 window.onload = async () => {
   try {
     header()
+    setActiveMenuItem()
     validateEmail()
     footer()
     burger()

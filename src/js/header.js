@@ -47,20 +47,20 @@ const header = () => {
         <nav>
           <ul>
             <li>
-              <a href="../html/home.html" class="navLink active">Home</a>
+              <a href="../html/home.html" class="navLink home">Home</a>
             </li>
             <li>
-              <a href="../html/catalog.html" class="navLink">
+              <a href="../html/catalog.html" class="navLink catalog">
                 Catalog<span>
                   <img src="../assets/icons/arrow-down-menu.svg" alt="arrow down"/>
                 </span>
               </a>
             </li>
             <li>
-              <a href="../html/about.html" class="navLink">About Us</a>
+              <a href="../html/about.html" class="navLink about">About Us</a>
             </li>
             <li>
-              <a href="../html/contact.html" class="navLink">Contact Us</a>
+              <a href="../html/contact.html" class="navLink contact">Contact Us</a>
             </li>
           </ul>
         </nav>
@@ -116,6 +116,20 @@ const header = () => {
       </div>
     </div>`
   header.innerHTML = headerInnerHtml
+}
+const setActiveMenuItem = () => {
+  const menuItems = document.querySelectorAll(".navLink")
+  const menuItemsArr = Array.from(menuItems)
+  let currentPage = window.location.href.split(".html")[0].split("/")
+  currentPage = currentPage[currentPage.length - 1]
+  // console.log(currentPage)
+  menuItemsArr.forEach((item) =>
+    item.addEventListener("click", (e) => {
+      menuItemsArr.forEach((item) => item.classList.remove("active"))
+      console.log(e.target.classList)
+    })
+  )
+  document.querySelector(`.${currentPage}`).classList.add("active")
 }
 const burger = () => {
   const burger = document.querySelector(".burger")
@@ -291,4 +305,5 @@ const resetForm = () => {
     eyeIcon.alt = "Show password"
   }
 }
-export { header, burger, initLoginModal, validateEmail }
+
+export { header, burger, initLoginModal, validateEmail, setActiveMenuItem }
