@@ -12,7 +12,11 @@ import {
   setActiveMenuItem,
 } from "./header.js"
 import { footer } from "./footer.js"
-import { setProductPage, setDataOnProductPage } from "./product.js"
+import {
+  setProductPage,
+  setDataOnProductPage,
+  initAddToCartBtns,
+} from "./product.js"
 import {
   updateCartBadge,
   getCartContent,
@@ -44,6 +48,7 @@ window.onload = async () => {
     renderProductsByRange(".top-best-sets", "top-card_container", 20, 25)
     slides()
     generateStars()
+    initAddToCartBtns()
     if (document.querySelector(".catalog_container")) {
       const { pagination, sorting, filtering } = await import("./catalog.js")
       pagination()

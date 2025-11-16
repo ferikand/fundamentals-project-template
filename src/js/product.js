@@ -208,12 +208,12 @@ const initReviews = () => {
 }
 const setProductPage = () => {
   let productId = ""
-  const buttons = document.querySelectorAll(".view-product")
-  buttons?.forEach((btn) => {
-    btn.addEventListener("click", (e) => {
+  const cards = document.querySelectorAll(".selected-product-card")
+  cards?.forEach((card) => {
+    card.addEventListener("click", (e) => {
       e.preventDefault()
-      const card = btn.closest("[data-id]")
-      productId = card.dataset.id
+      const cardSelected = card.closest("[data-id]")
+      productId = cardSelected.dataset.id
       localStorage.setItem("selectedProductId", productId)
       window.location.href = `../html/product.html?id=${productId}`
     })
@@ -275,6 +275,7 @@ const syncCartQuantity = (product, newCount) => {
 }
 const setDataOnProductPage = async () => {
   const product = await getProductData()
+  const productId = localStorage.getItem("selectedProductId")
   if (!product) return
   const cart = getCart()
   const imgContainer = document.querySelector(".product-img_container")
@@ -422,43 +423,104 @@ const calculateDiscount = (product) => {
   }
   return 0
 }
-const addProductToCart = (product) => {
+const initAddToCartBtns = async () => {
+  document.addEventListener("click", async (e) => {
+    if (e.target.classList.contains("add-to-cart")) {
+      e.preventDefault()
+      // e.stopPropagation()
+      const addToCartButton = e.target
+      // console.log(addToCartButton.closest(".selected-product-card").dataset.id)
+      const productId = addToCartButton.closest(".selected-product-card")
+        .dataset.id
+      const productsArr = await getProductsArr()
+      const product = productsArr.find((p) => (p.id = productId))
+      // console.log(product)
+      // console.log(addToCartButton)
+      // elem = addToCartButton
+      addProductToCart(product, addToCartButton)
+    }
+  })
   const addToCartBtn = document.getElementById("add-to-cart-btn")
-  if (!addToCartBtn) return
-  addToCartBtn.addEventListener("click", () => {
-    if (!product) return
-    const selectedOptions = getSelectedOptions()
-    const itemTotalBasedOnOriginalPrice = product.price * count
-    const cartItem = {
-      ...product,
-      size: selectedOptions.size,
-      color: selectedOptions.color,
-      category: selectedOptions.category,
-      quantity: count,
-      price: product.price.toFixed(2),
-      discountValue: calculateDiscount(product).toFixed(2),
-      total: itemTotalBasedOnOriginalPrice.toFixed(2),
-    }
-    const cart = getCart()
-    const existingIndex = cart.findIndex(
-      (item) =>
-        item &&
-        item.id === cartItem.id &&
-        item.size === cartItem.size &&
-        item.color === cartItem.color
-    )
-    if (existingIndex !== -1) {
-      cart[existingIndex].quantity = count
-      cart[existingIndex].total = calculateTotal(
-        product,
-        cart[existingIndex].quantity
-      )
-    } else {
-      cart.push(cartItem)
-    }
-    saveCart(cart)
-    updateCartBadge()
-    document.querySelector(".quantity p").textContent = count
+  document.addEventListener("click", async (e) => {
+    const productId = localStorage.getItem("selectedProductId")
+    const productsArr = await getProductsArr()
+    const product = productsArr.find((p) => p.id === productId)
+    if (e.target === addToCartBtn) addProductToCart(product, addToCartBtn)
   })
 }
-export { setProductPage, setDataOnProductPage }
+
+// const addToCart = (productId, quantity = 1, options = {}) => {
+//   const selectedOptions = getSelectedOptions()
+//   const itemTotalBasedOnOriginalPrice = product.price * count
+//   const cartItem = {
+//     ...product,
+//     size: selectedOptions.size,
+//     color: selectedOptions.color,
+//     category: selectedOptions.category,
+//     quantity: count,
+//     price: product.price.toFixed(2),
+//     discountValue: calculateDiscount(product).toFixed(2),
+//     total: itemTotalBasedOnOriginalPrice.toFixed(2),
+//   }
+//   const cart = getCart()
+//   const existingIndex = cart.findIndex(
+//     (item) =>
+//       item &&
+//       item.id === cartItem.id &&
+//       item.size === cartItem.size &&
+//       item.color === cartItem.color
+//   )
+//   if (existingIndex !== -1) {
+//     cart[existingIndex].quantity = count
+//     cart[existingIndex].total = calculateTotal(
+//       product,
+//       cart[existingIndex].quantity
+//     )
+//   } else {
+//     cart.push(cartItem)
+//   }
+//   saveCart(cart)
+//   updateCartBadge()
+//   document.querySelector(".quantity p").textContent = count
+// }
+
+const addProductToCart = (product, button) => {
+  const addToCartBtn = document.getElementById("add-to-cart-btn")
+  if (!button) return
+  // button.addEventListener("click", () => {
+  if (!product) return
+  const selectedOptions = getSelectedOptions()
+  const itemTotalBasedOnOriginalPrice = product.price * count
+  const cartItem = {
+    ...product,
+    size: selectedOptions.size,
+    color: selectedOptions.color,
+    category: selectedOptions.category,
+    quantity: count,
+    price: product.price.toFixed(2),
+    discountValue: calculateDiscount(product).toFixed(2),
+    total: itemTotalBasedOnOriginalPrice.toFixed(2),
+  }
+  const cart = getCart()
+  const existingIndex = cart.findIndex(
+    (item) =>
+      item &&
+      item.id === cartItem.id &&
+      item.size === cartItem.size &&
+      item.color === cartItem.color
+  )
+  if (existingIndex !== -1) {
+    cart[existingIndex].quantity = count
+    cart[existingIndex].total = calculateTotal(
+      product,
+      cart[existingIndex].quantity
+    )
+  } else {
+    cart.push(cartItem)
+  }
+  saveCart(cart)
+  updateCartBadge()
+  document.querySelector(".quantity p").textContent = count
+  // })
+}
+export { setProductPage, setDataOnProductPage, initAddToCartBtns }

@@ -119,11 +119,13 @@ const header = () => {
 }
 const setActiveMenuItem = () => {
   const menuItems = document.querySelectorAll(".navLink")
-  const menuItemsArr = Array.from(menuItems)
-  let currentPage = window.location.href.split(".html")[0].split("/")
-  currentPage = currentPage[currentPage.length - 1]
-  menuItemsArr.forEach((item) => item.classList.remove("active"))
-  document.querySelector(`.${currentPage}`).classList.add("active")
+  if (menuItems) {
+    const menuItemsArr = Array.from(menuItems)
+    let currentPage = window.location.href.split(".html")[0].split("/")
+    currentPage = currentPage[currentPage.length - 1]
+    menuItemsArr?.forEach((item) => item.classList.remove("active"))
+    document.querySelector(`.${currentPage}`)?.classList.add("active")
+  }
 }
 const burger = () => {
   const burger = document.querySelector(".burger")
