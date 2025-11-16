@@ -55,6 +55,16 @@ const renderProductsByRange = (
   if (limit !== null && limit > 0) {
     productsToRender = productsToRender.slice(0, limit)
   }
+  const randomTexts = [
+    "Premium Quality",
+    "Travel in Style",
+    "Durable & Lightweight",
+    "Smart Design",
+    "Perfect Companion",
+    "Adventure Ready",
+    "Luxury Travel",
+    "Best in Class",
+  ]
   productsToRender.forEach((product, i) => {
     // if (from !== -1 && !(i >= from && i <= until)) return
     const hasDiscount = product.salesStatus
@@ -66,8 +76,10 @@ const renderProductsByRange = (
     newCard.dataset.id = product.id
     newCard.classList.add(cardClass, `image-${i + 1}`)
     if (cardClass === "product-card") {
+      const randomText =
+        randomTexts[Math.floor(Math.random() * randomTexts.length)]
       newCard.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${product.imageUrl})`
-      newCard.innerHTML = `<h4>${product.id}</h4><p>${product.name}</p>`
+      newCard.innerHTML = `<p>${randomText}</p><h4>${product.id}</h4><p>${product.name}</p>`
     } else if (cardClass === "top-card_container") {
       const stars = generateStars(product.rating)
       newCard.innerHTML = `<div class="top-card-img_container">
