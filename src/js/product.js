@@ -423,69 +423,42 @@ const calculateDiscount = (product) => {
   }
   return 0
 }
+
 const initAddToCartBtns = async () => {
   document.addEventListener("click", async (e) => {
     if (e.target.classList.contains("add-to-cart")) {
       e.preventDefault()
-      // e.stopPropagation()
+      e.stopPropagation()
+
       const addToCartButton = e.target
-      // console.log(addToCartButton.closest(".selected-product-card").dataset.id)
-      const productId = addToCartButton.closest(".selected-product-card")
-        .dataset.id
+      const productCard = addToCartButton.closest(".selected-product-card")
+
+      if (!productCard) return
+
+      const productId = productCard.dataset.id
       const productsArr = await getProductsArr()
-      const product = productsArr.find((p) => (p.id = productId))
-      // console.log(product)
-      // console.log(addToCartButton)
-      // elem = addToCartButton
-      addProductToCart(product, addToCartButton)
+      const product = productsArr.find((p) => p.id === productId)
+
+      if (product) {
+        addProductToCart(product, addToCartButton)
+      }
+    }
+    if (e.target.id === "add-to-cart-btn") {
+      e.preventDefault()
+      e.stopPropagation()
+
+      const productId = localStorage.getItem("selectedProductId")
+      const productsArr = await getProductsArr()
+      const product = productsArr.find((p) => p.id === productId)
+
+      if (product) {
+        addProductToCart(product, e.target)
+      }
     }
   })
-  const addToCartBtn = document.getElementById("add-to-cart-btn")
-  document.addEventListener("click", async (e) => {
-    const productId = localStorage.getItem("selectedProductId")
-    const productsArr = await getProductsArr()
-    const product = productsArr.find((p) => p.id === productId)
-    if (e.target === addToCartBtn) addProductToCart(product, addToCartBtn)
-  })
 }
-
-// const addToCart = (productId, quantity = 1, options = {}) => {
-//   const selectedOptions = getSelectedOptions()
-//   const itemTotalBasedOnOriginalPrice = product.price * count
-//   const cartItem = {
-//     ...product,
-//     size: selectedOptions.size,
-//     color: selectedOptions.color,
-//     category: selectedOptions.category,
-//     quantity: count,
-//     price: product.price.toFixed(2),
-//     discountValue: calculateDiscount(product).toFixed(2),
-//     total: itemTotalBasedOnOriginalPrice.toFixed(2),
-//   }
-//   const cart = getCart()
-//   const existingIndex = cart.findIndex(
-//     (item) =>
-//       item &&
-//       item.id === cartItem.id &&
-//       item.size === cartItem.size &&
-//       item.color === cartItem.color
-//   )
-//   if (existingIndex !== -1) {
-//     cart[existingIndex].quantity = count
-//     cart[existingIndex].total = calculateTotal(
-//       product,
-//       cart[existingIndex].quantity
-//     )
-//   } else {
-//     cart.push(cartItem)
-//   }
-//   saveCart(cart)
-//   updateCartBadge()
-//   document.querySelector(".quantity p").textContent = count
-// }
-
 const addProductToCart = (product, button) => {
-  const addToCartBtn = document.getElementById("add-to-cart-btn")
+  // const addToCartBtn = document.getElementById("add-to-cart-btn")
   if (!button) return
   // button.addEventListener("click", () => {
   if (!product) return
@@ -520,7 +493,10 @@ const addProductToCart = (product, button) => {
   }
   saveCart(cart)
   updateCartBadge()
-  document.querySelector(".quantity p").textContent = count
+  const quantityEl = document.querySelector(".quantity p")
+  if (quantityEl) {
+    quantityEl.textContent = count
+  }
   // })
 }
 export { setProductPage, setDataOnProductPage, initAddToCartBtns }

@@ -1220,6 +1220,7 @@ form textarea {
 .selected-product-card:hover {
   box-shadow: 0 1.25rem 2rem rgba(193, 199, 212, 0.72);
   transform: scale(1.015);
+  cursor: pointer;
 }
 
 .icon {

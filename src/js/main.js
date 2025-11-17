@@ -48,7 +48,7 @@ window.onload = async () => {
     renderProductsByRange(".top-best-sets", "top-card_container", 20, 25)
     slides()
     generateStars()
-    initAddToCartBtns()
+    await initAddToCartBtns()
     if (document.querySelector(".catalog_container")) {
       const { pagination, sorting, filtering } = await import("./catalog.js")
       pagination()
@@ -70,6 +70,7 @@ window.onload = async () => {
         true,
         4
       )
+      setProductPage()
     }
     if (window.location.pathname.includes("cart.html")) {
       initCartPage()

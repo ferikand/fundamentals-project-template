@@ -38,5 +38,6 @@
   &:hover {
     box-shadow: 0 1.25rem 2rem rgba(193, 199, 212, 0.72);
     @include transform;
+    cursor: pointer;
   }
 }
