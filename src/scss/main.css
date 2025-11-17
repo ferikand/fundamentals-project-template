@@ -765,6 +765,9 @@ main .hero-lower-wrapper .hero-lower_container .hero-lower-right_container p {
 main .hero-lower-wrapper .hero-lower_container .hero-lower-right_container p {
   font-weight: 200;
 }
+main .hero-lower-wrapper .hero-lower_container .hero-lower-right_container a {
+  width: 174px;
+}
 
 main .carousel {
   max-width: 80%;
@@ -1430,6 +1433,7 @@ form textarea {
 }
 
 .filters-actions {
+  margin-top: 2.5rem;
   display: flex;
   gap: 1rem;
   font-size: 0.95rem;
@@ -1439,6 +1443,7 @@ form textarea {
   .filters-actions {
     flex-direction: column;
     align-content: flex-end;
+    margin-top: 3.5rem;
   }
 }
 
@@ -1447,7 +1452,7 @@ form textarea {
   cursor: pointer;
   font-size: 0.95rem;
   max-height: 33px;
-  margin-top: 2.5rem;
+  margin-top: 0;
 }
 
 @media (max-width: 767px) {

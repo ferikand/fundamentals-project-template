@@ -1,5 +1,5 @@
 import { getCart, saveCart, updateCartBadge } from "./cart.js"
-import { getProductsArr, generateStars } from "/src/js/home.js"
+import { getProductsArr, generateStars } from "./home.js"
 import { validateEmail } from "./header.js"
 let count = 1
 const createInteractiveRatingStars = (container, initialRating = 0) => {
@@ -211,7 +211,7 @@ const setProductPage = () => {
       productId = cardSelected.dataset.id
       localStorage.setItem("selectedProductId", productId)
       count = 1
-      window.location.href = `../html/product.html?id=${productId}`
+      window.location.href = `/src/html/product.html?id=${productId}`
     })
   })
 }

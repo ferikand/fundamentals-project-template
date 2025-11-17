@@ -17,20 +17,12 @@ const initContactForm = () => {
   replaceSubmitButton(contactForm, submitButton)
 }
 const createErrorContainers = () => {
-  console.log("Initializing contact form...")
   const contactForm = document.querySelector(".contact-form_container form")
-  if (!contactForm) {
-    console.error("Contact form not found!")
-    return
-  }
-  console.log("Contact form found")
+  if (!contactForm) return
   const fields = ["your_name", "your_email", "topic", "message"]
   fields.forEach((fieldId) => {
     const field = document.getElementById(fieldId)
-    if (!field) {
-      console.error(`Field with id ${fieldId} not found`)
-      return
-    }
+    if (!field) return
     if (!document.getElementById(`${fieldId}-error`)) {
       const errorSpan = document.createElement("span")
       errorSpan.className = "error-message"

@@ -225,6 +225,7 @@
   }
 }
 .filters-actions {
+  margin-top: 2.5rem;
   display: flex;
   gap: 1rem;
   font-size: 0.95rem;
@@ -232,6 +233,7 @@
   @include mobile {
     flex-direction: column;
     align-content: flex-end;
+    margin-top: 3.5rem;
   }
 }
 .toggle-filters-btn,
@@ -239,7 +241,7 @@
   cursor: pointer;
   font-size: 0.95rem;
   max-height: 33px;
-  margin-top: 2.5rem;
+  margin-top: 0;
 }
 .toggle-filters-btn {
   @include mobile {

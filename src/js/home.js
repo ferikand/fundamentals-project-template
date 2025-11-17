@@ -1,6 +1,6 @@
 const products = []
 const fetchProducts = async () => {
-  const response = await fetch("../assets/data.json")
+  const response = await fetch("/src/assets/data.json")
   const result = await response.json()
   return result
 }
@@ -15,9 +15,9 @@ const getProductsArr = async () => {
 }
 function generateStars(ratingValue) {
   const filledStarHtml =
-    '<img src="../assets/icons/star-filled.svg"alt="stat filled"/>'
+    '<img src="/src/assets/icons/star-filled.svg"alt="stat filled"/>'
   const emptyStarHtml =
-    '<img src="../assets/icons/star-empty.svg"alt="stat filled"/>'
+    '<img src="/src/assets/icons/star-empty.svg"alt="stat filled"/>'
   const starsHtml =
     filledStarHtml.repeat(ratingValue) + emptyStarHtml.repeat(5 - ratingValue)
   return starsHtml

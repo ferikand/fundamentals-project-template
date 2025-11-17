@@ -8,7 +8,7 @@ const footer = () => {
               <div>
                 <div>
                   <img
-                    src="../assets/icons/footer-img-1.svg"
+                    src="/src/assets/icons/footer-img-1.svg"
                     alt="globe icon"
                   />
                 </div>
@@ -21,7 +21,7 @@ const footer = () => {
               <div>
                 <div>
                   <img
-                    src="../assets/icons/footer-img-2.svg"
+                    src="/src/assets/icons/footer-img-2.svg"
                     alt="globe icon"
                   />
                 </div>
@@ -34,7 +34,7 @@ const footer = () => {
               <div>
                 <div>
                   <img
-                    src="../assets/icons/footer-img-3.svg"
+                    src="/src/assets/icons/footer-img-3.svg"
                     alt="globe icon"
                   />
                 </div>
@@ -47,7 +47,7 @@ const footer = () => {
               <div>
                 <div>
                   <img
-                    src="../assets/icons/footer-img-4.svg"
+                    src="/src/assets/icons/footer-img-4.svg"
                     alt="globe icon"
                   />
                 </div>
@@ -111,7 +111,7 @@ const footer = () => {
             <div class="footer-contact-element">
               <div>
                 <img
-                  src="../assets/icons/phone-icon.png"
+                  src="/src/assets/icons/phone-icon.png"
                   alt="phone icon"
                 />
               </div>
@@ -122,7 +122,7 @@ const footer = () => {
             <div class="footer-contact-element">
               <div>
                 <img
-                  src="../assets/icons/mail-icon (1).png"
+                  src="/src/assets/icons/mail-icon (1).png"
                   alt="phone icon"
                 />
               </div>
@@ -133,7 +133,7 @@ const footer = () => {
             <div class="footer-contact-element">
               <div>
                 <img
-                  src="../assets/icons/hours-icon.png"
+                  src="/src/assets/icons/hours-icon.png"
                   alt="phone icon"
                 />
               </div>
@@ -145,7 +145,7 @@ const footer = () => {
             <div class="footer-contact-element">
               <div>
                 <img
-                  src="../assets/icons/map-pin-icon.png"
+                  src="/src/assets/icons/map-pin-icon.png"
                   alt="phone icon"
                 />
               </div>

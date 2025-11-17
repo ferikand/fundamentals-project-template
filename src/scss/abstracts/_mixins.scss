@@ -116,43 +116,36 @@
     }
   }
 }
-// Mobile first approach - max-width
 @mixin mobile {
   @media (max-width: #{$breakpoint-mobile - 1px}) {
     @content;
   }
 }
-// Tablet - between mobile and desktop
 @mixin tablet {
   @media (min-width: #{$breakpoint-mobile}) and (max-width: #{$breakpoint-tablet - 1px}) {
     @content;
   }
 }
-// Desktop - tablet and larger
 @mixin desktop {
   @media (min-width: #{$breakpoint-tablet}) {
     @content;
   }
 }
-// Large desktop
 @mixin large-desktop {
   @media (min-width: #{$breakpoint-desktop}) {
     @content;
   }
 }
-// Tablet and down
 @mixin tablet-down {
   @media (max-width: #{$breakpoint-tablet - 1px}) {
     @content;
   }
 }
-// Tablet and up
 @mixin tablet-up {
   @media (min-width: #{$breakpoint-mobile}) {
     @content;
   }
 }
-// Desktop and up
 @mixin desktop-up {
   @media (min-width: #{$breakpoint-tablet}) {
     @content;
