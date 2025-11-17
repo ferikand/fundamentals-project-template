@@ -1,5 +1,6 @@
 import { renderProductsByRange } from "./home.js"
 import { products } from "./home.js"
+import { setDataOnProductPage } from "./product.js"
 let catalogueProducts = []
 let filteredProducts = []
 let currentPage = 1
@@ -220,7 +221,9 @@ const searchProducts = (searchTerm) => {
   if (results.length > 0) {
     if (results.length === 1) {
       const product = results[0]
-      window.location.href = `product-details.html?id=${product.id}`
+      localStorage.setItem("selectedProductId", product.id)
+      window.location.href = `product.html?id=${product.id}`
+      setDataOnProductPage()
     } else {
       filteredProducts = results
       currentPage = 1
