@@ -75,8 +75,7 @@ const loadExistingReviews = async () => {
       day: "numeric",
       year: "numeric",
     })
-    reviewElement.innerHTML = `
-      <div class="review-header">
+    reviewElement.innerHTML = `<div class="review-header">
         ${
           review.imageUrl
             ? `<div class="review-image"><img src="${review.imageUrl}" alt="${review.name} image"/></div>`
@@ -89,8 +88,7 @@ const loadExistingReviews = async () => {
         </div>
         </div>
       </div>
-      <div class="review-text">${review.text}</div>
-    `
+      <div class="review-text">${review.text}</div>    `
     reviewsList.appendChild(reviewElement)
   })
 }
@@ -128,10 +126,7 @@ const handleReviewSubmit = (e) => {
   e.preventDefault()
   const productId = getCurrentProductId()
   // console.log(productId)
-  if (!productId) {
-    alert("Product not found")
-    return
-  }
+  if (!productId) return
   const formData = {
     name: document.getElementById("reviewer-name").value,
     email: document.getElementById("reviewer-email").value,
@@ -276,7 +271,7 @@ const syncCartQuantity = (product, newCount) => {
 }
 const setDataOnProductPage = async () => {
   const product = await getProductData()
-  const productId = localStorage.getItem("selectedProductId")
+  // const productId = localStorage.getItem("selectedProductId")
   if (!product) return
   const cart = getCart()
   const imgContainer = document.querySelector(".product-img_container")

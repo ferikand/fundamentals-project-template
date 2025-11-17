@@ -1,16 +1,13 @@
 import { validateEmail } from "./header.js"
 const initContactForm = () => {
   const contactForm = document.querySelector(".contact-form_container form")
-  if (!contactForm) {
-    console.warn("Contact form not found")
-    return
-  }
+  if (!contactForm) return
   const nameInput = document.getElementById("your_name")
   const emailInput = document.getElementById("your_email")
   const topicInput = document.getElementById("topic")
   const messageInput = document.getElementById("message")
   const submitButton = contactForm.querySelector(".btn-sm")
-  createErrorContainers(contactForm)
+  createErrorContainers()
   emailInput.addEventListener("input", validateEmailField)
   emailInput.addEventListener("blur", validateEmailField)
   nameInput.addEventListener("blur", validateRequiredField)
@@ -19,14 +16,27 @@ const initContactForm = () => {
   contactForm.addEventListener("submit", handleFormSubmit)
   replaceSubmitButton(contactForm, submitButton)
 }
-const createErrorContainers = (form) => {
+const createErrorContainers = () => {
+  console.log("Initializing contact form...")
+  const contactForm = document.querySelector(".contact-form_container form")
+  if (!contactForm) {
+    console.error("Contact form not found!")
+    return
+  }
+  console.log("Contact form found")
   const fields = ["your_name", "your_email", "topic", "message"]
   fields.forEach((fieldId) => {
     const field = document.getElementById(fieldId)
-    const errorSpan = document.createElement("span")
-    errorSpan.className = "error-message"
-    errorSpan.id = `${fieldId}-error`
-    field.parentNode.insertBefore(errorSpan, field.nextSibling)
+    if (!field) {
+      console.error(`Field with id ${fieldId} not found`)
+      return
+    }
+    if (!document.getElementById(`${fieldId}-error`)) {
+      const errorSpan = document.createElement("span")
+      errorSpan.className = "error-message"
+      errorSpan.id = `${fieldId}-error`
+      field.parentNode.insertBefore(errorSpan, field.nextSibling)
+    }
   })
 }
 const validateEmailField = (e) => {
@@ -101,7 +111,7 @@ const showFormSuccess = () => {
   const successMessage = document.createElement("div")
   successMessage.className = "success-message"
   successMessage.innerHTML = `
-        <div class="success-title">✓ Success!</div>
+        <div class="success-title">Success!</div>
         <p>Thank you for your feedback! We will contact you soon.</p>
     `
   form.style.display = "none"
@@ -116,7 +126,7 @@ const showFormError = (message) => {
   const errorMessage = document.createElement("div")
   errorMessage.className = "form-error-message"
   errorMessage.innerHTML = `
-        <div class="error-title">✗ Error</div>
+        <div class="error-title">Error</div>
         <p>${message}</p>
     `
   header.parentNode.insertBefore(errorMessage, header.nextSibling)

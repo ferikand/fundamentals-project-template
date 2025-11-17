@@ -17,12 +17,8 @@ import {
   setDataOnProductPage,
   initAddToCartBtns,
 } from "./product.js"
-import {
-  updateCartBadge,
-  getCartContent,
-  initCartPage,
-  // debugCart,
-} from "./cart.js"
+import { updateCartBadge, getCartContent, initCartPage } from "./cart.js"
+import { initContactForm } from "./contact.js"
 window.onload = async () => {
   try {
     header()
@@ -74,10 +70,12 @@ window.onload = async () => {
     }
     if (window.location.pathname.includes("cart.html")) {
       initCartPage()
-      // debugCart()
     } else {
       getCartContent()
       updateCartBadge()
+    }
+    if (window.location.pathname.includes("contact.html")) {
+      initContactForm()
     }
   } catch (error) {
     console.log(error)
