@@ -50,7 +50,6 @@ main.cart {
 }
 
 .cart-item {
-  // max-height: 4rem;
   display: grid;
   grid-template-columns: 2fr 3fr 1fr 2fr 1fr 1fr;
   padding: 1rem auto;
@@ -126,7 +125,6 @@ main.cart {
   .btn-continue,
   .btn-clear {
     margin: 0;
-    // flex: 1;
     font-size: 0.9rem;
   }
 }
@@ -157,9 +155,9 @@ main.cart {
 }
 
 .empty-cart-message {
-  @include to-flex-and-center;
+  display: flex;
+  align-items: center;
   justify-content: center;
-
   font-size: 1.1rem;
   font-weight: bold;
 }

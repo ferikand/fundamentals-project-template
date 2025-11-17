@@ -30,9 +30,9 @@ main {
           }
         }
 
-        @include to-flex-and-center;
+        display: flex;
+        align-items: center;
         justify-content: center;
-
         flex-direction: column;
         flex: 1;
         color: $color-text-content;
@@ -94,14 +94,12 @@ main {
           }
 
           p {
-            // Общие стили для p
             margin: 0 1rem;
           }
         }
 
         .person-text {
           p {
-            // Более специфичные стили для p
             color: $color-text-content;
           }
         }

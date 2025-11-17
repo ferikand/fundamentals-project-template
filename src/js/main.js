@@ -3,22 +3,22 @@ import {
   renderProductsByRange,
   slides,
   generateStars,
-} from "/src/js/home.js"
+} from "./home.js"
 import {
   header,
   burger,
   initLoginModal,
   validateEmail,
   setActiveMenuItem,
-} from "/src/js/header.js"
-import { footer } from "/src/js/footer.js"
+} from "./header.js"
+import { footer } from "./footer.js"
 import {
   setProductPage,
   setDataOnProductPage,
   initAddToCartBtns,
 } from "./product.js"
-import { updateCartBadge, getCartContent, initCartPage } from "/src/js/cart.js"
-import { initContactForm } from "/src/js/contact.js"
+import { updateCartBadge, getCartContent, initCartPage } from "./cart.js"
+import { initContactForm } from "./contact.js"
 window.onload = async () => {
   try {
     header()

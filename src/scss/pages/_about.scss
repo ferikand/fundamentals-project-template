@@ -8,8 +8,8 @@ main.about {
     background-size: cover;
     background-repeat: no-repeat;
     padding: 6rem auto;
-
-    @include to-flex-and-center;
+    display: flex;
+    align-items: center;
     justify-content: center;
 
     .hero-upper_container {
@@ -32,9 +32,9 @@ main.about {
         margin: 0 auto;
       }
 
-      @include to-flex-and-center;
+      display: flex;
+      align-items: center;
       justify-content: center;
-
       flex-direction: column;
     }
   }
@@ -54,11 +54,10 @@ main.about {
     }
 
     .advatage {
-      @include to-flex-and-center;
-
-      height: 100%;
-      justify-items: flex-start;
+      display: flex;
+      align-items: center;
       justify-content: flex-start;
+      height: 100%;
       flex-direction: column;
       padding: $spacing-sm;
 
@@ -67,14 +66,12 @@ main.about {
         align-items: center;
 
         p {
-          // Менее специфичный p
           font-size: 0.95rem;
           text-align: center;
           font-weight: 400;
         }
 
         h4 {
-          // Более специфичный h4
           text-align: center;
           font-size: 1.25rem;
           margin: $spacing-sm;
@@ -115,7 +112,7 @@ main.about {
 
         .person {
           display: flex;
-          align-self: self-start;
+          align-self: flex-start;
           flex-direction: row;
 
           h6 {
@@ -127,14 +124,12 @@ main.about {
           }
 
           p {
-            // Общие стили для p
             margin: 0 1rem;
           }
         }
 
         .person-text {
           p {
-            // Более специфичные стили для p
             color: $color-text-content;
           }
         }

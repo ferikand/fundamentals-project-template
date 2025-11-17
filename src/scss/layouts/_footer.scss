@@ -24,11 +24,9 @@ footer {
     z-index: 1;
     width: 80%;
     margin: 0 auto;
-
-    @include to-flex-and-center;
-    justify-content: center;
-
+    display: flex;
     align-items: flex-start;
+    justify-content: center;
     flex-direction: column;
 
     h4 {
@@ -63,7 +61,6 @@ footer {
       }
 
       p {
-        // Менее специфичный p
         font-size: 0.75rem;
         font-weight: 200;
       }
@@ -97,7 +94,6 @@ footer {
 
         .footer-lower-left-upper_element {
           a {
-            // Общие стили для a
             text-decoration: none;
             color: $color-text;
           }
@@ -108,7 +104,6 @@ footer {
     .footer-lower-right_container {
       .footer-lower-right-upper {
         a {
-          // Менее специфичный a
           text-decoration: none;
           color: $color-text;
         }
@@ -145,6 +140,8 @@ footer {
 
   .copyright {
     @include to-flex-and-center;
+
+    justify-content: center;
 
     p {
       font-size: 0.75rem;

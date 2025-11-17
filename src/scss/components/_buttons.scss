@@ -16,13 +16,15 @@
 .btn,
 .btn-sm {
   text-decoration: none;
+
+  @include mixins.transition;
+  @include mixins.to-flex-and-center; 
+
+  justify-content: center; 
   color: variables.$color-button-text;
   font-size: 1.1rem;
-  font-weight: bold;
+  font-weight: variables.$font-weight-bold;
   margin-top: 2rem;
-  @include mixins.transition;
-  @include mixins.to-flex-and-center;
-
   background-color: variables.$color-primary;
 
   &:hover {

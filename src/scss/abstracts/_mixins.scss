@@ -29,8 +29,6 @@
   h4 {
     margin: 0;
   }
-
-  margin-bottom: $spacing-sm;
 }
 
 @mixin main-container {
@@ -43,6 +41,7 @@
 
   flex-direction: column;
   justify-content: flex-start;
+
   .product-card_info__container {
     display: flex;
     flex-direction: column;
@@ -77,14 +76,13 @@
 
 @mixin product-section-layout($header-class, $container-class) {
   max-width: 80%;
-  margin: 0 auto;
-  margin-top: $spacing-l;
-  .#{$header-class} {
+  margin: $spacing-l auto 0;
+  .#{ $header-class} {
     @include section-header;
 
     margin-bottom: 2.5rem;
   }
-  .#{$container-class} {
+  .#{ $container-class} {
     @include selected-products-grid;
   }
 }
@@ -144,43 +142,43 @@
 }
 
 @mixin mobile {
-  @media (max-width: #{$breakpoint-mobile - 1px}) {
+  @media (max-width:#{$breakpoint-mobile - 1px}) {
     @content;
   }
 }
 
 @mixin tablet {
-  @media (min-width: #{$breakpoint-mobile}) and (max-width: #{$breakpoint-tablet - 1px}) {
+  @media (min-width:#{$breakpoint-mobile}) and (max-width:#{$breakpoint-tablet - 1px}) {
     @content;
   }
 }
 
 @mixin desktop {
-  @media (min-width: #{$breakpoint-tablet}) {
+  @media (min-width:#{$breakpoint-tablet}) {
     @content;
   }
 }
 
 @mixin large-desktop {
-  @media (min-width: #{$breakpoint-desktop}) {
+  @media (min-width:#{$breakpoint-desktop}) {
     @content;
   }
 }
 
 @mixin tablet-down {
-  @media (max-width: #{$breakpoint-tablet - 1px}) {
+  @media (max-width:#{$breakpoint-tablet - 1px}) {
     @content;
   }
 }
 
 @mixin tablet-up {
-  @media (min-width: #{$breakpoint-mobile}) {
+  @media (min-width:#{$breakpoint-mobile}) {
     @content;
   }
 }
 
 @mixin desktop-up {
-  @media (min-width: #{$breakpoint-tablet}) {
+  @media (min-width:#{$breakpoint-tablet}) {
     @content;
   }
 }

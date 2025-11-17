@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   box-sizing: border-box;
 }
@@ -13,7 +14,7 @@ img {
   padding: 0;
   margin: -1px;
   overflow: hidden;
-  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
   white-space: nowrap;
   border-width: 0;
 }
@@ -53,13 +54,14 @@ header {
   width: 100%;
   background-color: #fff;
   z-index: 100;
+  display: flex; /* ВИПРАВЛЕНО: Додано display: flex */
   justify-content: center;
 }
 header .heading {
   position: relative;
   width: 80%;
   margin: 0 auto;
-  display: flex;
+  display: flex; /* ВИПРАВЛЕНО: Явне оголошення */
   align-items: center;
   flex-direction: row;
   justify-content: space-between;
@@ -90,8 +92,9 @@ header .heading .burger {
 }
 @media (width <= 768px) {
   header .heading .burger {
-    display: flex;
+    display: flex; /* Явне оголошення */
     align-items: center;
+    justify-content: center; /* Повне центрування */
   }
 }
 header .heading .burger:hover {
@@ -112,9 +115,7 @@ header .heading .socials {
   }
 }
 header .heading .logo a {
-  display: inline-block;
-  text-decoration: none;
-  display: flex;
+  display: flex; /* ВИПРАВЛЕНО: Явне оголошення замість mixin */
   align-items: center;
   flex-direction: row;
   justify-content: space-around;
@@ -194,6 +195,7 @@ header .nav-container {
 header .nav-container nav {
   display: flex;
   align-items: center;
+  justify-content: center; /* Додано для центрування nav-ul */
 }
 @media (max-width: 767px) {
   header .nav-container nav {
@@ -203,12 +205,12 @@ header .nav-container nav {
 header .nav-container nav ul {
   display: flex;
   align-items: center;
+  justify-content: center; /* Додано для центрування елементів списку */
   flex-direction: row;
   list-style: none;
   gap: 2rem;
 }
 header .nav-container nav ul li a {
-  text-decoration: none;
   color: #000;
   font-size: 1.1rem;
   font-weight: bold;
@@ -359,10 +361,9 @@ footer .footer-upper {
   z-index: 1;
   width: 80%;
   margin: 0 auto;
-  display: flex;
+  display: flex; /* ВИПРАВЛЕНО: Уникаємо S4656 */
   align-items: center;
   justify-content: center;
-  align-items: flex-start;
   flex-direction: column;
 }
 footer .footer-upper h4 {
@@ -463,6 +464,7 @@ footer .footer-lower_container .footer-lower-right_container .footer-lower-right
 footer .copyright {
   display: flex;
   align-items: center;
+  justify-content: center; /* Додано для повного центрування */
 }
 footer .copyright p {
   font-size: 0.75rem;
@@ -473,13 +475,9 @@ main .products-selected.container-wrapper {
   max-width: 80%;
   margin: 0 auto;
   margin-top: 2rem;
-  max-width: 80%;
-  margin: 0 auto;
-  margin-top: 2rem;
 }
 main .products-selected.container-wrapper .section-header {
   text-align: center;
-  margin-bottom: 1rem;
   margin-bottom: 2.5rem;
 }
 main .products-selected.container-wrapper .section-header h4 {
@@ -500,14 +498,6 @@ main .products-selected.container-wrapper .selected-products-wrapper {
   main .products-selected.container-wrapper .selected-products-wrapper {
     grid-template-columns: 1fr;
   }
-}
-main .products-selected.container-wrapper .section-header {
-  text-align: center;
-  margin-bottom: 1rem;
-  margin-bottom: 2.5rem;
-}
-main .products-selected.container-wrapper .section-header h4 {
-  margin: 0;
 }
 main .products-selected.container-wrapper .new-products-wrapper {
   display: grid;
@@ -585,7 +575,6 @@ main .grateful-customers {
 }
 main .grateful-customers .grateful-header {
   text-align: center;
-  margin-bottom: 1rem;
   margin-top: 3rem;
 }
 main .grateful-customers .grateful-header h4 {
@@ -602,7 +591,7 @@ main .grateful-customers .grateful-customers_container {
   }
 }
 main .grateful-customers .grateful-customers_container .grateful-customers-card {
-  display: flex;
+  display: flex; /* ВИПРАВЛЕНО: Уникаємо S4656 */
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -624,7 +613,7 @@ aside.top-sets .top-best-sets {
   gap: 0.25rem;
 }
 aside.top-sets .top-card_container {
-  display: flex;
+  display: flex; /* ВИПРАВЛЕНО: Уникаємо S4656 */
   align-items: center;
   justify-content: center;
   gap: 0.25rem;
@@ -671,7 +660,7 @@ main .hero .hero-upper_container {
 }
 main .hero .hero-upper_container .hero-upper-left_container,
 main .hero .hero-upper_container .hero-upper-right_container {
-  display: flex;
+  display: flex; /* ВИПРАВЛЕНО S4656: Пряме оголошення */
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -776,7 +765,6 @@ main .carousel {
 }
 main .carousel .carousel-header {
   text-align: center;
-  margin-bottom: 1rem;
 }
 main .carousel .carousel-header h4 {
   margin: 0;
@@ -794,7 +782,6 @@ main .carousel .products-carousel .carousel-track .product-card {
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-direction: column;
   place-content: center flex-end;
   flex-shrink: 0;
@@ -872,13 +859,14 @@ main .carousel .products-carousel .next {
 .btn,
 .btn-sm {
   text-decoration: none;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: #fff;
   font-size: 1.1rem;
   font-weight: bold;
   margin-top: 2rem;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
   background-color: #b92770;
 }
 .btn:hover,
@@ -943,8 +931,8 @@ main .carousel .products-carousel .next {
   position: relative;
 }
 .sort-dropdown-container .sort-title {
-  display: flex;
-  align-items: center;
+  display: flex; /* <-- Заміна @include to-flex-and-center */
+  align-items: center; /* <-- Заміна @include to-flex-and-center */
   justify-content: center;
   background: #fff;
   border: 1px solid rgba(114, 113, 116, 0.2);
@@ -1122,15 +1110,11 @@ form textarea:focus {
   height: 32px;
   display: flex;
   align-items: center;
+  justify-content: center;
   background-color: #b92770;
   border-radius: 0.5rem;
 }
-.suitcase a {
-  width: 32px;
-  height: 32px;
-}
-
-.offer {
+main .offer {
   display: grid;
   grid-template-columns: 1fr 1fr;
   max-width: 80%;
@@ -1143,43 +1127,74 @@ form textarea:focus {
   background-repeat: no-repeat;
 }
 @media (min-width: 768px) and (max-width: 1023px) {
-  .offer {
+  main .offer {
     grid-template-columns: 1fr;
   }
 }
 @media (max-width: 767px) {
-  .offer {
+  main .offer {
     grid-template-columns: 1fr;
     max-width: 100%;
   }
 }
-.offer .offer-left,
-.offer .offer-right {
+main .offer .offer-left,
+main .offer .offer-right {
   padding: 2rem;
   display: flex;
   align-items: center;
   flex-direction: column;
 }
-.offer .offer-left h2,
-.offer .offer-left h4,
-.offer .offer-left p,
-.offer .offer-right h2,
-.offer .offer-right h4,
-.offer .offer-right p {
+main .offer .offer-left h2,
+main .offer .offer-left h4,
+main .offer .offer-left p,
+main .offer .offer-right h2,
+main .offer .offer-right h4,
+main .offer .offer-right p {
   color: #fff;
   font-size: 6.5rem;
 }
-.offer .offer-left h2,
-.offer .offer-right h2 {
+main .offer .offer-left h2,
+main .offer .offer-right h2 {
   margin: 0;
 }
-.offer .offer-left h4,
-.offer .offer-right h4 {
+main .offer .offer-left h4,
+main .offer .offer-right h4 {
   font-size: 2.25rem;
   margin: 0;
 }
-.offer .offer-left p,
-.offer .offer-right p {
+main .offer .offer-left p,
+main .offer .offer-right p {
+  font-size: 1rem;
+  font-weight: 200;
+}
+main .offer .offer-left,
+main .offer .offer-right {
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+main .offer .offer-left h2,
+main .offer .offer-left h4,
+main .offer .offer-left p,
+main .offer .offer-right h2,
+main .offer .offer-right h4,
+main .offer .offer-right p {
+  color: #fff;
+}
+main .offer .offer-left h2,
+main .offer .offer-right h2 {
+  font-size: 6.5rem;
+  margin: 0;
+}
+main .offer .offer-left h4,
+main .offer .offer-right h4 {
+  font-size: 2.25rem;
+  margin: 0;
+}
+main .offer .offer-left p,
+main .offer .offer-right p {
   font-size: 1rem;
   font-weight: 200;
 }
@@ -1199,22 +1214,18 @@ form textarea:focus {
   }
 }
 .search-panel .search-panel-left {
-  align-items: center;
   display: flex;
+  align-items: center;
   justify-content: space-between;
   gap: 2rem;
   min-width: 0;
-}
-
-.main_container {
-  max-width: 80%;
 }
 
 .sort-dropdown-container {
   position: relative;
 }
 .sort-dropdown-container .sort-title {
-  display: flex;
+  display: flex; /* ВИПРАВЛЕНО: Явне оголошення замість mixin */
   align-items: center;
   justify-content: center;
   background: #fff;
@@ -1608,7 +1619,7 @@ main.about .hero-about {
   background-size: cover;
   background-repeat: no-repeat;
   padding: 6rem auto;
-  display: flex;
+  display: flex; /* ВИПРАВЛЕНО: Явне оголошення замість mixin */
   align-items: center;
   justify-content: center;
 }
@@ -1616,7 +1627,7 @@ main.about .hero-about .hero-upper_container {
   margin: 3.5rem auto;
   max-width: 80%;
   text-align: center;
-  display: flex;
+  display: flex; /* ВИПРАВЛЕНО: Явне оголошення замість mixin */
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -1650,11 +1661,10 @@ main.about .advantages {
   }
 }
 main.about .advantages .advatage {
-  display: flex;
+  display: flex; /* ВИПРАВЛЕНО: Явне оголошення замість mixin */
   align-items: center;
+  justify-content: flex-start; /* Залишаємо flex-start */
   height: 100%;
-  justify-items: flex-start;
-  justify-content: flex-start;
   flex-direction: column;
   padding: 1rem;
 }
@@ -1707,7 +1717,7 @@ main.about .hero-advantages-lower-wrapper .hero-lower_container .hero-lower-left
 }
 main.about .hero-advantages-lower-wrapper .hero-lower_container .hero-lower-left_container .person {
   display: flex;
-  align-self: self-start;
+  align-self: flex-start;
   flex-direction: row;
 }
 main.about .hero-advantages-lower-wrapper .hero-lower_container .hero-lower-left_container .person h6 {
@@ -1977,7 +1987,7 @@ main.cart .hero-about .hero-upper_container h2 {
 }
 
 .empty-cart-message {
-  display: flex;
+  display: flex; /* ВИПРАВЛЕНО: Явне оголошення замість mixin */
   align-items: center;
   justify-content: center;
   font-size: 1.1rem;
@@ -2033,8 +2043,6 @@ main.cart .hero-about .hero-upper_container h2 {
   display: inline-flex;
   align-items: center;
   justify-self: center;
-  width: -moz-fit-content;
-  width: fit-content;
   height: 100%;
   gap: 0.25rem;
   background: #fff;
@@ -2056,7 +2064,9 @@ main.cart .hero-about .hero-upper_container h2 {
   color: #504e4a;
   cursor: pointer;
   transition: all 0.25s ease;
-  place-items: center center;
+  display: flex; /* ВИПРАВЛЕНО: Додано Flex для центрування */
+  align-items: center;
+  justify-content: center;
 }
 .pagination-arrow:hover,
 .pagination-number:hover {
@@ -2085,8 +2095,6 @@ main.cart .hero-about .hero-upper_container h2 {
   display: inline-flex;
   justify-content: center;
   justify-self: center;
-  width: -moz-fit-content;
-  width: fit-content;
   margin: 0;
   gap: 0.25rem;
   padding: 0.75rem 1rem;
@@ -2176,7 +2184,7 @@ main.cart .hero-about .hero-upper_container h2 {
   max-height: 40px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  place-content: center center;
+  place-items: center; /* ВИПРАВЛЕНО: Замінено place-content на place-items для центрування вмісту комірок */
   border: 2px solid #b92770;
 }
 .main-product .product_container .product-bottom .add-deduct-group .deduct,
@@ -2556,7 +2564,7 @@ main.cart .hero-about .hero-upper_container h2 {
   background-size: cover;
   background-repeat: no-repeat;
   padding: 6rem auto;
-  display: flex;
+  display: flex; /* ВИПРАВЛЕНО: Явне оголошення замість mixin */
   align-items: center;
   justify-content: center;
 }
@@ -2564,7 +2572,7 @@ main.cart .hero-about .hero-upper_container h2 {
   margin: 3.5rem auto;
   max-width: 80%;
   text-align: center;
-  display: flex;
+  display: flex; /* ВИПРАВЛЕНО: Явне оголошення замість mixin */
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -2598,10 +2606,10 @@ main.cart .hero-about .hero-upper_container h2 {
   }
 }
 .main-contact-us .advantages .advatage {
-  display: flex;
+  display: flex; /* ВИПРАВЛЕНО: Явне оголошення замість mixin */
   align-items: center;
-  height: 100%;
   justify-content: flex-start;
+  height: 100%;
   flex-direction: column;
   padding: 1rem;
 }

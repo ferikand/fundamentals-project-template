@@ -1,6 +1,5 @@
-import { renderProductsByRange } from "./home.js"
-import { products } from "./home.js"
-import { setDataOnProductPage } from "./product.js"
+import { renderProductsByRange, products } from "./home.js"
+import { setDataOnProductPage, setProductPage } from "./product.js"
 let catalogueProducts = []
 let filteredProducts = []
 let currentPage = 1
@@ -34,6 +33,7 @@ const renderPage = (page) => {
     } Results`
   }
   updatePagination(productsToRender.length, page)
+  setProductPage()
   window.scrollTo({ top: 0, behavior: "smooth" })
 }
 const updatePagination = (totalItems, currentPage) => {

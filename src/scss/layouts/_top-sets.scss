@@ -17,8 +17,8 @@ aside.top-sets {
   }
 
   .top-card_container {
-    @include to-flex-and-center;
-
+    display: flex;
+    align-items: center;
     justify-content: center;
     gap: $spacing-xs;
     padding: $spacing-xs;

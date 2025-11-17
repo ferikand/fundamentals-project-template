@@ -20,8 +20,7 @@
   a {
     @include mixins.icon-size(20px);
     @include mixins.to-flex-and-center;
-
-    transition: all 0.3s ease;
+    @include mixins.transition;
 
     &:hover {
       @include mixins.transform;
@@ -33,10 +32,10 @@
   @include mixins.icon-size(32px);
   @include mixins.to-flex-and-center;
 
+  justify-content: center;
   background-color: variables.$color-primary;
   border-radius: variables.$spacing-s;
 
   a {
-    @include mixins.icon-size(32px);
   }
 }

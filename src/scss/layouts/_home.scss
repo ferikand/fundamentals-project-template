@@ -3,8 +3,23 @@
 
 main {
   .products-selected.container-wrapper {
-    @include product-section-layout(section-header, selected-products-wrapper);
-    @include product-section-layout(section-header, new-products-wrapper);
+    max-width: 80%;
+    margin: 0 auto;
+    margin-top: $spacing-l;
+
+    .section-header {
+      @include section-header;
+
+      margin-bottom: 2.5rem;
+    }
+
+    .selected-products-wrapper {
+      @include selected-products-grid;
+    }
+
+    .new-products-wrapper {
+      @include selected-products-grid;
+    }
   }
 
   .offer {
@@ -32,9 +47,9 @@ main {
       }
 
       .grateful-customers-card {
-        @include to-flex-and-center;
+        display: flex;
+        align-items: center;
         justify-content: center;
-
         flex-direction: column;
         padding: 2rem;
         box-shadow: 0 1.25rem 2rem rgb(193 199 212 / 72%);
