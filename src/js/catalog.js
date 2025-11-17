@@ -184,9 +184,9 @@ const resetFilters = () => {
   }
   document.querySelectorAll(".filter-dropdown").forEach((dropdown) => {
     const title = dropdown.querySelector(".filter-title")
-    const filterType =
-      dropdown.querySelector(".filter-list-item").dataset.filterType
-    title.innerHTML = `Choose option <img src="../assets/icons/arrow-down-menu.svg" alt="arrow down" />`
+    // const filterType =
+    //   dropdown.querySelector(".filter-list-item").dataset.filterType
+    title.innerHTML = `Choose option <img src="/src/assets/icons/arrow-down-menu.svg" alt="arrow down" />`
     dropdown.querySelectorAll(".filter-list-item").forEach((item) => {
       if (item.dataset.filterValue === "all") {
         item.classList.add("active")
@@ -350,10 +350,10 @@ export const filtering = () => {
         if (filterValue === "all") {
           const defaultText =
             filterType.charAt(0).toUpperCase() + filterType.slice(1)
-          title.innerHTML = `${defaultText} <img src="../assets/icons/arrow-down-menu.svg" alt="arrow down" />`
+          title.innerHTML = `${defaultText} <img src="/src/assets/icons/arrow-down-menu.svg" alt="arrow down" />`
         } else {
           const displayName = getFilterDisplayName(filterType, filterValue)
-          title.innerHTML = `${displayName} <img src="../assets/icons/arrow-down-menu.svg" alt="arrow down" />`
+          title.innerHTML = `${displayName} <img src="/src/assets/icons/arrow-down-menu.svg" alt="arrow down" />`
         }
         filterItems.forEach((i) => i.classList.remove("active"))
         item.classList.add("active")
@@ -398,7 +398,7 @@ export const filtering = () => {
           .querySelector(".filter-title")
         const filterTypeName =
           filterType.charAt(0).toUpperCase() + filterType.slice(1)
-        title.innerHTML = `${filterTypeName} <img src="../assets/icons/arrow-down-menu.svg" alt="arrow down" />`
+        title.innerHTML = `${filterTypeName} <img src="/src/assets/icons/arrow-down-menu.svg" alt="arrow down" />`
         dropdown
           .closest(".filter-list")
           .querySelectorAll(".filter-list-item")
