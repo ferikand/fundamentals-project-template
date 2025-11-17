@@ -6,6 +6,18 @@ img {
   max-width: 100%;
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
 h1,
 h2,
 h3,
@@ -2061,8 +2073,7 @@ main.cart .hero-about .hero-upper_container h2 {
   color: #504e4a;
   cursor: pointer;
   transition: all 0.25s ease;
-  align-items: center;
-  justify-items: center;
+  place-items: center center;
 }
 .pagination-arrow:hover,
 .pagination-number:hover {

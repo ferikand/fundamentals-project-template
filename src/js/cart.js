@@ -111,11 +111,6 @@ const getCartContent = () => {
   cart.forEach((product) => {
     const price = parseFloat(product.price.toString().replace("$", "")) || 0
     const itemTotal = (price * product.quantity).toFixed(2)
-    const optionsInfo = []
-    if (product.size && product.size !== "null")
-      optionsInfo.push(`Size: ${product.size}`)
-    if (product.color && product.color !== "null")
-      optionsInfo.push(`Color: ${product.color}`)    
     const tableRow = document.createElement("div")
     tableRow.innerHTML = `
     <div class="cart-item" data-id="${product.id}">
