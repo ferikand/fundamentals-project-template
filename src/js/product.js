@@ -215,6 +215,7 @@ const setProductPage = () => {
       const cardSelected = card.closest("[data-id]")
       productId = cardSelected.dataset.id
       localStorage.setItem("selectedProductId", productId)
+      count = 1
       window.location.href = `../html/product.html?id=${productId}`
     })
   })
