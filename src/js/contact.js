@@ -34,16 +34,17 @@ const createErrorContainers = () => {
 const validateEmailField = (e) => {
   const email = e.target.value
   const emailError = document.getElementById("your_email-error")
-  if (!email) {
-    emailError.textContent = ""
-    setFieldValidity(e.target, true)
-  } else if (!validateEmail(email)) {
-    emailError.textContent = "Please enter a valid email address"
-    setFieldValidity(e.target, false)
-  } else {
-    emailError.textContent = ""
-    setFieldValidity(e.target, true)
+  let isValid = true
+  let errorMessage = ""
+
+  if (email) {
+    if (!validateEmail(email)) {
+      isValid = false
+      errorMessage = "Please enter a valid email address"
+    }
   }
+  emailError.textContent = errorMessage
+  setFieldValidity(e.target, isValid)
 }
 const validateRequiredField = (e) => {
   const field = e.target
