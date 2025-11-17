@@ -11,8 +11,8 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "compile:scss": "sass src/scss:src/dist/css",
-    "watch": "sass src/scss:src/dist/css --watch",
+    "compile:scss": "sass src/scss:dist/css",
+    "watch": "sass src/scss:dist/css --watch",
     "dev": "concurrently \"npm run watch\" \"live-server --open=src/home.html\"",
     "lint:js": "eslint src/js/**/*.js",
     "lint:css": "stylelint src/scss/**/*.scss",
