@@ -1,33 +1,42 @@
 @use "../abstracts/mixins" as *;
 @use "../abstracts/variables" as *;
+
 main {
   .products-selected.container-wrapper {
     @include product-section-layout(section-header, selected-products-wrapper);
     @include product-section-layout(section-header, new-products-wrapper);
   }
+
   .offer {
     @include offer-section;
   }
+
   .grateful-customers {
     max-width: 80%;
     margin: 0 auto;
     margin-bottom: 3rem;
+
     .grateful-header {
       @include section-header;
+
       margin-top: 3rem;
     }
+
     .grateful-customers_container {
       display: grid;
       gap: 1rem;
       grid-template-columns: repeat(3, 1fr);
+
       @include mobile {
         grid-template-columns: 1fr;
       }
+
       .grateful-customers-card {
         @include to-flex-and-center;
+
         flex-direction: column;
         padding: 2rem;
-        box-shadow: 0 1.25rem 2rem rgba(193, 199, 212, 0.72);
+        box-shadow: 0 1.25rem 2rem rgb(193 199 212 / 72%);
       }
     }
   }

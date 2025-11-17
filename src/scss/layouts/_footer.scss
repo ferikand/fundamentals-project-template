@@ -1,11 +1,14 @@
 @use "../abstracts/variables" as *;
 @use "../abstracts/mixins" as *;
+
 footer {
   margin-top: 3rem;
+
   .footer-upper_container {
-    background: rgb(80, 78, 74);
+    background: rgb(80 78 74);
     position: relative;
     overflow: hidden;
+
     &::before {
       content: "";
       position: absolute;
@@ -15,97 +18,122 @@ footer {
       z-index: 0;
     }
   }
+
   .footer-upper {
     position: relative;
     z-index: 1;
     width: 80%;
     margin: 0 auto;
+
     @include to-flex-and-center;
+
     align-items: flex-start;
     flex-direction: column;
+
+    h4 {
+      font-size: 1.25rem;
+    }
+
     h4,
     p {
       color: $color-light;
     }
-    h4 {
-      font-size: 1.25rem;
-    }
+
     .footer-upper-elements_container {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
+
       @include tablet {
         grid-template-columns: 1fr 1fr;
       }
+
       @include mobile {
         grid-template-columns: 1fr;
       }
-      p {
-        font-size: 0.75rem;
-        font-weight: 200;
-      }
+
       .footer-upper-content-element {
         display: grid;
         grid-template-columns: 1fr 3fr;
         gap: 0.5rem;
+
         @include mobile {
           grid-template-columns: 1fr;
         }
       }
+
+      p {
+        // Менее специфичный p
+        font-size: 0.75rem;
+        font-weight: 200;
+      }
     }
   }
+
   .footer-lower_container {
     width: 80%;
     margin: 0 auto;
     display: grid;
     grid-template-columns: 3fr 2fr;
     gap: 1rem;
+
     @include mobile {
       grid-template-columns: 1fr;
     }
+
     h6,
     p {
       font-size: 0.75rem;
     }
+
     .footer-lower-left_container {
       .footer-lower-left-upper_container {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
+
         @include mobile {
           grid-template-columns: 1fr;
         }
+
         .footer-lower-left-upper_element {
           a {
+            // Общие стили для a
             text-decoration: none;
             color: $color-text;
           }
         }
       }
     }
+
     .footer-lower-right_container {
       .footer-lower-right-upper {
         a {
+          // Менее специфичный a
           text-decoration: none;
           color: $color-text;
         }
       }
+
       .footer-lower-right-lower {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 0.25rem;
-        @media (max-width: 1024px) {
+
+        @media (width <= 1024px) {
           grid-template-columns: 1fr;
         }
-        @include tablet {
-        }
+
         .footer-contact-element {
           display: grid;
           grid-template-columns: 1fr 3fr;
+
           @include tablet {
             grid-template-columns: 1fr;
           }
+
           @include mobile {
             grid-template-columns: 1fr 3fr;
           }
+
           p {
             margin-top: 0;
           }
@@ -113,8 +141,10 @@ footer {
       }
     }
   }
+
   .copyright {
     @include to-flex-and-center;
+
     p {
       font-size: 0.75rem;
       padding: 1rem;

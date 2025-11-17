@@ -1,39 +1,47 @@
 @use "../abstracts/mixins" as *;
 @use "../abstracts/variables" as *;
+
 .main_container {
   @include main-container;
+
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: $spacing-sm;
   padding-bottom: $spacing-lg;
+
   @include mobile {
     grid-template-columns: 1fr;
   }
 }
+
 .catalog_container {
   display: grid;
   gap: $spacing-sm;
   grid-template-columns: repeat(3, 1fr);
   justify-items: center;
+
   @include tablet {
     grid-template-columns: 1fr 1fr;
     padding-right: 0;
   }
+
   @include mobile {
     grid-template-columns: 1fr;
     max-width: 100%;
   }
 }
+
 .pagination-wrapper {
   max-width: 100%;
-  // margin: 4rem auto 2rem;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   justify-content: center;
+
   @include mobile {
     grid-template-columns: 1fr 1fr;
   }
 }
+
 .pagination {
   display: inline-flex;
   align-items: center;
@@ -44,8 +52,24 @@
   background: $color-light;
   border: 1px solid $color-border;
   border-radius: $border-radius-sm;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 12px rgb(0 0 0 / 5%);
 }
+
+.pagination-arrow {
+  min-width: 130px;
+  display: inline-flex;
+  justify-content: center;
+  justify-self: center;
+  width: fit-content;
+  margin: 0;
+  gap: $spacing-xs;
+  padding: 0.75rem;
+  background: $color-light;
+  border: 1px solid $color-border;
+  border-radius: $border-radius-sm;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 5%);
+}
+
 .pagination-arrow,
 .pagination-number {
   height: 100%;
@@ -59,46 +83,37 @@
   color: $color-text-secondary;
   cursor: pointer;
   transition: all 0.25s ease;
+
   &:hover {
     background: $color-primary;
     color: #fff;
   }
+
   &.active {
     background: $color-primary;
     color: #fff;
     font-weight: 600;
   }
+
   &:disabled {
     color: #ccc;
     cursor: not-allowed;
+
     &:hover {
       background: transparent;
       color: #ccc;
     }
   }
 }
-.pagination-arrow {
-  min-width: 130px;
-  display: inline-flex;
-  justify-content: center;
-  justify-self: center;
-  width: fit-content;
-  margin: 0;
-  gap: $spacing-xs;
-  padding: 0.75rem;
-  background: $color-light;
-  border: 1px solid $color-border;
-  border-radius: $border-radius-sm;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-}
+
 .arrow.next {
   transform: rotate(-90deg) translateY(100%) translateX(15%);
-  // align-self: flex-end;
 }
+
 .arrow.previous {
   transform: rotate(90deg) translateY(100%) translateX(-15%);
-  // align-self: flex-start;
 }
+
 .pagination-dots {
   color: $color-text-secondary;
   padding: 0 0.5rem;

@@ -1,75 +1,87 @@
 @use "../abstracts/mixins" as *;
 @use "../abstracts/variables" as *;
+
 .main-product {
   .product_container {
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: start;
     gap: 4rem;
+
     @include mobile {
       grid-template-columns: 1fr;
       gap: 2rem;
     }
+
     @include tablet {
       gap: 3rem;
     }
+
     .product-description_container {
       display: flex;
       height: 100%;
       flex-direction: column;
       justify-content: space-between;
+
       .product-description-header {
         h6 {
           margin-bottom: 0.5rem;
         }
+
         margin-bottom: 0.5rem;
       }
     }
+
     .product-images_container {
       .product-img_container {
         display: flex;
         flex-direction: column;
-        // width: 100%;
         height: 100%;
         margin: 0 auto;
         text-align: center;
+
         img.product-img-lg {
-          // min-height: 400px;
           object-fit: contain;
           display: block;
+
           @include mobile {
             height: 300px;
           }
+
           @include tablet {
             height: 350px;
           }
         }
       }
+
       .product-img-sm_container {
         display: flex;
         max-height: 3.5rem;
       }
     }
+
     .product-bottom {
       width: 100%;
       display: grid;
       grid-template-columns: 3fr 5fr;
       gap: 0.5rem;
       margin-top: 1rem;
+
       .add-deduct-group {
         max-height: 40px;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        align-content: center;
-        justify-content: center;
+        place-content: center center;
         border: 2px solid $color-primary;
+
         .deduct,
         .quantity,
         .add {
           text-align: center;
           font-weight: bold;
-          color: rgba($color: $color-text, $alpha: 0.5);
+          color: rgba($color: $color-text, $alpha: 50%);
         }
+
         .deduct,
         .add {
           &:hover {
@@ -77,12 +89,14 @@
           }
         }
       }
+
       .btn-sm {
         margin: 0;
         width: 100%;
       }
     }
   }
+
   select {
     width: 100%;
     padding: 0.75rem 1rem;
@@ -92,17 +106,21 @@
     appearance: none;
     margin-bottom: 0.5rem;
     margin-top: 0.5rem;
+
     &:focus {
       outline: none;
       border-color: $color-primary;
     }
   }
+
   select:required:invalid {
     color: $color-primary;
   }
+
   .product-select-wrapper {
     position: relative;
     width: 100%;
+
     &::after {
       content: "";
       position: absolute;
@@ -116,38 +134,48 @@
       background-position: center;
       background-size: contain;
       pointer-events: none;
+
       @include transition;
     }
+
     &.active::after {
       transform: translateY(-50%) rotate(180deg);
     }
   }
+
   option[value=""][disabled] {
     display: none;
   }
+
   option {
     color: $color-text;
   }
+
   .product-tabs {
     margin: 3.5rem auto;
     max-width: 80%;
+
     @include mobile {
       max-width: 95%;
       margin: 2rem auto;
       padding: 0 1rem;
     }
+
     @include tablet {
       max-width: 90%;
     }
   }
+
   .tabs-header {
     display: flex;
     margin-bottom: 30px;
+
     @include mobile {
       flex-wrap: wrap;
       gap: 0.5rem;
     }
   }
+
   .tab-button {
     background: none;
     border: none;
@@ -159,6 +187,7 @@
     transition: all 0.3s ease;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+
     @include mobile {
       padding: 0.75rem 1rem;
       font-size: 0.9rem;
@@ -167,32 +196,40 @@
       text-align: center;
     }
   }
+
   .tab-button.active {
     color: $color-text;
     border-bottom-color: $color-primary;
   }
+
   .tab-button:hover:not(.active) {
     color: $color-primary;
   }
+
   .tab-pane {
     display: none;
   }
+
   .tab-pane.active {
     display: block;
   }
+
   .reviews-container {
     max-width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 3.5rem;
+
     @include mobile {
       grid-template-columns: 1fr;
       gap: 2rem;
     }
+
     @include tablet {
       gap: 2.5rem;
     }
   }
+
   .reviews-count {
     font-size: 1rem;
     font-weight: 600;
@@ -200,67 +237,82 @@
     color: $color-text;
     padding-bottom: 1rem;
   }
+
   .existing-reviews {
     margin-bottom: 1rem;
   }
+
   .review-item {
     padding: 1rem 0;
+
     &:last-child {
       border-bottom: none;
     }
   }
+
   .review-header {
     display: flex;
     justify-content: start;
     align-items: center;
     margin-bottom: 0.75rem;
     gap: 1rem;
+
     @include mobile {
       flex-direction: column;
       align-items: flex-start;
       gap: 5px;
     }
+
     .top-card_rating {
       display: flex;
       justify-content: flex-end;
       flex: 1;
     }
   }
+
   .reviewer-image {
     align-self: start;
   }
+
   .reviewer-name {
     align-self: start;
     font-weight: 600;
     color: $color-text;
     font-size: 1rem;
   }
+
   .review-date {
     align-self: flex-end;
-    color: rgba($color: $color-text, $alpha: 0.5);
+    color: rgba($color: $color-text, $alpha: 50%);
     font-size: 0.75rem;
   }
+
   .review-rating {
     margin: 0.75rem 0;
+
     img {
       width: 1rem;
       height: 1rem;
       margin-right: 2px;
     }
   }
+
   .review-title {
     font-weight: 600;
     margin-bottom: 0.75rem;
     font-size: 1rem;
   }
+
   .review-text {
     line-height: 1.6;
     color: $color-text;
     margin-bottom: 10px;
   }
+
   .add-review-form {
     background: $color-light;
     padding: 0;
+
     h4 {
       font-size: 1.25rem;
       font-weight: 600;
@@ -268,6 +320,7 @@
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
+
     .privacy-notice {
       color: $color-text;
       font-size: 0.95rem;
@@ -275,9 +328,11 @@
       line-height: 1.5;
     }
   }
+
   .form-group {
     margin-bottom: 1.5rem;
     width: 100%;
+
     label {
       display: block;
       margin-bottom: 0.5rem;
@@ -287,6 +342,7 @@
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
+
     input,
     textarea {
       width: 100%;
@@ -295,44 +351,55 @@
       font-size: 0.75rem;
       font-family: inherit;
       transition: border-color 0.3s ease;
-      &:focus {
-        outline: none;
-        border-color: $color-primary;
-      }
+
       &::placeholder {
-        color: rgba($color: $color-text, $alpha: 0.5);
+        color: rgba($color: $color-text, $alpha: 50%);
       }
     }
+
     textarea {
       resize: vertical;
       min-height: 7.5rem;
     }
+
+    input:focus,
+    textarea:focus {
+      outline: none;
+      border-color: $color-primary;
+    }
   }
+
   .rating-group {
     display: flex;
     gap: 2rem;
-    label:after {
+
+    label::after {
       content: "" !important;
     }
+
     .rating-stars {
       display: flex;
       gap: 0.5rem;
       margin-top: 0.5rem;
     }
+
     .star-item {
       cursor: pointer;
       opacity: 0.3;
       transition: all 0.2s ease;
+
       img {
         width: 24px;
         height: 24px;
       }
+
       &.active,
       &:hover {
         opacity: 1;
       }
     }
   }
+
   .form-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -340,12 +407,15 @@
     align-items: start;
     width: 100%;
     gap: 1.12rem;
+
     @include mobile {
       grid-template-columns: 1fr;
     }
   }
+
   .checkbox-group {
     margin-top: 2rem;
+
     .checkbox-label {
       display: flex;
       align-items: flex-start;
@@ -355,44 +425,51 @@
       cursor: pointer;
       font-size: 0.95rem;
       color: $color-text;
-      &:after {
+
+      &::after {
         content: "" !important;
       }
+
+      .checkmark {
+        position: relative;
+        display: inline-block;
+        width: 1.1rem;
+        height: 1.1rem;
+        border: 2px solid $color-primary;
+        margin-right: 0.6rem;
+        flex-shrink: 0;
+        margin-top: 2px;
+        transition: all 0.3s ease;
+
+        &::after {
+          content: "";
+          position: absolute;
+          display: none;
+          left: 5px;
+          top: 2px;
+          width: 4px;
+          height: 8px;
+          border: solid $color-light;
+          border-width: 0 2px 2px 0;
+          transform: rotate(45deg);
+        }
+      }
+
       input[type="checkbox"] {
         display: none;
+
         &:checked + .checkmark {
           background-color: $color-primary;
           border-color: $color-primary;
-          &:after {
+
+          &::after {
             display: block;
           }
         }
       }
     }
-    .checkmark {
-      position: relative;
-      display: inline-block;
-      width: 1.1rem;
-      height: 1.1rem;
-      border: 2px solid $color-primary;
-      margin-right: 0.6rem;
-      flex-shrink: 0;
-      margin-top: 2px;
-      transition: all 0.3s ease;
-      &:after {
-        content: "";
-        position: absolute;
-        display: none;
-        left: 5px;
-        top: 2px;
-        width: 4px;
-        height: 8px;
-        border: solid $color-light;
-        border-width: 0 2px 2px 0;
-        transform: rotate(45deg);
-      }
-    }
   }
+
   .error-message {
     color: #d32f2f;
     font-size: 0.75rem;
@@ -404,9 +481,11 @@
     border-radius: 4px;
     border-left: 4px solid $color-primary;
   }
+
   .error-message.show {
     display: block !important;
   }
+
   .success-message {
     background: $color-primary;
     color: $color-light;
@@ -414,6 +493,7 @@
     margin-bottom: 1.25rem;
     display: none;
   }
+
   .success-message.show {
     display: block;
   }

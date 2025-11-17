@@ -1,5 +1,6 @@
 @use "../abstracts/mixins" as *;
 @use "../abstracts/variables" as *;
+
 header {
   position: sticky;
   top: 0;
@@ -7,24 +8,30 @@ header {
   background-color: $color-light;
   z-index: 100;
   justify-content: center;
+
   .heading {
     position: relative;
     width: 80%;
     margin: 0 auto;
+
     @include to-flex-and-center;
+
     flex-direction: row;
     justify-content: space-between;
     padding-bottom: 0.25rem;
+
     @include tablet {
       width: 100%;
       padding: 0.25rem;
       justify-content: space-around;
     }
+
     @include mobile {
       margin: 0 auto;
       width: 95%;
       justify-content: space-between;
     }
+
     .burger {
       display: none;
       width: auto;
@@ -32,28 +39,36 @@ header {
       font-size: 1.5rem;
       border: 2px solid black;
       border-radius: 0.25rem;
-      padding: 0 0.5rem 0.2rem 0.5rem;
-      @media (max-width: 768px) {
+      padding: 0 0.5rem 0.2rem;
+
+      @media (width <= 768px) {
         @include to-flex-and-center;
       }
+
       &:hover {
         cursor: pointer;
       }
     }
+
     .socials {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
+
       @include tablet {
         display: none;
       }
+
       @include mobile {
         display: none;
       }
     }
+
     .logo {
       a {
+        // Более специфичный a
         @include link-inline-block;
         @include to-flex-and-center;
+
         flex-direction: row;
         justify-content: space-around;
         width: 100%;
@@ -62,39 +77,48 @@ header {
         color: $color-primary;
         padding-left: 0.5rem;
         margin: 0 auto;
+
         &:hover {
           @include transform;
         }
+
         @include mobile {
           justify-items: center;
         }
       }
     }
+
     .user-section {
       display: grid;
       grid-template-columns: 1fr 1fr;
       padding-right: 0.5rem;
+
       @include mobile {
         display: flex;
         flex-direction: column;
-        // grid-template-columns: 1fr;
       }
+
       gap: 0.5rem;
+
       .user-icon,
       .cart-icon {
         @include transition;
+
         &:hover {
           @include transform;
         }
       }
+
       .user-icon {
         @include mobile {
           order: 2;
         }
       }
+
       .cart-icon {
         position: relative;
         cursor: pointer;
+
         .cart-count {
           position: absolute;
           top: -8px;
@@ -110,61 +134,74 @@ header {
           justify-content: center;
           font-weight: bold;
         }
+
         @include mobile {
           order: 1;
         }
       }
     }
   }
+
   .devider {
     border-bottom: 0.1px solid $color-devider;
     width: 78%;
     justify-self: center;
     height: 0.05px;
   }
+
   .nav-container {
     position: relative;
+
     nav {
       @include to-flex-and-center;
-      @include tablet {
-        // display: none;
-      }
+
       @include mobile {
         display: none;
       }
+
       ul {
         @include to-flex-and-center;
+
         flex-direction: row;
         list-style: none;
         gap: 2rem;
+
         li a {
+          // Менее специфичный li a
           text-decoration: none;
           color: $color-text;
           font-size: 1.1rem;
           font-weight: bold;
+
           @include link-inline-block;
           @include transition;
+
           &.active {
             color: $color-primary;
           }
+
           &:hover {
             @include transform;
+
             color: $color-primary;
           }
         }
       }
     }
+
     nav.mobile {
       position: absolute;
       display: flex;
       width: 80%;
       background-color: $color-light;
+
       ul {
         display: flex;
         flex-direction: column;
       }
     }
   }
+
   .login-modal {
     position: fixed;
     top: 0;
@@ -176,17 +213,20 @@ header {
     align-items: center;
     justify-content: center;
   }
+
   .login-modal.active {
     display: flex;
   }
+
   .modal-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgb(0 0 0 / 50%);
   }
+
   .modal-content {
     position: relative;
     background: #fff;
@@ -195,22 +235,27 @@ header {
     width: 90%;
     z-index: 1001;
   }
+
   .password-input-wrapper {
     position: relative;
     display: flex;
     align-items: center;
   }
+
   .password-input::-ms-reveal,
   .password-input::-ms-clear {
     display: none;
   }
+
   .password-input::-webkit-credentials-auto-fill-button {
     display: none !important;
   }
+
   .password-input {
     width: 100%;
     padding-right: 3rem;
   }
+
   .toggle-password {
     position: absolute;
     right: 0.75rem;
@@ -228,22 +273,27 @@ header {
     width: 1.5rem;
     height: 1.5rem;
   }
+
   .toggle-password:hover {
-    background: rgba(114, 113, 116, 0.1);
+    background: rgb(114 113 116 / 10%);
   }
+
   .eye-icon {
     width: 1.25rem;
     height: 1.25rem;
   }
+
   .form-group {
     width: 100%;
   }
+
   .login-bottom {
     display: flex;
     justify-content: space-between;
     width: 100%;
     align-items: center;
   }
+
   .remember {
     label {
       display: flex;
@@ -254,22 +304,26 @@ header {
       white-space: nowrap;
       gap: 0.3rem;
     }
+
     input {
       display: flex;
       align-items: center;
-      margin: auto 0 auto 0;
+      margin: auto 0;
       font-weight: 600;
     }
   }
+
   .forgot {
     p {
       font-size: 0.75rem;
       color: $color-primary;
+
       &:hover {
         cursor: pointer;
       }
     }
   }
+
   .login-btn {
     width: 100%;
   }

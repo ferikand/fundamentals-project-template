@@ -1,36 +1,47 @@
 @use "./variables" as *;
+
 @mixin to-flex-and-center {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 @mixin transition {
   transition: all 0.3s ease;
 }
+
 @mixin transform {
   transform: scale(1.015);
 }
+
 @mixin icon-size($size) {
   width: $size;
   height: $size;
 }
+
 @mixin link-inline-block {
   display: inline-block;
   text-decoration: none;
 }
+
 @mixin section-header {
   text-align: center;
+
   h4 {
     margin: 0;
   }
+
   margin-bottom: $spacing-sm;
 }
+
 @mixin main-container {
   max-width: 80%;
   margin: 0 auto;
 }
+
 @mixin product-card-style {
   @include to-flex-and-center;
+
   flex-direction: column;
   justify-content: flex-start;
   // padding: $spacing-s $spacing-sm;
@@ -39,113 +50,138 @@
     flex-direction: column;
     // align-items: center;
     width: 70%;
+
     p {
       font-weight: $font-weight-bold;
       margin-bottom: 0;
     }
   }
+
   .btn-sm {
     margin-top: auto;
     margin-bottom: $spacing-s;
   }
 }
+
 @mixin selected-products-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: $spacing-sm;
   justify-items: center;
+
   @include tablet {
     grid-template-columns: repeat(2, 1fr);
   }
+
   @include mobile {
     grid-template-columns: 1fr;
   }
 }
+
 @mixin product-section-layout($header-class, $container-class) {
   max-width: 80%;
   margin: 0 auto;
   margin-top: $spacing-l;
   .#{$header-class} {
     @include section-header;
+
     margin-bottom: 2.5rem;
   }
   .#{$container-class} {
     @include selected-products-grid;
   }
 }
+
 @mixin offer-section {
   display: grid;
   grid-template-columns: 1fr 1fr;
+
   @include tablet {
     grid-template-columns: 1fr;
   }
+
   @include mobile {
     grid-template-columns: 1fr;
     max-width: 100%;
   }
+
   max-width: 80%;
   min-height: 18.75rem;
   margin: 3rem auto;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+  background: linear-gradient(rgb(0 0 0 / 50%), rgb(0 0 0 / 50%)),
     url("../../src/assets/icons/offer_of_the_month.png");
   background-position: center;
   background-attachment: local;
   background-size: cover;
   background-repeat: no-repeat;
+
   .offer-left,
   .offer-right {
     padding: 2rem;
+
     @include to-flex-and-center;
+
     flex-direction: column;
+
     h2,
     h4,
     p {
       color: $color-light;
       font-size: 6.5rem;
     }
+
     h2 {
       margin: 0;
     }
+
     h4 {
       font-size: 2.25rem;
       margin: 0;
     }
+
     p {
       font-size: 1rem;
       font-weight: 200;
     }
   }
 }
+
 @mixin mobile {
   @media (max-width: #{$breakpoint-mobile - 1px}) {
     @content;
   }
 }
+
 @mixin tablet {
   @media (min-width: #{$breakpoint-mobile}) and (max-width: #{$breakpoint-tablet - 1px}) {
     @content;
   }
 }
+
 @mixin desktop {
   @media (min-width: #{$breakpoint-tablet}) {
     @content;
   }
 }
+
 @mixin large-desktop {
   @media (min-width: #{$breakpoint-desktop}) {
     @content;
   }
 }
+
 @mixin tablet-down {
   @media (max-width: #{$breakpoint-tablet - 1px}) {
     @content;
   }
 }
+
 @mixin tablet-up {
   @media (min-width: #{$breakpoint-mobile}) {
     @content;
   }
 }
+
 @mixin desktop-up {
   @media (min-width: #{$breakpoint-tablet}) {
     @content;

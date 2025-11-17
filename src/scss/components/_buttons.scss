@@ -1,10 +1,20 @@
 @use "../abstracts/mixins";
 @use "../abstracts/variables";
-.btn,
-.btn-sm {
+
+.btn {
   min-width: 174px;
   height: 60px;
   padding: 1rem;
+}
+
+.btn-sm {
+  min-width: 156px;
+  max-height: 40px;
+  padding: 0.9rem;
+}
+
+.btn,
+.btn-sm {
   text-decoration: none;
   color: variables.$color-button-text;
   // display: block;
@@ -14,15 +24,14 @@
   // flex-wrap: nowrap;
   @include mixins.transition;
   @include mixins.to-flex-and-center;
+
   background-color: variables.$color-primary;
+
   &:hover {
     background-color: variables.$color-dark;
+
     @include mixins.transform;
+
     cursor: pointer;
   }
-}
-.btn-sm {
-  min-width: 156px;
-  max-height: 40px;
-  padding: 0.9rem;
 }
