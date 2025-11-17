@@ -2063,24 +2063,9 @@ main.cart .hero-about .hero-upper_container h2 {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
-.pagination-arrow {
-  min-width: 130px;
-  display: inline-flex;
-  justify-content: center;
-  justify-self: center;
-  width: fit-content;
-  margin: 0;
-  gap: 0.25rem;
-  padding: 0.75rem;
-  background: #fff;
-  border: 1px solid rgba(114, 113, 116, 0.2);
-  border-radius: 0.25rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-}
-
 .pagination-arrow,
 .pagination-number {
-  height: 100%;
+  height: 33px;
   min-width: 44px;
   padding: 0 0.5rem;
   background: transparent;
@@ -2091,6 +2076,7 @@ main.cart .hero-about .hero-upper_container h2 {
   color: #504e4a;
   cursor: pointer;
   transition: all 0.25s ease;
+  place-items: center center;
 }
 .pagination-arrow:hover,
 .pagination-number:hover {
@@ -2112,6 +2098,21 @@ main.cart .hero-about .hero-upper_container h2 {
 .pagination-number:disabled:hover {
   background: transparent;
   color: #ccc;
+}
+
+.pagination-arrow {
+  min-width: 130px;
+  display: inline-flex;
+  justify-content: center;
+  justify-self: center;
+  width: fit-content;
+  margin: 0;
+  gap: 0.25rem;
+  padding: 0.75rem 1rem;
+  background: #fff;
+  border: 1px solid rgba(114, 113, 116, 0.2);
+  border-radius: 0.25rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .arrow.next {
