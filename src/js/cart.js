@@ -182,31 +182,24 @@ const clearCart = () => {
   getCartContent()
   updateSummary()
 }
+const showThankYou = () => {
+  document.querySelector(".empty-cart-message").textContent =
+    "Thank you for your purchase."
+}
 const checkout = () => {
   clearCart()
-  alert("Thank you for your purchase.")
+  showThankYou()
 }
 function initCartPage() {
   document.querySelector(".btn-clear")?.addEventListener("click", clearCart)
   document.querySelector(".btn-checkout")?.addEventListener("click", checkout)
+  document.querySelector(".btn-continue")?.addEventListener("click", () => {
+    window.location.href = "catalog.html"
+  })
   getCartContent()
   updateSummary()
   updateCartBadge()
 }
-// const debugCart = () => {
-//   const cart = getCart()
-//   console.log("Current cart structure:", cart)
-//   cart.forEach((item, index) => {
-//     console.log(`Item ${index}:`, {
-//       id: item.id,
-//       name: item.name,
-//       size: item.size,
-//       color: item.color,
-//       quantity: item.quantity,
-//       price: item.price,
-//     })
-//   })
-// }
 export {
   getCart,
   saveCart,
@@ -216,5 +209,4 @@ export {
   clearCart,
   checkout,
   initCartPage,
-  // debugCart,
 }

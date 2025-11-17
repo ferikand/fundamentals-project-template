@@ -452,8 +452,7 @@ const initAddToCartBtns = async () => {
   })
 }
 const addProductToCart = (product, button) => {
-  if (!button) return
-  if (!product) return
+  if (!button || !product) return
   const selectedOptions = getSelectedOptions()
   const itemTotalBasedOnOriginalPrice = product.price * count
   const cartItem = {

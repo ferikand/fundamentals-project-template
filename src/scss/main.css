@@ -1984,6 +1984,14 @@ main.cart .hero-about .hero-upper_container h2 {
   padding-top: 12px;
 }
 
+.empty-cart-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
 .main_container {
   max-width: 80%;
   margin: 0 auto;

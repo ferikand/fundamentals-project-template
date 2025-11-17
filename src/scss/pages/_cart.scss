@@ -132,3 +132,8 @@ main.cart {
   border-bottom: none;
   padding-top: 12px;
 }
+.empty-cart-message {
+  @include to-flex-and-center;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
