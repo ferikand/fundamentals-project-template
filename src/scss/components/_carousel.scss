@@ -16,13 +16,13 @@ main {
 
       .carousel-track {
         @include transition;
-        // @include generate-bg-images($images-quantity);
         display: flex;
         gap: 1rem;
 
         .product-card {
           @include transition;
           @include to-flex-and-center;
+          justify-content: center;
 
           flex-direction: column;
           place-content: center flex-end;

@@ -2,7 +2,6 @@
 
 @mixin to-flex-and-center {
   display: flex;
-  justify-content: center;
   align-items: center;
 }
 
@@ -44,11 +43,9 @@
 
   flex-direction: column;
   justify-content: flex-start;
-  // padding: $spacing-s $spacing-sm;
   .product-card_info__container {
     display: flex;
     flex-direction: column;
-    // align-items: center;
     width: 70%;
 
     p {

@@ -36,7 +36,6 @@ const validateEmailField = (e) => {
   const emailError = document.getElementById("your_email-error")
   let isValid = true
   let errorMessage = ""
-
   if (email) {
     if (!validateEmail(email)) {
       isValid = false

@@ -158,6 +158,7 @@ main.cart {
 
 .empty-cart-message {
   @include to-flex-and-center;
+  justify-content: center;
 
   font-size: 1.1rem;
   font-weight: bold;

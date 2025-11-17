@@ -60,7 +60,6 @@ header .heading {
   width: 80%;
   margin: 0 auto;
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: row;
   justify-content: space-between;
@@ -92,7 +91,6 @@ header .heading .burger {
 @media (width <= 768px) {
   header .heading .burger {
     display: flex;
-    justify-content: center;
     align-items: center;
   }
 }
@@ -117,7 +115,6 @@ header .heading .logo a {
   display: inline-block;
   text-decoration: none;
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: row;
   justify-content: space-around;
@@ -196,7 +193,6 @@ header .nav-container {
 }
 header .nav-container nav {
   display: flex;
-  justify-content: center;
   align-items: center;
 }
 @media (max-width: 767px) {
@@ -206,7 +202,6 @@ header .nav-container nav {
 }
 header .nav-container nav ul {
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: row;
   list-style: none;
@@ -365,8 +360,8 @@ footer .footer-upper {
   width: 80%;
   margin: 0 auto;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   align-items: flex-start;
   flex-direction: column;
 }
@@ -467,7 +462,6 @@ footer .footer-lower_container .footer-lower-right_container .footer-lower-right
 }
 footer .copyright {
   display: flex;
-  justify-content: center;
   align-items: center;
 }
 footer .copyright p {
@@ -558,7 +552,6 @@ main .offer .offer-left,
 main .offer .offer-right {
   padding: 2rem;
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
 }
@@ -610,8 +603,8 @@ main .grateful-customers .grateful-customers_container {
 }
 main .grateful-customers .grateful-customers_container .grateful-customers-card {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
   padding: 2rem;
   box-shadow: 0 1.25rem 2rem rgba(193, 199, 212, 0.72);
@@ -632,7 +625,6 @@ aside.top-sets .top-best-sets {
 }
 aside.top-sets .top-card_container {
   display: flex;
-  justify-content: center;
   align-items: center;
   justify-content: center;
   gap: 0.25rem;
@@ -680,8 +672,8 @@ main .hero .hero-upper_container {
 main .hero .hero-upper_container .hero-upper-left_container,
 main .hero .hero-upper_container .hero-upper-right_container {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
   flex: 1;
   color: #504e4a;
@@ -801,8 +793,8 @@ main .carousel .products-carousel .carousel-track {
 main .carousel .products-carousel .carousel-track .product-card {
   transition: all 0.3s ease;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
   place-content: center flex-end;
   flex-shrink: 0;
@@ -886,7 +878,6 @@ main .carousel .products-carousel .next {
   margin-top: 2rem;
   transition: all 0.3s ease;
   display: flex;
-  justify-content: center;
   align-items: center;
   background-color: #b92770;
 }
@@ -953,8 +944,8 @@ main .carousel .products-carousel .next {
 }
 .sort-dropdown-container .sort-title {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   background: #fff;
   border: 1px solid rgba(114, 113, 116, 0.2);
   border-radius: 0.25rem;
@@ -1046,7 +1037,6 @@ form textarea:focus {
   position: relative;
   max-width: 19rem;
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
   justify-content: flex-start;
@@ -1103,7 +1093,6 @@ form textarea:focus {
 .icon {
   color: #b92770;
   display: flex;
-  justify-content: center;
   align-items: center;
 }
 .icon svg {
@@ -1114,7 +1103,6 @@ form textarea:focus {
 
 .socials {
   display: flex;
-  justify-content: center;
   align-items: center;
   gap: 1.25rem;
 }
@@ -1122,7 +1110,6 @@ form textarea:focus {
   width: 20px;
   height: 20px;
   display: flex;
-  justify-content: center;
   align-items: center;
   transition: all 0.3s ease;
 }
@@ -1134,7 +1121,6 @@ form textarea:focus {
   width: 32px;
   height: 32px;
   display: flex;
-  justify-content: center;
   align-items: center;
   background-color: #b92770;
   border-radius: 0.5rem;
@@ -1171,7 +1157,6 @@ form textarea:focus {
 .offer .offer-right {
   padding: 2rem;
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
 }
@@ -1230,8 +1215,8 @@ form textarea:focus {
 }
 .sort-dropdown-container .sort-title {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   background: #fff;
   border: 1px solid rgba(114, 113, 116, 0.2);
   border-radius: 0.25rem;
@@ -1624,16 +1609,16 @@ main.about .hero-about {
   background-repeat: no-repeat;
   padding: 6rem auto;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 }
 main.about .hero-about .hero-upper_container {
   margin: 3.5rem auto;
   max-width: 80%;
   text-align: center;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
 }
 main.about .hero-about .hero-upper_container h2,
@@ -1666,7 +1651,6 @@ main.about .advantages {
 }
 main.about .advantages .advatage {
   display: flex;
-  justify-content: center;
   align-items: center;
   height: 100%;
   justify-items: flex-start;
@@ -1785,7 +1769,6 @@ main.about .offer .offer-left,
 main.about .offer .offer-right {
   padding: 2rem;
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
 }
@@ -1995,8 +1978,8 @@ main.cart .hero-about .hero-upper_container h2 {
 
 .empty-cart-message {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   font-size: 1.1rem;
   font-weight: bold;
 }
@@ -2574,16 +2557,16 @@ main.cart .hero-about .hero-upper_container h2 {
   background-repeat: no-repeat;
   padding: 6rem auto;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 }
 .main-contact-us .hero-about .hero-upper_container {
   margin: 3.5rem auto;
   max-width: 80%;
   text-align: center;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
 }
 .main-contact-us .hero-about .hero-upper_container h2,
@@ -2616,7 +2599,6 @@ main.cart .hero-about .hero-upper_container h2 {
 }
 .main-contact-us .advantages .advatage {
   display: flex;
-  justify-content: center;
   align-items: center;
   height: 100%;
   justify-content: flex-start;

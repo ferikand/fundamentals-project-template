@@ -9,7 +9,6 @@ const getProductsArr = async () => {
     return products
   }
   const res = await fetchProducts()
-  // console.log(res.data)
   products.push(...res.data)
   return products
 }
@@ -41,7 +40,6 @@ const renderProductsByRange = (
 ) => {
   const container = document.querySelector(containerClass)
   if (!container) {
-    // console.error(`Container with class ${containerClass} not found.`)
     return
   }
   container.innerHTML = ""
@@ -66,7 +64,6 @@ const renderProductsByRange = (
     "Best in Class",
   ]
   productsToRender.forEach((product, i) => {
-    // if (from !== -1 && !(i >= from && i <= until)) return
     const hasDiscount = product.salesStatus
     let discountBadge = ""
     if (hasDiscount) {
@@ -130,7 +127,6 @@ const slides = () => {
   const updateCarouselPosition = () => {
     const offsetX = -currentIndex * shiftDistance
     carouselTrack.style.transform = `translateX(${offsetX}px)`
-    // console.log(currentIndex, visibleCards, offsetX)
   }
   calculateShiftDistance()
   updateCarouselPosition()

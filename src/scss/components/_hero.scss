@@ -31,6 +31,7 @@ main {
         }
 
         @include to-flex-and-center;
+        justify-content: center;
 
         flex-direction: column;
         flex: 1;

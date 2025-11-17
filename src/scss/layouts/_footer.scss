@@ -26,6 +26,7 @@ footer {
     margin: 0 auto;
 
     @include to-flex-and-center;
+    justify-content: center;
 
     align-items: flex-start;
     flex-direction: column;

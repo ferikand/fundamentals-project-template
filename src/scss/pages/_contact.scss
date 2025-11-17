@@ -10,6 +10,7 @@
     padding: 6rem auto;
 
     @include to-flex-and-center;
+    justify-content: center;
 
     .hero-upper_container {
       margin: 3.5rem auto;
@@ -32,6 +33,7 @@
       }
 
       @include to-flex-and-center;
+      justify-content: center;
 
       flex-direction: column;
     }

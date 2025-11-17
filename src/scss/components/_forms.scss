@@ -57,6 +57,7 @@
 
   .sort-title {
     @include to-flex-and-center;
+    justify-content: center;
 
     background: $color-light;
     border: 1px solid $color-devider;
