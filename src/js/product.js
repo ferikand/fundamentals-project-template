@@ -423,22 +423,17 @@ const calculateDiscount = (product) => {
   }
   return 0
 }
-
 const initAddToCartBtns = async () => {
   document.addEventListener("click", async (e) => {
     if (e.target.classList.contains("add-to-cart")) {
       e.preventDefault()
       e.stopPropagation()
-
       const addToCartButton = e.target
       const productCard = addToCartButton.closest(".selected-product-card")
-
       if (!productCard) return
-
       const productId = productCard.dataset.id
       const productsArr = await getProductsArr()
       const product = productsArr.find((p) => p.id === productId)
-
       if (product) {
         addProductToCart(product, addToCartButton)
       }
@@ -446,11 +441,9 @@ const initAddToCartBtns = async () => {
     if (e.target.id === "add-to-cart-btn") {
       e.preventDefault()
       e.stopPropagation()
-
       const productId = localStorage.getItem("selectedProductId")
       const productsArr = await getProductsArr()
       const product = productsArr.find((p) => p.id === productId)
-
       if (product) {
         addProductToCart(product, e.target)
       }
@@ -458,9 +451,7 @@ const initAddToCartBtns = async () => {
   })
 }
 const addProductToCart = (product, button) => {
-  // const addToCartBtn = document.getElementById("add-to-cart-btn")
   if (!button) return
-  // button.addEventListener("click", () => {
   if (!product) return
   const selectedOptions = getSelectedOptions()
   const itemTotalBasedOnOriginalPrice = product.price * count
@@ -497,6 +488,5 @@ const addProductToCart = (product, button) => {
   if (quantityEl) {
     quantityEl.textContent = count
   }
-  // })
 }
 export { setProductPage, setDataOnProductPage, initAddToCartBtns }
