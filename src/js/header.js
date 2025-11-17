@@ -189,7 +189,7 @@ const validateEmail = (email) => {
   const [personal_info, domain] = parts
   if (!personal_info || !domain) return false
   if (personal_info.length > 64 || domain.length > 253) return false
-  const piRegex = /^[\w!#$%&'*+/=?^_`{|}~-]+(\.[\w!#$%&'*+/=?^_`{|}~-]+)*$/i
+  const piRegex = /^[\w!#$%&'*+/=?^`{|}~-]+(\.[\w!#$%&'*+/=?^`{|}~-]+)*$/i
   const domainRegex = /^(?:\w(?:[\w-]{0,61}\w)?\.)+[a-z]{2,}$/i
   return piRegex.test(personal_info) && domainRegex.test(domain)
 }
