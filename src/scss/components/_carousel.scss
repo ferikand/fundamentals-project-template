@@ -16,12 +16,14 @@ main {
 
       .carousel-track {
         @include transition;
+
         display: flex;
         gap: 1rem;
 
         .product-card {
           @include transition;
           @include to-flex-and-center;
+
           flex-direction: column;
           place-content: center flex-end;
           flex-shrink: 0;

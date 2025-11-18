@@ -1,4 +1,3 @@
-@charset "UTF-8";
 * {
   box-sizing: border-box;
 }
@@ -54,14 +53,15 @@ header {
   width: 100%;
   background-color: #fff;
   z-index: 100;
-  display: flex; /* ВИПРАВЛЕНО: Додано display: flex */
+  display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 header .heading {
   position: relative;
   width: 80%;
   margin: 0 auto;
-  display: flex; /* ВИПРАВЛЕНО: Явне оголошення */
+  display: flex;
   align-items: center;
   flex-direction: row;
   justify-content: space-between;
@@ -92,9 +92,9 @@ header .heading .burger {
 }
 @media (width <= 768px) {
   header .heading .burger {
-    display: flex; /* Явне оголошення */
+    display: flex;
     align-items: center;
-    justify-content: center; /* Повне центрування */
+    justify-content: center;
   }
 }
 header .heading .burger:hover {
@@ -115,7 +115,7 @@ header .heading .socials {
   }
 }
 header .heading .logo a {
-  display: flex; /* ВИПРАВЛЕНО: Явне оголошення замість mixin */
+  display: flex;
   align-items: center;
   flex-direction: row;
   justify-content: space-around;
@@ -125,6 +125,7 @@ header .heading .logo a {
   color: #b92770;
   padding-left: 0.5rem;
   margin: 0 auto;
+  text-decoration: none;
 }
 header .heading .logo a:hover {
   transform: scale(1.015);
@@ -195,7 +196,7 @@ header .nav-container {
 header .nav-container nav {
   display: flex;
   align-items: center;
-  justify-content: center; /* Додано для центрування nav-ul */
+  justify-content: center;
 }
 @media (max-width: 767px) {
   header .nav-container nav {
@@ -205,7 +206,7 @@ header .nav-container nav {
 header .nav-container nav ul {
   display: flex;
   align-items: center;
-  justify-content: center; /* Додано для центрування елементів списку */
+  justify-content: center;
   flex-direction: row;
   list-style: none;
   gap: 2rem;
@@ -273,9 +274,6 @@ header .password-input-wrapper {
 header .password-input::-ms-reveal,
 header .password-input::-ms-clear {
   display: none;
-}
-header .password-input::-webkit-credentials-auto-fill-button {
-  display: none !important;
 }
 header .password-input {
   width: 100%;
@@ -361,8 +359,8 @@ footer .footer-upper {
   z-index: 1;
   width: 80%;
   margin: 0 auto;
-  display: flex; /* ВИПРАВЛЕНО: Уникаємо S4656 */
-  align-items: center;
+  display: flex;
+  align-items: flex-start;
   justify-content: center;
   flex-direction: column;
 }
@@ -464,7 +462,7 @@ footer .footer-lower_container .footer-lower-right_container .footer-lower-right
 footer .copyright {
   display: flex;
   align-items: center;
-  justify-content: center; /* Додано для повного центрування */
+  justify-content: center;
 }
 footer .copyright p {
   font-size: 0.75rem;
@@ -473,8 +471,7 @@ footer .copyright p {
 
 main .products-selected.container-wrapper {
   max-width: 80%;
-  margin: 0 auto;
-  margin-top: 2rem;
+  margin: 2rem auto 0;
 }
 main .products-selected.container-wrapper .section-header {
   text-align: center;
@@ -515,63 +512,9 @@ main .products-selected.container-wrapper .new-products-wrapper {
     grid-template-columns: 1fr;
   }
 }
-main .offer {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  max-width: 80%;
-  min-height: 18.75rem;
-  margin: 3rem auto;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../src/assets/icons/offer_of_the_month.png");
-  background-position: center;
-  background-attachment: local;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-@media (min-width: 768px) and (max-width: 1023px) {
-  main .offer {
-    grid-template-columns: 1fr;
-  }
-}
-@media (max-width: 767px) {
-  main .offer {
-    grid-template-columns: 1fr;
-    max-width: 100%;
-  }
-}
-main .offer .offer-left,
-main .offer .offer-right {
-  padding: 2rem;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-main .offer .offer-left h2,
-main .offer .offer-left h4,
-main .offer .offer-left p,
-main .offer .offer-right h2,
-main .offer .offer-right h4,
-main .offer .offer-right p {
-  color: #fff;
-  font-size: 6.5rem;
-}
-main .offer .offer-left h2,
-main .offer .offer-right h2 {
-  margin: 0;
-}
-main .offer .offer-left h4,
-main .offer .offer-right h4 {
-  font-size: 2.25rem;
-  margin: 0;
-}
-main .offer .offer-left p,
-main .offer .offer-right p {
-  font-size: 1rem;
-  font-weight: 200;
-}
 main .grateful-customers {
   max-width: 80%;
-  margin: 0 auto;
-  margin-bottom: 3rem;
+  margin: 0 auto 3rem;
 }
 main .grateful-customers .grateful-header {
   text-align: center;
@@ -591,7 +534,7 @@ main .grateful-customers .grateful-customers_container {
   }
 }
 main .grateful-customers .grateful-customers_container .grateful-customers-card {
-  display: flex; /* ВИПРАВЛЕНО: Уникаємо S4656 */
+  display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -613,7 +556,7 @@ aside.top-sets .top-best-sets {
   gap: 0.25rem;
 }
 aside.top-sets .top-card_container {
-  display: flex; /* ВИПРАВЛЕНО: Уникаємо S4656 */
+  display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.25rem;
@@ -629,8 +572,7 @@ aside.top-sets .top-card_container .top-card-img_container img {
      object-fit: cover;
 }
 aside.top-sets .top-card_container .top-card_description p {
-  margin: 0.25rem;
-  margin-top: 0;
+  margin: 0 0.25rem 0.25rem;
   font-size: 0.75rem;
 }
 aside.top-sets .top-card_container .top-card_description .top-card_price {
@@ -660,7 +602,7 @@ main .hero .hero-upper_container {
 }
 main .hero .hero-upper_container .hero-upper-left_container,
 main .hero .hero-upper_container .hero-upper-right_container {
-  display: flex; /* ВИПРАВЛЕНО S4656: Пряме оголошення */
+  display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -738,9 +680,7 @@ main .hero-lower-wrapper .hero-lower_container .hero-lower-left_container .perso
   color: #504e4a;
 }
 main .hero-lower-wrapper .hero-lower_container .hero-lower-right_container {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../src/assets/icons/photo.png");
-  background-size: cover;
-  background-repeat: no-repeat;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/src/assets/icons/photo.png") no-repeat center/cover;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -876,118 +816,6 @@ main .carousel .products-carousel .next {
   cursor: pointer;
 }
 
-.search-wrapper {
-  position: relative;
-  background: #fff;
-  border: 1px solid rgba(114, 113, 116, 0.2);
-  border-radius: 0.25rem;
-  overflow: hidden;
-  height: 2rem;
-}
-@media (max-width: 767px) {
-  .search-wrapper {
-    width: 100%;
-  }
-}
-.search-wrapper .search-input {
-  background: transparent;
-  border: none;
-  padding: 0 3rem 0 1rem;
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: #504e4a;
-  width: 100%;
-  height: 100%;
-}
-.search-wrapper .search-input::-moz-placeholder {
-  color: rgba(114, 113, 116, 0.2);
-}
-.search-wrapper .search-input::placeholder {
-  color: rgba(114, 113, 116, 0.2);
-}
-.search-wrapper .search-input:focus {
-  outline: none;
-}
-@media (max-width: 767px) {
-  .search-wrapper .search-input {
-    width: 100%;
-  }
-}
-.search-wrapper .search-icon {
-  position: absolute;
-  right: 0.75rem;
-  top: 50%;
-  transform: translateY(-30%);
-  color: rgba(114, 113, 116, 0.2);
-  pointer-events: none;
-  transition: color 0.3s ease;
-}
-.search-wrapper .search-input:focus + .search-icon {
-  color: #b92770;
-}
-
-.sort-dropdown-container {
-  height: 2rem;
-  position: relative;
-}
-.sort-dropdown-container .sort-title {
-  display: flex; /* <-- Заміна @include to-flex-and-center */
-  align-items: center; /* <-- Заміна @include to-flex-and-center */
-  justify-content: center;
-  background: #fff;
-  border: 1px solid rgba(114, 113, 116, 0.2);
-  border-radius: 0.25rem;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  font-weight: bold;
-  color: #000;
-  gap: 0.5rem;
-}
-.sort-dropdown-container .sort-title:hover {
-  border-color: #b92770;
-}
-.sort-dropdown-container .sort-title img {
-  width: 0.75rem;
-  height: 0.75rem;
-  transition: all 0.3s ease;
-}
-.sort-dropdown-container .sort-list {
-  position: absolute;
-  top: 100%;
-  right: 0;
-  z-index: 50;
-  background-color: #fff;
-  border: 1px solid rgba(114, 113, 116, 0.2);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  min-width: 12.5rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  display: none;
-  border-radius: 0 0 0.25rem 0.25rem;
-  overflow: hidden;
-}
-.sort-dropdown-container .sort-list .sort-list-item {
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  font-size: 0.95rem;
-}
-.sort-dropdown-container .sort-list .sort-list-item:hover {
-  background-color: rgba(114, 113, 116, 0.2);
-  color: #b92770;
-}
-.sort-dropdown-container .sort-list .sort-list-item.active {
-  background-color: #b92770;
-  color: #fff;
-  font-weight: bold;
-}
-.sort-dropdown-container:hover .sort-list {
-  display: block;
-}
-.sort-dropdown-container:hover .sort-title img {
-  transform: rotate(180deg);
-}
-
 form {
   display: flex;
   flex-direction: column;
@@ -1114,17 +942,14 @@ form textarea:focus {
   background-color: #b92770;
   border-radius: 0.5rem;
 }
+
 main .offer {
   display: grid;
   grid-template-columns: 1fr 1fr;
   max-width: 80%;
   min-height: 18.75rem;
   margin: 3rem auto;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../src/assets/icons/offer_of_the_month.png");
-  background-position: center;
-  background-attachment: local;
-  background-size: cover;
-  background-repeat: no-repeat;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/src/assets/icons/offer_of_the_month.png") no-repeat local center/cover;
 }
 @media (min-width: 768px) and (max-width: 1023px) {
   main .offer {
@@ -1167,36 +992,325 @@ main .offer .offer-right p {
   font-size: 1rem;
   font-weight: 200;
 }
-main .offer .offer-left,
-main .offer .offer-right {
-  padding: 2rem;
+
+main.about .hero-about {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../src/assets/icons/about-us-bg.png") no-repeat center/cover;
+  padding: 6rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+main.about .hero-about .hero-upper_container {
+  margin: 3.5rem auto;
+  max-width: 80%;
+  text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
 }
-main .offer .offer-left h2,
-main .offer .offer-left h4,
-main .offer .offer-left p,
-main .offer .offer-right h2,
-main .offer .offer-right h4,
-main .offer .offer-right p {
+main.about .hero-about .hero-upper_container h2,
+main.about .hero-about .hero-upper_container p {
   color: #fff;
 }
-main .offer .offer-left h2,
-main .offer .offer-right h2 {
-  font-size: 6.5rem;
-  margin: 0;
+main.about .hero-about .hero-upper_container h2 {
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
 }
-main .offer .offer-left h4,
-main .offer .offer-right h4 {
-  font-size: 2.25rem;
-  margin: 0;
-}
-main .offer .offer-left p,
-main .offer .offer-right p {
-  font-size: 1rem;
+main.about .hero-about .hero-upper_container p {
   font-weight: 200;
+  margin: 0 auto;
+}
+main.about .advantages {
+  max-width: 80%;
+  margin: 3rem auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  main.about .advantages {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 767px) {
+  main.about .advantages {
+    grid-template-columns: 1fr;
+  }
+}
+main.about .advantages .advatage {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100%;
+  flex-direction: column;
+  padding: 1rem;
+}
+main.about .advantages .advatage .advatage-description_container {
+  justify-content: center;
+  align-items: center;
+}
+main.about .advantages .advatage .advatage-description_container h4 {
+  text-align: center;
+  font-size: 1.25rem;
+  margin: 1rem;
+}
+main.about .advantages .advatage .advatage-description_container p {
+  font-size: 0.95rem;
+  text-align: center;
+  font-weight: 400;
+}
+main.about .hero-advantages-lower-wrapper {
+  background-color: #fff;
+  padding-top: 3.5rem;
+}
+@media (max-width: 767px) {
+  main.about .hero-advantages-lower-wrapper {
+    width: 100%;
+  }
+}
+main.about .hero-advantages-lower-wrapper .hero-lower_container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 80%;
+  margin: 0 auto;
+  box-shadow: 0 1.25rem 2rem rgba(0, 0, 0, 0.08);
+  background-color: #fff;
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  main.about .hero-advantages-lower-wrapper .hero-lower_container {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 767px) {
+  main.about .hero-advantages-lower-wrapper .hero-lower_container {
+    grid-template-columns: 1fr;
+    max-width: 100%;
+  }
+}
+main.about .hero-advantages-lower-wrapper .hero-lower_container .hero-lower-left_container {
+  padding: 2rem;
+  justify-content: center;
+  max-width: 100%;
+}
+main.about .hero-advantages-lower-wrapper .hero-lower_container .hero-lower-left_container .person {
+  display: flex;
+  align-self: flex-start;
+  flex-direction: row;
+}
+main.about .hero-advantages-lower-wrapper .hero-lower_container .hero-lower-left_container .person h6 {
+  margin: 0.75rem;
+}
+main.about .hero-advantages-lower-wrapper .hero-lower_container .hero-lower-left_container .person .person-img {
+  max-width: 5.82rem;
+}
+main.about .hero-advantages-lower-wrapper .hero-lower_container .hero-lower-left_container .person p {
+  margin: 0 1rem;
+}
+main.about .hero-advantages-lower-wrapper .hero-lower_container .hero-lower-left_container .person-text p {
+  color: #504e4a;
+}
+main.about .hero-advantages-lower-wrapper .hero-lower_container .hero-lower-right_container {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/src/assets/icons/road-suitcase.png") no-repeat center/cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem;
+  max-width: 100%;
+}
+main.about .hero-advantages-lower-wrapper .hero-lower_container .hero-lower-right_container h4,
+main.about .hero-advantages-lower-wrapper .hero-lower_container .hero-lower-right_container p,
+main.about .hero-advantages-lower-wrapper .hero-lower_container .hero-lower-right_container a {
+  color: #fff;
+  visibility: hidden;
+}
+main.about .hero-advantages-lower-wrapper .hero-lower_container .hero-lower-right_container p {
+  font-weight: 200;
+}
+main.about .incredible_wrapper {
+  width: 80%;
+  margin: 3rem auto 0;
+  text-align: center;
+}
+main.about .incredible_wrapper .bottom-border {
+  border-bottom: 1px solid #000;
+  display: inline-block;
+  margin: 3rem auto;
+}
+main.about .incredible_wrapper .bottom-border h4 {
+  display: block;
+  margin: 0;
+}
+main.about .incredible_wrapper .incredibles_container {
+  max-width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+@media (max-width: 767px) {
+  main.about .incredible_wrapper .incredibles_container {
+    grid-template-columns: 1fr;
+  }
+}
+main.about .incredible_wrapper .incredibles_container .incredible-card img {
+  display: flex;
+  flex-direction: column;
+  place-content: center center;
+  margin: 1.5rem auto;
+}
+main.about .see-all-models {
+  display: inline-block;
+}
+
+main.cart .hero-about {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/src/assets/icons/cart-hero-bg.png") no-repeat center/cover;
+  padding: 2rem;
+  text-align: center;
+}
+main.cart .hero-about .hero-upper_container h2 {
+  color: #fff;
+}
+
+.cart-outer {
+  max-width: 80%;
+  margin: 3rem auto;
+}
+@media (max-width: 767px) {
+  .cart-outer {
+    max-width: 100%;
+  }
+}
+
+.cart-container {
+  width: 100%;
+}
+
+.cart-header {
+  display: grid;
+  grid-template-columns: 2fr 3fr 1fr 2fr 1fr 1fr;
+  background: #504e4a;
+  color: #fff;
+  padding: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.9em;
+  justify-items: center;
+}
+@media (max-width: 767px) {
+  .cart-header {
+    gap: 0.25rem;
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+  }
+}
+
+.cart-item {
+  display: grid;
+  grid-template-columns: 2fr 3fr 1fr 2fr 1fr 1fr;
+  padding: 1rem 0;
+  border-bottom: 1px solid #ddd;
+  place-items: center center;
+}
+
+.cart-item-img_container {
+  width: auto;
+  height: 80px;
+}
+.cart-item-img_container img {
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  display: block;
+}
+
+.cart-product-name {
+  font-weight: 500;
+}
+
+.cart-price,
+.cart-total {
+  font-weight: 600;
+}
+
+.cart-quantity {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.cart-deduct:hover,
+.cart-add:hover {
+  cursor: pointer;
+}
+
+.cart-delete {
+  height: 1.25rem;
+  width: 1.25rem;
+  margin: auto;
+  justify-self: center;
+  cursor: pointer;
+}
+.cart-delete img {
+  width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.cart-lower_container {
+  max-width: 80%;
+  display: grid;
+  margin: auto;
+  gap: 1rem;
+  grid-template-columns: 1fr 1fr;
+}
+@media (max-width: 767px) {
+  .cart-lower_container {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cart-actions {
+  display: flex;
+  align-content: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.cart-actions .btn-continue,
+.cart-actions .btn-clear {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.summary {
+  background: #504e4a;
+  color: #fff;
+  padding: 1rem;
+  width: 100%;
+}
+.summary .btn-checkout {
+  font-size: 0.9rem;
+}
+
+.summary-line {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(114, 113, 116, 0.2);
+}
+
+.summary-line.total {
+  font-weight: 600;
+  font-size: 1.1em;
+  border-bottom: none;
+  padding-top: 12px;
+}
+
+.empty-cart-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  font-weight: bold;
 }
 
 .search-panel {
@@ -1225,7 +1339,7 @@ main .offer .offer-right p {
   position: relative;
 }
 .sort-dropdown-container .sort-title {
-  display: flex; /* ВИПРАВЛЕНО: Явне оголошення замість mixin */
+  display: flex;
   align-items: center;
   justify-content: center;
   background: #fff;
@@ -1614,386 +1728,6 @@ main .offer .offer-right p {
   margin: 0 auto;
 }
 
-main.about .hero-about {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../src/assets/icons/about-us-bg.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-  padding: 6rem auto;
-  display: flex; /* ВИПРАВЛЕНО: Явне оголошення замість mixin */
-  align-items: center;
-  justify-content: center;
-}
-main.about .hero-about .hero-upper_container {
-  margin: 3.5rem auto;
-  max-width: 80%;
-  text-align: center;
-  display: flex; /* ВИПРАВЛЕНО: Явне оголошення замість mixin */
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-main.about .hero-about .hero-upper_container h2,
-main.about .hero-about .hero-upper_container p {
-  color: #fff;
-}
-main.about .hero-about .hero-upper_container h2 {
-  font-size: 3.5rem;
-  margin-bottom: 1.5rem;
-}
-main.about .hero-about .hero-upper_container p {
-  font-weight: 200;
-  margin: 0 auto;
-}
-main.about .advantages {
-  max-width: 80%;
-  margin: 3rem auto;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-}
-@media (min-width: 768px) and (max-width: 1023px) {
-  main.about .advantages {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-@media (max-width: 767px) {
-  main.about .advantages {
-    grid-template-columns: 1fr;
-  }
-}
-main.about .advantages .advatage {
-  display: flex; /* ВИПРАВЛЕНО: Явне оголошення замість mixin */
-  align-items: center;
-  justify-content: flex-start; /* Залишаємо flex-start */
-  height: 100%;
-  flex-direction: column;
-  padding: 1rem;
-}
-main.about .advantages .advatage .advatage-description_container {
-  justify-content: center;
-  align-items: center;
-}
-main.about .advantages .advatage .advatage-description_container p {
-  font-size: 0.95rem;
-  text-align: center;
-  font-weight: 400;
-}
-main.about .advantages .advatage .advatage-description_container h4 {
-  text-align: center;
-  font-size: 1.25rem;
-  margin: 1rem;
-}
-main.about .hero-advantages-lower-wrapper {
-  background-color: #fff;
-  padding-top: 3.5rem;
-}
-@media (max-width: 767px) {
-  main.about .hero-advantages-lower-wrapper {
-    width: 100%;
-  }
-}
-main.about .hero-advantages-lower-wrapper .hero-lower_container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  max-width: 80%;
-  margin: 0 auto;
-  box-shadow: 0 1.25rem 2rem rgba(0, 0, 0, 0.08);
-  background-color: #fff;
-}
-@media (min-width: 768px) and (max-width: 1023px) {
-  main.about .hero-advantages-lower-wrapper .hero-lower_container {
-    grid-template-columns: 1fr;
-  }
-}
-@media (max-width: 767px) {
-  main.about .hero-advantages-lower-wrapper .hero-lower_container {
-    grid-template-columns: 1fr;
-    max-width: 100%;
-  }
-}
-main.about .hero-advantages-lower-wrapper .hero-lower_container .hero-lower-left_container {
-  padding: 2rem;
-  justify-content: center;
-  max-width: 100%;
-}
-main.about .hero-advantages-lower-wrapper .hero-lower_container .hero-lower-left_container .person {
-  display: flex;
-  align-self: flex-start;
-  flex-direction: row;
-}
-main.about .hero-advantages-lower-wrapper .hero-lower_container .hero-lower-left_container .person h6 {
-  margin: 0.75rem;
-}
-main.about .hero-advantages-lower-wrapper .hero-lower_container .hero-lower-left_container .person .person-img {
-  max-width: 5.82rem;
-}
-main.about .hero-advantages-lower-wrapper .hero-lower_container .hero-lower-left_container .person p {
-  margin: 0 1rem;
-}
-main.about .hero-advantages-lower-wrapper .hero-lower_container .hero-lower-left_container .person-text p {
-  color: #504e4a;
-}
-main.about .hero-advantages-lower-wrapper .hero-lower_container .hero-lower-right_container {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../src/assets/icons/road-suitcase.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 2rem;
-  max-width: 100%;
-}
-main.about .hero-advantages-lower-wrapper .hero-lower_container .hero-lower-right_container h4,
-main.about .hero-advantages-lower-wrapper .hero-lower_container .hero-lower-right_container p,
-main.about .hero-advantages-lower-wrapper .hero-lower_container .hero-lower-right_container a {
-  color: #fff;
-  visibility: hidden;
-}
-main.about .hero-advantages-lower-wrapper .hero-lower_container .hero-lower-right_container p {
-  font-weight: 200;
-}
-main.about .offer {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  max-width: 80%;
-  min-height: 18.75rem;
-  margin: 3rem auto;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../src/assets/icons/offer_of_the_month.png");
-  background-position: center;
-  background-attachment: local;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-@media (min-width: 768px) and (max-width: 1023px) {
-  main.about .offer {
-    grid-template-columns: 1fr;
-  }
-}
-@media (max-width: 767px) {
-  main.about .offer {
-    grid-template-columns: 1fr;
-    max-width: 100%;
-  }
-}
-main.about .offer .offer-left,
-main.about .offer .offer-right {
-  padding: 2rem;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-main.about .offer .offer-left h2,
-main.about .offer .offer-left h4,
-main.about .offer .offer-left p,
-main.about .offer .offer-right h2,
-main.about .offer .offer-right h4,
-main.about .offer .offer-right p {
-  color: #fff;
-  font-size: 6.5rem;
-}
-main.about .offer .offer-left h2,
-main.about .offer .offer-right h2 {
-  margin: 0;
-}
-main.about .offer .offer-left h4,
-main.about .offer .offer-right h4 {
-  font-size: 2.25rem;
-  margin: 0;
-}
-main.about .offer .offer-left p,
-main.about .offer .offer-right p {
-  font-size: 1rem;
-  font-weight: 200;
-}
-main.about .incredible_wrapper {
-  width: 80%;
-  margin: 3rem auto 0;
-  text-align: center;
-}
-main.about .incredible_wrapper .bottom-border {
-  border-bottom: 1px solid #000;
-  display: inline-block;
-  margin: 3rem auto;
-}
-main.about .incredible_wrapper .bottom-border h4 {
-  display: block;
-  margin: 0;
-}
-main.about .incredible_wrapper .incredibles_container {
-  max-width: 100%;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-}
-@media (max-width: 767px) {
-  main.about .incredible_wrapper .incredibles_container {
-    grid-template-columns: 1fr;
-  }
-}
-main.about .incredible_wrapper .incredibles_container .incredible-card img {
-  display: flex;
-  flex-direction: column;
-  place-content: center center;
-  margin: 1.5rem auto;
-}
-main.about .see-all-models {
-  display: inline-block;
-}
-
-main.cart .hero-about {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../src/assets/icons/cart-hero-bg.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-  padding: 2rem;
-  text-align: center;
-}
-main.cart .hero-about .hero-upper_container h2 {
-  color: #fff;
-}
-
-.cart-outer {
-  max-width: 80%;
-  margin: 3rem auto;
-}
-@media (max-width: 767px) {
-  .cart-outer {
-    max-width: 100%;
-  }
-}
-
-.cart-container {
-  width: 100%;
-}
-
-.cart-header {
-  display: grid;
-  grid-template-columns: 2fr 3fr 1fr 2fr 1fr 1fr;
-  background: #504e4a;
-  color: #fff;
-  padding: 1rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  font-size: 0.9em;
-  justify-items: center;
-}
-@media (max-width: 767px) {
-  .cart-header {
-    gap: 0.25rem;
-    padding-left: 0.25rem;
-    padding-right: 0.25rem;
-  }
-}
-
-.cart-item {
-  display: grid;
-  grid-template-columns: 2fr 3fr 1fr 2fr 1fr 1fr;
-  padding: 1rem auto;
-  border-bottom: 1px solid #ddd;
-  place-items: center center;
-}
-
-.cart-item-img_container {
-  width: auto;
-  height: 80px;
-}
-.cart-item-img_container img {
-  height: 100%;
-  -o-object-fit: contain;
-     object-fit: contain;
-  display: block;
-}
-
-.cart-product-name {
-  font-weight: 500;
-}
-
-.cart-price,
-.cart-total {
-  font-weight: 600;
-}
-
-.cart-quantity {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-}
-
-.cart-deduct:hover,
-.cart-add:hover {
-  cursor: pointer;
-}
-
-.cart-delete {
-  height: 1.25rem;
-  width: 1.25rem;
-  margin: auto;
-  justify-self: center;
-  cursor: pointer;
-}
-.cart-delete img {
-  width: 100%;
-  -o-object-fit: contain;
-     object-fit: contain;
-}
-
-.cart-lower_container {
-  max-width: 80%;
-  display: grid;
-  margin: auto;
-  gap: 1rem;
-  grid-template-columns: 1fr 1fr;
-}
-@media (max-width: 767px) {
-  .cart-lower_container {
-    grid-template-columns: 1fr;
-  }
-}
-
-.cart-actions {
-  display: flex;
-  align-content: flex-start;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-.cart-actions .btn-continue,
-.cart-actions .btn-clear {
-  margin: 0;
-  font-size: 0.9rem;
-}
-
-.summary {
-  background: #504e4a;
-  color: #fff;
-  padding: 1rem;
-  width: 100%;
-}
-.summary .btn-checkout {
-  font-size: 0.9rem;
-}
-
-.summary-line {
-  display: flex;
-  justify-content: space-between;
-  padding: 8px 0;
-  border-bottom: 1px solid rgba(114, 113, 116, 0.2);
-}
-
-.summary-line.total {
-  font-weight: 600;
-  font-size: 1.1em;
-  border-bottom: none;
-  padding-top: 12px;
-}
-
-.empty-cart-message {
-  display: flex; /* ВИПРАВЛЕНО: Явне оголошення замість mixin */
-  align-items: center;
-  justify-content: center;
-  font-size: 1.1rem;
-  font-weight: bold;
-}
-
 .main_container {
   max-width: 80%;
   margin: 0 auto;
@@ -2064,7 +1798,7 @@ main.cart .hero-about .hero-upper_container h2 {
   color: #504e4a;
   cursor: pointer;
   transition: all 0.25s ease;
-  display: flex; /* ВИПРАВЛЕНО: Додано Flex для центрування */
+  display: flex;
   align-items: center;
   justify-content: center;
 }
@@ -2092,9 +1826,6 @@ main.cart .hero-about .hero-upper_container h2 {
 
 .pagination-arrow {
   min-width: 130px;
-  display: inline-flex;
-  justify-content: center;
-  justify-self: center;
   margin: 0;
   gap: 0.25rem;
   padding: 0.75rem 1rem;
@@ -2181,15 +1912,15 @@ main.cart .hero-about .hero-upper_container h2 {
   margin-top: 1rem;
 }
 .main-product .product_container .product-bottom .add-deduct-group {
-  max-height: 40px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  place-items: center; /* ВИПРАВЛЕНО: Замінено place-content на place-items для центрування вмісту комірок */
+  height: 40px;
+  display: flex;
+  align-items: center;
   border: 2px solid #b92770;
 }
 .main-product .product_container .product-bottom .add-deduct-group .deduct,
 .main-product .product_container .product-bottom .add-deduct-group .quantity,
 .main-product .product_container .product-bottom .add-deduct-group .add {
+  flex: 1;
   text-align: center;
   font-weight: bold;
   color: rgba(0, 0, 0, 0.5);
@@ -2204,8 +1935,7 @@ main.cart .hero-about .hero-upper_container h2 {
 }
 .main-product select {
   width: 100%;
-  padding: 0.75rem 1rem;
-  padding-right: 2.5rem;
+  padding: 0.75rem 2.5rem 0.75rem 1rem;
   border: 1px solid rgba(114, 113, 116, 0.2);
   font-size: 0.95rem;
   -webkit-appearance: none;
@@ -2560,11 +2290,9 @@ main.cart .hero-about .hero-upper_container h2 {
 }
 
 .main-contact-us .hero-about {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../src/assets/icons/contact-hero-bg.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-  padding: 6rem auto;
-  display: flex; /* ВИПРАВЛЕНО: Явне оголошення замість mixin */
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../src/assets/icons/contact-hero-bg.png") no-repeat center/cover;
+  padding: 6rem 0;
+  display: flex;
   align-items: center;
   justify-content: center;
 }
@@ -2572,7 +2300,7 @@ main.cart .hero-about .hero-upper_container h2 {
   margin: 3.5rem auto;
   max-width: 80%;
   text-align: center;
-  display: flex; /* ВИПРАВЛЕНО: Явне оголошення замість mixin */
+  display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -2606,7 +2334,7 @@ main.cart .hero-about .hero-upper_container h2 {
   }
 }
 .main-contact-us .advantages .advatage {
-  display: flex; /* ВИПРАВЛЕНО: Явне оголошення замість mixin */
+  display: flex;
   align-items: center;
   justify-content: flex-start;
   height: 100%;
