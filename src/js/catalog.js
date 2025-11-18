@@ -46,8 +46,8 @@ const updatePagination = (totalItems, currentPage) => {
       pageBtn.className = `pagination-number ${
         i === currentPage ? "active" : ""
       }`
-      pageBtn.dataset.page = i
-      pageBtn.textContent = i
+      pageBtn.dataset.page = i.toString()
+      pageBtn.textContent = i.toString()
       pageBtn.type = "button"
       pageBtn.addEventListener("click", () => {
         currentPage = i
@@ -107,19 +107,13 @@ const applyFilters = () => {
           case "size":
             if (filterValue === "S-L") {
               return (
-                product.size &&
-                product.size.includes("S") &&
-                product.size.includes("L")
+                product.size?.includes("S") &&
+                product.size?.includes("L")
               )
             }
-            return product.size && product.size.includes(filterValue)
+            return product.size?.includes(filterValue)
           case "salesStatus":
-            if (filterValue === "true") {
-              return product.salesStatus === true
-            } else if (filterValue === "false") {
-              return product.salesStatus === false
-            }
-            return true
+            return String(product.salesStatus) === filterValue
           default:
             return true
         }
@@ -184,8 +178,6 @@ const resetFilters = () => {
   }
   document.querySelectorAll(".filter-dropdown").forEach((dropdown) => {
     const title = dropdown.querySelector(".filter-title")
-    // const filterType =
-    //   dropdown.querySelector(".filter-list-item").dataset.filterType
     title.innerHTML = `Choose option <img src="/src/assets/icons/arrow-down-menu.svg" alt="arrow down" />`
     dropdown.querySelectorAll(".filter-list-item").forEach((item) => {
       if (item.dataset.filterValue === "all") {
@@ -204,7 +196,7 @@ const resetFilters = () => {
   renderPage(1)
   updateActiveFiltersDisplay()
 }
-const searchProducts = (searchTerm) => {
+const searchProducts = async (searchTerm) => {
   if (!searchTerm.trim()) {
     filteredProducts = []
     currentPage = 1
@@ -215,15 +207,15 @@ const searchProducts = (searchTerm) => {
   const results = products.filter(
     (product) =>
       product.name.toLowerCase().includes(searchLower) ||
-      (product.id && product.id.toLowerCase().includes(searchLower)) ||
-      (product.category && product.category.toLowerCase().includes(searchLower))
+      product.id?.toLowerCase().includes(searchLower) ||
+      product.category?.toLowerCase().includes(searchLower)
   )
   if (results.length > 0) {
     if (results.length === 1) {
       const product = results[0]
       localStorage.setItem("selectedProductId", product.id)
       window.location.href = `product.html?id=${product.id}`
-      setDataOnProductPage()
+      await setDataOnProductPage()
     } else {
       filteredProducts = results
       currentPage = 1
@@ -255,7 +247,7 @@ const showNotFoundPopup = (searchTerm) => {
   closeBtn.focus()
 }
 export const pagination = () => {
-  catalogueProducts = products.slice(0, 20)
+  catalogueProducts = [...products]
   filteredProducts = []
   if (catalogueProducts.length === 0) {
     return
@@ -335,19 +327,38 @@ const handleRemoveFilter = (e, salesCheckbox) => {
   }
   applyFilters()
 }
+
+const handleFilterItemClick = (item, title) => {
+  const filterType = item.dataset.filterType
+  const filterValue = item.dataset.filterValue
+  if (filterValue === "all") {
+    const defaultText =
+      filterType.charAt(0).toUpperCase() + filterType.slice(1)
+    title.innerHTML = `${defaultText} <img src="/src/assets/icons/arrow-down-menu.svg" alt="arrow down" />`
+  } else {
+    const displayName = getFilterDisplayName(filterType, filterValue)
+    title.innerHTML = `${displayName} <img src="/src/assets/icons/arrow-down-menu.svg" alt="arrow down" />`
+  }
+  item.parentElement.querySelectorAll(".filter-list-item").forEach((i) => i.classList.remove("active"))
+  item.classList.add("active")
+  activeFilters[filterType] = filterValue
+  applyFilters()
+  item.parentElement.style.display = "none"
+}
+
 export const filtering = () => {
   const searchInput = document.getElementById("searchModels")
   const searchWrapper = document.querySelector(".search-wrapper")
   const searchIcon = searchWrapper?.querySelector(".search-icon")
   if (searchInput && searchWrapper) {
-    searchInput.addEventListener("keypress", (e) => {
+    searchInput.addEventListener("keypress", async (e) => {
       if (e.key === "Enter") {
-        searchProducts(searchInput.value)
+        await searchProducts(searchInput.value)
       }
     })
     if (searchIcon) {
-      searchIcon.addEventListener("click", () => {
-        searchProducts(searchInput.value)
+      searchIcon.addEventListener("click", async () => {
+        await searchProducts(searchInput.value)
       })
     }
     searchWrapper.addEventListener("click", (e) => {
@@ -371,23 +382,7 @@ export const filtering = () => {
     })
     const filterItems = dropdown.querySelectorAll(".filter-list-item")
     filterItems.forEach((item) => {
-      item.addEventListener("click", () => {
-        const filterType = item.dataset.filterType
-        const filterValue = item.dataset.filterValue
-        if (filterValue === "all") {
-          const defaultText =
-            filterType.charAt(0).toUpperCase() + filterType.slice(1)
-          title.innerHTML = `${defaultText} <img src="/src/assets/icons/arrow-down-menu.svg" alt="arrow down" />`
-        } else {
-          const displayName = getFilterDisplayName(filterType, filterValue)
-          title.innerHTML = `${displayName} <img src="/src/assets/icons/arrow-down-menu.svg" alt="arrow down" />`
-        }
-        filterItems.forEach((i) => i.classList.remove("active"))
-        item.classList.add("active")
-        activeFilters[filterType] = filterValue
-        applyFilters()
-        list.style.display = "none"
-      })
+      item.addEventListener("click", () => handleFilterItemClick(item, title))
     })
   })
   const salesCheckbox = document.querySelector(".sales-checkbox")

@@ -166,8 +166,7 @@
   max-width: 100%;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  align-items: center;
-  justify-items: flex-start;
+  place-items: center flex-start;
   gap: $spacing-sm;
   border-top: 1px solid $color-primary;
   border-bottom: 1px solid $color-primary;

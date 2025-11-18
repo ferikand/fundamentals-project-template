@@ -4,9 +4,7 @@
 main.cart {
   .hero-about {
     background: linear-gradient(rgb(0 0 0 / 50%), rgb(0 0 0 / 50%)),
-      url("../../src/assets/icons/cart-hero-bg.png");
-    background-size: cover;
-    background-repeat: no-repeat;
+      url("/src/assets/icons/cart-hero-bg.png") no-repeat center / cover;
     padding: 2rem;
     text-align: center;
 
@@ -52,7 +50,7 @@ main.cart {
 .cart-item {
   display: grid;
   grid-template-columns: 2fr 3fr 1fr 2fr 1fr 1fr;
-  padding: 1rem auto;
+  padding: 1rem 0;
   border-bottom: 1px solid #ddd;
   place-items: center center;
 }

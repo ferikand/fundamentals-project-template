@@ -60,6 +60,7 @@
             data-tab="shipping"
           >
             SHIPPING POLICY
+          </button>
         </div>
         <div class="tabs-content">
           <div
@@ -118,8 +119,8 @@
                 </p>
                 <form id="review-form">
                   <div class="form-group rating-group">
-                    <label>RATE PRODUCT</label>
-                    <div id="review-rating"></div>
+                    <label for="review-rating">RATE PRODUCT</label>
+                    <div id="review-rating" aria-label="Product rating"></div>
                     <span
                       class="error-message"
                       id="rating-error"
@@ -170,7 +171,7 @@
                     </div>
                   </div>
                   <div class="form-group checkbox-group">
-                    <label class="checkbox-label">
+                    <label class="checkbox-label" for="save-info">
                       <input
                         type="checkbox"
                         id="save-info"

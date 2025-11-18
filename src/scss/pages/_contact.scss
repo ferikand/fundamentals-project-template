@@ -2,83 +2,8 @@
 @use "../abstracts/variables" as *;
 
 .main-contact-us {
-  .hero-about {
-    background: linear-gradient(rgb(0 0 0 / 50%), rgb(0 0 0 / 50%)),
-      url("../../src/assets/icons/contact-hero-bg.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    padding: 6rem auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    .hero-upper_container {
-      margin: 3.5rem auto;
-      max-width: 80%;
-      text-align: center;
-
-      h2,
-      p {
-        color: $color-light;
-      }
-
-      h2 {
-        font-size: 3.5rem;
-        margin-bottom: 1.5rem;
-      }
-
-      p {
-        font-weight: 200;
-        margin: 0 auto;
-      }
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-    }
-  }
-
-  .advantages {
-    max-width: 80%;
-    margin: 3rem auto;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-
-    @include tablet {
-      grid-template-columns: 1fr 1fr;
-    }
-
-    @include mobile {
-      grid-template-columns: 1fr;
-    }
-
-    .advatage {
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      height: 100%;
-      flex-direction: column;
-      padding: $spacing-sm;
-
-      .advatage-description_container {
-        justify-content: center;
-        align-items: center;
-
-        h4 {
-          text-align: center;
-          font-size: 1.25rem;
-          margin: $spacing-sm;
-        }
-
-        p {
-          font-size: 0.95rem;
-          text-align: center;
-          font-weight: 400;
-        }
-      }
-    }
-  }
+  @include page-hero("../../src/assets/icons/contact-hero-bg.png");
+  @include advantages-section;
 }
 
 .contact-form_container {

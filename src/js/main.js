@@ -56,7 +56,7 @@ window.onload = async () => {
       updateCartBadge()
     }
     if (window.location.pathname.includes("product.html")) {
-      setDataOnProductPage()
+      await setDataOnProductPage()
       renderProductsByRange(
         ".may-also-like",
         "selected-product-card",

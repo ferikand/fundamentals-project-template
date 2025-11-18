@@ -2,83 +2,8 @@
 @use "../abstracts/variables" as *;
 
 main.about {
-  .hero-about {
-    background: linear-gradient(rgb(0 0 0 / 50%), rgb(0 0 0 / 50%)),
-      url("../../src/assets/icons/about-us-bg.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    padding: 6rem auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    .hero-upper_container {
-      margin: 3.5rem auto;
-      max-width: 80%;
-      text-align: center;
-
-      h2,
-      p {
-        color: $color-light;
-      }
-
-      h2 {
-        font-size: 3.5rem;
-        margin-bottom: 1.5rem;
-      }
-
-      p {
-        font-weight: 200;
-        margin: 0 auto;
-      }
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-    }
-  }
-
-  .advantages {
-    max-width: 80%;
-    margin: 3rem auto;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-
-    @include tablet {
-      grid-template-columns: 1fr 1fr;
-    }
-
-    @include mobile {
-      grid-template-columns: 1fr;
-    }
-
-    .advatage {
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      height: 100%;
-      flex-direction: column;
-      padding: $spacing-sm;
-
-      .advatage-description_container {
-        justify-content: center;
-        align-items: center;
-
-        p {
-          font-size: 0.95rem;
-          text-align: center;
-          font-weight: 400;
-        }
-
-        h4 {
-          text-align: center;
-          font-size: 1.25rem;
-          margin: $spacing-sm;
-        }
-      }
-    }
-  }
+  @include page-hero("../../src/assets/icons/about-us-bg.png");
+  @include advantages-section;
 
   .hero-advantages-lower-wrapper {
     background-color: $color-light;
@@ -137,10 +62,7 @@ main.about {
 
       .hero-lower-right_container {
         background: linear-gradient(rgb(0 0 0 / 50%), rgb(0 0 0 / 50%)),
-          url("../../src/assets/icons/road-suitcase.png");
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
+          url("/src/assets/icons/road-suitcase.png") no-repeat center / cover;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -159,10 +81,6 @@ main.about {
         }
       }
     }
-  }
-
-  .offer {
-    @include offer-section;
   }
 
   .incredible_wrapper {

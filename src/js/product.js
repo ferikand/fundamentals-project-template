@@ -1,6 +1,7 @@
-import { getCart, saveCart, updateCartBadge } from "./cart.js"
-import { getProductsArr, generateStars } from "./home.js"
-import { validateEmail } from "./header.js"
+import {getCart, saveCart, updateCartBadge} from "./cart.js"
+import {generateStars, getProductsArr} from "./home.js"
+import {validateEmail} from "./header.js"
+
 let count = 1
 const createInteractiveRatingStars = (container, initialRating = 0) => {
   if (!container) return
@@ -75,12 +76,7 @@ const loadExistingReviews = async () => {
       day: "numeric",
       year: "numeric",
     })
-    reviewElement.innerHTML = `<div class="review-header">
-        ${
-          review.imageUrl
-            ? `<div class="review-image"><img src="${review.imageUrl}" alt="${review.name} image"/></div>`
-            : ""
-        }
+    reviewElement.innerHTML = `<div class="review-header">        
         <span class="reviewer-name">${review.name}</span>
         <span class="review-date">/${reviewDate}</span>
         <div class="top-card_rating">
@@ -122,7 +118,7 @@ const showValidationErrors = (errors) => {
     }
   })
 }
-const handleReviewSubmit = (e) => {
+const handleReviewSubmit = async (e) => {
   e.preventDefault()
   const productId = getCurrentProductId()
   // console.log(productId)
@@ -149,7 +145,7 @@ const handleReviewSubmit = (e) => {
   existingReviews.push(review)
   localStorage.setItem(`reviews_${productId}`, JSON.stringify(existingReviews))
   showSuccessMessage()
-  loadExistingReviews()
+  await loadExistingReviews()
   resetReviewForm()
 }
 const showSuccessMessage = () => {
@@ -178,19 +174,19 @@ const initTabs = () => {
   const tabButtons = document.querySelectorAll(".tab-button")
   const tabPanes = document.querySelectorAll(".tab-pane")
   tabButtons.forEach((button) => {
-    button.addEventListener("click", () => {
+    button.addEventListener("click", async () => {
       const tabName = button.dataset.tab
       tabButtons.forEach((btn) => btn.classList.remove("active"))
       tabPanes.forEach((pane) => pane.classList.remove("active"))
       button.classList.add("active")
       document.getElementById(`${tabName}-tab`).classList.add("active")
       if (tabName === "reviews") {
-        loadExistingReviews()
+        await loadExistingReviews()
       }
     })
   })
 }
-const initReviews = () => {
+const initReviews = async () => {
   const reviewForm = document.getElementById("review-form")
   const ratingContainer = document.getElementById("review-rating")
   if (ratingContainer) {
@@ -199,7 +195,7 @@ const initReviews = () => {
   if (reviewForm) {
     reviewForm.addEventListener("submit", handleReviewSubmit)
   }
-  loadExistingReviews()
+  await loadExistingReviews()
 }
 const setProductPage = () => {
   let productId = ""
@@ -219,8 +215,7 @@ const getProductData = async () => {
   const productId = localStorage.getItem("selectedProductId")
   if (!productId) return
   const productsArr = await getProductsArr()
-  const product = productsArr.find((product) => product.id === productId)
-  return product
+  return productsArr.find((product) => product.id === productId)
 }
 const getSelectedOptions = () => {
   const sizeSelect = document.getElementById("size")
@@ -325,8 +320,10 @@ const setDataOnProductPage = async () => {
     ".product-description_container"
   )
   if (!imgContainer || !productDescription) return
-  imgContainer.innerHTML = `<img class="product-img-lg" src="${product.imageUrl}" alt="${product.name}">`
-  const productDescriptioninnerHTML = `
+  if (product.imageUrl) {
+    imgContainer.innerHTML = `<img src="${product.imageUrl}" alt="${product.name}" class="product-img-lg">`
+  }
+  productDescription.innerHTML = `
 <div class="contact-form-feedback_header product-description-header">
 <h6>${product.name}</h6>
 <b>$${product.price}</b>
@@ -391,7 +388,6 @@ neatly organized, no matter the destination.
 <div id="add-to-cart-btn" class="btn-sm">Add To Cart</div>
 </div>
 </form>`
-  productDescription.innerHTML = productDescriptioninnerHTML
   const selectedOptions = getSelectedOptions()
   const existingItem = cart.find(
     (item) =>
@@ -406,7 +402,7 @@ neatly organized, no matter the destination.
   setupCounter(product)
   addProductToCart(product)
   initTabs()
-  initReviews()
+  await initReviews()
 }
 const calculateTotal = (product, quantity) => {
   const itemTotalBasedOnOriginalPrice = product.price * quantity

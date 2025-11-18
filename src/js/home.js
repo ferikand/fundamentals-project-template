@@ -1,8 +1,7 @@
 const products = []
 const fetchProducts = async () => {
   const response = await fetch("/src/assets/data.json")
-  const result = await response.json()
-  return result
+  return await response.json()
 }
 const getProductsArr = async () => {
   if (products.length > 0) {
@@ -14,12 +13,10 @@ const getProductsArr = async () => {
 }
 function generateStars(ratingValue) {
   const filledStarHtml =
-    '<img src="/src/assets/icons/star-filled.svg"alt="stat filled"/>'
+    '<img src="/src/assets/icons/star-filled.svg" alt="stat filled"/>'
   const emptyStarHtml =
-    '<img src="/src/assets/icons/star-empty.svg"alt="stat filled"/>'
-  const starsHtml =
-    filledStarHtml.repeat(ratingValue) + emptyStarHtml.repeat(5 - ratingValue)
-  return starsHtml
+    '<img src="/src/assets/icons/star-empty.svg" alt="stat filled"/>'
+  return filledStarHtml.repeat(ratingValue) + emptyStarHtml.repeat(5 - ratingValue)
 }
 function shuffleArray(array) {
   const shuffled = [...array]
@@ -75,12 +72,14 @@ const renderProductsByRange = (
     if (cardClass === "product-card") {
       const randomText =
         randomTexts[Math.floor(Math.random() * randomTexts.length)]
-      newCard.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${product.imageUrl})`
+      if (product.imageUrl) {
+        newCard.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${product.imageUrl})`
+      }
       newCard.innerHTML = `<p>${randomText}</p><h4>${product.id}</h4><p>${product.name}</p>`
     } else if (cardClass === "top-card_container") {
       const stars = generateStars(product.rating)
       newCard.innerHTML = `<div class="top-card-img_container">
-                              <img src=${product.imageUrl} alt=${product.id}/>
+                              <img src="${product.imageUrl || ''}" alt=${product.id}/>
                            </div>
                            <div class="top-card_description">
                                <p class="top-card_text">${product.name}</p>
@@ -89,7 +88,7 @@ const renderProductsByRange = (
                            </div>`
     } else {
       newCard.innerHTML = `${discountBadge}
-                           <img src=${product.imageUrl}  alt=${product.name}/>
+                           <img src="${product.imageUrl || ''}"  alt=${product.name}/>
                            <div class="selected-product-card_info__container">
                                <p>${product.name}</p>
                                <p class="price-in-card">$${product.price}</p>

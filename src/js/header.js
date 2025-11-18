@@ -1,8 +1,8 @@
 const header = () => {
   const header = document.querySelector("header")
-  const headerInnerHtml = `
+  header.innerHTML = `
   <div class="heading">
-        <div class="burger" type="button">&#9776;</div>
+        <div class="burger" >&#9776;</div>
         <div class="socials">
           <div>
             <a href="#" title="facebook_icon">
@@ -115,7 +115,6 @@ const header = () => {
         </form>
       </div>
     </div>`
-  header.innerHTML = headerInnerHtml
 }
 const setActiveMenuItem = () => {
   const menuItems = document.querySelectorAll(".navLink")

@@ -1,6 +1,6 @@
 const footer = () => {
   const footer = document.querySelector("footer")
-  const footerInnerHtml = `<div class="footer-upper_container">
+  footer.innerHTML = `<div class="footer-upper_container">
         <div class="footer-upper">
           <div><h4>Our Benefits</h4></div>
           <div class="footer-upper-elements_container">
@@ -159,6 +159,5 @@ const footer = () => {
       <div class="copyright">
         <p>© Copyright 2025</p>
       </div>`
-  footer.innerHTML = footerInnerHtml
 }
 export { footer }

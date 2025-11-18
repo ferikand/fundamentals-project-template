@@ -46,10 +46,10 @@ const updateCartBadge = () => {
   const badge = document.querySelector(".cart-count")
   if (badge) {
     if (totalItems > 0) {
-      badge.textContent = totalItems
+      badge.textContent = totalItems.toString()
       badge.style.display = "flex"
     } else {
-      badge.textContent = 0
+      badge.textContent = "0"
       badge.style.display = "none"
     }
   }
@@ -173,8 +173,14 @@ const clearCart = () => {
   updateSummary()
 }
 const showThankYou = () => {
-  document.querySelector(".empty-cart-message").textContent =
-    "Thank you for your purchase."
+  const cartContainer = document.querySelector(".cart-container")
+  if (cartContainer) {
+    cartContainer.innerHTML = `
+      <div class="empty-cart-message">
+        Thank you for your purchase.
+      </div>
+    `
+  }
 }
 const checkout = () => {
   clearCart()

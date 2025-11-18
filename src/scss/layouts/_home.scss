@@ -4,8 +4,7 @@
 main {
   .products-selected.container-wrapper {
     max-width: 80%;
-    margin: 0 auto;
-    margin-top: $spacing-l;
+    margin: $spacing-l auto 0;
 
     .section-header {
       @include section-header;
@@ -22,14 +21,9 @@ main {
     }
   }
 
-  .offer {
-    @include offer-section;
-  }
-
   .grateful-customers {
     max-width: 80%;
-    margin: 0 auto;
-    margin-bottom: 3rem;
+    margin: 0 auto 3rem;
 
     .grateful-header {
       @include section-header;
