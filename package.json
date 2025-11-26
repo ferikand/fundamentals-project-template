@@ -13,7 +13,7 @@
   "scripts": {
     "compile:scss": "sass src/scss:dist/css",
     "watch": "sass src/scss:dist/css --watch",
-    "dev": "concurrently \"npm run watch\" \"live-server --open=src/home.html\"",
+    "dev": "concurrently \"npm run watch\" \"live-server --open=src/index.html\"",
     "lint:js": "eslint src/js/**/*.js",
     "lint:css": "stylelint src/scss/**/*.scss",
     "lint": "npm run lint:js && npm run lint:css",

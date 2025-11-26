@@ -21,7 +21,7 @@ const header = () => {
           </div>
         </div>
         <div class="logo">
-          <a href="/src/home.html">
+          <a href="/src/index.html">
             <span class="suitcase">
               <img src="/src/assets/icons/suitcase.svg" alt="instagram"/>
             </span>
@@ -47,7 +47,7 @@ const header = () => {
         <nav>
           <ul>
             <li>
-              <a href="/src/home.html" class="navLink home">Home</a>
+              <a href="/src/index.html" class="navLink home">Home</a>
             </li>
             <li>
               <a href="/src/html/catalog.html" class="navLink catalog">
