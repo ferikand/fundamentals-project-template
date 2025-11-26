@@ -6,24 +6,24 @@ const header = () => {
         <div class="socials">
           <div>
             <a href="#" title="facebook_icon">
-              <img src="/src/assets/icons/facebook.svg" alt="facebook"/>
+              <img src="assets/icons/facebook.svg" alt="facebook"/>
             </a>
           </div>
           <div>
             <a href="#" title="twitter">
-              <img src="/src/assets/icons/twitter.svg" alt="twitter"/>
+              <img src="assets/icons/twitter.svg" alt="twitter"/>
             </a>
           </div>
           <div>
             <a href="#" title="instagram">
-              <img src="/src/assets/icons/instagram.svg" alt="instagram"/>
+              <img src="assets/icons/instagram.svg" alt="instagram"/>
             </a>
           </div>
         </div>
         <div class="logo">
-          <a href="/src/index.html">
+          <a href="/index.html">
             <span class="suitcase">
-              <img src="/src/assets/icons/suitcase.svg" alt="instagram"/>
+              <img src="assets/icons/suitcase.svg" alt="instagram"/>
             </span>
             <h1>BEST SHOP</h1>
           </a>
@@ -31,12 +31,12 @@ const header = () => {
         <div class="user-section">
           <div>
             <a href="#" class="icon user-icon" id="user-icon">
-              <img src="/src/assets/icons/user.svg" alt="user"/>
+              <img src="assets/icons/user.svg" alt="user"/>
             </a>
           </div>
           <div>
-            <a href="/src/html/cart.html" class="icon cart-icon">
-              <img src="/src/assets/icons/shopping-cart.svg" alt="shopping cart"/>
+            <a href="/html/cart.html" class="icon cart-icon">
+              <img src="assets/icons/shopping-cart.svg" alt="shopping cart"/>
               <span class="cart-count">0</span>
             </a>
           </div>
@@ -47,20 +47,20 @@ const header = () => {
         <nav>
           <ul>
             <li>
-              <a href="/src/index.html" class="navLink home">Home</a>
+              <a href="/index.html" class="navLink home">Home</a>
             </li>
             <li>
-              <a href="/src/html/catalog.html" class="navLink catalog">
+              <a href="/html/catalog.html" class="navLink catalog">
                 Catalog<span>
-                  <img src="/src/assets/icons/arrow-down-menu.svg" alt="arrow down"/>
+                  <img src="assets/icons/arrow-down-menu.svg" alt="arrow down"/>
                 </span>
               </a>
             </li>
             <li>
-              <a href="/src/html/about.html" class="navLink about">About Us</a>
+              <a href="/html/about.html" class="navLink about">About Us</a>
             </li>
             <li>
-              <a href="/src/html/contact.html" class="navLink contact">Contact Us</a>
+              <a href="/html/contact.html" class="navLink contact">Contact Us</a>
             </li>
           </ul>
         </nav>
@@ -93,7 +93,7 @@ const header = () => {
                 class="password-input"
               />
               <button type="button" class="toggle-password" id="toggle-password">
-                  <img src="/src/assets/icons/eye-closed.png" alt="Show password" class="eye-icon" id="eye-icon"/>
+                  <img src="assets/icons/eye-closed.png" alt="Show password" class="eye-icon" id="eye-icon"/>
               </button>
             </div>
             <span class="error-message" id="password-error"></span>
@@ -255,11 +255,11 @@ const togglePassword = () => {
   const isPasswordVisible = passwordInput.type === "text"
   if (isPasswordVisible) {
     passwordInput.type = "password"
-    eyeIcon.src = "/src/assets/icons/eye-closed.png"
+    eyeIcon.src = "assets/icons/eye-closed.png"
     eyeIcon.alt = "Show password"
   } else {
     passwordInput.type = "text"
-    eyeIcon.src = "/src/assets/icons/eye-open.png"
+    eyeIcon.src = "assets/icons/eye-open.png"
     eyeIcon.alt = "Hide password"
   }
   passwordInput.focus()
@@ -289,7 +289,7 @@ const resetForm = () => {
   document.getElementById("password-error").textContent = ""
   if (passwordInput && eyeIcon) {
     passwordInput.type = "password"
-    eyeIcon.src = "/src/assets/icons/eye-closed.png"
+    eyeIcon.src = "assets/icons/eye-closed.png"
     eyeIcon.alt = "Show password"
   }
 }
